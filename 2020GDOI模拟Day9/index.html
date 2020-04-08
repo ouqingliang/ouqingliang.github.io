@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear_xy.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/bear_xy.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","width":250,"display":"post","padding":30,"offset":30,"onmobile":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="2020GDOI模拟Day9总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020GDOI模拟Day9">
+<meta property="og:url" content="http://yoursite.com/2020GDOI%E6%A8%A1%E6%8B%9FDay9/index.html">
+<meta property="og:site_name" content="Oql&#39;s blog">
+<meta property="og:description" content="2020GDOI模拟Day9总结。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-29T07:47:18.000Z">
+<meta property="article:modified_time" content="2020-03-01T03:13:28.827Z">
+<meta property="article:author" content="oql">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="思维题">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="计算几何">
+<meta property="article:tag" content="斜率优化DP">
+<meta property="article:tag" content="组合数学">
+<meta property="article:tag" content="二分">
+<meta property="article:tag" content="网络流">
+<meta property="article:tag" content="闵科夫斯基和">
+<meta property="article:tag" content="贪心">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020GDOI%E6%A8%A1%E6%8B%9FDay9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>2020GDOI模拟Day9 | Oql's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oql's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Summary for OI</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">76</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">85</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020GDOI%E6%A8%A1%E6%8B%9FDay9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="name" content="oql">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2020GDOI模拟Day9
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-29 15:47:18" itemprop="dateCreated datePublished" datetime="2020-02-29T15:47:18+08:00">2020-02-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A8%A1%E6%8B%9F%E8%B5%9B/" itemprop="url" rel="index">
+                    <span itemprop="name">模拟赛</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>2020GDOI模拟Day9总结。</p>
+<a id="more"></a>
+<h3 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>$k$ 个非负整数 $a_1,a_2\cdots a_k$，求满足 $\sum_{i=1}^{k}a_i=n$ 且 $a_i\ AND \ a_{i+1}=a_{i+1}$ 的方案数。</p>
+<p>$n,k\leq 5\times 10^6$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>$a_i\ AND \ a_{i+1}=a_{i+1}$ 相当于 $a_{i+1}$ 是 $a_i$ 的子集。</p>
+<p>也就是说，假设某一位前面一直是 $1$，变 $0$ 了以后就一直是 $0$。</p>
+<p>那么就相当于看第 $i$ 位 $1$ 的出现次数是多少。然后乘上 $2^i$ 的和需要为 $n$。</p>
+<p>考虑看最低位出现的次数，假设是 $j$，那么 $j\leq k$，剩下的和为 $n-j$，这显然是一个子问题。因此有：</p>
+<script type="math/tex; mode=display">f(n)=\sum_{i=0}^{k}f(\frac{n-i}{2})[n\equiv i\pmod 2]</script><p>这是一个区间求和，用前缀和优化即可。</p>
+<p>时间复杂度 $O(n)$。</p>
+<h3 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h3><p>竟然用IMO的题来出题。。。</p>
+<h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>一个01字符串，上面有些位置可以随便未定，可乱选。</p>
+<p>定义一个字符串的一次操作为：若上面有 $k$ 个 $1$，则将字符串从左往右的第 $k$ 位取反。</p>
+<p>一个字符串的操作次数为：操作该次数后，该字符串全为 $0$。</p>
+<p>求该01字符串的期望操作次数。</p>
+<p>$n\leq 10^6$。</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p><del>看来IMO的题不也是很难嘛</del></p>
+<h5 id="没有-的情况"><a href="#没有-的情况" class="headerlink" title="没有?的情况"></a>没有?的情况</h5><p>先看看没有?的怎么做。</p>
+<p>假设现在在第 $k$ 位，且右边有连续的一段是 $0$，那么这个指针将一直向右移动，直到碰到某一个 $1$ 为止。</p>
+<p>碰到某个 $1$ 之后，会把这个 $1$ 删去，然后再一直向左走，走回第 $k$ 位。</p>
+<p>经过这样，就删去了原字符串中的一个 $1$。</p>
+<p>下一次这样的来回走动发生在第 $k-1$ 位…一直到第 $1$ 位时将所有的 $1$ 全部删去为止。</p>
+<p>每次这样的在第 $k$ 位来回走动从而删掉一个 $1$ 的操作次数为 $2(pos-k)+1$，其中 $pos$ 为 $1$ 的位置。</p>
+<p>设原字符串中 $1$ 的位置为序列 $pos_i$，个数为 $m$，那么答案为：</p>
+<script type="math/tex; mode=display">\sum_{i=1}^m(2(pos_i-i)+1)\\=2\sum_{i=1}^mpos_i+(\sum_{i=1}^{m}2i-1)\\=2\sum_{i=1}^mpos_i-m^2</script><h5 id="一般情况"><a href="#一般情况" class="headerlink" title="一般情况"></a>一般情况</h5><p>本来就为 $1$ 的贡献已经确定了。现在只需考虑?的贡献。</p>
+<p>设一共有 $cnt$ 个?。</p>
+<p>对于每个?，有 $\frac{1}{2}$ 的概率变为 $1$，此时对 $2\sum_{i=1}pos_i$贡献是 $2\times 下标$。</p>
+<p>假设一共有 $i$ 个?变为 $1$，概率为 $\frac{\binom{cnt}{i}}{2^{cnt}}$，此时贡献是 $(m+i)^2$。</p>
+<p>时间复杂度 $O(n)$。</p>
+<h3 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h3><h4 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h4><p>A 物品有 $n$ 种，每种 $a_i$ 个。</p>
+<p>B 物品有 $m$ 种，每种 $b_i$ 个。</p>
+<p>每次选择一个A物品 $i$ 和一个B物品 $j$（$i,j$ 为种类的编号），不放回，且要求数对 $(i,j)$ 两两不同。求最多能选多少次。</p>
+<p>$n,m\leq 5\times 10^6$</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>显然网络流：建立源汇点 $S,T$，$S$ 向 $X_i$ 连一条容量为 $a_i$ 的边，$Y_j$ 向 $T$ 连一条容量为 $b_j$ 的边，$X_i,Y_j$ 连一条 $1$ 的边。</p>
+<p>这样就获得了40pts 的分数。</p>
+<p>这个二分图是一个二分完全图，需要利用这个性质。</p>
+<p>由于最大流=最小割，考虑这个最小割是什么。</p>
+<p>这个图十分特殊，假设割的是某两个点集 $X’,Y’$ 间的边，其他的点就需要割掉和 $S$ 或 $T$ 相连的边。因此对于某两个点集，最小割为：$\sum_{i\not \in X’}a_i+\sum_{j\not \in Y’}b_j+|X’|\cdot|Y’|$</p>
+<p>现在要求这个割的最小值，当固定了 $|X’|,|Y’|$ 时，贪心得考虑，则需要选最小的 $a_i,b_j$。因此从小到大排序，记前缀和为 $sa_i$ 和 $sb_i$ ，然后枚举 $i,j$ 为 $X’,Y’$ 的大小。</p>
+<p>则答案为 $\min\{sa_i+sb_j+(n-i)\times (m-j)\}$。</p>
+<p>时间复杂度 $O(nm)$，</p>
+<p>固定 $i$ 后，$j$ 显然是一个斜率DP 的形式，按 $(j,sb_j)$ 建凸包即可。</p>
+<p>若用桶排，时间复杂度 $O(n+m)$。</p>
+<h3 id="T4"><a href="#T4" class="headerlink" title="T4"></a>T4</h3><p>大毒瘤题。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/DP/" rel="tag"><i class="fa fa-tag"></i> DP</a>
+              <a href="/tags/%E6%80%9D%E7%BB%B4%E9%A2%98/" rel="tag"><i class="fa fa-tag"></i> 思维题</a>
+              <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag"><i class="fa fa-tag"></i> 计算几何</a>
+              <a href="/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96DP/" rel="tag"><i class="fa fa-tag"></i> 斜率优化DP</a>
+              <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 组合数学</a>
+              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"><i class="fa fa-tag"></i> 二分</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 网络流</a>
+              <a href="/tags/%E9%97%B5%E7%A7%91%E5%A4%AB%E6%96%AF%E5%9F%BA%E5%92%8C/" rel="tag"><i class="fa fa-tag"></i> 闵科夫斯基和</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag"><i class="fa fa-tag"></i> 贪心</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Easy-Math-Problem-hdu6607/" rel="prev" title="Easy Math Problem[hdu6607]">
+      <i class="fa fa-chevron-left"></i> Easy Math Problem[hdu6607]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020GDOI%E6%A8%A1%E6%8B%9F/" rel="next" title="2020GDOI模拟总版">
+      2020GDOI模拟总版 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#T1"><span class="nav-number">1.</span> <span class="nav-text">T1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T2"><span class="nav-number">2.</span> <span class="nav-text">T2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T3"><span class="nav-number">3.</span> <span class="nav-text">T3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T4"><span class="nav-number">4.</span> <span class="nav-text">T4</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="oql"
+      src="/uploads/bear_xy.jpg">
+  <p class="site-author-name" itemprop="name">oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oql</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/2020GDOI%E6%A8%A1%E6%8B%9FDay9/',]
+      });
+      });
+  </script>
+
+</body>
+</html>

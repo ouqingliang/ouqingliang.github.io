@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear_xy.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/bear_xy.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","width":250,"display":"post","padding":30,"offset":30,"onmobile":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="题意给两个字符串 $A,B$，求本质不同的字符串个数，满足该字符串由 $A$ 的一个非空回文子串和 $B$ 的一个非空回文子串拼接而成。 $|A|,|B|\leq 2\times 10^5$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Palindromic Magic[CF1081H]">
+<meta property="og:url" content="http://yoursite.com/Palindromic-Magic-CF1081H/index.html">
+<meta property="og:site_name" content="Oql&#39;s blog">
+<meta property="og:description" content="题意给两个字符串 $A,B$，求本质不同的字符串个数，满足该字符串由 $A$ 的一个非空回文子串和 $B$ 的一个非空回文子串拼接而成。 $|A|,|B|\leq 2\times 10^5$">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/Palindromic-Magic-CF1081H/1.png">
+<meta property="article:published_time" content="2020-02-04T07:32:53.000Z">
+<meta property="article:modified_time" content="2020-02-06T09:53:31.347Z">
+<meta property="article:author" content="oql">
+<meta property="article:tag" content="容斥原理">
+<meta property="article:tag" content="PAM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/Palindromic-Magic-CF1081H/1.png">
+
+<link rel="canonical" href="http://yoursite.com/Palindromic-Magic-CF1081H/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Palindromic Magic[CF1081H] | Oql's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oql's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Summary for OI</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">76</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">85</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Palindromic-Magic-CF1081H/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="name" content="oql">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Palindromic Magic[CF1081H]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-04 15:32:53" itemprop="dateCreated datePublished" datetime="2020-02-04T15:32:53+08:00">2020-02-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CF/" itemprop="url" rel="index">
+                    <span itemprop="name">CF</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给两个字符串 $A,B$，求本质不同的字符串个数，满足该字符串由 $A$ 的一个非空回文子串和 $B$ 的一个非空回文子串拼接而成。</p>
+<p>$|A|,|B|\leq 2\times 10^5$</p>
+<a id="more"></a>
+<h3 id="记号与定义"><a href="#记号与定义" class="headerlink" title="记号与定义"></a>记号与定义</h3><p>为了方便，以下为一些记号及定义：</p>
+<p>1，记两个字符串 $a,b$ 按顺序拼接而成的字符串为 $ab$.</p>
+<p>2，记 $s^R$为 $s$ 按位翻转后的结果。</p>
+<p>3，记 $\mbox border(a)$ 为一个最长的字符串，满足该字符串既是 $a$ 的前缀，也是 $a$ 的后缀。</p>
+<p>4，记周期 $u$ 为对于任意的 $i$ 满足 $s_i=s_{i+u}$，则 $u$ 为字符串的一个周期。</p>
+<p>5，定义循环串为：设最小的 $u$，满足 $u$ 为 $s$ 的周期，且 $u||S|$，$u\not = |S|$，则 $s$ 为循环串。</p>
+<p>6，定义双回文串：$s=ab$，其中 $a,b$ 为非空回文串，则 $s$ 为双回文串。</p>
+<p>7，定义非严格双回文串：严格双回文或者非空回文串。</p>
+<h3 id="简单性质"><a href="#简单性质" class="headerlink" title="简单性质"></a>简单性质</h3><p>这些性质都比较显然。</p>
+<p>1，若 $s$ 为回文串，则 $\mbox {border(s)}$ 为回文串。</p>
+<p>2，若 $t=\mbox {border(s)}$，且 $2|t|\geq |s|$，则 $s$ 为回文当且仅当 $t$ 为回文。</p>
+<p>3，若 $a,b$ 均为 $s$ 周期，且 $a+b\leq |s|$，则 $\gcd(a,b)$ 是 $s$ 的周期。</p>
+<h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><h4 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h4><p>描述</p>
+<p>$s=x_1x_2=y_1y_2=z_1z_2$，且 $|x_1|&lt;|y_1|&lt;|z_1|$，若 $x_2,y_1,y_2,z_1$ 均为非空回文串，则 $x_1,z_2$ 也是回文串。</p>
+<p>证明：</p>
+<p><img src="/Palindromic-Magic-CF1081H/1.png" alt="0"></p>
+<h4 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h4><p>描述：</p>
+<p>若 $s$ 为双回文串，设 $a$ 为最长回文前缀，$b$ 为最长回文后缀，$s=ax=yb$，则 $x,y$ 至少有一个为回文串。</p>
+<p>证明：</p>
+<p>由引理1推得。</p>
+<h4 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h4><p>若 $s$ 有两种及以上不同的弱双回文拆分，则 $s$ 为循环串。</p>
+<h4 id="引理4"><a href="#引理4" class="headerlink" title="引理4"></a>引理4</h4><p>设 $s=x_1y_1=x_2y_2=\cdots=x_my_m$ ， $\forall i\in[1,m)$， 若 $|x_i|&lt;|x_{i+1}|$，则 $x_i=\mbox{border}(x_{i+1})$ 和 $y_{i+1}=\mbox {border}(y_i)$ 至少一个成立。</p>
+<p>不会证。。。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>好了写了这么多终于到重要部分了。。。</p>
+<p>如果不是求本质不同，就是问有多少种是直接拼起来的话，那么答案就是 $a$ 和 $b$ 的本质不同的回文串的个数的乘积。</p>
+<p>那么多出来的情况就是满足有多种双回文拆分的字符串。</p>
+<p>由引理3可得：这个字符串是<strong>循环串</strong>。</p>
+<p>由引理4可得：若这个字符串的一种拆分为 $s=xy$，且 $x$ 变为 $\mbox{border}(x)$ 或者 $y$ 变为 $\mbox{border}(y)$ 后仍能形成 $s$，就要减去这种情况。</p>
+<p>所以答案就是( $a$ 和 $b$ 的本质不同的回文串的个数的乘积）- ($x$ 变为 $\mbox{border}(x)$后仍能形成 $s$ 的方案数) - ($y$ 变为 $\mbox{border}(y)$后仍能形成 $s$ 的方案数) + ($x$ 变为 $\mbox{border}(x)$ 且 $y$ 变为 $\mbox{border}(y)$ 后仍能形成 $s$ 的方案数)。</p>
+<p>分三类讨论：</p>
+<h4 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h4><p>此时要算： $a$ 和 $b$ 的本质不同的回文串的个数的乘积</p>
+<p>这个是个人都会算，对 $a,b$ 串建出 $\mbox PAM$ 后，节点个数-2 就是本质不同的回文串个数了。</p>
+<h4 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h4><p>此时要算：($x$ 变为 $\mbox{border}(x)$后仍能形成 $s$ 的方案数) + ($y$ 变为 $\mbox{border}(y)$后仍能形成 $s$ 的方案数) </p>
+<p>$y$ 的情况和 $x$ 类似，我们只需考虑 $x$。</p>
+<p>设 $x=\mbox{border}(x)w$，转换成求满足 $wS$，满足 $S,wS$ 为非空的回文串，且 $wS$ 在 $b$ 串中出现过的方案数。</p>
+<p>由于 $w$ 为 $x$ 的最小正周期，所以 $w$ 不为循环串。</p>
+<p>因此分类讨论一下可得：</p>
+<h5 id="分类1"><a href="#分类1" class="headerlink" title="分类1"></a>分类1</h5><p>当 $|w|\leq |S|$ 时：</p>
+<p>此时 $|w|\leq \frac{|wS|}{2}$，又因为 $wS$ 一定是循环串，因此 $w$ 为 $wS$ 的一个周期。</p>
+<p>若 $S\not =\mbox{border}(wS)$，则 $wS$ 存在一个小于 $w$ 的周期，因此 $w$ 为循环串，不可能。</p>
+<p>因此只需满足 $S=\mbox{border}(wS)$即可。</p>
+<p>用哈希算个数即可。</p>
+<h5 id="分类2"><a href="#分类2" class="headerlink" title="分类2"></a>分类2</h5><p>当 $|w|&gt;|S|$ 时：</p>
+<p>因为 $w$ 不为循环串，由引理3得 $w$ 最多存在一种双回文拆分，又由于 $wS,S$ 为回文串，则$w=ST$，由引理2可得知，只需要找到 $w$ 的最长回文前后缀，就可以找到 $S$，这个显然可以正反串都建立 $PAM$ 后在 $fail$ 树上倍增即可。然后还是用哈希找到是否存在 $wS$ 就可以了。注意 $S$ 不能为空串的情况。 </p>
+<h4 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h4><p>此时要算：$x$ 变为 $\mbox{border}(x)$ 且 $y$ 变为 $\mbox{border}(y)$ 后仍能形成 $s$ 的方案数。</p>
+<p>设 $x=w_x\mbox{border}(x),y=\mbox{border}(y)w_y$，直接用哈希算出 $w_x=w_y$ 的情况就可以啦。</p>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>因此需要 $PAM$ + 哈希 + 倍增。</p>
+<p>时间复杂度 $O(n\log n)$</p>
+<p>代码<del>也就</del>250行<del>而已</del>。</p>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;complex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FO(x) freopen(#x<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(#x<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned ll</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pli pair<span class="meta-string">&lt;ll,int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pil pair<span class="meta-string">&lt;int,ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pll pair<span class="meta-string">&lt;ll,ll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> com complex<span class="meta-string">&lt;db&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp(x,y) make_pair((x),(y))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cle(x) memset(x,0,sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x)&amp;(-(x)))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> bit(x,i) (((x)&gt;&gt;(i))&amp;1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fd(i,j,k) for(int i=(j),end_i=(k);i&gt;=end_i;i--)</span></span><br><span class="line"></span><br><span class="line">ll ans;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> S=<span class="number">26</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M=<span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ll m1=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> ll m2=<span class="number">998244853</span>;</span><br><span class="line"><span class="keyword">const</span> ll base=<span class="number">131</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Add1</span><span class="params">(ll x,ll y)</span></span>&#123;x+=y%m1; x%=m1; <span class="keyword">return</span> (x+m1)%m1;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Dec1</span><span class="params">(ll x,ll y)</span></span>&#123;x-=y%m1; <span class="keyword">return</span> (x%m1+m1)%m1;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Mul1</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> ((x*y%m1)+m1)%m1;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Add2</span><span class="params">(ll x,ll y)</span></span>&#123;x+=y%m2; x%=m2; <span class="keyword">return</span> (x+m2)%m2;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Dec2</span><span class="params">(ll x,ll y)</span></span>&#123;x-=y%m2; <span class="keyword">return</span> (x%m2+m2)%m2;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Mul2</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> ((x*y%m2)+m2)%m2;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Hint</span>&#123;</span></span><br><span class="line">    ll a1,a2;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">inline</span> Hint <span class="keyword">operator</span> +(<span class="keyword">const</span> Hint &amp;A,<span class="keyword">const</span> Hint &amp;B) &#123;<span class="keyword">return</span> (Hint)&#123;Add1(A.a1,B.a1),Add2(A.a2,B.a2)&#125;;&#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">inline</span> Hint <span class="keyword">operator</span> +(<span class="keyword">const</span> Hint &amp;A,<span class="keyword">const</span> ll &amp;B)   &#123;<span class="keyword">return</span> (Hint)&#123;Add1(A.a1,B),Add2(A.a2,B)&#125;;&#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">inline</span> Hint <span class="keyword">operator</span> -(<span class="keyword">const</span> Hint &amp;A,<span class="keyword">const</span> Hint &amp;B) &#123;<span class="keyword">return</span> (Hint)&#123;Dec1(A.a1,B.a1),Dec2(A.a2,B.a2)&#125;;&#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">inline</span> Hint <span class="keyword">operator</span> -(<span class="keyword">const</span> Hint &amp;A,<span class="keyword">const</span> ll &amp;B)   &#123;<span class="keyword">return</span> (Hint)&#123;Dec1(A.a1,B),Dec2(A.a2,B)&#125;;&#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">inline</span> Hint <span class="keyword">operator</span> *(<span class="keyword">const</span> Hint &amp;A,<span class="keyword">const</span> Hint &amp;B) &#123;<span class="keyword">return</span> (Hint)&#123;Mul1(A.a1,B.a1),Mul2(A.a2,B.a2)&#125;;&#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">inline</span> Hint <span class="keyword">operator</span> *(<span class="keyword">const</span> Hint &amp;A,<span class="keyword">const</span> ll &amp;B)   &#123;<span class="keyword">return</span> (Hint)&#123;Mul1(A.a1,B),Mul2(A.a2,B)&#125;;&#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> Hint &amp;A,<span class="keyword">const</span> Hint &amp;B) &#123;<span class="keyword">if</span>(A.a1!=B.a1) <span class="keyword">return</span> A.a1&lt;B.a1; <span class="keyword">return</span> A.a2&lt;B.a2;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> HASH&#123;<span class="comment">//双哈希</span></span><br><span class="line">    Hint pw[N];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        pw[<span class="number">0</span>]=(Hint)&#123;<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        fo(i,<span class="number">1</span>,n) pw[i]=pw[i<span class="number">-1</span>]*base;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> Hint <span class="title">Hash</span><span class="params">(Hint *h,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;<span class="keyword">return</span> h[r]-(h[l<span class="number">-1</span>]*pw[r-l+<span class="number">1</span>]);&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> HASH::pw;</span><br><span class="line"><span class="keyword">using</span> HASH::Hash;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PAM</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> ne[N][S],fail[N],len[N],cnt,las,pos[N],ri[N];</span><br><span class="line">    <span class="keyword">int</span> s[N],n;</span><br><span class="line">    <span class="keyword">int</span> f[N][M+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        fail[<span class="number">0</span>]=fail[<span class="number">1</span>]=<span class="number">1</span>; len[cnt=<span class="number">1</span>]=<span class="number">-1</span>; las=<span class="number">1</span>;</span><br><span class="line">        s[n=<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getfail</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(;s[n<span class="number">-1</span>-len[x]]!=s[n];x=fail[x]);</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        s[++n]=c;</span><br><span class="line">        <span class="keyword">int</span> p=getfail(las);</span><br><span class="line">        <span class="keyword">if</span>(!ne[p][c])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> u=++cnt,q=getfail(fail[p]);</span><br><span class="line">            len[u]=len[p]+<span class="number">2</span>; fail[u]=ne[q][c]; ne[p][c]=u;</span><br><span class="line">        &#125;</span><br><span class="line">        las=ne[p][c];</span><br><span class="line">        pos[n]=las;</span><br><span class="line">        ri[pos[n]]=n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">char</span> *s)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">        init();</span><br><span class="line">        fo(i,<span class="number">1</span>,n) extend(s[i]-<span class="string">'a'</span>);</span><br><span class="line">        fo(i,<span class="number">0</span>,cnt) f[i][<span class="number">0</span>]=fail[i];</span><br><span class="line">        fo(i,<span class="number">1</span>,M)</span><br><span class="line">            fo(j,<span class="number">0</span>,cnt)</span><br><span class="line">                f[j][i]=f[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> l)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x=pos[r];</span><br><span class="line">        <span class="keyword">if</span>(len[x]&lt;=l) <span class="keyword">return</span> len[x];</span><br><span class="line">        fd(i,M,<span class="number">0</span>) <span class="keyword">if</span>(len[f[x][i]]&gt;l) x=f[x][i];</span><br><span class="line">        <span class="keyword">return</span> len[fail[x]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> len)</span> </span>&#123;<span class="keyword">return</span> ask(r,len)==len;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> a[N],b[N];</span><br><span class="line">PAM la,ra,lb,rb;</span><br><span class="line">Hint ha[N],hb[N];</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,a+<span class="number">1</span>,b+<span class="number">1</span>);</span><br><span class="line">    n=<span class="built_in">strlen</span>(a+<span class="number">1</span>); m=<span class="built_in">strlen</span>(b+<span class="number">1</span>);</span><br><span class="line">    HASH::init(<span class="built_in">max</span>(n,m)+<span class="number">2</span>);</span><br><span class="line">    ha[<span class="number">0</span>]=hb[<span class="number">0</span>]=(Hint)&#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    fo(i,<span class="number">1</span>,n)</span><br><span class="line">        ha[i]=ha[i<span class="number">-1</span>]*base+(a[i]-<span class="string">'a'</span>+<span class="number">1</span>),hb[i]=hb[i<span class="number">-1</span>]*base+(b[i]-<span class="string">'a'</span>+<span class="number">1</span>);</span><br><span class="line">    la.build(a); lb.build(b);</span><br><span class="line">    reverse(a+<span class="number">1</span>,a+n+<span class="number">1</span>); reverse(b+<span class="number">1</span>,b+m+<span class="number">1</span>);</span><br><span class="line">    ra.build(a); rb.build(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Work1&#123;</span><br><span class="line">    <span class="comment">//x-&gt;border(x) or y-&gt;border(y)</span></span><br><span class="line">    <span class="comment">//dec</span></span><br><span class="line">    <span class="built_in">map</span>&lt;Hint,<span class="keyword">int</span>&gt; ma,mb,wa,wb;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> t;</span><br><span class="line">        fo(i,<span class="number">2</span>,la.cnt)<span class="comment">//A</span></span><br><span class="line">        &#123;</span><br><span class="line">            ma[Hash(ha,la.ri[i]-la.len[i]+<span class="number">1</span>,la.ri[i])]++;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>((t=la.fail[i])&gt;=<span class="number">2</span>)</span><br><span class="line">                <span class="keyword">if</span>(la.len[i]&lt;=(la.len[t]&lt;&lt;<span class="number">1</span>))<span class="comment">// |T|&lt;=2|S|</span></span><br><span class="line">                    wa[Hash(ha,la.ri[i]-(la.len[i]-la.len[t])+<span class="number">1</span>,la.ri[i])]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fo(i,<span class="number">2</span>,lb.cnt)<span class="comment">//B</span></span><br><span class="line">        &#123;</span><br><span class="line">            mb[Hash(hb,lb.ri[i]-lb.len[i]+<span class="number">1</span>,lb.ri[i])]++;</span><br><span class="line">            <span class="keyword">if</span>((t=lb.fail[i])&gt;=<span class="number">2</span>)</span><br><span class="line">                <span class="keyword">if</span>(lb.len[i]&lt;=(lb.len[t]&lt;&lt;<span class="number">1</span>))<span class="comment">// |T|&lt;=2|S|</span></span><br><span class="line">                    wb[Hash(hb,lb.ri[i]-lb.len[i]+<span class="number">1</span>,lb.ri[i]-lb.len[t])]++;<span class="comment">//!!!!!</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">int</span> l,r,t,bor,len;</span><br><span class="line">        fo(i,<span class="number">2</span>,la.cnt)</span><br><span class="line">        <span class="keyword">if</span>((t=la.fail[i])&gt;=<span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            l=la.ri[i]-(la.len[i]-la.len[t])+<span class="number">1</span>;</span><br><span class="line">            r=la.ri[i];</span><br><span class="line">            len=r-l+<span class="number">1</span>;</span><br><span class="line">            ans-=wb[Hash(ha,l,r)];</span><br><span class="line"></span><br><span class="line">            bor=la.ask(r,len);</span><br><span class="line">            <span class="keyword">if</span>(len==bor) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(ra.check(n-l+<span class="number">1</span>,len-bor))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(mb.count(Hash(ha,l,r)*pw[len-bor]+Hash(ha,l,r-bor))) ans--;<span class="comment">//w+S</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            bor=ra.ask(n-l+<span class="number">1</span>,len);</span><br><span class="line">            <span class="keyword">if</span>(la.check(r,len-bor))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(mb.count(Hash(ha,l,r)*pw[bor]+Hash(ha,l,l+bor<span class="number">-1</span>))) ans--;<span class="comment">//w+S</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        fo(i,<span class="number">2</span>,lb.cnt)</span><br><span class="line">        <span class="keyword">if</span>((t=lb.fail[i])&gt;=<span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            l=lb.ri[i]-lb.len[i]+<span class="number">1</span>;</span><br><span class="line">            r=lb.ri[i]-lb.len[t];</span><br><span class="line">            len=r-l+<span class="number">1</span>;</span><br><span class="line">            ans-=wa[Hash(hb,l,r)];</span><br><span class="line"></span><br><span class="line">            bor=lb.ask(r,len);</span><br><span class="line">            <span class="keyword">if</span>(len==bor) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(rb.check(m-l+<span class="number">1</span>,len-bor))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(ma.count(Hash(hb,r-bor+<span class="number">1</span>,r)*pw[len]+Hash(hb,l,r))) ans--;<span class="comment">//S+w</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            bor=rb.ask(m-l+<span class="number">1</span>,len);</span><br><span class="line">            <span class="keyword">if</span>(lb.check(r,len-bor))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(ma.count(Hash(hb,l+bor,r)*pw[len]+Hash(hb,l,r))) ans--;<span class="comment">//S+w</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Work2&#123;</span><br><span class="line">    <span class="comment">// x-&gt;border(x) and y-&gt;border(y)</span></span><br><span class="line">    <span class="comment">// add</span></span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">map</span>&lt;Hint,<span class="keyword">int</span>&gt; fa,fb;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span><span class="comment">//S=XaYb</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        fo(i,<span class="number">2</span>,la.cnt)</span><br><span class="line">            <span class="keyword">if</span>((t=la.fail[i])&gt;=<span class="number">2</span>)</span><br><span class="line">                fa[Hash(ha,la.ri[i]-(la.len[i]-la.len[t])+<span class="number">1</span>,la.ri[i])]++;</span><br><span class="line">        </span><br><span class="line">        fo(i,<span class="number">2</span>,lb.cnt)</span><br><span class="line">            <span class="keyword">if</span>((t=lb.fail[i])&gt;=<span class="number">2</span>)</span><br><span class="line">                fb[Hash(hb,lb.ri[i]-lb.len[i]+<span class="number">1</span>,lb.ri[i]-lb.len[t])]++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:fa) ans+=(ll)v.se*fb[v.fi];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ans=<span class="number">1l</span>l*(la.cnt<span class="number">-1</span>)*(lb.cnt<span class="number">-1</span>);</span><br><span class="line">    Work1::work();</span><br><span class="line">    Work2::work();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 容斥原理</a>
+              <a href="/tags/PAM/" rel="tag"><i class="fa fa-tag"></i> PAM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/NIM%E6%B8%B8%E6%88%8F-%E7%89%9B%E5%AE%A2%E6%8C%91%E6%88%98%E8%B5%9B36G/" rel="prev" title="NIM游戏[牛客挑战赛36G]">
+      <i class="fa fa-chevron-left"></i> NIM游戏[牛客挑战赛36G]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E5%8D%A1%E6%8B%89%E5%B7%B4%E4%BB%80%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2-2020-CCPC-Wannafly-WC-Day2/" rel="next" title="卡拉巴什的字符串[2020 CCPC Wannafly WC Day2]">
+      卡拉巴什的字符串[2020 CCPC Wannafly WC Day2] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#记号与定义"><span class="nav-number">2.</span> <span class="nav-text">记号与定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单性质"><span class="nav-number">3.</span> <span class="nav-text">简单性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引理"><span class="nav-number">4.</span> <span class="nav-text">引理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">5.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序"><span class="nav-number">6.</span> <span class="nav-text">程序</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="oql"
+      src="/uploads/bear_xy.jpg">
+  <p class="site-author-name" itemprop="name">oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oql</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/Palindromic-Magic-CF1081H/',]
+      });
+      });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear_xy.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/bear_xy.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","width":250,"display":"post","padding":30,"offset":30,"onmobile":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="题意$n$ 组人，第 $i$ 组 $a_i$ 个人，需要安排在一个$m$ 个座位的，编号为 $0,1,\cdots,m-1$ 的圆桌上，每个位置只能最多做一个人。 其中第 $i$ 组的人能坐在 $\{ l_i,(l_i+1)\%m,(l_i+2)\% m,\cdots,r_i\}$的位置上。 问是否存在一种合法的安排。 $n\leq 10^5,m\leq 10^9$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="圆桌会议[bzoj3693]">
+<meta property="og:url" content="http://yoursite.com/%E5%9C%86%E6%A1%8C%E4%BC%9A%E8%AE%AE-bzoj3693/index.html">
+<meta property="og:site_name" content="Oql&#39;s blog">
+<meta property="og:description" content="题意$n$ 组人，第 $i$ 组 $a_i$ 个人，需要安排在一个$m$ 个座位的，编号为 $0,1,\cdots,m-1$ 的圆桌上，每个位置只能最多做一个人。 其中第 $i$ 组的人能坐在 $\{ l_i,(l_i+1)\%m,(l_i+2)\% m,\cdots,r_i\}$的位置上。 问是否存在一种合法的安排。 $n\leq 10^5,m\leq 10^9$">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-29T13:46:21.000Z">
+<meta property="article:modified_time" content="2020-02-06T09:56:27.752Z">
+<meta property="article:author" content="oql">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="Hall定理">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/%E5%9C%86%E6%A1%8C%E4%BC%9A%E8%AE%AE-bzoj3693/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>圆桌会议[bzoj3693] | Oql's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oql's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Summary for OI</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">76</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">85</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%9C%86%E6%A1%8C%E4%BC%9A%E8%AE%AE-bzoj3693/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="name" content="oql">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          圆桌会议[bzoj3693]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-29 21:46:21" itemprop="dateCreated datePublished" datetime="2019-12-29T21:46:21+08:00">2019-12-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bzoj/" itemprop="url" rel="index">
+                    <span itemprop="name">bzoj</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>$n$ 组人，第 $i$ 组 $a_i$ 个人，需要安排在一个$m$ 个座位的，编号为 $0,1,\cdots,m-1$ 的圆桌上，每个位置只能最多做一个人。</p>
+<p>其中第 $i$ 组的人能坐在 $\{ l_i,(l_i+1)\%m,(l_i+2)\% m,\cdots,r_i\}$的位置上。</p>
+<p>问是否存在一种合法的安排。</p>
+<p>$n\leq 10^5,m\leq 10^9$</p>
+<a id="more"></a>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>容易想到建一个二分图，然后变成判断是否存在完美匹配的问题。</p>
+<p>我们发现，尽管现在是在环上，但<a href="/Hall%E5%AE%9A%E7%90%86/" title="Hall定理的结论1">Hall定理的结论1</a>仍然成立。</p>
+<p>就可以先考虑简单一点的，在一条链上而不是在一个环上的情况。考虑完链的情况以后破环成链就能解决。</p>
+<p>根据Hall定理的结论，我们需要对所有的区间 $[L,R]$ 都查询一遍看是否符合。</p>
+<p>但十分显然的，我们只需要考虑 $R=r_i$ 的区间就可以了。</p>
+<p>我们需要区间 $[L,R]$ 满足：$\sum a_i\leq R-L+1$，即 $(\sum a_i)+L\leq R+1$</p>
+<p>那么把区间按右端点排序，然后枚举区间。每次在 $[1,l_i]$ 中加 $a_i$，查询 $[1,r_i]$ 中 $(\sum a)+L$ 的最大值，看是否小于等于 $R+1$ 即可。</p>
+<p>环的话破环成链就可以了。</p>
+<p>注意判断 $r_i=l_i-1$ 的情况。</p>
+<p>时间复杂度 $O(n\log n)$</p>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 400010</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r,a;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> node &amp;A,<span class="keyword">const</span> node &amp;B)&#123;<span class="keyword">return</span> A.r&lt;B.r;&#125;</span><br><span class="line">&#125;q[N&gt;&gt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> n,m,a[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ls[N&lt;&lt;<span class="number">1</span>],rs[N&lt;&lt;<span class="number">1</span>],mx[N&lt;&lt;<span class="number">1</span>],tag[N&lt;&lt;<span class="number">1</span>],cnt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushtag</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!u) <span class="keyword">return</span>;</span><br><span class="line">    mx[u]+=x; tag[u]+=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!tag[u]) <span class="keyword">return</span>;</span><br><span class="line">    pushtag(ls[u],tag[u]);</span><br><span class="line">    pushtag(rs[u],tag[u]);</span><br><span class="line">    tag[u]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u=++cnt;</span><br><span class="line">    <span class="keyword">if</span>(l==r) &#123;mx[u]=a[l]; <span class="keyword">return</span> u;&#125;</span><br><span class="line">    <span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    ls[u]=build(l,mid);</span><br><span class="line">    rs[u]=build(mid+<span class="number">1</span>,r);</span><br><span class="line">    mx[u]=<span class="built_in">max</span>(mx[ls[u]],mx[rs[u]]);</span><br><span class="line">    <span class="keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(L&lt;=l&amp;&amp;r&lt;=R) <span class="keyword">return</span> pushtag(u,x);</span><br><span class="line">    pushdown(u);</span><br><span class="line">    <span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(L&lt;=mid) add(ls[u],l,mid,L,R,x);</span><br><span class="line">    <span class="keyword">if</span>(mid&lt;R)  add(rs[u],mid+<span class="number">1</span>,r,L,R,x);</span><br><span class="line">    mx[u]=<span class="built_in">max</span>(mx[ls[u]],mx[rs[u]]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(L&lt;=l&amp;&amp;r&lt;=R) <span class="keyword">return</span> mx[u];</span><br><span class="line">    <span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>,mx=<span class="number">0</span>;</span><br><span class="line">    pushdown(u);</span><br><span class="line">    <span class="keyword">if</span>(L&lt;=mid) mx=<span class="built_in">max</span>(mx,ask(ls[u],l,mid,L,R));</span><br><span class="line">    <span class="keyword">if</span>(mid&lt;R)  mx=<span class="built_in">max</span>(mx,ask(rs[u],mid+<span class="number">1</span>,r,L,R));</span><br><span class="line">    <span class="keyword">return</span> mx;</span><br><span class="line">&#125;</span><br><span class="line">ll sum;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    sum=<span class="number">0</span>;</span><br><span class="line">    fo(u,<span class="number">1</span>,cnt) ls[u]=rs[u]=tag[u]=mx[u]=<span class="number">0</span>;</span><br><span class="line">    cnt=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pos(x) lower_bound(a+1,a+tot+1,(x))-a</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> _=<span class="built_in">read</span>(),tot,n_tot;_--;)</span><br><span class="line">    &#123;</span><br><span class="line">        n_tot=n=<span class="built_in">read</span>(); m=<span class="built_in">read</span>();</span><br><span class="line">        init();</span><br><span class="line">        fo(i,<span class="number">1</span>,n)</span><br><span class="line">        &#123;</span><br><span class="line">            q[i].l=<span class="built_in">read</span>()+<span class="number">1</span>,q[i].r=<span class="built_in">read</span>()+<span class="number">1</span>;</span><br><span class="line">            sum+=(q[i].a=<span class="built_in">read</span>());</span><br><span class="line">            <span class="keyword">if</span>(q[i].r==q[i].l<span class="number">-1</span>) q[i].l=<span class="number">1</span>,q[i].r=m;<span class="comment">//特判</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(q[i].l&gt;q[i].r) q[i].r+=m;</span><br><span class="line">            <span class="keyword">else</span> q[++n_tot]=(node)&#123;q[i].l+m,q[i].r+m,q[i].a&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sum&gt;m) &#123;<span class="built_in">puts</span>(<span class="string">"No"</span>); <span class="keyword">continue</span>;&#125;</span><br><span class="line">        n=n_tot; tot=<span class="number">0</span>;</span><br><span class="line">        fo(i,<span class="number">1</span>,n) a[++tot]=q[i].l,a[++tot]=q[i].r;</span><br><span class="line">        sort(a+<span class="number">1</span>,a+tot+<span class="number">1</span>); tot=unique(a+<span class="number">1</span>,a+tot+<span class="number">1</span>)-a<span class="number">-1</span>;</span><br><span class="line">        sort(q+<span class="number">1</span>,q+n+<span class="number">1</span>);</span><br><span class="line">        build(<span class="number">1</span>,tot);</span><br><span class="line">        <span class="keyword">int</span> l,r;  <span class="keyword">bool</span> flag=<span class="number">1</span>;</span><br><span class="line">        fo(i,<span class="number">1</span>,n)</span><br><span class="line">        &#123;</span><br><span class="line">            l=pos(q[i].l); r=pos(q[i].r);</span><br><span class="line">            add(<span class="number">1</span>,<span class="number">1</span>,tot,<span class="number">1</span>,l,q[i].a);</span><br><span class="line">            <span class="keyword">int</span> p=ask(<span class="number">1</span>,<span class="number">1</span>,tot,<span class="number">1</span>,r);</span><br><span class="line">            <span class="keyword">if</span>(p&gt;q[i].r+<span class="number">1</span>) &#123;flag=<span class="number">0</span>; <span class="keyword">break</span>;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">puts</span>(flag?<span class="string">"Yes"</span>:<span class="string">"No"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
+              <a href="/tags/Hall%E5%AE%9A%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> Hall定理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Roundgod-and-Milk-Tea-hdu6667/" rel="prev" title="Roundgod and Milk Tea[hdu6667]">
+      <i class="fa fa-chevron-left"></i> Roundgod and Milk Tea[hdu6667]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Exhausted-arc076F/" rel="next" title="Exhausted[arc076F]">
+      Exhausted[arc076F] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序"><span class="nav-number">3.</span> <span class="nav-text">程序</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="oql"
+      src="/uploads/bear_xy.jpg">
+  <p class="site-author-name" itemprop="name">oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oql</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/%E5%9C%86%E6%A1%8C%E4%BC%9A%E8%AE%AE-bzoj3693/',]
+      });
+      });
+  </script>
+
+</body>
+</html>

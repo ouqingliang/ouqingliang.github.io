@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear_xy.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/bear_xy.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","width":250,"display":"post","padding":30,"offset":30,"onmobile":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="FFT有关的知识点总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFT">
+<meta property="og:url" content="http://yoursite.com/FFT/index.html">
+<meta property="og:site_name" content="Oql&#39;s blog">
+<meta property="og:description" content="FFT有关的知识点总结">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-25T13:59:00.000Z">
+<meta property="article:modified_time" content="2020-02-18T02:45:11.751Z">
+<meta property="article:author" content="oql">
+<meta property="article:tag" content="倍增">
+<meta property="article:tag" content="FFT">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/FFT/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>FFT | Oql's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oql's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Summary for OI</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">76</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">85</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/FFT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="name" content="oql">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          FFT
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-25 21:59:00" itemprop="dateCreated datePublished" datetime="2019-12-25T21:59:00+08:00">2019-12-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>FFT有关的知识点总结</p>
+<a id="more"></a>
+<h2 id="先来些简单的"><a href="#先来些简单的" class="headerlink" title="先来些简单的"></a>先来些简单的</h2><h3 id="多项式求导"><a href="#多项式求导" class="headerlink" title="多项式求导"></a>多项式求导</h3><p>并不想说什么</p>
+<h3 id="多项式不定积分"><a href="#多项式不定积分" class="headerlink" title="多项式不定积分"></a>多项式不定积分</h3><p>并不想说什么$\times 2$</p>
+<h3 id="多项式加法"><a href="#多项式加法" class="headerlink" title="多项式加法"></a>多项式加法</h3><p>并不想说什么$\times 3$</p>
+<h3 id="多项式减法"><a href="#多项式减法" class="headerlink" title="多项式减法"></a>多项式减法</h3><p>并不想说什么$\times 4$</p>
+<h2 id="现在开始步入正题"><a href="#现在开始步入正题" class="headerlink" title="现在开始步入正题"></a>现在开始步入正题</h2><h3 id="多项式乘法"><a href="#多项式乘法" class="headerlink" title="多项式乘法"></a>多项式乘法</h3><p><del>并不想说什么</del></p>
+<p>那就说一下吧…</p>
+<p>给定两个多项式 $A(x)=\sum_{i=0}^na_ix^i,B(x)=\sum_{i=0}^nb_ix^i$，则两个多项式相乘后是：$(A * B)(x)=(a_0b_0)+(a_1b_0+a_0b_1)x+\dots+(a_nb_n)x^{2n}$</p>
+<p>一个 $n$ 次多项式 $f(x)=\sum_{i=0}^na_ix^i$ 可以由 $n+1$ 个点  $(x_i,f(x_i))$ 唯一表示，那么FFT就是把两个多项式 $A(x),B(x)$（假设系数都为 $n$，不够最高位补0即可）的系数表示法转成由<strong>大于</strong> $2n$ 个（因为相乘后多项式的次数是 $2n$的，要用大于 $2n$ 个点值才能表示）相同的点值 （即$(x_i,A(x_i)),(x_i,B(x_i))$）表示，然后对应函数值相乘，得到点值：$(x_i,A(x_i) \times B(x_i))$，最后再把点值表示换成系数表示的过程。</p>
+<p>如果随便取一些 $x_i$，那么每次操作是 $O(n^2)$ 的，毫无卵用。。。</p>
+<p>假设我们要取 $n$ 个点值（不妨设 $n$ 为偶数）。</p>
+<p>考虑 $x_k$ 为方程 $x^n=1$ 的复数解，即 $x_k=\omega _ n ^ k = e ^ {\frac{2k\pi i}{n}}=\cos(\frac{2k\pi}{n})+i\sin(\frac{2k\pi}{n})$</p>
+<p>取 $1$ 的 $n$ 次单位根的作用在于，这个 $\omega _ n ^ k$ 有如下性质：</p>
+<p>1，$\omega _ n^k=\omega _ n^{k \bmod n}$</p>
+<p>2，若 $n,k$ 为偶数，则 $\omega _ n^k=\omega _ {n/2}^{k/2}$</p>
+<p>证明都十分显然。</p>
+<p>我们先回到原问题上面，现在要求的是 $f(\omega _ n^0),f(\omega _ n^1)…f(\omega _ n^{n-1})$，考虑分治，把多项式中次数为偶数的系数放在 $f_0$ 中，奇数的放在 $f_1$ 中，即：</p>
+<script type="math/tex; mode=display">f_0(x)=\sum_{i=0}^{2i\leq n}a_{2i}x^i\\f_1(x)=\sum_{i=0}^{2i+1\leq n}a_{2i+1}x^i</script><p>那么有：$f(\omega _ n^k)=f_0((\omega _ n^k)^2)+(\omega _ n^k)f_1((\omega _ n^k)^2)$</p>
+<p>又因为 $(\omega _ n^k)^2=\omega _ n^{2k}=\omega _ {n/2}^k$</p>
+<p>所以：<script type="math/tex">f(\omega _ n^k)=f_0(\omega _ {n/2}^k)+(\omega _ n^k)f_1((\omega _ {n/2}^k))\ (0\leq k < n)</script></p>
+<p>当 $0\leq k &lt; \frac{n}{2} $ 时，有：</p>
+<script type="math/tex; mode=display">f(\omega _ n^k)=f_0(\omega _ {n/2}^k)+(\omega _ n^k)f_1((\omega _ {n/2}^k))\\f(\omega _ n^{k+\frac{n}{2}})=f_0(\omega _ {n/2}^k)-(\omega _ n^k)f_1((\omega _ {n/2}^k))</script><p>这样就变成了两个子问题，递归求解即可。时间复杂度 $O(n\log n)$</p>
+<p>现在我们已经将多项式用系数表示转成点值表示(dft)了，那么这个操作的逆变换(idft)怎么做呢？</p>
+<p>考虑dft的过程，可以变成矩阵相乘的形式：</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+f(\omega _ n^0)\\ 
+f(\omega 1)\\ 
+f(\omega 2) \\
+\vdots\\ 
+f(\omega _ n^{n-1})
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 1 & 1 & \dots & 1\\ 
+1 & \omega _ n^1 & \omega _ n^2 & \dots &\omega _ n^{n-1} \\ 
+1 & \omega _ n^2 & \omega _ n^4 & \dots & \omega _ n^{2(n-1)}\\ 
+\vdots & \vdots & \vdots & \dots & \vdots\\ 
+1 & \omega _ n^{n-1} & \omega _ n^{2(n-1)} & \dots & \omega _ n^{(n-1)(n-1)}
+\end{bmatrix}
+\begin{bmatrix}
+a_0\\ 
+a_1\\ 
+a_2\\ 
+\vdots\\ 
+a_{n-1}
+\end{bmatrix}\\
+Y=VA</script><p>因为是逆过程，所以要找到 $V$ 的逆矩阵使得 $V^{-1}Y=A$.</p>
+<p>可以发现 <del>别问我怎么发现的</del> ，下面这个矩阵就是 $V$ 的逆矩阵：</p>
+<script type="math/tex; mode=display">V^{-1}
+=\frac{1}{n}
+\begin{bmatrix}
+1 & 1 & 1 & \dots & 1\\ 
+1 & \omega _ n^{-1} & \omega _ n^{-2} & \dots &\omega _ n^{-(n-1)} \\ 
+1 & \omega _ n^{-2} & \omega _ n^{-4} & \dots & \omega _ n^{-2(n-1)}\\ 
+\vdots & \vdots & \vdots & \dots & \vdots\\ 
+1 & \omega _ n^{-(n-1)} & \omega _ n^{-2(n-1)} & \dots & \omega _ n^{-(n-1)(n-1)}
+\end{bmatrix}</script><p>证明的话…可以考虑暴力矩阵乘法：$C_{ij}=\sum_{k}V_{ik}V^{-1} _ {kj}$，把两个矩阵暴力乘起来后可以发现当 $i=j$ 时，$C_{ii}$ 的值为 $n$ ，否则为 $0$.</p>
+<p>那么idft的过程就与dft的类似了。</p>
+<p>所以只需要将序列分别dft一下，然后对应相乘，最后idft回去就可以啦~</p>
+<p><strong>到现在为止我们能做一个递归版的 fft 啦！</strong></p>
+<p>但时实测这样的速度非常慢，需要写非递归的。</p>
+<p>考虑 fft 的过程，经过一堆分治后，系数 $a_i$最终会到达一个位置上，而这些位置跟 $i$ 有关，如果 $i$ 是偶数就会被分到 $f_0(x)$ 中（即左边），否则会被分到右边，因此 $i$ 最后的位置是将 $i$ 在二进制表示下将位翻转后的位置，预处理即可。</p>
+<p><strong>到现在为止我们就会做一个非递归版的 fft 啦！</strong></p>
+<p>那如果要对大质数取模呢？</p>
+<p>考虑这个质数的一个原根 $g$，它的性质与 $n$ 次单位根相似，即 $g^{P-1} \equiv 1(\bmod p)$，但因为我们必须要保证每次做 dft 时次数 $n$ 必须是偶数，所以一开始的 $n$ 必须是2的次幂。所以要满足：$2^k | (P-1)$，如当 $P=998244353$ 时， $k$ 最大是 $23$，即 $n$ 最大是 $8388608‬$。这就是<strong>快速数论变换</strong>了。此时需满足 $P$ 为质数，且满足 $2^k|(P-1)$ 中最大的 $k$ 要满足 $n\leq 2^k$</p>
+<p><strong>到现在为止我们就会做一个非递归版的对模数有限制的 ntt 啦！</strong></p>
+<p>那如果模数是 $10^9+7$ 呢？</p>
+<p>这时有两种方法：</p>
+<p>第一种是先拿几个能做ntt的模数跑一次 ntt，然后用中国剩余定理合并</p>
+<p>能做ntt的一些模数有：$998244353,1004535809,469762049$ 等，原根都有3.</p>
+<p>第二种是设 $m=\left [ \sqrt{P} \right ]$，这样每个数就可以表示成 $a+bm$ 的形式，且 $a,b$ 都大概不会超过 $m$。那么就可以将乘法拆成四部分，分别做普通的 fft 就可以了。</p>
+<p><strong>到现在为止我们就会做一个非递归版的任意模数的 ntt 啦！</strong></p>
+<p>一个小模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> G 3<span class="comment">//原根</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 998244353ll<span class="comment">//模数</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">int</span> R[N],L;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pre_ntt</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">for</span>(m=<span class="number">1</span>,L=<span class="number">0</span>;m&lt;=n;m&lt;&lt;=<span class="number">1</span>) L++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;m;i++) R[i] = (R[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(L<span class="number">-1</span>));</span><br><span class="line">    <span class="keyword">return</span> m;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ntt</span><span class="params">(LL *a,<span class="keyword">int</span> n,<span class="keyword">int</span> t)</span><span class="comment">//t=1时为dft,-1时为idft</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) <span class="keyword">if</span>(i&gt;R[i]) swap(a[i],a[R[i]]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;(i&lt;&lt;<span class="number">1</span>)&lt;=n;i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ll wn=Pow(G,(mod<span class="number">-1</span>)/(i&lt;&lt;<span class="number">1</span>));</span><br><span class="line">        <span class="keyword">if</span>(t==<span class="number">-1</span>) wn=Pow(wn,mod<span class="number">-2</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j+=(i&lt;&lt;<span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            ll w=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;i;k++,w=w*wn%mod)</span><br><span class="line">            &#123;</span><br><span class="line">                ll x=a[j+k],y=a[i+j+k]*w%mod;</span><br><span class="line">                a[j+k]=(x+y)%mod; a[i+j+k]=(x-y+mod)%mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t==<span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    ll invn=Pow(n,mod<span class="number">-2</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++) a[i]=a[i]*invn%mod;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="与fft-ntt有关的一些技能"><a href="#与fft-ntt有关的一些技能" class="headerlink" title="与fft/ntt有关的一些技能"></a>与fft/ntt有关的一些技能</h2><h3 id="多项式求逆"><a href="#多项式求逆" class="headerlink" title="多项式求逆"></a>多项式求逆</h3><p>给一个$n$次多项式$A(x)$，求$B(x)$满足$A(x)* B(x)\equiv 1\left ( \bmod x^n \right )$</p>
+<p>不妨设$n$为2的次幂：</p>
+<p>当$n=1$时，求一个整数的逆就好了。</p>
+<p>当$n\geq 2$时，</p>
+<p>假设已经求出了$A(x)* C(x)\equiv 1\left ( \bmod x^{\frac{n}{2}} \right )$</p>
+<p>$\because A(x)* B(x)\equiv 1\left ( \bmod x^n \right )$</p>
+<p>$\therefore A(x)* B(x)\equiv 1\left ( \bmod x^{\frac{n}{2}} \right )$</p>
+<p>$\therefore A(x)* (B(x)-C(x))\equiv 0\left ( \bmod x^{\frac{n}{2}} \right )$</p>
+<p>又$\because A(x)\not\equiv 0\left ( \bmod x^n \right )$</p>
+<p>$\therefore (B(x)-C(x))\equiv 0\left ( \bmod x^{\frac{n}{2}} \right )$</p>
+<p>仔细想一想可以发现$\left (B(x)-C(x)\right )^2\equiv 0\left ( \bmod x^{n} \right )$</p>
+<p>化简得$B^{2}(x)+C^{2}(x)-2B(x)C(x)\equiv 0\left ( \bmod x^{n} \right )$</p>
+<p>同时乘上$A(x)$得：$B(x)+A(x)* C^{2}(x)-2C(x)\equiv 0\left ( \bmod x^{n} \right )$</p>
+<p>移项得：$B(x)\equiv C(x)\left ( 2-A(x)* C(x)\right )\left ( \bmod x^{n} \right )$</p>
+<p>多项式乘法+倍增即可。</p>
+<p>时间复杂度$T(n)=T(\frac{n}{2})+O(n\log n)=O(n\log n)$</p>
+<h3 id="多项式除法"><a href="#多项式除法" class="headerlink" title="多项式除法"></a>多项式除法</h3><p>给两个次数分别为$n$和$m$的多项式$F(x),G(x)$，求$Q(x),R(x)$满足$F(x)=G(x)* Q(x)+R(x)$,且$Q(x)$的次数为$n-m$</p>
+<p>$\because F(x)\equiv G(x)* Q(x)+R(x)\left ( \bmod x^{n+1}\right )$</p>
+<p>$\therefore  F(\frac{1}{x})\equiv G(\frac{1}{x})* Q(\frac{1}{x})+R(\frac{1}{x})\left ( \bmod x^{n+1}\right )$</p>
+<p>同时乘以$x^n$得：$ F^{rev}(x)\equiv G^{rev}(x)* Q^{rev}(x)+R^{rev}(x)\times x^{n-dR}\left ( \bmod x^{n+1}\right )$(其中$rev$表示将多项式系数翻转，$dR$表示$R$这个多项式的次数，其余同理)</p>
+<p>$\because dR &lt; m $</p>
+<p>$\therefore n-dR&gt;n-m$</p>
+<p>因此在$\bmod x^{n-m+1}$意义下，$R^{rev}(x)\times x^{n-dR}\equiv 0$</p>
+<p>$\therefore F^{rev}(x)\equiv G^{rev}(x)* Q^{rev}(x) \left ( \bmod x^{n-m+1}\right )$</p>
+<p>多项式求逆+翻转即可。</p>
+<p>时间复杂度$O(n\log n)$</p>
+<h3 id="多项式取模"><a href="#多项式取模" class="headerlink" title="多项式取模"></a>多项式取模</h3><p>Q:你会多项式减法吗？</p>
+<p>A:会！</p>
+<p>Q:你会多项式乘法吗？</p>
+<p>A:会！</p>
+<p>Q:你会多项式除法吗？</p>
+<p>A:会！</p>
+<p>Q:你会多项式取模吗？</p>
+<p>A:不会！</p>
+<p>。。。</p>
+<p>时间复杂度$O(n\log n)$</p>
+<h3 id="多项式开方"><a href="#多项式开方" class="headerlink" title="多项式开方"></a>多项式开方</h3><p>给一个$n$次多项式$A(x)$，求$B(x)$满足$A(x)\equiv B^{2}(x)\left ( \bmod x^n \right )$</p>
+<p>还是考虑倍增：</p>
+<p>不妨设$n$为2的次幂：</p>
+<p>当$n=1$时，求$x^2\equiv a\left ( \bmod p\right )$的解<del>就好了</del>。比较多的题目会保证常数项为1.</p>
+<p>当$n\geq 2$时，</p>
+<p>假设已经求出了$A(x)\equiv C^2(x)\left ( \bmod x^{\frac{n}{2}} \right )$，</p>
+<p>易得$\left ( C(x)-B(x)\right ) * \left ( C(x)+B(x)\right )\equiv 0\left ( \bmod x^{\frac{n}{2}} \right )$</p>
+<p>因此会有两个解，设$C(x)-B(x)\equiv 0\left ( \bmod x^{\frac{n}{2}} \right )$，则有$  C(x)+B(x)\equiv 0\left ( \bmod x^{\frac{n}{2}} \right )$</p>
+<p>所以$ \left ( C(x)+B(x)\right )^2\equiv 0\Rightarrow C^2(x)+B^2(x)+2B(x)* C(x)\equiv 0\Rightarrow B(x)\equiv-\frac{C^2(x)+A(x)}{2C(x)}\left ( \bmod x^{n} \right )$</p>
+<p>多项式求逆+乘法+倍增即可。</p>
+<p>时间复杂度$T(n)=T(\frac{n}{2})+O(n\log n)=O(n\log n)$</p>
+<h3 id="多项式ln"><a href="#多项式ln" class="headerlink" title="多项式ln"></a>多项式ln</h3><p>为啥多项式可以求ln啊。。。无法理解。。。</p>
+<p>先来看看泰勒展开：</p>
+<script type="math/tex; mode=display">e^x=\sum_{i=0}^{\infty}\frac{x^i}{i!}</script><p>那么多项式求ln实际上就是知道$G(x)=e^{F(x)}$，让你求$F(x)$的过程。</p>
+<p>对等式两边同时求$ln$得$\ln(G(x))=F(x)$</p>
+<p>求导得：$\frac{G’(x)}{G(x)}=F’(x)$</p>
+<p>求积分得：$\int {\frac{G’(x)}{G(x)}}=F(x)$</p>
+<p>没了。。。</p>
+<p>时间复杂度$O(n\log n)$</p>
+<h3 id="多项式exp"><a href="#多项式exp" class="headerlink" title="多项式exp"></a>多项式exp</h3><p>能求ln那当然能求exp啦。</p>
+<p>$F(x)=e^{A(x)}$</p>
+<p>求ln得：$\ln  F(x)=A(x)$</p>
+<p>$\ln F(x)-A(x)=0$</p>
+<p>考虑牛顿迭代：</p>
+<p>$F_{i+1}(x)=F_i(x)-\frac{\ln F_{i}(x)-A(x)}{\left (\ln F_{i}(x)-A(x) \right )’}=F_{i}(x)-\frac{\ln F_{i}(x)-A(x)}{\frac{1}{F_{i}(x)}}=F_{i}(x)\left ( 1-\ln F_{i}(x)+A(x)\right )\left ( \bmod x^n \right )$</p>
+<p>每次迭代$n$会翻一倍，时间复杂度$T(n)=T(\frac{n}{2})+O(n\log n)=O(n\log n)$</p>
+<h3 id="多项式求幂"><a href="#多项式求幂" class="headerlink" title="多项式求幂"></a>多项式求幂</h3><p>当$k$很小的时候直接快速幂似乎差不多快…$O(n\log n \log k)$</p>
+<p>当然还有更快的（当$k$鬼死那么大的时候，比如 $k\le 10^{10^6}$）：</p>
+<p>$F(x)=A^{k}(x)$</p>
+<p>两边求ln得：$\ln F(x)=k \ln A(x)$</p>
+<p>exp得：$F(x)=\exp\left ( k\ln A(x)\right )$</p>
+<p>时间复杂度$O(n\log n)$</p>
+<h3 id="多项式三角函数"><a href="#多项式三角函数" class="headerlink" title="多项式三角函数"></a>多项式三角函数</h3><p>不是很清楚这种东西有什么用…</p>
+<p>求 $\sin(A),\cos(A)$ ：</p>
+<p>直接硬上欧拉公式：</p>
+<script type="math/tex; mode=display">e^{ix}=\cos(x)+i\sin(x)\\ e^{-ix}=\cos(x)-i\sin(x)</script><p>解得：</p>
+<script type="math/tex; mode=display">\cos(x)=\frac{e^{ix}+e^{-ix}}{2}\\\sin(x)=\frac{e^{ix}-e^{-ix}}{2}</script><p>但是在模意义这个 $i$ 该怎么办呢？</p>
+<p>考虑 $i^2=-1$，所以在模 $mod$ 的意义下这个 $i$ 就是 $mod-1$ 的二次剩余。</p>
+<h3 id="多点求值"><a href="#多点求值" class="headerlink" title="多点求值"></a>多点求值</h3><p>顾名思义：给一个 $f(x)$，和 $x_1,x_2,\cdots,x_n$，求出所有的 $f(x_i)$。</p>
+<p>$FFT$ 的本质是分治，现在也考虑一下？</p>
+<p>设 $L(x)=\prod_{i=1}^{\frac{n}{2}}(x-x_i),R(x)=\prod_{i=\frac{n}{2}+1}^{n}(x-x_i)$</p>
+<p>我们发现，当 $i\in[1,\frac{n}{2}]$ 时，$L(x)=0$，因此 $f(x)=f\%L$</p>
+<p>右边同理，算 $L,R$ 可以分治的时候算，然后合并。</p>
+<p>时间复杂度 $T(n)=2T(\frac{n}{2})+O(n\log n)=O(n\log ^2 n)$</p>
+<h3 id="多点插值"><a href="#多点插值" class="headerlink" title="多点插值"></a>多点插值</h3>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%80%8D%E5%A2%9E/" rel="tag"><i class="fa fa-tag"></i> 倍增</a>
+              <a href="/tags/FFT/" rel="tag"><i class="fa fa-tag"></i> FFT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E7%89%9B%E5%AE%A2%E6%8C%91%E6%88%98%E8%B5%9B35/" rel="prev" title="牛客挑战赛35">
+      <i class="fa fa-chevron-left"></i> 牛客挑战赛35
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E5%B1%80%E9%83%A8%E6%9E%81%E5%B0%8F%E5%80%BC-cqoi2012/" rel="next" title="局部极小值[cqoi2012]">
+      局部极小值[cqoi2012] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先来些简单的"><span class="nav-number">1.</span> <span class="nav-text">先来些简单的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式求导"><span class="nav-number">1.1.</span> <span class="nav-text">多项式求导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式不定积分"><span class="nav-number">1.2.</span> <span class="nav-text">多项式不定积分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式加法"><span class="nav-number">1.3.</span> <span class="nav-text">多项式加法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式减法"><span class="nav-number">1.4.</span> <span class="nav-text">多项式减法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现在开始步入正题"><span class="nav-number">2.</span> <span class="nav-text">现在开始步入正题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式乘法"><span class="nav-number">2.1.</span> <span class="nav-text">多项式乘法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与fft-ntt有关的一些技能"><span class="nav-number">3.</span> <span class="nav-text">与fft&#x2F;ntt有关的一些技能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式求逆"><span class="nav-number">3.1.</span> <span class="nav-text">多项式求逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式除法"><span class="nav-number">3.2.</span> <span class="nav-text">多项式除法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式取模"><span class="nav-number">3.3.</span> <span class="nav-text">多项式取模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式开方"><span class="nav-number">3.4.</span> <span class="nav-text">多项式开方</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式ln"><span class="nav-number">3.5.</span> <span class="nav-text">多项式ln</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式exp"><span class="nav-number">3.6.</span> <span class="nav-text">多项式exp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式求幂"><span class="nav-number">3.7.</span> <span class="nav-text">多项式求幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式三角函数"><span class="nav-number">3.8.</span> <span class="nav-text">多项式三角函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多点求值"><span class="nav-number">3.9.</span> <span class="nav-text">多点求值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多点插值"><span class="nav-number">3.10.</span> <span class="nav-text">多点插值</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="oql"
+      src="/uploads/bear_xy.jpg">
+  <p class="site-author-name" itemprop="name">oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oql</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/FFT/',]
+      });
+      });
+  </script>
+
+</body>
+</html>
