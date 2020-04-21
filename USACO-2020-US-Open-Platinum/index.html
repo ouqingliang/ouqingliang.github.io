@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear_xy.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/bear_xy.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","width":250,"display":"post","padding":30,"offset":30,"onmobile":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="USACO 2020 US Open Platinum部分题解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="USACO 2020 US Open Platinum">
+<meta property="og:url" content="http://yoursite.com/USACO-2020-US-Open-Platinum/index.html">
+<meta property="og:site_name" content="Oql&#39;s blog">
+<meta property="og:description" content="USACO 2020 US Open Platinum部分题解。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-09T08:38:42.000Z">
+<meta property="article:modified_time" content="2020-04-09T10:12:00.180Z">
+<meta property="article:author" content="oql">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="容斥原理">
+<meta property="article:tag" content="组合数学">
+<meta property="article:tag" content="Min-Max容斥">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/USACO-2020-US-Open-Platinum/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>USACO 2020 US Open Platinum | Oql's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oql's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Summary for OI</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">77</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">87</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/USACO-2020-US-Open-Platinum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="name" content="oql">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          USACO 2020 US Open Platinum
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-09 16:38:42" itemprop="dateCreated datePublished" datetime="2020-04-09T16:38:42+08:00">2020-04-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/USACO/" itemprop="url" rel="index">
+                    <span itemprop="name">USACO</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>USACO 2020 US Open Platinum部分题解。</p>
+<a id="more"></a>
+<h3 id="Sprinklers-2-Return-of-the-Alfalfa"><a href="#Sprinklers-2-Return-of-the-Alfalfa" class="headerlink" title="Sprinklers 2: Return of the Alfalfa"></a>Sprinklers 2: Return of the Alfalfa</h3><h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/3283" target="_blank" rel="noopener">loj</a></p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>显然被C覆盖的点是及其有规律的，是被一条从左上到右下，只会往下和右走的折线切成两半，左下方的部分全覆盖给C。</p>
+<p>那么就可以根据这个轮廓线进行DP了，设 $f_{i,j,0/1}$ 表示考虑到第 $i$ 行第 $j$ 列，是在向下走还是向右走，且这个位置填C的方案数。</p>
+<p>那么转移分两类讨论一下即可。</p>
+<p>时间复杂度 $O(n^3)$。</p>
+<p>然后发现这是一个前缀和，那么就是 $O(n^2)$ 的了。</p>
+<p>细节初始化什么的注意一下。</p>
+<h4 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FO(x) freopen(#x<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(#x<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fd(i,j,k) for(int i=(j),end_i=(k);i&gt;=end_i;i--)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG(x) cout&lt;&lt;#x&lt;&lt;<span class="meta-string">"="</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cle(x) memset(x,0,sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x)&amp;-(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned ll</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lb long db</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> ll inv2=(mod+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Add</span><span class="params">(ll x,ll y)</span></span>&#123;x+=y; <span class="keyword">return</span> (x&lt;mod)?x:x-mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Dec</span><span class="params">(ll x,ll y)</span></span>&#123;x-=y; <span class="keyword">return</span> (x&lt;<span class="number">0</span>)?x+mod:x;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Mul</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> x*y%mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Pow</span><span class="params">(ll x,ll y)</span></span>&#123;y%=(mod<span class="number">-1</span>);ll ans=<span class="number">1</span>;<span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=x*x%mod)<span class="keyword">if</span>(y&amp;<span class="number">1</span>) ans=ans*x%mod;<span class="keyword">return</span> ans;&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2005</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> s[N][N];</span><br><span class="line">ll a[N][N],b[N][N],sa[N][N],sb[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FO(sprinklers2);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    fo(i,<span class="number">1</span>,n) <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s[i]+<span class="number">1</span>);</span><br><span class="line">    fo(i,<span class="number">2</span>,n+<span class="number">1</span>) <span class="keyword">if</span>(s[i<span class="number">-1</span>][<span class="number">1</span>]==<span class="string">'.'</span>) sb[i][<span class="number">0</span>]=b[i][<span class="number">0</span>]=inv2;</span><br><span class="line">    fo(i,<span class="number">1</span>,n) <span class="keyword">if</span>(s[<span class="number">1</span>][i]==<span class="string">'.'</span>) sa[<span class="number">1</span>][i]=a[<span class="number">1</span>][i]=inv2;</span><br><span class="line">    fo(i,<span class="number">2</span>,n+<span class="number">1</span>)</span><br><span class="line">        fo(j,<span class="number">1</span>,n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i][j]==<span class="string">'.'</span>) a[i][j]=Mul(inv2,sb[i][j<span class="number">-1</span>]);</span><br><span class="line">            <span class="keyword">if</span>(j!=n&amp;&amp;s[i<span class="number">-1</span>][j+<span class="number">1</span>]==<span class="string">'.'</span>) b[i][j]=Mul(inv2,sa[i<span class="number">-1</span>][j]);</span><br><span class="line">            sa[i][j]=Add(sa[i<span class="number">-1</span>][j],a[i][j]);</span><br><span class="line">            sb[i][j]=Add(sb[i][j<span class="number">-1</span>],b[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    ll sum=<span class="number">1</span>;</span><br><span class="line">    fo(i,<span class="number">1</span>,n) fo(j,<span class="number">1</span>,n) <span class="keyword">if</span>(s[i][j]==<span class="string">'.'</span>) sum=Mul(sum,<span class="number">2</span>);</span><br><span class="line">    sum=Mul(sum,Add(sb[n+<span class="number">1</span>][n],sa[n][n]));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld"</span>,sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><h4 id="题目链接-1"><a href="#题目链接-1" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://loj.ac/problem/3284" target="_blank" rel="noopener">loj</a></p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>似乎有 $O(n\log n)$ 的神奇做法。。。</p>
+<p>对于一个排列我们求的是所有的环长的LCM，那么考虑对于每个质因数分开来求。</p>
+<p>记 $F_{x}(p)$ 表示最大的 $k$ 满足 $p^k|x$。那么对于一个拆分 $(x_1,x_2\cdots x_m)$ 及一个质数 $p$ 而言，$p$ 的次数就是 $\max\{F_{x_i}(p)\}$。</p>
+<p>这个 $\max$ 显然不好求，我们用Min-Max容斥进行转换，得到答案为：</p>
+<script type="math/tex; mode=display">\sum_{S\in\{1,2\cdots m\},S\not =\varnothing}(-1)^{|S|-1}\min\{F_{S_i}(p)\}</script><p>然后可以枚举这个min是否大于等于某个值 $k$：</p>
+<script type="math/tex; mode=display">\sum_{k=1}^{n}\sum_{S\in\{1,2\cdots m\},S\not =\varnothing}(-1)^{|S|-1}[\min\{F_{S_i}(p)\}\geq k]</script><p>注意，上面的式子显然要从 $k=1$ 开始。</p>
+<p>要使得最小值大于等于 $k$，这些环长都必须是 $p^k$ 的倍数。</p>
+<p>那么现在就是枚举 $x=p^k$，然后看有多少个这样的集合符合情况。</p>
+<p>假设这个集合所对应的排列的大小为 $ix$，符合条件的集合有 $F(i)$ 个，那么我们可以从 $n$ 个数中选出 $ix$ 个数，剩下的 $n-ix$ 个随便连，也就是 $F(i)\binom{n}{ix}(n-ix)!$。</p>
+<p>现在来看对于一个 $x$，如何求出这个 $F(i)$。$F(i)$ 的定义为从 $[1,i]$ 中选择 $j$ 个长度均为 $x$ 的倍数，那么贡献就是 $(-1)^{j-1}$ 的贡献和。</p>
+<p>考虑枚举长度为 $jx$ 的环有多少个，那么复杂度为 $O(\frac{n^2}{x^2}\log \frac{n}{x})$。</p>
+<p>考虑枚举当前最小的点所在的环中有多少个点，那么有：$F(i)=-\sum_{j=1}^iF(j)\binom{ix-1}{jx-1}(jx-1)!$。就可以做到时间复杂度 $O(\frac{n^2}{x^2})$。</p>
+<p>总的时间复杂度 $O(\sum_{p^k}\frac{n^2}{(p^{k})^2})\leq O(n^2\sum_{i=1}^n\frac{1}{i^2}=O(n^2\zeta(2)))=O(n^2)$</p>
+<h4 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FO(x) freopen(#x<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(#x<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fd(i,j,k) for(int i=(j),end_i=(k);i&gt;=end_i;i--)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG(x) cerr&lt;&lt;#x&lt;&lt;<span class="meta-string">"="</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cle(x) memset(x,0,sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x)&amp;-(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned ll</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lb long db</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>; <span class="keyword">char</span> ch=getchar(); <span class="keyword">bool</span> f=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>;ch=getchar()) <span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>;ch=getchar()) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(ch^<span class="number">48</span>);</span><br><span class="line">    <span class="keyword">return</span> f?-x:x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">7505</span>;</span><br><span class="line">ll m1,m2;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Pow</span><span class="params">(ll x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=x*x%m1)</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>) ans=ans*x%m1;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll fac[N],c[N][N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">bool</span> bo[N];</span><br><span class="line"><span class="keyword">int</span> pri[N],cnt,p[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    fo(i,<span class="number">1</span>,n) fac[i]=fac[i<span class="number">-1</span>]*i%m2;</span><br><span class="line">    c[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    fo(i,<span class="number">1</span>,n)</span><br><span class="line">    &#123;</span><br><span class="line">        c[i][<span class="number">0</span>]=<span class="number">1</span>; c[i][i]=<span class="number">1</span>;</span><br><span class="line">        fo(j,<span class="number">1</span>,i<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            c[i][j]=c[i<span class="number">-1</span>][j]+c[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">            c[i][j]&gt;=m2?c[i][j]-=m2:<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    fo(i,<span class="number">2</span>,n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!bo[i])</span><br><span class="line">        &#123;</span><br><span class="line">            pri[++cnt]=i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=n;j*=i) p[j]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;pri[j]*i&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            bo[pri[j]*i]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%pri[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ll f[N],sum;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    sum=<span class="number">0</span>;</span><br><span class="line">    f[<span class="number">0</span>]=m2<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=n/x;</span><br><span class="line">    fo(i,<span class="number">1</span>,m)</span><br><span class="line">    &#123;</span><br><span class="line">        f[i]=<span class="number">0</span>;</span><br><span class="line">        fo(j,<span class="number">1</span>,i)</span><br><span class="line">            f[i]=(f[i]-(f[i-j]*c[i*x<span class="number">-1</span>][j*x<span class="number">-1</span>]%m2*fac[j*x<span class="number">-1</span>])%m2+m2)%m2;</span><br><span class="line">    &#125;</span><br><span class="line">    fo(i,<span class="number">1</span>,m) sum=(sum+(f[i]*c[n][i*x]%m2*fac[n-i*x]))%m2;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//FO(exercise);</span></span><br><span class="line">    n=<span class="built_in">read</span>(); m1=<span class="built_in">read</span>(); m2=m1<span class="number">-1</span>;</span><br><span class="line">    init(n);</span><br><span class="line">    ll ans=<span class="number">1</span>;</span><br><span class="line">    fo(i,<span class="number">2</span>,n)</span><br><span class="line">        <span class="keyword">if</span>(p[i])</span><br><span class="line">            ans=ans*Pow(p[i],solve(i))%m1;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/DP/" rel="tag"><i class="fa fa-tag"></i> DP</a>
+              <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 容斥原理</a>
+              <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 组合数学</a>
+              <a href="/tags/Min-Max%E5%AE%B9%E6%96%A5/" rel="tag"><i class="fa fa-tag"></i> Min-Max容斥</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/K-Paths-CF981H/" rel="prev" title="K Paths[CF981H]">
+      <i class="fa fa-chevron-left"></i> K Paths[CF981H]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/" rel="next" title="yww与树上的回文串[loj6681]">
+      yww与树上的回文串[loj6681] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sprinklers-2-Return-of-the-Alfalfa"><span class="nav-number">1.</span> <span class="nav-text">Sprinklers 2: Return of the Alfalfa</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise"><span class="nav-number">2.</span> <span class="nav-text">Exercise</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="oql"
+      src="/uploads/bear_xy.jpg">
+  <p class="site-author-name" itemprop="name">oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oql</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/USACO-2020-US-Open-Platinum/',]
+      });
+      });
+  </script>
+
+</body>
+</html>
