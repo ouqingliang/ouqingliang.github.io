@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear_xy.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/bear_xy.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","width":250,"display":"post","padding":30,"offset":30,"onmobile":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="题意你喜欢字符串。有人送了你一个仅含小写字母的字符串。 由于你是一名优秀的 𝑂𝐼er，所以你决定对这个字符串展开研究。 定义两个字符串是相似的，当且仅当存在至多一个 $i$ ，使得这两个字符串中只有第 $i$ 个字母不同。 你取出了这个字符串中所有长度为 $m$ 的子串。你想知道，对于每个长度为 $m$ 的子串，有多少个其它长度为 $m$ 的子串与它相似。 $n\leq 10^5$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串[FJWC2020Day3]">
+<meta property="og:url" content="http://yoursite.com/%E5%AD%97%E7%AC%A6%E4%B8%B2-FJWC2020Day3/index.html">
+<meta property="og:site_name" content="Oql&#39;s blog">
+<meta property="og:description" content="题意你喜欢字符串。有人送了你一个仅含小写字母的字符串。 由于你是一名优秀的 𝑂𝐼er，所以你决定对这个字符串展开研究。 定义两个字符串是相似的，当且仅当存在至多一个 $i$ ，使得这两个字符串中只有第 $i$ 个字母不同。 你取出了这个字符串中所有长度为 $m$ 的子串。你想知道，对于每个长度为 $m$ 的子串，有多少个其它长度为 $m$ 的子串与它相似。 $n\leq 10^5$">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-31T23:24:45.000Z">
+<meta property="article:modified_time" content="2020-06-01T00:35:11.691Z">
+<meta property="article:author" content="oql">
+<meta property="article:tag" content="树状数组">
+<meta property="article:tag" content="扫描线">
+<meta property="article:tag" content="SAM">
+<meta property="article:tag" content="倍增">
+<meta property="article:tag" content="启发式合并">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/%E5%AD%97%E7%AC%A6%E4%B8%B2-FJWC2020Day3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>字符串[FJWC2020Day3] | Oql's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oql's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Summary for OI</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">90</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">116</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%AD%97%E7%AC%A6%E4%B8%B2-FJWC2020Day3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="name" content="oql">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          字符串[FJWC2020Day3]
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-01 07:24:45" itemprop="dateCreated datePublished" datetime="2020-06-01T07:24:45+08:00">2020-06-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FJWC/" itemprop="url" rel="index">
+                    <span itemprop="name">FJWC</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jzoj/" itemprop="url" rel="index">
+                    <span itemprop="name">jzoj</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>你喜欢字符串。有人送了你一个仅含小写字母的字符串。</p>
+<p>由于你是一名优秀的 𝑂𝐼er，所以你决定对这个字符串展开研究。</p>
+<p>定义两个字符串是相似的，当且仅当存在至多一个 $i$ ，使得这两个字符串中只有第 $i$ 个字母不同。</p>
+<p>你取出了这个字符串中所有长度为 $m$ 的子串。你想知道，对于每个长度为 $m$ 的子串，有多少个其它长度为 $m$ 的子串与它相似。</p>
+<p>$n\leq 10^5$</p>
+<a id="more"></a>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>也不知为啥别人的可以这么短。。。</p>
+<p>显然，两个字符串 $i,j$ 是相似的当且仅当 $lcp(i,j)+lcs(i+m-1,j+m-1)\geq m-1$。</p>
+<p>那么分别对正串和反串建出 SAM 的建出两棵树，记 $P1_i$ 和 $P2_i$ 表示第 $i$ 个长度为 $m$ 的字符串在两棵树中的所在的位置，那么上面的条件就是 $len_{lca1(P1_i,P1_j)}+len_{lca2(P2_i,P2_j)}\geq m-1$。</p>
+<p>那么，我们可以对两棵树进行处理。</p>
+<p>首先对第一棵树进行dsu on tree。枚举第一棵树的lca，那么上述条件就是 $len_{lca2(P2_i,P2_j)}\geq m-1-len_{lca}$</p>
+<p>先递归处理轻儿子，然后将贡献删掉。然后递归重儿子，保留其贡献。</p>
+<p>我们只需要考虑：</p>
+<h4 id="轻儿子节点之间的贡献"><a href="#轻儿子节点之间的贡献" class="headerlink" title="轻儿子节点之间的贡献"></a>轻儿子节点之间的贡献</h4><p>对于一个节点 $u$，将轻儿子从左到右排成一列，只考虑 $j&lt;i$ 时 $j$ 对 $i$ 的贡献（否则反过来再处理一遍就可以了），那么枚举第 $i$ 个轻儿子的子树中的节点，考虑之前的所有节点，要使得在第二棵树上的 $len_{lca2}$ 大于等于 $k=m-1-len_{lca}$，那么用倍增找到这个节点在第二棵树上的祖先中最浅的节点 $w$，使得 $len_w\geq k$。</p>
+<p>之后就在 $w$ 的子树中找有多少个节点满足这个节点在第一棵树中在 $j$ 的子树里。这个是一个单点加，区间查询，用树状数组维护即可。</p>
+<h4 id="重儿子对轻儿子的贡献"><a href="#重儿子对轻儿子的贡献" class="headerlink" title="重儿子对轻儿子的贡献"></a>重儿子对轻儿子的贡献</h4><p>显然你不能再枚举一遍重儿子，那么再维护一个树状数组（表示的就是上面所说的贡献），意义跟第一种情况是几乎一样的，然后枚举轻儿子的所有节点，倍增，然后查询即可。</p>
+<h4 id="轻儿子对重儿子的贡献"><a href="#轻儿子对重儿子的贡献" class="headerlink" title="轻儿子对重儿子的贡献"></a>轻儿子对重儿子的贡献</h4><p>显然你不能再枚举一遍重儿子，那么对于一个轻儿子子树中的节点 $v$ 而言，设它在一种情况中的 $w$ 是 $w_v$，那么所有满足在第一棵树重儿子的子树中且在第二棵树 $w_v$ 的子树中的节点的答案需要加 $1$。</p>
+<p>这是一个矩形加，最后再单点查询的问题。</p>
+<p>那么将矩形加离线，然后扫描线+树状数组解决即可。</p>
+<p>综上，时间复杂度是 $O(n\log^2n)$ 的。</p>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><p><del>也就接近300行而已。。。</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FO(x) freopen(#x<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(#x<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ff(i,j,k) for(int i=(j),end_i=(k);i&lt; end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fd(i,j,k) for(int i=(j),end_i=(k);i&gt;=end_i;i--)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG(x) cerr&lt;&lt;#x&lt;&lt;<span class="meta-string">"="</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cle(x) memset(x,0,sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x)&amp;-(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned ll</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lb long db</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>; <span class="keyword">char</span> ch=getchar(); <span class="keyword">bool</span> f=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>;ch=getchar()) <span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>;ch=getchar()) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(ch^<span class="number">48</span>);</span><br><span class="line">    <span class="keyword">return</span> f?-x:x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CASET fo(___,1,read())</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,cnt;</span><br><span class="line"><span class="keyword">int</span> c[N],d[N];</span><br><span class="line">ll ans[N];</span><br><span class="line"><span class="keyword">namespace</span> BIT&#123;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> *b,<span class="keyword">int</span> x,<span class="keyword">int</span> d)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(;x&lt;=cnt;x+=lowbit(x)) b[x]+=d;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> *b,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> d)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        add(b,l,d); add(b,r+<span class="number">1</span>,-d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> *b,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> s=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(;x;x-=lowbit(x)) s+=b[x];</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> *b,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ask(b,r)-ask(b,l<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> SAM&#123;</span><br><span class="line">    <span class="keyword">int</span> ne[N][<span class="number">26</span>],len[N],fa[N],siz,las;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        fo(i,<span class="number">0</span>,siz) <span class="built_in">memset</span>(ne[i],<span class="number">0</span>,<span class="keyword">sizeof</span>(ne[i])),len[i]=fa[i]=<span class="number">0</span>;</span><br><span class="line">        siz=las=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cur=++siz,p=las;</span><br><span class="line">        len[cur]=len[p]+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(;p&amp;&amp;!ne[p][c];p=fa[p]) ne[p][c]=cur;</span><br><span class="line">        <span class="keyword">if</span>(!p) fa[cur]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> q=ne[p][c];</span><br><span class="line">            <span class="keyword">if</span>(len[q]==len[p]+<span class="number">1</span>) fa[cur]=q;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> np=++siz;</span><br><span class="line">                len[np]=len[p]+<span class="number">1</span>;</span><br><span class="line">                <span class="built_in">memcpy</span>(ne[np],ne[q],<span class="keyword">sizeof</span>(ne[q]));</span><br><span class="line">                fa[np]=fa[q];</span><br><span class="line">                <span class="keyword">for</span>(;p&amp;&amp;ne[p][c]==q;p=fa[p]) ne[p][c]=np;</span><br><span class="line">                fa[cur]=fa[q]=np;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        las=cur;</span><br><span class="line">        <span class="keyword">return</span> las;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> T2&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; adj[N];</span><br><span class="line">    <span class="keyword">int</span> dfl[N],dfr[N],tim,f[N][<span class="number">18</span>],len[N],p[N],id[N];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addtree</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;adj[x].pb(y);&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pre_dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        dfl[u]=++tim;</span><br><span class="line">        fo(i,<span class="number">1</span>,<span class="number">17</span>) f[u][i]=f[f[u][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:adj[u]) f[v][<span class="number">0</span>]=u,pre_dfs(v);</span><br><span class="line">        dfr[u]=tim;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> d)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        fd(i,<span class="number">17</span>,<span class="number">0</span>) <span class="keyword">if</span>(f[x][i]&amp;&amp;len[f[x][i]]&gt;=d) x=f[x][i];</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> T1&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; adj[N];</span><br><span class="line">    <span class="keyword">int</span> dfl[N],dfr[N],tim,id[N],p[N],siz[N],son[N],len[N];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addtree</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;adj[x].pb(y);&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pre_dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        siz[u]=<span class="number">1</span>; dfl[u]=++tim;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:adj[u])</span><br><span class="line">        &#123;</span><br><span class="line">            pre_dfs(v);</span><br><span class="line">            siz[u]+=siz[v];</span><br><span class="line">            <span class="keyword">if</span>(siz[son[u]]&lt;siz[v]) son[u]=v;</span><br><span class="line">        &#125;</span><br><span class="line">        dfr[u]=tim;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> _w[N];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> dd)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(id[u]) BIT::add(c,T2::dfl[T2::p[id[u]]],dd);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!id[u]) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> t=id[u],v=T2::p[t],w=T2::jump(v,k);</span><br><span class="line">        _w[u]=w;</span><br><span class="line">        ans[t]+=BIT::ask(c,T2::dfl[w],T2::dfr[w]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add_dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> d)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        add(u,d);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:adj[u]) add_dfs(v,d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ask_dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        ask(u,k);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:adj[u]) ask_dfs(v,k);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">calc_d</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!id[u]) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> t=id[u],w=_w[u];</span><br><span class="line">        ans[t]+=BIT::ask(d,T2::dfl[w],T2::dfr[w]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add_d</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> dd)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(id[u]) BIT::add(d,T2::dfl[T2::p[id[u]]],dd);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add_d_dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> d)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        add_d(u,d);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:adj[u]) add_d_dfs(v,d);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">calc_d_dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        calc_d(u);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:adj[u]) calc_d_dfs(v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">query</span>&#123;</span></span><br><span class="line">        <span class="keyword">int</span> l,r,d;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">vector</span>&lt;query&gt; q[N];</span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!id[u]) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> w=_w[u];</span><br><span class="line">        q[l].pb((query)&#123;T2::dfl[w],T2::dfr[w],<span class="number">1</span>&#125;);</span><br><span class="line">        q[r+<span class="number">1</span>].pb((query)&#123;T2::dfl[w],T2::dfr[w],<span class="number">-1</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ins_dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        ins(u);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:adj[u]) ins_dfs(v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">bool</span> flag)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tot=adj[u].<span class="built_in">size</span>(),v,k=m<span class="number">-1</span>-len[u];</span><br><span class="line">        ff(i,<span class="number">0</span>,tot)</span><br><span class="line">        &#123;</span><br><span class="line">            v=adj[u][i];</span><br><span class="line">            <span class="keyword">if</span>(v==son[u]) <span class="keyword">continue</span>;</span><br><span class="line">            dfs(v,<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(son[u]) dfs(son[u],<span class="number">1</span>);</span><br><span class="line">        ask(u,k);</span><br><span class="line">        add(u,<span class="number">1</span>);</span><br><span class="line">        ff(i,<span class="number">0</span>,tot)</span><br><span class="line">        &#123;</span><br><span class="line">            v=adj[u][i];</span><br><span class="line">            <span class="keyword">if</span>(v==son[u]) <span class="keyword">continue</span>;</span><br><span class="line">            ask_dfs(v,k); add_dfs(v,<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        add(u,<span class="number">-1</span>);</span><br><span class="line">        ff(i,<span class="number">0</span>,tot)</span><br><span class="line">        &#123;</span><br><span class="line">            v=adj[u][i];</span><br><span class="line">            <span class="keyword">if</span>(v==son[u]) <span class="keyword">continue</span>;</span><br><span class="line">            add_dfs(v,<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        fd(i,tot<span class="number">-1</span>,<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            v=adj[u][i];</span><br><span class="line">            <span class="keyword">if</span>(v==son[u]) <span class="keyword">continue</span>;</span><br><span class="line">            ask_dfs(v,k); add_dfs(v,<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ask(u,k);</span><br><span class="line">        ff(i,<span class="number">0</span>,tot)</span><br><span class="line">        &#123;</span><br><span class="line">            v=adj[u][i];</span><br><span class="line">            <span class="keyword">if</span>(v==son[u]) <span class="keyword">continue</span>;</span><br><span class="line">            add_dfs(v,<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        calc_d(u);</span><br><span class="line">        ff(i,<span class="number">0</span>,tot)</span><br><span class="line">        &#123;</span><br><span class="line">            v=adj[u][i];</span><br><span class="line">            <span class="keyword">if</span>(v==son[u]) <span class="keyword">continue</span>;</span><br><span class="line">            calc_d_dfs(v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag)</span><br><span class="line">        &#123;</span><br><span class="line">            add_d(u,<span class="number">1</span>);</span><br><span class="line">            ff(i,<span class="number">0</span>,tot)</span><br><span class="line">            &#123;</span><br><span class="line">                v=adj[u][i];</span><br><span class="line">                <span class="keyword">if</span>(v==son[u]) <span class="keyword">continue</span>;</span><br><span class="line">                add_d_dfs(v,<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(son[u]) add_d_dfs(son[u],<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!son[u]) <span class="keyword">return</span>;</span><br><span class="line">        l=dfl[son[u]],r=dfr[son[u]];</span><br><span class="line">        ins(u);</span><br><span class="line">        ff(i,<span class="number">0</span>,tot)</span><br><span class="line">        &#123;</span><br><span class="line">            v=adj[u][i];</span><br><span class="line">            <span class="keyword">if</span>(v==son[u]) <span class="keyword">continue</span>;</span><br><span class="line">            ins_dfs(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> g[N];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        dfs(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        fo(i,<span class="number">1</span>,n-m+<span class="number">1</span>) g[dfl[p[i]]]=i;</span><br><span class="line">        <span class="keyword">int</span> si=tim;</span><br><span class="line">        <span class="built_in">memset</span>(c,<span class="number">0</span>,<span class="keyword">sizeof</span>(c));</span><br><span class="line">        fo(i,<span class="number">1</span>,si)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> x:q[i]) BIT::add(c,x.l,x.r,x.d);</span><br><span class="line">            <span class="keyword">if</span>(!g[i]) <span class="keyword">continue</span>;</span><br><span class="line">            ans[g[i]]+=BIT::ask(c,T2::dfl[T2::p[g[i]]]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(); m=<span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">    SAM::init();</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    fo(i,<span class="number">1</span>,n)</span><br><span class="line">    &#123;</span><br><span class="line">        x=SAM::extend(s[i]-<span class="string">'a'</span>);</span><br><span class="line">        <span class="keyword">if</span>(i&gt;=m) T1::p[i-m+<span class="number">1</span>]=x,T1::id[x]=i-m+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    fo(i,<span class="number">2</span>,SAM::siz) T1::addtree(SAM::fa[i],i);</span><br><span class="line">    fo(i,<span class="number">1</span>,SAM::siz) T1::len[i]=SAM::len[i];</span><br><span class="line">    SAM::init();</span><br><span class="line">    fd(i,n,<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=SAM::extend(s[i]-<span class="string">'a'</span>);</span><br><span class="line">        <span class="keyword">if</span>(i+m<span class="number">-1</span>&lt;=n) T2::p[i]=x,T2::id[x]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    fo(i,<span class="number">2</span>,SAM::siz) T2::addtree(SAM::fa[i],i);</span><br><span class="line">    fo(i,<span class="number">1</span>,SAM::siz) T2::len[i]=SAM::len[i];</span><br><span class="line">    cnt=SAM::siz;</span><br><span class="line">    T1::pre_dfs(<span class="number">1</span>);</span><br><span class="line">    T2::pre_dfs(<span class="number">1</span>);</span><br><span class="line">    T1::work();</span><br><span class="line">    fo(i,<span class="number">1</span>,n-m+<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%lld "</span>,ans[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag"><i class="fa fa-tag"></i> 树状数组</a>
+              <a href="/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/" rel="tag"><i class="fa fa-tag"></i> 扫描线</a>
+              <a href="/tags/SAM/" rel="tag"><i class="fa fa-tag"></i> SAM</a>
+              <a href="/tags/%E5%80%8D%E5%A2%9E/" rel="tag"><i class="fa fa-tag"></i> 倍增</a>
+              <a href="/tags/%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6/" rel="tag"><i class="fa fa-tag"></i> 启发式合并</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E5%A4%95%E5%BC%A0%E7%9A%84%E6%94%B9%E9%80%A0-FJWC2020Day4/" rel="prev" title="夕张的改造[FJWC2020Day4]">
+      <i class="fa fa-chevron-left"></i> 夕张的改造[FJWC2020Day4]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E6%B3%B3%E6%B1%A0-NOI2017/" rel="next" title="泳池[NOI2017]">
+      泳池[NOI2017] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序"><span class="nav-number">3.</span> <span class="nav-text">程序</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="oql"
+      src="/uploads/bear_xy.jpg">
+  <p class="site-author-name" itemprop="name">oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">90</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oql</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/%E5%AD%97%E7%AC%A6%E4%B8%B2-FJWC2020Day3/',]
+      });
+      });
+  </script>
+
+</body>
+</html>
