@@ -42,22 +42,22 @@
       
       <categories>
           
-          <category> FJWC </category>
-          
           <category> jzoj </category>
+          
+          <category> FJWC </category>
           
       </categories>
       
       
         <tags>
             
+            <tag> 倍增 </tag>
+            
             <tag> 树状数组 </tag>
             
             <tag> 扫描线 </tag>
             
             <tag> SAM </tag>
-            
-            <tag> 倍增 </tag>
             
             <tag> 启发式合并 </tag>
             
@@ -77,9 +77,9 @@
       
       <categories>
           
-          <category> FJWC </category>
-          
           <category> jzoj </category>
+          
+          <category> FJWC </category>
           
       </categories>
       
@@ -181,18 +181,18 @@
       
       <categories>
           
-          <category> FJWC </category>
-          
           <category> jzoj </category>
+          
+          <category> FJWC </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 思维题 </tag>
-            
             <tag> 状压DP </tag>
+            
+            <tag> 思维题 </tag>
             
         </tags>
       
@@ -210,18 +210,18 @@
       
       <categories>
           
-          <category> FJWC </category>
-          
           <category> jzoj </category>
+          
+          <category> FJWC </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> LCA </tag>
-            
             <tag> 倍增 </tag>
+            
+            <tag> LCA </tag>
             
             <tag> 换根DP </tag>
             
@@ -254,9 +254,9 @@
       
       <categories>
           
-          <category> FJWC </category>
-          
           <category> jzoj </category>
+          
+          <category> FJWC </category>
           
       </categories>
       
@@ -493,13 +493,13 @@
       
         <tags>
             
-            <tag> 分治 </tag>
-            
-            <tag> 倍增 </tag>
-            
             <tag> 斜率优化DP </tag>
             
+            <tag> 分治 </tag>
+            
             <tag> 生成树 </tag>
+            
+            <tag> 倍增 </tag>
             
         </tags>
       
@@ -526,9 +526,9 @@
             
             <tag> Trie </tag>
             
-            <tag> SAM </tag>
-            
             <tag> 后缀数组 </tag>
+            
+            <tag> SAM </tag>
             
             <tag> 并查集 </tag>
             
@@ -557,9 +557,9 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> 搜索 </tag>
+            
+            <tag> 贪心 </tag>
             
         </tags>
       
@@ -584,9 +584,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 状压DP </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> bfs </tag>
             
@@ -642,11 +642,11 @@
       
         <tags>
             
+            <tag> 状压DP </tag>
+            
             <tag> DP </tag>
             
             <tag> 思维题 </tag>
-            
-            <tag> 状压DP </tag>
             
         </tags>
       
@@ -700,11 +700,11 @@
             
             <tag> FFT </tag>
             
+            <tag> 斯特林数 </tag>
+            
             <tag> 生成函数 </tag>
             
             <tag> 伯努利数 </tag>
-            
-            <tag> 斯特林数 </tag>
             
         </tags>
       
@@ -729,9 +729,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 状压DP </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> Min-Max容斥 </tag>
             
@@ -760,9 +760,9 @@
             
             <tag> FFT </tag>
             
-            <tag> 生成函数 </tag>
-            
             <tag> 牛顿迭代 </tag>
+            
+            <tag> 生成函数 </tag>
             
             <tag> Burnside引理 </tag>
             
@@ -847,11 +847,11 @@
             
             <tag> 组合数学 </tag>
             
-            <tag> 拉格朗日插值 </tag>
+            <tag> KMP </tag>
             
             <tag> FFT </tag>
             
-            <tag> KMP </tag>
+            <tag> 拉格朗日插值 </tag>
             
         </tags>
       
@@ -934,9 +934,9 @@
       
         <tags>
             
-            <tag> 树形DP </tag>
-            
             <tag> 分治 </tag>
+            
+            <tag> 树形DP </tag>
             
             <tag> FFT </tag>
             
@@ -965,11 +965,11 @@
             
             <tag> 分治 </tag>
             
-            <tag> 树链剖分 </tag>
-            
             <tag> 组合数学 </tag>
             
             <tag> FFT </tag>
+            
+            <tag> 树链剖分 </tag>
             
             <tag> 链分治 </tag>
             
@@ -998,9 +998,9 @@
       
         <tags>
             
-            <tag> 树形DP </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 树形DP </tag>
             
         </tags>
       
@@ -1091,11 +1091,11 @@
       
         <tags>
             
+            <tag> 贪心 </tag>
+            
             <tag> DP </tag>
             
             <tag> 树状数组 </tag>
-            
-            <tag> 贪心 </tag>
             
             <tag> 启发式合并 </tag>
             
@@ -1115,9 +1115,9 @@
       
       <categories>
           
-          <category> loj </category>
-          
           <category> bzoj </category>
+          
+          <category> loj </category>
           
           <category> 各省省选 </category>
           
@@ -1126,9 +1126,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -1146,9 +1146,9 @@
       
       <categories>
           
-          <category> loj </category>
-          
           <category> bzoj </category>
+          
+          <category> loj </category>
           
           <category> 各省省选 </category>
           
@@ -1178,9 +1178,9 @@
       
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 随机 </tag>
             
@@ -1321,11 +1321,11 @@
       
         <tags>
             
+            <tag> 状压DP </tag>
+            
             <tag> DP </tag>
             
             <tag> AC自动机 </tag>
-            
-            <tag> 状压DP </tag>
             
         </tags>
       
@@ -1354,11 +1354,11 @@
             
             <tag> 树形DP </tag>
             
+            <tag> FFT </tag>
+            
             <tag> FWT </tag>
             
             <tag> 点分治 </tag>
-            
-            <tag> FFT </tag>
             
         </tags>
       
@@ -1383,13 +1383,13 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 倍增 </tag>
             
-            <tag> 笛卡尔树 </tag>
+            <tag> 线段树 </tag>
             
             <tag> 启发式合并 </tag>
+            
+            <tag> 笛卡尔树 </tag>
             
         </tags>
       
@@ -1439,9 +1439,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 状压DP </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> FWT </tag>
             
@@ -1675,6 +1675,8 @@
       
         <tags>
             
+            <tag> 状压DP </tag>
+            
             <tag> DP </tag>
             
             <tag> 容斥原理 </tag>
@@ -1684,8 +1686,6 @@
             <tag> kummer定理 </tag>
             
             <tag> 数位DP </tag>
-            
-            <tag> 状压DP </tag>
             
             <tag> Trie </tag>
             
@@ -1828,13 +1828,13 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
-            <tag> 树形DP </tag>
+            <tag> DP </tag>
             
             <tag> 线段树 </tag>
             
-            <tag> 贪心 </tag>
+            <tag> 树形DP </tag>
             
             <tag> 区间DP </tag>
             
@@ -1894,25 +1894,25 @@
       
         <tags>
             
+            <tag> 贪心 </tag>
+            
             <tag> DP </tag>
             
             <tag> 思维题 </tag>
             
+            <tag> 斜率优化DP </tag>
+            
             <tag> 线段树 </tag>
             
-            <tag> 计算几何 </tag>
-            
-            <tag> 斜率优化DP </tag>
+            <tag> 二分 </tag>
             
             <tag> 组合数学 </tag>
             
-            <tag> 二分 </tag>
+            <tag> 计算几何 </tag>
             
             <tag> 网络流 </tag>
             
             <tag> 闵科夫斯基和 </tag>
-            
-            <tag> 贪心 </tag>
             
         </tags>
       
@@ -1937,11 +1937,11 @@
       
         <tags>
             
+            <tag> 拉格朗日插值 </tag>
+            
             <tag> Min25筛 </tag>
             
             <tag> 杜教筛 </tag>
-            
-            <tag> 拉格朗日插值 </tag>
             
         </tags>
       
@@ -2018,13 +2018,13 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
-            <tag> bfs </tag>
+            <tag> DP </tag>
             
             <tag> 倍增 </tag>
             
-            <tag> 贪心 </tag>
+            <tag> bfs </tag>
             
         </tags>
       
@@ -2128,15 +2128,15 @@
       
         <tags>
             
-            <tag> 树形DP </tag>
+            <tag> 倍增 </tag>
             
-            <tag> 计算几何 </tag>
+            <tag> 树形DP </tag>
             
             <tag> 后缀数组 </tag>
             
-            <tag> 最短路 </tag>
+            <tag> 计算几何 </tag>
             
-            <tag> 倍增 </tag>
+            <tag> 最短路 </tag>
             
         </tags>
       
@@ -2163,11 +2163,11 @@
       
         <tags>
             
+            <tag> 二分 </tag>
+            
             <tag> 扫描线 </tag>
             
             <tag> 计算几何 </tag>
-            
-            <tag> 二分 </tag>
             
             <tag> 网络流 </tag>
             
@@ -2187,9 +2187,9 @@
       
       <categories>
           
-          <category> loj </category>
-          
           <category> bzoj </category>
+          
+          <category> loj </category>
           
           <category> 各省省选 </category>
           
@@ -2374,9 +2374,9 @@
             
             <tag> 分治 </tag>
             
-            <tag> 筛法 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 筛法 </tag>
             
             <tag> LCA </tag>
             
@@ -2469,9 +2469,9 @@
       
         <tags>
             
-            <tag> Polya定理 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> Polya定理 </tag>
             
         </tags>
       
@@ -2500,13 +2500,13 @@
             
             <tag> 思维题 </tag>
             
-            <tag> 树形DP </tag>
-            
             <tag> 分治 </tag>
             
-            <tag> 筛法 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 树形DP </tag>
+            
+            <tag> 筛法 </tag>
             
             <tag> 树套树 </tag>
             
@@ -2934,9 +2934,9 @@
       
       <categories>
           
-          <category> loj </category>
-          
           <category> bzoj </category>
+          
+          <category> loj </category>
           
       </categories>
       
@@ -3144,11 +3144,11 @@
       
         <tags>
             
+            <tag> 贪心 </tag>
+            
             <tag> 思维题 </tag>
             
             <tag> Trie </tag>
-            
-            <tag> 贪心 </tag>
             
             <tag> exgcd </tag>
             
@@ -3175,11 +3175,11 @@
       
         <tags>
             
+            <tag> 倍增 </tag>
+            
             <tag> 状态压缩 </tag>
             
             <tag> FWT </tag>
-            
-            <tag> 倍增 </tag>
             
         </tags>
       
@@ -3239,13 +3239,13 @@
       
         <tags>
             
+            <tag> FFT </tag>
+            
             <tag> SAM </tag>
             
             <tag> 最短路 </tag>
             
             <tag> 网络流 </tag>
-            
-            <tag> FFT </tag>
             
             <tag> 线性基 </tag>
             
