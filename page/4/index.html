@@ -5,46 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear_xy.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear.jpg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
-  <link rel="mask-icon" href="/images/bear_xy.jpg" color="#222">
+  <link rel="mask-icon" href="/images/bear.jpg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://yoursite.com').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.6.0',
-    exturl: false,
-    sidebar: {"position":"left","width":250,"display":"post","padding":30,"offset":30,"onmobile":true},
-    copycode: {"enable":true,"show_result":true,"style":"mac"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Oql&#39;s blog">
@@ -61,8 +37,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
   };
 </script>
 
@@ -105,49 +82,53 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Oql's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">Summary for OI</p>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Oql's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Summary for OI</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">90</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">91</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">19</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">19</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">116</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">119</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -155,29 +136,34 @@
         </a>
       </li>
   </ul>
-
 </nav>
-  <div class="site-search">
+
+
+
+  <div class="search-pop-overlay">
     <div class="popup search-popup">
-    <div class="search-header">
+        <div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocapitalize="off"
            placeholder="Searching..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
   </div>
+</div>
+
+    </div>
+  </div>
+
 </div>
     </header>
 
@@ -186,6 +172,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -193,18 +180,16 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content index posts-expand">
             
-
-  <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/String-Set-Queries-CF710F/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%B0%8FZ%E7%9A%84%E7%A4%BC%E7%89%A9-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BD%9C%E4%B8%9A2018/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="image" content="/uploads/bear.jpg">
       <meta itemprop="name" content="oql">
       <meta itemprop="description" content="">
     </span>
@@ -213,30 +198,27 @@
       <meta itemprop="name" content="Oql's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/String-Set-Queries-CF710F/" class="post-title-link" itemprop="url">String Set Queries[CF710F]</a>
-        </h1>
+            <a href="/%E5%B0%8FZ%E7%9A%84%E7%A4%BC%E7%89%A9-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BD%9C%E4%B8%9A2018/" class="post-title-link" itemprop="url">小Z的礼物[集训队作业2018]</a>
+        </h2>
 
         <div class="post-meta">
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-03-11 21:11:04" itemprop="dateCreated datePublished" datetime="2020-03-11T21:11:04+08:00">2020-03-11</time>
+              <time title="Created: 2020-04-14 14:19:26" itemprop="dateCreated datePublished" datetime="2020-04-14T14:19:26+08:00">2020-04-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CF/" itemprop="url" rel="index">
-                    <span itemprop="name">CF</span>
-                  </a>
+                  <a href="/categories/uoj/" itemprop="url" rel="index"><span itemprop="name">uoj</span></a>
                 </span>
             </span>
 
@@ -251,10 +233,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>fflush(stdout) 搞了我好久。。。</p>
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://uoj.ac/problem/422" target="_blank" rel="noopener">uoj</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/String-Set-Queries-CF710F/#more" rel="contents">
+              <a class="btn" href="/%E5%B0%8FZ%E7%9A%84%E7%A4%BC%E7%89%A9-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BD%9C%E4%B8%9A2018/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -274,14 +256,14 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%AF%86%E6%B6%85%E7%93%A6%E7%9A%84%E8%B0%9C%E9%A2%98-%E7%89%9B%E5%AE%A2%E6%8C%91%E6%88%98%E8%B5%9B31E/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Fake-bullions-CF804F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="image" content="/uploads/bear.jpg">
       <meta itemprop="name" content="oql">
       <meta itemprop="description" content="">
     </span>
@@ -290,30 +272,27 @@
       <meta itemprop="name" content="Oql's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/%E5%AF%86%E6%B6%85%E7%93%A6%E7%9A%84%E8%B0%9C%E9%A2%98-%E7%89%9B%E5%AE%A2%E6%8C%91%E6%88%98%E8%B5%9B31E/" class="post-title-link" itemprop="url">密涅瓦的谜题[牛客挑战赛31E]</a>
-        </h1>
+            <a href="/Fake-bullions-CF804F/" class="post-title-link" itemprop="url">Fake bullions[CF804F]</a>
+        </h2>
 
         <div class="post-meta">
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-03-11 13:39:21" itemprop="dateCreated datePublished" datetime="2020-03-11T13:39:21+08:00">2020-03-11</time>
+              <time title="Created: 2020-04-14 10:21:25" itemprop="dateCreated datePublished" datetime="2020-04-14T10:21:25+08:00">2020-04-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%89%9B%E5%AE%A2%E7%BD%91/" itemprop="url" rel="index">
-                    <span itemprop="name">牛客网</span>
-                  </a>
+                  <a href="/categories/CF/" itemprop="url" rel="index"><span itemprop="name">CF</span></a>
                 </span>
             </span>
 
@@ -328,10 +307,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://ac.nowcoder.com/acm/contest/880/E" target="_blank" rel="noopener">链接</a></p>
+          <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://codeforces.com/problemset/problem/804/F" target="_blank" rel="noopener">CF</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E5%AF%86%E6%B6%85%E7%93%A6%E7%9A%84%E8%B0%9C%E9%A2%98-%E7%89%9B%E5%AE%A2%E6%8C%91%E6%88%98%E8%B5%9B31E/#more" rel="contents">
+              <a class="btn" href="/Fake-bullions-CF804F/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -351,14 +330,14 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Educational-Codeforces-Round-83-CF1312/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020GDOI%E6%A8%A1%E6%8B%9FDay12/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="image" content="/uploads/bear.jpg">
       <meta itemprop="name" content="oql">
       <meta itemprop="description" content="">
     </span>
@@ -367,30 +346,27 @@
       <meta itemprop="name" content="Oql's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/Educational-Codeforces-Round-83-CF1312/" class="post-title-link" itemprop="url">Educational Codeforces Round 83[CF1312]</a>
-        </h1>
+            <a href="/2020GDOI%E6%A8%A1%E6%8B%9FDay12/" class="post-title-link" itemprop="url">2020GDOI模拟Day12</a>
+        </h2>
 
         <div class="post-meta">
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-03-10 12:09:54" itemprop="dateCreated datePublished" datetime="2020-03-10T12:09:54+08:00">2020-03-10</time>
+              <time title="Created: 2020-04-12 13:39:21" itemprop="dateCreated datePublished" datetime="2020-04-12T13:39:21+08:00">2020-04-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CF/" itemprop="url" rel="index">
-                    <span itemprop="name">CF</span>
-                  </a>
+                  <a href="/categories/%E6%A8%A1%E6%8B%9F%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">模拟赛</span></a>
                 </span>
             </span>
 
@@ -405,10 +381,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="https://codeforces.com/contest/1312" target="_blank" rel="noopener">链接</a></p>
+          <p>2020GDOI模拟Day12总结。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Educational-Codeforces-Round-83-CF1312/#more" rel="contents">
+              <a class="btn" href="/2020GDOI%E6%A8%A1%E6%8B%9FDay12/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -428,14 +404,14 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Educational-Codeforces-Round-82-CF1303/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="image" content="/uploads/bear.jpg">
       <meta itemprop="name" content="oql">
       <meta itemprop="description" content="">
     </span>
@@ -444,30 +420,27 @@
       <meta itemprop="name" content="Oql's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/Educational-Codeforces-Round-82-CF1303/" class="post-title-link" itemprop="url">Educational Codeforces Round 82[CF1303]</a>
-        </h1>
+            <a href="/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/" class="post-title-link" itemprop="url">yww与树上的回文串[loj6681]</a>
+        </h2>
 
         <div class="post-meta">
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-03-02 20:23:10" itemprop="dateCreated datePublished" datetime="2020-03-02T20:23:10+08:00">2020-03-02</time>
+              <time title="Created: 2020-04-11 12:06:02" itemprop="dateCreated datePublished" datetime="2020-04-11T12:06:02+08:00">2020-04-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CF/" itemprop="url" rel="index">
-                    <span itemprop="name">CF</span>
-                  </a>
+                  <a href="/categories/loj/" itemprop="url" rel="index"><span itemprop="name">loj</span></a>
                 </span>
             </span>
 
@@ -482,10 +455,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="比赛链接"><a href="#比赛链接" class="headerlink" title="比赛链接"></a>比赛链接</h2><p><a href="https://codeforces.ml/contest/1303" target="_blank" rel="noopener">链接</a></p>
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://loj.ac/problem/6681" target="_blank" rel="noopener">loj</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Educational-Codeforces-Round-82-CF1303/#more" rel="contents">
+              <a class="btn" href="/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -505,14 +478,14 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020GDOI%E6%A8%A1%E6%8B%9FDay9/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/USACO-2020-US-Open-Platinum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="image" content="/uploads/bear.jpg">
       <meta itemprop="name" content="oql">
       <meta itemprop="description" content="">
     </span>
@@ -521,30 +494,27 @@
       <meta itemprop="name" content="Oql's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020GDOI%E6%A8%A1%E6%8B%9FDay9/" class="post-title-link" itemprop="url">2020GDOI模拟Day9</a>
-        </h1>
+            <a href="/USACO-2020-US-Open-Platinum/" class="post-title-link" itemprop="url">USACO 2020 US Open Platinum</a>
+        </h2>
 
         <div class="post-meta">
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-02-29 15:47:18" itemprop="dateCreated datePublished" datetime="2020-02-29T15:47:18+08:00">2020-02-29</time>
+              <time title="Created: 2020-04-09 16:38:42" itemprop="dateCreated datePublished" datetime="2020-04-09T16:38:42+08:00">2020-04-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A8%A1%E6%8B%9F%E8%B5%9B/" itemprop="url" rel="index">
-                    <span itemprop="name">模拟赛</span>
-                  </a>
+                  <a href="/categories/USACO/" itemprop="url" rel="index"><span itemprop="name">USACO</span></a>
                 </span>
             </span>
 
@@ -559,10 +529,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>2020GDOI模拟Day9总结。</p>
+          <p>USACO 2020 US Open Platinum部分题解。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020GDOI%E6%A8%A1%E6%8B%9FDay9/#more" rel="contents">
+              <a class="btn" href="/USACO-2020-US-Open-Platinum/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -582,14 +552,14 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Easy-Math-Problem-hdu6607/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/K-Paths-CF981H/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="image" content="/uploads/bear.jpg">
       <meta itemprop="name" content="oql">
       <meta itemprop="description" content="">
     </span>
@@ -598,30 +568,27 @@
       <meta itemprop="name" content="Oql's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/Easy-Math-Problem-hdu6607/" class="post-title-link" itemprop="url">Easy Math Problem[hdu6607]</a>
-        </h1>
+            <a href="/K-Paths-CF981H/" class="post-title-link" itemprop="url">K Paths[CF981H]</a>
+        </h2>
 
         <div class="post-meta">
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-02-28 11:38:05" itemprop="dateCreated datePublished" datetime="2020-02-28T11:38:05+08:00">2020-02-28</time>
+              <time title="Created: 2020-04-08 15:03:05" itemprop="dateCreated datePublished" datetime="2020-04-08T15:03:05+08:00">2020-04-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hdu/" itemprop="url" rel="index">
-                    <span itemprop="name">hdu</span>
-                  </a>
+                  <a href="/categories/CF/" itemprop="url" rel="index"><span itemprop="name">CF</span></a>
                 </span>
             </span>
 
@@ -636,10 +603,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6607" target="_blank" rel="noopener">链接</a></p>
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/contest/981/problem/H" target="_blank" rel="noopener">链接</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Easy-Math-Problem-hdu6607/#more" rel="contents">
+              <a class="btn" href="/K-Paths-CF981H/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -659,14 +626,14 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E7%AE%80%E5%8D%95%E7%9A%84%E5%87%BD%E6%95%B0-loj6053/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Tree-CF1010F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="image" content="/uploads/bear.jpg">
       <meta itemprop="name" content="oql">
       <meta itemprop="description" content="">
     </span>
@@ -675,30 +642,27 @@
       <meta itemprop="name" content="Oql's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/%E7%AE%80%E5%8D%95%E7%9A%84%E5%87%BD%E6%95%B0-loj6053/" class="post-title-link" itemprop="url">简单的函数[loj6053]</a>
-        </h1>
+            <a href="/Tree-CF1010F/" class="post-title-link" itemprop="url">Tree[CF1010F]</a>
+        </h2>
 
         <div class="post-meta">
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-02-27 23:21:21" itemprop="dateCreated datePublished" datetime="2020-02-27T23:21:21+08:00">2020-02-27</time>
+              <time title="Created: 2020-04-07 21:33:02" itemprop="dateCreated datePublished" datetime="2020-04-07T21:33:02+08:00">2020-04-07</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/loj/" itemprop="url" rel="index">
-                    <span itemprop="name">loj</span>
-                  </a>
+                  <a href="/categories/CF/" itemprop="url" rel="index"><span itemprop="name">CF</span></a>
                 </span>
             </span>
 
@@ -713,16 +677,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>定义一函数 $f$：</p>
-<script type="math/tex; mode=display">f(n)=\begin{cases}
-1 & \text{ if } n=1 \\ 
-p \bigoplus c & \text{ if } n=p^c,p\in \mathbb{P} \\ 
-f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1 
-\end{cases}</script><p>求 $\sum_{i=1}^{n}f(i)$ 的值。</p>
-<p>$n\leq 10^{10}$</p>
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/contest/1010/problem/F" target="_blank" rel="noopener">链接</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E7%AE%80%E5%8D%95%E7%9A%84%E5%87%BD%E6%95%B0-loj6053/#more" rel="contents">
+              <a class="btn" href="/Tree-CF1010F/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -742,14 +700,14 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E7%A0%B4%E5%BF%92%E5%A4%B4%E7%9A%84%E5%8C%BF%E5%90%8D%E4%BF%A1-2020-CCPC-Wannafly-WC-Day2/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E6%B0%AA%E9%87%91%E6%89%8B%E6%B8%B8-CTS2019/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="image" content="/uploads/bear.jpg">
       <meta itemprop="name" content="oql">
       <meta itemprop="description" content="">
     </span>
@@ -758,502 +716,31 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
       <meta itemprop="name" content="Oql's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/%E7%A0%B4%E5%BF%92%E5%A4%B4%E7%9A%84%E5%8C%BF%E5%90%8D%E4%BF%A1-2020-CCPC-Wannafly-WC-Day2/" class="post-title-link" itemprop="url">破忒头的匿名信[2020 CCPC Wannafly WC Day2]</a>
-        </h1>
+            <a href="/%E6%B0%AA%E9%87%91%E6%89%8B%E6%B8%B8-CTS2019/" class="post-title-link" itemprop="url">氪金手游[CTS2019]</a>
+        </h2>
 
         <div class="post-meta">
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-02-27 11:09:05" itemprop="dateCreated datePublished" datetime="2020-02-27T11:09:05+08:00">2020-02-27</time>
+              <time title="Created: 2020-04-07 11:35:06" itemprop="dateCreated datePublished" datetime="2020-04-07T11:35:06+08:00">2020-04-07</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%89%9B%E5%AE%A2%E7%BD%91/" itemprop="url" rel="index">
-                    <span itemprop="name">牛客网</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://ac.nowcoder.com/acm/contest/4010/K" target="_blank" rel="noopener">链接</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E7%A0%B4%E5%BF%92%E5%A4%B4%E7%9A%84%E5%8C%BF%E5%90%8D%E4%BF%A1-2020-CCPC-Wannafly-WC-Day2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Codeforces-Round-621-CF1307/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/Codeforces-Round-621-CF1307/" class="post-title-link" itemprop="url">Codeforces Round 621[CF1307]</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-26 21:26:50" itemprop="dateCreated datePublished" datetime="2020-02-26T21:26:50+08:00">2020-02-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CF/" itemprop="url" rel="index">
-                    <span itemprop="name">CF</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="http://codeforces.com/contest/1307" target="_blank" rel="noopener">链接</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Codeforces-Round-621-CF1307/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Clock-Tree-USACO-2020-February-Silver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/Clock-Tree-USACO-2020-February-Silver/" class="post-title-link" itemprop="url">Clock Tree[USACO 2020 February Silver]</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-25 19:56:04" itemprop="dateCreated datePublished" datetime="2020-02-25T19:56:04+08:00">2020-02-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/USACO/" itemprop="url" rel="index">
-                    <span itemprop="name">USACO</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>一个 $n$ 个点的树，点有点权 $a_i$，每次选择一个相连的点，每走一次到该点，该点的点权变为 $(a_i+1)\bmod k$。</p>
-<p>可以从任意点开始，任意点结束，能重复经过多次。</p>
-<p>问有多少个出发点，满足最后存在一种方案使得点权均为 $0$。</p>
-<p>原题：$n\leq 2500,k=12$</p>
-<p>加强版：$n\leq 2\times 10^6,k\leq 10^9$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Clock-Tree-USACO-2020-February-Silver/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Min25%E7%AD%9B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/Min25%E7%AD%9B/" class="post-title-link" itemprop="url">Min25筛</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-25 08:45:00" itemprop="dateCreated datePublished" datetime="2020-02-25T08:45:00+08:00">2020-02-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Min25筛总结。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Min25%E7%AD%9B/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E7%89%9B%E5%AE%A2%E6%8C%91%E6%88%98%E8%B5%9B37/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%89%9B%E5%AE%A2%E6%8C%91%E6%88%98%E8%B5%9B37/" class="post-title-link" itemprop="url">牛客挑战赛37</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-22 22:32:32" itemprop="dateCreated datePublished" datetime="2020-02-22T22:32:32+08:00">2020-02-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%89%9B%E5%AE%A2%E7%BD%91/" itemprop="url" rel="index">
-                    <span itemprop="name">牛客网</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>为什么打着打着溜了还能涨rating啊…</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E7%89%9B%E5%AE%A2%E6%8C%91%E6%88%98%E8%B5%9B37/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020GDOI%E6%A8%A1%E6%8B%9FDay8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020GDOI%E6%A8%A1%E6%8B%9FDay8/" class="post-title-link" itemprop="url">2020GDOI模拟Day8</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-22 22:26:02" itemprop="dateCreated datePublished" datetime="2020-02-22T22:26:02+08:00">2020-02-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A8%A1%E6%8B%9F%E8%B5%9B/" itemprop="url" rel="index">
-                    <span itemprop="name">模拟赛</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>2020GDOI模拟Day8总结。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020GDOI%E6%A8%A1%E6%8B%9FDay8/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E7%BB%9D%E5%9C%B0%E5%8F%8D%E5%87%BB-JSOI-2018/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%BB%9D%E5%9C%B0%E5%8F%8D%E5%87%BB-JSOI-2018/" class="post-title-link" itemprop="url">绝地反击[JSOI 2018]</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-20 11:48:23" itemprop="dateCreated datePublished" datetime="2020-02-20T11:48:23+08:00">2020-02-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/bzoj/" itemprop="url" rel="index">
-                    <span itemprop="name">bzoj</span>
-                  </a>
+                  <a href="/categories/loj/" itemprop="url" rel="index"><span itemprop="name">loj</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%84%E7%9C%81%E7%9C%81%E9%80%89/" itemprop="url" rel="index">
-                    <span itemprop="name">各省省选</span>
-                  </a>
+                  <a href="/categories/CTSC/" itemprop="url" rel="index"><span itemprop="name">CTSC</span></a>
                 </span>
             </span>
 
@@ -1268,10 +755,10 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=5316" target="_blank" rel="noopener">bzoj</a></p>
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://loj.ac/problem/3124" target="_blank" rel="noopener">loj</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E7%BB%9D%E5%9C%B0%E5%8F%8D%E5%87%BB-JSOI-2018/#more" rel="contents">
+              <a class="btn" href="/%E6%B0%AA%E9%87%91%E6%89%8B%E6%B8%B8-CTS2019/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1291,14 +778,14 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E9%A3%9E%E6%9C%BA%E8%B0%83%E5%BA%A6-JSOI2016/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E7%8F%8D%E7%8F%A0-CTS2019/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
+      <meta itemprop="image" content="/uploads/bear.jpg">
       <meta itemprop="name" content="oql">
       <meta itemprop="description" content="">
     </span>
@@ -1307,42 +794,109 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
       <meta itemprop="name" content="Oql's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/%E9%A3%9E%E6%9C%BA%E8%B0%83%E5%BA%A6-JSOI2016/" class="post-title-link" itemprop="url">飞机调度[JSOI2016]</a>
-        </h1>
+            <a href="/%E7%8F%8D%E7%8F%A0-CTS2019/" class="post-title-link" itemprop="url">珍珠[CTS2019]</a>
+        </h2>
 
         <div class="post-meta">
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-02-19 22:43:07" itemprop="dateCreated datePublished" datetime="2020-02-19T22:43:07+08:00">2020-02-19</time>
+              <time title="Created: 2020-04-06 21:38:03" itemprop="dateCreated datePublished" datetime="2020-04-06T21:38:03+08:00">2020-04-06</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/bzoj/" itemprop="url" rel="index">
-                    <span itemprop="name">bzoj</span>
-                  </a>
+                  <a href="/categories/loj/" itemprop="url" rel="index"><span itemprop="name">loj</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/loj/" itemprop="url" rel="index">
-                    <span itemprop="name">loj</span>
-                  </a>
+                  <a href="/categories/CTSC/" itemprop="url" rel="index"><span itemprop="name">CTSC</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://loj.ac/problem/3120" target="_blank" rel="noopener">链接</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/%E7%8F%8D%E7%8F%A0-CTS2019/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E9%9A%8F%E6%9C%BA%E7%AB%8B%E6%96%B9%E4%BD%93-CTS2019/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/bear.jpg">
+      <meta itemprop="name" content="oql">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%E9%9A%8F%E6%9C%BA%E7%AB%8B%E6%96%B9%E4%BD%93-CTS2019/" class="post-title-link" itemprop="url">随机立方体[CTS2019]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-06 15:21:42" itemprop="dateCreated datePublished" datetime="2020-04-06T15:21:42+08:00">2020-04-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/loj/" itemprop="url" rel="index"><span itemprop="name">loj</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%84%E7%9C%81%E7%9C%81%E9%80%89/" itemprop="url" rel="index">
-                    <span itemprop="name">各省省选</span>
-                  </a>
+                  <a href="/categories/CTSC/" itemprop="url" rel="index"><span itemprop="name">CTSC</span></a>
                 </span>
             </span>
 
@@ -1357,11 +911,10 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=5326" target="_blank" rel="noopener">bzoj</a></p>
-<p><a href="https://loj.ac/problem/2077" target="_blank" rel="noopener">loj</a></p>
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href>链接</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E9%A3%9E%E6%9C%BA%E8%B0%83%E5%BA%A6-JSOI2016/#more" rel="contents">
+              <a class="btn" href="/%E9%9A%8F%E6%9C%BA%E7%AB%8B%E6%96%B9%E4%BD%93-CTS2019/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1381,408 +934,10 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E8%90%A5%E6%95%91%E7%9A%AE%E5%8D%A1%E4%B8%98-ZJOI2011/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/%E8%90%A5%E6%95%91%E7%9A%AE%E5%8D%A1%E4%B8%98-ZJOI2011/" class="post-title-link" itemprop="url">营救皮卡丘[ZJOI2011]</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-18 21:57:53" itemprop="dateCreated datePublished" datetime="2020-02-18T21:57:53+08:00">2020-02-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/bzoj/" itemprop="url" rel="index">
-                    <span itemprop="name">bzoj</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%84%E7%9C%81%E7%9C%81%E9%80%89/" itemprop="url" rel="index">
-                    <span itemprop="name">各省省选</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2324" target="_blank" rel="noopener">链接</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E8%90%A5%E6%95%91%E7%9A%AE%E5%8D%A1%E4%B8%98-ZJOI2011/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%A5%87%E6%80%AA%E7%9A%84%E6%B8%B8%E6%88%8F-SCOI2012/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/%E5%A5%87%E6%80%AA%E7%9A%84%E6%B8%B8%E6%88%8F-SCOI2012/" class="post-title-link" itemprop="url">奇怪的游戏[SCOI2012]</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-18 10:24:56" itemprop="dateCreated datePublished" datetime="2020-02-18T10:24:56+08:00">2020-02-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/bzoj/" itemprop="url" rel="index">
-                    <span itemprop="name">bzoj</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%84%E7%9C%81%E7%9C%81%E9%80%89/" itemprop="url" rel="index">
-                    <span itemprop="name">各省省选</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2756" target="_blank" rel="noopener">链接</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E5%A5%87%E6%80%AA%E7%9A%84%E6%B8%B8%E6%88%8F-SCOI2012/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020GDOI%E6%A8%A1%E6%8B%9FDay7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020GDOI%E6%A8%A1%E6%8B%9FDay7/" class="post-title-link" itemprop="url">2020GDOI模拟Day7</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-17 13:30:51" itemprop="dateCreated datePublished" datetime="2020-02-17T13:30:51+08:00">2020-02-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A8%A1%E6%8B%9F%E8%B5%9B/" itemprop="url" rel="index">
-                    <span itemprop="name">模拟赛</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>2020GDOI模拟Day7总结。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020GDOI%E6%A8%A1%E6%8B%9FDay7/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020GDOI%E6%A8%A1%E6%8B%9FDay6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020GDOI%E6%A8%A1%E6%8B%9FDay6/" class="post-title-link" itemprop="url">2020GDOI模拟Day6</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-15 08:56:57" itemprop="dateCreated datePublished" datetime="2020-02-15T08:56:57+08:00">2020-02-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A8%A1%E6%8B%9F%E8%B5%9B/" itemprop="url" rel="index">
-                    <span itemprop="name">模拟赛</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>2020GDOI模拟Day6总结。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020GDOI%E6%A8%A1%E6%8B%9FDay6/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E7%BD%91%E7%BB%9C%E6%B5%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/bear_xy.jpg">
-      <meta itemprop="name" content="oql">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oql's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%BD%91%E7%BB%9C%E6%B5%81/" class="post-title-link" itemprop="url">网络流</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-14 19:52:07" itemprop="dateCreated datePublished" datetime="2020-02-14T19:52:07+08:00">2020-02-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>网络流建模总结。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E7%BD%91%E7%BB%9C%E6%B5%81/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1792,7 +947,7 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
 
 <script>
   window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
+    let { activeClass } = CONFIG.comments;
     if (CONFIG.comments.storage) {
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
@@ -1841,7 +996,7 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="oql"
-      src="/uploads/bear_xy.jpg">
+      src="/uploads/bear.jpg">
   <p class="site-author-name" itemprop="name">oql</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -1850,7 +1005,7 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1863,13 +1018,45 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">90</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ouqingliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ouqingliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1692110604@qq.com" title="E-Mail → mailto:1692110604@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
 
 
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        recent posts
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/%E7%9F%A9%E9%98%B5-bzoj2406/" title="矩阵[bzoj2406]" target="_blank">矩阵[bzoj2406]</a>
+          </li>
+        
+          <li>
+            <a href="/Chips-Challenge-WF2011/" title="Chips Challenge[WF2011]" target="_blank">Chips Challenge[WF2011]</a>
+          </li>
+        
+          <li>
+            <a href="/Delight-for-a-Cat-bzoj4842/" title="Delight for a Cat[bzoj4842]" target="_blank">Delight for a Cat[bzoj4842]</a>
+          </li>
+        
+      </ul>
+    </div>
 
       </div>
 
@@ -1885,12 +1072,14 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
-  &copy; 
+  &copy; 2019 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">oql</span>
 </div>
@@ -1924,8 +1113,6 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
 <script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
 
 
   
@@ -1952,52 +1139,57 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
 
   
       
-<script type="text/x-mathjax-config">
-    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
 
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        extensions: ['[mhchem]/mhchem.js'],
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
 <script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
 </script>
 
     
@@ -2007,9 +1199,9 @@ f(a)f(b) & \text{ if } n=ab,\gcd(a,b)=1
   <script>
       window.addEventListener('load', () => {
       quicklink({
-        timeout: 3000,
+        timeout : 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/page/4/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://yoursite.com/page/4/',]
       });
       });
   </script>
