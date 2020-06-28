@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/bear.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="退役失败。 真不该立进队女装的flag。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GDOI2020退役记">
+<meta property="og:url" content="http://yoursite.com/GDOI2020%E9%80%80%E5%BD%B9%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Oql&#39;s blog">
+<meta property="og:description" content="退役失败。 真不该立进队女装的flag。。。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-21T11:28:44.000Z">
+<meta property="article:modified_time" content="2020-06-28T00:00:53.913Z">
+<meta property="article:author" content="oql">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/GDOI2020%E9%80%80%E5%BD%B9%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>GDOI2020退役记 | Oql's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Oql's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A blog summarizing OI</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">93</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">131</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/GDOI2020%E9%80%80%E5%BD%B9%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/bear.jpg">
+      <meta itemprop="name" content="oql">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GDOI2020退役记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-21 19:28:44" itemprop="dateCreated datePublished" datetime="2020-06-21T19:28:44+08:00">2020-06-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">游记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>退役失败。</p>
+<p>真不该立进队女装的flag。。。</p>
+<a id="more"></a>
+<h3 id="Day-约-150"><a href="#Day-约-150" class="headerlink" title="Day 约-150"></a>Day 约-150</h3><p>由于众所周知的原因，我开始在家里学习OI。这期间听了中大学生的课，以及做了他们出的模拟赛，Zayin的题质量好评。</p>
+<h3 id="Day-约-40"><a href="#Day-约-40" class="headerlink" title="Day 约-40"></a>Day 约-40</h3><p>开学的第二天停课了。</p>
+<p>一开始在loj等大量刷题。</p>
+<p>然后过了几天后开始在jz的gmoj上做题。</p>
+<p>学到了很多新姿势和算法，越来越熟练了。</p>
+<p>考前模拟赛ITcarrot爆切大数据结构，惨遭爆锤；初二的lsd，zzh爆切多项式，惨遭爆锤 $\times 2$。</p>
+<h3 id="Day-0"><a href="#Day-0" class="headerlink" title="Day 0"></a>Day 0</h3><p>下午3点出发，来到了广州大学城<del>大学城是真的大</del>。</p>
+<p>住的房间极大无比，然后他们又把我推去一个人一间房<del>第二天可以换一张床睡</del>。在房间里复习到5点多决定去吃完饭，结果最后叫了M记的外卖。</p>
+<p>没带牌，于是开始颓generals和皇室。</p>
+<p>11点05就睡下了。</p>
+<p>一个人一间房真的爽。</p>
+<h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h3><p>早上7点起床看到了好朋友的祝福，温暖，感动，幸福，也更加放松更加自信了，觉得或许就是最后一次比赛了，那就为自己而战吧。</p>
+<p>通过打的的方式去到了广大附，结果老师他们去了正门。正当我们想走过去时，侧门的所有人同时把我们喊回来了，说只有侧门能进。</p>
+<p>结果他们竟然也从正门溜了进去（</p>
+<p>8点15就进去了考场，结果发现没人试机，发现有Sublime可用，压缩包解压密码乱码差评。</p>
+<p>先看T1，似乎是个线段树二分，T3不太可做，T2裸出计数题，那应该不会太简单吧，先放着，去写T1。</p>
+<p>分析5min后发现是线段树二分无疑，9点左右开码，决定先写暴力。</p>
+<p>但是总感觉暴力极其难写，加上一个智障错误，写了快半个小时。</p>
+<p>然后开始码线段树上二分，由于细节极多无比写了快大半个小时。结果发现大样例过不了，且只有第一个数是错的。</p>
+<p>想了想细节，似乎发现自己看错题了，然后魔改代码发现一直过不去。这时自己想放弃，但想到这么些年的努力不应该就这样白费，提醒自己要清醒。</p>
+<p>再回去留神题意发现自己没读错。然而这时候已经过了10点半了。</p>
+<p>于是又改了改了线段树，调了好几个错之后大样例对了，这时已经11点了，赶紧造了数据对拍，没有出错，在11点15分时拍上了。</p>
+<p>赶紧开第二题，然后发现把多项式拆开，然后用第二类斯特林数将幂转换成下降幂，然后再用组合数的一些性质搞一下，最后二项式定理就好了。</p>
+<p>但是我的神奇做法要用到 $x$ 的逆元，然而 $x$ 有时候是没有逆元的，没管那么多了。直接开码。</p>
+<p>期间发现自己的式子推错了一两个地方，都是些小问题。</p>
+<p>最后在12点多时做对了这个神奇做法。然后我神奇的发现是可以不用 $x$ 的逆元的，然后改了一下，在12点半的程序就过了小样例。然后发现自己智障的在快速幂时将幂次模了个 $mod-1$，改了之后大样例也过了。</p>
+<p>这时候已经12点45了，决定跑去再看一下T1，直接弃疗T3。。。</p>
+<p>出来以后发现大众分200+，完了看来是要垫底了。</p>
+<p>最后T1还被卡了几个点，变成了90分。</p>
+<p>中午去了某个商场吃饭，然后踩单车回去，在酒店颓了一个下午。</p>
+<p>晚饭用华莱士解决。</p>
+<p>晚上和好朋友聊到了12点多才睡。</p>
+<h3 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h3><p>早上起来发现有点困，于是洗了个脸后精神了一点。</p>
+<p>开始后先看T1，应该是一道卡常+状压Dp题，先放着。然后看一眼T2，发现秒了，不就是dsu on tree+Trie嘛，<del>两个log，能过能过</del>。再看一眼T3，似乎是矩阵树+莫反的嵌套题。</p>
+<p>于是决定先开T2。20min码完发现自己直接过了大样例？？然后开T3，分析一波复杂度发现过不去，分析一波发现不会（我怎么就没想到用多项式，我怎么就没用链式前向星），不管了，开始码了，30min后又直接过了所有的样例，我有点慌，于是把两题对拍都打了，发现都过了。</p>
+<p>这时候才11点，发现还有两个小时做T1。</p>
+<p>显然状压Dp可直接获得六七十分，然后发现某个东西可以预处理一下，就变成 $O(m2^m)$ 了。</p>
+<p>但是我的做法空间是 $O(m2^m)$ 的，过不去，于是发现可以减少一位，那么 $23\times 2^{22}$ 个int才300多M，于是在12点多的时候搞定了。</p>
+<p>发现T1有点卡，然后优化不了了，也没想到其他做法。</p>
+<p>于是今天的100+100+100就变成了80+100+70。</p>
+<p>中午何老师请吃必胜客，中途遇到SM的好友拍了张照。</p>
+<p>10个人点了6个pizza。</p>
+<p>感觉要退役了，于是准备去学文化课。</p>
+<h3 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h3><p>多停了一天的课，于是在机房又休息了一天。</p>
+<h3 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h3><p>回去上文化课，上着上着语文课手机突然在震，发现分数出了，我排到了14名。十分激动，在语文课上哭了出来。</p>
+<p>上完课立刻把消息告诉了给家人和好朋友。</p>
+<p>于是退役失败了，于是要女装了。</p>
+<p>中午也由于某种原因大哭一场，因为这个某种原因，我写了一篇这样的东西：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">GDOI2020</span>退役记：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">退役失败。</span><br><span class="line"></span><br><span class="line">记得那是还很小的六年级，第一次听说了OI。</span><br><span class="line">那是还很懵懂的初一，第一次参加NOIP，刚开始还觉得自己没能考进复赛大哭一场，结果复赛刚好压线搞了个普及一等奖。也是第一次体验了省选。</span><br><span class="line">那是还很水的初三，第一次参加了NOIP的提高组，结果顺利水到了一等十分开心。</span><br><span class="line">不知怎的就考上了华附，与很多好朋友分开了。</span><br><span class="line"></span><br><span class="line">由于初三一年几乎没学过，很多知识也已经忘记。以及接下来若干次比赛的失利，让我觉得自己或许真的不适合走这条路。看着学长和同学的退役，脑海里也不止一次想过放弃的念头。</span><br><span class="line">或许是坚韧，是顽强，是那想要证明自己的决心，让我一直坚持着。</span><br><span class="line"></span><br><span class="line">是时候了。</span><br><span class="line"></span><br><span class="line">需要感谢我的亲人。或许你们不太了解这一条路，但自始至终都一直支持我鼓励我，想尽办法让我放松心情。你们永远都是我最亲爱，最重要的人。</span><br><span class="line"></span><br><span class="line">需要感谢我的教练，老师。谢谢李老师，刘老师，广爷，吴老师作为我的班主任给予的支持；是黄靖老师，带我走进那属于OI的浩瀚星空；是张思胜老师，像朋友般的关心我，为我加油；是何，梁，黄老师两年来的辛勤付出与深切教诲，让我离梦想更近一步。你们是一条鞭子，让我前行，也是一缕春风，温暖心脾。</span><br><span class="line"></span><br><span class="line">还有我的好友们。那些n年来陪我一起走过的时光，带给我的快乐，支持与运气，我想我没有忘记，不敢忘记，也不会忘记，像是那隐形的翅膀，助我飞翔；Snakes学长，祝你的高考能像中考那般辉煌；同级的<span class="keyword">ITcarrot,aspe,dddmh,henry_he,Malzahar,HelloElwin,MCPlayer542,Kevin327,Eabo,beng,zqq和外校的朋友，也祝福你们的高三过得幸福，充实；也希望hsfzLZH1,KesdiaelKen,JC,qfr,白井黑子,BilyHurington,zengxy,Hermione_Granger,gzchenben，在后几年的省选中成功进队，为自己争光。</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">上天给予了我机会，即使前方依然充满迷雾。</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">那就加油吧，向那未知的远方。</span></span><br></pre></td></tr></table></figure>
+<p>NOI2020!</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/tree-jzoj6511/" rel="prev" title="tree[jzoj6511]">
+      <i class="fa fa-chevron-left"></i> tree[jzoj6511]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Codeforce-Global-Round-8-CF1368/" rel="next" title="Codeforce Global Round 8[CF1368]">
+      Codeforce Global Round 8[CF1368] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Day-约-150"><span class="nav-text">Day 约-150</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Day-约-40"><span class="nav-text">Day 约-40</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Day-0"><span class="nav-text">Day 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Day-1"><span class="nav-text">Day 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Day-2"><span class="nav-text">Day 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Day-3"><span class="nav-text">Day 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Day-4"><span class="nav-text">Day 4</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="oql"
+      src="/uploads/bear.jpg">
+  <p class="site-author-name" itemprop="name">oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">131</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">93</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ouqingliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ouqingliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1692110604@qq.com" title="E-Mail → mailto:1692110604@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        recent posts
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/Codeforce-Global-Round-8-CF1368/" title="Codeforce Global Round 8[CF1368]" target="_blank">Codeforce Global Round 8[CF1368]</a>
+          </li>
+        
+          <li>
+            <a href="/GDOI2020%E9%80%80%E5%BD%B9%E8%AE%B0/" title="GDOI2020退役记" target="_blank">GDOI2020退役记</a>
+          </li>
+        
+          <li>
+            <a href="/tree-jzoj6511/" title="tree[jzoj6511]" target="_blank">tree[jzoj6511]</a>
+          </li>
+        
+      </ul>
+    </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oql</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://yoursite.com/GDOI2020%E9%80%80%E5%BD%B9%E8%AE%B0/',]
+      });
+      });
+  </script>
+
+</body>
+</html>
