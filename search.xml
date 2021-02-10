@@ -8,7 +8,7 @@
       <link href="/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
       <url>/%E5%9B%9E%E5%BF%86%E5%BD%95/</url>
       
-        <content type="html"><![CDATA[<a id="more"></a>]]></content>
+        <content type="html"><![CDATA[<a id="more"></a><div class="pdfobject-container" data-target="https://ouqingliang.gitee.io/file/recollection.pdf" data-height="500px"></div>]]></content>
       
       
       
@@ -58,9 +58,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> DP </tag>
             
         </tags>
       
@@ -263,9 +263,9 @@
             
             <tag> DP </tag>
             
-            <tag> kummer定理 </tag>
-            
             <tag> 数位DP </tag>
+            
+            <tag> kummer定理 </tag>
             
         </tags>
       
@@ -406,9 +406,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> Lucas定理 </tag>
             
@@ -466,19 +466,19 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 网络流 </tag>
             
             <tag> 二分 </tag>
             
             <tag> 树形DP </tag>
             
-            <tag> 网络流 </tag>
-            
-            <tag> 计算几何 </tag>
+            <tag> DP </tag>
             
             <tag> 并查集 </tag>
             
             <tag> 哈希 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 爬山算法 </tag>
             
@@ -563,9 +563,9 @@
             
             <tag> PAM </tag>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 分块 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 半平面交 </tag>
             
@@ -592,9 +592,9 @@
       
         <tags>
             
-            <tag> 分治 </tag>
-            
             <tag> FFT </tag>
+            
+            <tag> 分治 </tag>
             
             <tag> 圆方树 </tag>
             
@@ -623,13 +623,13 @@
       
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 期望 </tag>
             
             <tag> Hall定理 </tag>
             
             <tag> 网络流 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 数论 </tag>
             
@@ -658,17 +658,17 @@
       
         <tags>
             
+            <tag> LCA </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> DP </tag>
             
-            <tag> 斜率优化DP </tag>
-            
             <tag> Trie </tag>
             
-            <tag> LCA </tag>
-            
             <tag> 单调栈 </tag>
+            
+            <tag> 斜率优化DP </tag>
             
         </tags>
       
@@ -693,17 +693,17 @@
       
         <tags>
             
+            <tag> 思维题 </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> DP </tag>
             
-            <tag> 思维题 </tag>
+            <tag> 博弈论 </tag>
             
             <tag> AC自动机 </tag>
             
             <tag> 数位DP </tag>
-            
-            <tag> 博弈论 </tag>
             
         </tags>
       
@@ -753,17 +753,17 @@
       
         <tags>
             
-            <tag> bfs </tag>
+            <tag> 二分 </tag>
             
             <tag> DP </tag>
             
             <tag> 贪心 </tag>
             
-            <tag> 二分 </tag>
-            
-            <tag> 最短路 </tag>
+            <tag> bfs </tag>
             
             <tag> 构造题 </tag>
+            
+            <tag> 最短路 </tag>
             
         </tags>
       
@@ -788,13 +788,13 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> 后缀数组 </tag>
+            
+            <tag> 交互题 </tag>
             
             <tag> 贪心 </tag>
             
-            <tag> 交互题 </tag>
+            <tag> bfs </tag>
             
             <tag> 数据分治 </tag>
             
@@ -823,11 +823,11 @@
       
         <tags>
             
-            <tag> 思维题 </tag>
-            
             <tag> Hall定理 </tag>
             
             <tag> 网络流 </tag>
+            
+            <tag> 思维题 </tag>
             
         </tags>
       
@@ -854,9 +854,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> 容斥原理 </tag>
             
         </tags>
       
@@ -881,9 +881,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> SAM </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -960,11 +960,11 @@
       
         <tags>
             
-            <tag> LCA </tag>
-            
             <tag> 双连通分量 </tag>
             
             <tag> 虚树 </tag>
+            
+            <tag> LCA </tag>
             
         </tags>
       
@@ -1068,9 +1068,9 @@
       
         <tags>
             
-            <tag> 树形DP </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> 树形DP </tag>
             
         </tags>
       
@@ -1097,9 +1097,9 @@
             
             <tag> 思维题 </tag>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> 容斥原理 </tag>
             
         </tags>
       
@@ -1276,9 +1276,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> DP </tag>
             
         </tags>
       
@@ -1303,9 +1303,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 扫描线 </tag>
             
@@ -1334,11 +1334,11 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 组合数学 </tag>
             
             <tag> 容斥原理 </tag>
             
-            <tag> 组合数学 </tag>
+            <tag> DP </tag>
             
         </tags>
       
@@ -1365,9 +1365,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 随机 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 最小圆覆盖 </tag>
             
@@ -1394,11 +1394,11 @@
       
         <tags>
             
+            <tag> 并查集 </tag>
+            
             <tag> 分治 </tag>
             
             <tag> LCT </tag>
-            
-            <tag> 并查集 </tag>
             
             <tag> 堆 </tag>
             
@@ -1425,11 +1425,11 @@
       
         <tags>
             
+            <tag> 期望 </tag>
+            
             <tag> DP </tag>
             
             <tag> 生成树 </tag>
-            
-            <tag> 期望 </tag>
             
         </tags>
       
@@ -1483,13 +1483,13 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 后缀数组 </tag>
             
-            <tag> FFT </tag>
-            
             <tag> SAM </tag>
+            
+            <tag> 线段树 </tag>
+            
+            <tag> FFT </tag>
             
         </tags>
       
@@ -1649,13 +1649,13 @@
       
         <tags>
             
-            <tag> 倍增 </tag>
+            <tag> SAM </tag>
             
-            <tag> 树状数组 </tag>
+            <tag> 倍增 </tag>
             
             <tag> 扫描线 </tag>
             
-            <tag> SAM </tag>
+            <tag> 树状数组 </tag>
             
             <tag> 启发式合并 </tag>
             
@@ -1713,11 +1713,11 @@
       
         <tags>
             
+            <tag> 网络流 </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> DP </tag>
-            
-            <tag> 网络流 </tag>
             
             <tag> 闵科夫斯基和 </tag>
             
@@ -1775,9 +1775,9 @@
       
         <tags>
             
-            <tag> 状压DP </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 状压DP </tag>
             
         </tags>
       
@@ -1804,9 +1804,9 @@
       
         <tags>
             
-            <tag> 倍增 </tag>
-            
             <tag> LCA </tag>
+            
+            <tag> 倍增 </tag>
             
             <tag> 换根DP </tag>
             
@@ -1835,11 +1835,11 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
+            <tag> 思维题 </tag>
             
             <tag> 后缀数组 </tag>
             
-            <tag> 思维题 </tag>
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -1889,9 +1889,9 @@
       
         <tags>
             
-            <tag> 树状数组 </tag>
-            
             <tag> SAM </tag>
+            
+            <tag> 树状数组 </tag>
             
             <tag> LCT </tag>
             
@@ -2067,9 +2067,9 @@
             
             <tag> 后缀数组 </tag>
             
-            <tag> Trie </tag>
-            
             <tag> SAM </tag>
+            
+            <tag> Trie </tag>
             
             <tag> 并查集 </tag>
             
@@ -2156,9 +2156,9 @@
       
         <tags>
             
-            <tag> 状压DP </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 状压DP </tag>
             
             <tag> Min-Max容斥 </tag>
             
@@ -2299,11 +2299,11 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 组合数学 </tag>
             
             <tag> 容斥原理 </tag>
             
-            <tag> 组合数学 </tag>
+            <tag> DP </tag>
             
             <tag> Min-Max容斥 </tag>
             
@@ -2330,11 +2330,11 @@
       
         <tags>
             
-            <tag> 分治 </tag>
-            
             <tag> 树形DP </tag>
             
             <tag> FFT </tag>
+            
+            <tag> 分治 </tag>
             
         </tags>
       
@@ -2359,13 +2359,13 @@
       
         <tags>
             
-            <tag> 分治 </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> 树链剖分 </tag>
             
             <tag> FFT </tag>
             
-            <tag> 树链剖分 </tag>
+            <tag> 分治 </tag>
             
             <tag> 链分治 </tag>
             
@@ -2423,9 +2423,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> FFT </tag>
             
@@ -2458,9 +2458,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> 二项式反演 </tag>
             
@@ -2580,9 +2580,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> DP </tag>
             
         </tags>
       
@@ -2663,9 +2663,9 @@
       
         <tags>
             
-            <tag> 倍增 </tag>
-            
             <tag> 点分治 </tag>
+            
+            <tag> 倍增 </tag>
             
             <tag> 强连通分量 </tag>
             
@@ -2692,11 +2692,11 @@
       
         <tags>
             
-            <tag> 状压DP </tag>
-            
             <tag> DP </tag>
             
             <tag> AC自动机 </tag>
+            
+            <tag> 状压DP </tag>
             
         </tags>
       
@@ -2777,11 +2777,11 @@
       
         <tags>
             
-            <tag> 状压DP </tag>
-            
             <tag> 容斥原理 </tag>
             
             <tag> FWT </tag>
+            
+            <tag> 状压DP </tag>
             
             <tag> 高维前缀和 </tag>
             
@@ -2893,9 +2893,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> 哈希 </tag>
             
@@ -2955,9 +2955,9 @@
       
         <tags>
             
-            <tag> 状压DP </tag>
-            
             <tag> FWT </tag>
+            
+            <tag> 状压DP </tag>
             
             <tag> 欧拉回路 </tag>
             
@@ -2986,9 +2986,9 @@
       
         <tags>
             
-            <tag> LCA </tag>
-            
             <tag> 虚树 </tag>
+            
+            <tag> LCA </tag>
             
             <tag> 边分治 </tag>
             
@@ -3015,9 +3015,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> SAM </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -3102,11 +3102,11 @@
             
             <tag> 线段树 </tag>
             
+            <tag> 树形DP </tag>
+            
             <tag> DP </tag>
             
             <tag> 贪心 </tag>
-            
-            <tag> 树形DP </tag>
             
             <tag> 区间DP </tag>
             
@@ -3166,11 +3166,11 @@
       
         <tags>
             
-            <tag> 拉格朗日插值 </tag>
-            
             <tag> Min25筛 </tag>
             
             <tag> 杜教筛 </tag>
+            
+            <tag> 拉格朗日插值 </tag>
             
         </tags>
       
@@ -3247,13 +3247,13 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> DP </tag>
             
-            <tag> 倍增 </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> 倍增 </tag>
             
         </tags>
       
@@ -3359,11 +3359,11 @@
       
         <tags>
             
+            <tag> 网络流 </tag>
+            
             <tag> 二分 </tag>
             
             <tag> 扫描线 </tag>
-            
-            <tag> 网络流 </tag>
             
             <tag> 计算几何 </tag>
             
@@ -3452,9 +3452,9 @@
       
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 网络流 </tag>
+            
+            <tag> 二分 </tag>
             
         </tags>
       
@@ -3637,11 +3637,11 @@
       
         <tags>
             
-            <tag> 分治 </tag>
-            
             <tag> 博弈论 </tag>
             
             <tag> FWT </tag>
+            
+            <tag> 分治 </tag>
             
         </tags>
       
@@ -3737,9 +3737,9 @@
       
         <tags>
             
-            <tag> 后缀数组 </tag>
-            
             <tag> ST表 </tag>
+            
+            <tag> 后缀数组 </tag>
             
         </tags>
       
@@ -3916,11 +3916,11 @@
       
         <tags>
             
+            <tag> 期望 </tag>
+            
             <tag> 容斥原理 </tag>
             
             <tag> FFT </tag>
-            
-            <tag> 期望 </tag>
             
         </tags>
       
@@ -3945,13 +3945,13 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
-            <tag> 树链剖分 </tag>
-            
             <tag> Hall定理 </tag>
             
             <tag> bitset </tag>
+            
+            <tag> 线段树 </tag>
+            
+            <tag> 树链剖分 </tag>
             
         </tags>
       
@@ -3978,11 +3978,11 @@
       
         <tags>
             
+            <tag> Hall定理 </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> 扫描线 </tag>
-            
-            <tag> Hall定理 </tag>
             
         </tags>
       
@@ -4007,9 +4007,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> Hall定理 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -4047,7 +4047,7 @@
       <link href="/Hall%E5%AE%9A%E7%90%86/"/>
       <url>/Hall%E5%AE%9A%E7%90%86/</url>
       
-        <content type="html"><![CDATA[<p>图论中一个比较有趣的定理。</p><a id="more"></a><h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>二分图的完美匹配：即最大匹配数=$\min(|X|,|Y|)$</p><h2 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h2><p>若一个二分图 $G=\{ X+Y,E \}(|X|\leq |Y|)$ 存在完美匹配，则任取一个 $X$ 中的子集 $W$，都会有 $|W|\leq |N_g(W)|$。</p><h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><h3 id="必要性"><a href="#必要性" class="headerlink" title="必要性"></a>必要性</h3><p>若该二分图存在完美匹配，且不满足上述条件：</p><p>则必然存在一个 $X$ 中的子集 $W$，使得 $W&gt; N_g(W)$。那么 $W$ 中的点就无法全部匹配了。</p><h3 id="充分性"><a href="#充分性" class="headerlink" title="充分性"></a>充分性</h3><p>若该二分图满足上述条件，且不存在完美匹配：</p><p>先进行最大匹配。</p><p>然后选择 $X$ 中一个未匹配的点 $x_1$，</p><p>由该条件可得，必然存在至少一个点 $y_1$ 与 $x_1$有连边。</p><p>又因为这是在最大匹配中，$y_1$ 必须另外一个在 $X$ 中的点 $x_2$ 配对（否则就不是最大匹配了）。</p><p>又由该条件得到：$\{ x_1,x_2 \}$ 必然存在至少两个点 $\{ y_1,y_2\}$ 与其相连，即必然存在至少一个点 $y_2$ 与 $x_2$有连边。</p><p>又因为这是在最大匹配中，$y_2 $ 必须另外一个在 $X$ 中的点 $x_3$ 配对（否则就不是最大匹配了）。</p><p>…</p><p>这样下来就找到了一条增广路，与最大匹配矛盾。</p><p>仅有这个定理还不够，因为没理由直接枚举全部 $X$ 的子集吧。</p><p>因此——</p><h2 id="一些结论"><a href="#一些结论" class="headerlink" title="一些结论"></a>一些结论</h2><h3 id="结论1"><a href="#结论1" class="headerlink" title="结论1"></a>结论1</h3><p>若 $X$ 中每个点连的边都是 $|Y|$ 上连续的一段，设 $[ l,r ]$ 为 $|Y|$ 上一段连续的点的集合，$f([l,r])$ 表示只与 $[l,r]$ 中的点连边的 $X$ 点的集合。那么：</p><script type="math/tex; mode=display">\forall 1\leq l\leq r\leq |Y|,|f([l,r])|\leq |[l,r]|\Leftrightarrow \forall W\subseteq X,|W|\leq |N_g(W)|</script><p>   证明挺显然的。</p><h3 id="结论2"><a href="#结论2" class="headerlink" title="结论2"></a>结论2</h3><p>一个二分图的最大匹配数 = $|X|-\max(|W|-|N_g(W)|)$</p><p>   不怎么会证。。。</p><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ol><li><a href="/Roundgod-and-Milk-Tea-hdu6667/" title="Roundgod and Milk Tea[hdu6667]">Roundgod and Milk Tea[hdu6667]</a></li><li><a href="/%E5%9C%86%E6%A1%8C%E4%BC%9A%E8%AE%AE-bzoj3693/" title="圆桌会议[bzoj3693]">圆桌会议[bzoj3693]</a></li><li></li><li><a href="/party-bzoj5404/" title="party[bzoj5404]">party[bzoj5404]</a></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>图论中一个比较有趣的定理。</p><a id="more"></a><h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>二分图的完美匹配：即最大匹配数=$\min(|X|,|Y|)$</p><h2 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h2><p>若一个二分图 $G=\{ X+Y,E \}(|X|\leq |Y|)$ 存在完美匹配，则任取一个 $X$ 中的子集 $W$，都会有 $|W|\leq |N_g(W)|$。</p><h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><h3 id="必要性"><a href="#必要性" class="headerlink" title="必要性"></a>必要性</h3><p>若该二分图存在完美匹配，且不满足上述条件：</p><p>则必然存在一个 $X$ 中的子集 $W$，使得 $W&gt; N_g(W)$。那么 $W$ 中的点就无法全部匹配了。</p><h3 id="充分性"><a href="#充分性" class="headerlink" title="充分性"></a>充分性</h3><p>若该二分图满足上述条件，且不存在完美匹配：</p><p>先进行最大匹配。</p><p>然后选择 $X$ 中一个未匹配的点 $x_1$，</p><p>由该条件可得，必然存在至少一个点 $y_1$ 与 $x_1$有连边。</p><p>又因为这是在最大匹配中，$y_1$ 必须另外一个在 $X$ 中的点 $x_2$ 配对（否则就不是最大匹配了）。</p><p>又由该条件得到：$\{ x_1,x_2 \}$ 必然存在至少两个点 $\{ y_1,y_2\}$ 与其相连，即必然存在至少一个点 $y_2$ 与 $x_2$有连边。</p><p>又因为这是在最大匹配中，$y_2 $ 必须另外一个在 $X$ 中的点 $x_3$ 配对（否则就不是最大匹配了）。</p><p>…</p><p>这样下来就找到了一条增广路，与最大匹配矛盾。</p><p>仅有这个定理还不够，因为没理由直接枚举全部 $X$ 的子集吧。</p><p>因此——</p><h2 id="一些结论"><a href="#一些结论" class="headerlink" title="一些结论"></a>一些结论</h2><h3 id="结论1"><a href="#结论1" class="headerlink" title="结论1"></a>结论1</h3><p>若 $X$ 中每个点连的边都是 $|Y|$ 上连续的一段，设 $[ l,r ]$ 为 $|Y|$ 上一段连续的点的集合，$f([l,r])$ 表示只与 $[l,r]$ 中的点连边的 $X$ 点的集合。那么：</p><script type="math/tex; mode=display">\forall 1\leq l\leq r\leq |Y|,|f([l,r])|\leq |[l,r]|\Leftrightarrow \forall W\subseteq X,|W|\leq |N_g(W)|</script><p>   证明挺显然的。</p><h3 id="结论2"><a href="#结论2" class="headerlink" title="结论2"></a>结论2</h3><p>一个二分图的最大匹配数 = $|X|-\max(|W|-|N_g(W)|)$</p><p>   不怎么会证。。。</p><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ol><li><a href="/Roundgod-and-Milk-Tea-hdu6667/" title="Roundgod and Milk Tea[hdu6667]">Roundgod and Milk Tea[hdu6667]</a></li><li><a href="/%E5%9C%86%E6%A1%8C%E4%BC%9A%E8%AE%AE-bzoj3693/" title="圆桌会议[bzoj3693]">圆桌会议[bzoj3693]</a></li><li><a href="/Exhausted-arc076F/" title="Exhausted[arc076F]">Exhausted[arc076F]</a></li><li><a href="/party-bzoj5404/" title="party[bzoj5404]">party[bzoj5404]</a></li></ol>]]></content>
       
       
       <categories>
@@ -4086,11 +4086,11 @@
       
         <tags>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 期望 </tag>
             
             <tag> 随机 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
       
@@ -4148,9 +4148,9 @@
       
         <tags>
             
-            <tag> 倍增 </tag>
-            
             <tag> 状态压缩 </tag>
+            
+            <tag> 倍增 </tag>
             
             <tag> FWT </tag>
             
@@ -4179,11 +4179,11 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
+            <tag> 期望 </tag>
             
             <tag> 思维题 </tag>
             
-            <tag> 期望 </tag>
+            <tag> 线段树 </tag>
             
             <tag> PAM </tag>
             
@@ -4212,15 +4212,15 @@
       
         <tags>
             
-            <tag> FFT </tag>
+            <tag> 网络流 </tag>
             
             <tag> SAM </tag>
-            
-            <tag> 网络流 </tag>
             
             <tag> 最短路 </tag>
             
             <tag> 线性基 </tag>
+            
+            <tag> FFT </tag>
             
         </tags>
       
@@ -4301,17 +4301,17 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 思维题 </tag>
-            
-            <tag> 树状数组 </tag>
-            
-            <tag> 最短路 </tag>
             
             <tag> 虚树 </tag>
             
+            <tag> DP </tag>
+            
+            <tag> 最短路 </tag>
+            
             <tag> 并查集 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
       

@@ -1555,7 +1555,7 @@ pre code {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f7bd14;
+  background: #e0ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -3136,7 +3136,7 @@ mjx-container + br {
   }
 }
 body {
-  background: url("/images/background.png");
+  background: url("/images/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -3174,6 +3174,14 @@ body {
 .sidebar a {
   color: #000;
 }
-.headband {
+.power.txt-right {
   display: none;
+}
+div#comments.comments.v {
+  margin-left: 0px;
+  margin-right: 0px;
+  border: 0px;
+}
+.vsys {
+  display: none !important;
 }
