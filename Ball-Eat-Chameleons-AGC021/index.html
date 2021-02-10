@@ -19,20 +19,24 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"ouqingliang.gitee.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="链接AtCoder luogu">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Ball Eat Chameleons[AGC021]">
-<meta property="og:url" content="http://yoursite.com/Ball-Eat-Chameleons-AGC021/index.html">
+<meta property="og:url" content="https://ouqingliang.gitee.io/Ball-Eat-Chameleons-AGC021/index.html">
 <meta property="og:site_name" content="Oql&#39;s blog">
+<meta property="og:description" content="链接AtCoder luogu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-05T02:02:22.000Z">
-<meta property="article:modified_time" content="2020-07-05T02:04:08.003Z">
+<meta property="article:modified_time" content="2020-07-05T02:36:07.300Z">
 <meta property="article:author" content="oql">
+<meta property="article:tag" content="容斥原理">
+<meta property="article:tag" content="组合数学">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/Ball-Eat-Chameleons-AGC021/">
+<link rel="canonical" href="https://ouqingliang.gitee.io/Ball-Eat-Chameleons-AGC021/">
 
 
 <script id="page-configurations">
@@ -120,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">98</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">101</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">151</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -189,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Ball-Eat-Chameleons-AGC021/">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.gitee.io/Ball-Eat-Chameleons-AGC021/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/bear.jpg">
@@ -239,7 +243,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <a id="more"></a>
+        <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://atcoder.jp/contests/agc021/tasks/agc021_e" target="_blank" rel="noopener">AtCoder</a></p>
+<p><a href="https://www.luogu.com.cn/problem/AT3871" target="_blank" rel="noopener">luogu</a></p>
+<a id="more"></a>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>设选了 $R$ 个红球，则选了 $B=k-R$ 个蓝球。</p>
+<p>考虑一只变色龙最后是红色的当且仅当：</p>
+<ol>
+<li>所吃红球&gt;蓝球；</li>
+<li>所吃红球=蓝球，且最后一次吃的是蓝球。</li>
+</ol>
+<p>接下来来看什么时候可行。</p>
+<p>分类讨论：</p>
+<ol>
+<li><p>$R&lt;B$，此时方案数显然为 $0$。因为至少存在一只变色龙是蓝色。</p>
+</li>
+<li><p>$R\geq B+n$，此时方案数显然为 $\binom{R+B}{B}$，因为每只变色龙都可以符合第一种情况。</p>
+</li>
+<li><p>$R=B$，这时候必须满足序列中最后一个是蓝球，否则必然不合法，然后转换成 $(R,B-1)$ 的问题。</p>
+</li>
+<li><p>$R\in (B,B+n)$，这时候需要有 $n-(R-B)$ 只变色龙符合第二种情况。并且，当这只变色龙吃的球的个数大于 $2$ 的话，可以将最后的一个红球和蓝球不吃，让给剩下 $R-B$ 只满足第一种情况的变色龙吃，也能满足情况。</p>
+<p>因此，这种情况就变成了给定一个 <code>R,B</code> 序列，里面有 $R$ 个 <code>R</code>，$B$ 个 <code>B</code>，至少要找到 $n-(R-B)$ 个互不相交的子序列，且这个子序列是 <code>RB</code>，问符合情况的方案数。</p>
+<p>把 <code>R</code> 看成 $+1$，<code>B</code> 看成 $-1$，上面的条件相当于：</p>
+<p>对于每个前缀都满足前缀和 $\geq B-(n-(R-B))=R-n$</p>
+<p>这时候由经典的折线法容斥一下就好了，得到方案数：$\binom{R+B}{R}-\binom{R+B}{2R-n+1}$。</p>
+</li>
+</ol>
+<p>预处理组合数，时间复杂度 $O(k)$。</p>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FO(x) freopen(#x<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(#x<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ff(i,j,k) for(int i=(j),end_i=(k);i&lt; end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fd(i,j,k) for(int i=(j),end_i=(k);i&gt;=end_i;i--)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG(x) cerr&lt;&lt;#x&lt;&lt;<span class="meta-string">"="</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cle(x) memset(x,0,sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x)&amp;-(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned ll</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lb long db</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Add</span><span class="params">(ll x,ll y)</span></span>&#123;x+=y; <span class="keyword">return</span> (x&lt;mod)?x:x-mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Dec</span><span class="params">(ll x,ll y)</span></span>&#123;x-=y; <span class="keyword">return</span> (x&lt;<span class="number">0</span>)?x+mod:x;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Mul</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> x*y%mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Pow</span><span class="params">(ll x,ll y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    y%=(mod<span class="number">-1</span>);ll ans=<span class="number">1</span>;<span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=x*x%mod)<span class="keyword">if</span>(y&amp;<span class="number">1</span>) ans=ans*x%mod;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">5e5</span>+<span class="number">5</span>;</span><br><span class="line">ll fac[N],inv[N];</span><br><span class="line"><span class="keyword">int</span> n,k,R,B;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">C</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n&lt;<span class="number">0</span>||m&lt;<span class="number">0</span>||n-m&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> fac[n]*inv[m]%mod*inv[n-m]%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>]=<span class="number">1</span>; fo(i,<span class="number">1</span>,n) fac[i]=fac[i<span class="number">-1</span>]*i%mod;</span><br><span class="line">    inv[n]=Pow(fac[n],mod<span class="number">-2</span>); fd(i,n,<span class="number">1</span>) inv[i<span class="number">-1</span>]=inv[i]*i%mod;</span><br><span class="line">&#125;</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">if</span>(n&gt;k) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"0"</span>)&amp;<span class="number">0</span>;</span><br><span class="line">    init(k);</span><br><span class="line">    fo(R,<span class="number">0</span>,k)</span><br><span class="line">    &#123;</span><br><span class="line">        B=k-R;</span><br><span class="line">        <span class="keyword">if</span>(R&lt;B) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(R&gt;=B+n) &#123;ans=Add(ans,C(R+B,R)); <span class="keyword">continue</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span>(R==B) B--;</span><br><span class="line">        ans=Add(ans,Dec(C(R+B,R),C(R+B,<span class="number">2</span>*R-n+<span class="number">1</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -247,6 +278,10 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 容斥原理</a>
+              <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 组合数学</a>
+          </div>
 
         
 
@@ -257,7 +292,10 @@
     <a href="/Mike-and-Friends-CF547E/" rel="prev" title="Mike and Friends[CF547E]">
       <i class="fa fa-chevron-left"></i> Mike and Friends[CF547E]
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/Construction-of-a-tree-AGC029F/" rel="next" title="Construction of a tree[AGC029F]">
+      Construction of a tree[AGC029F] <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -316,6 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序"><span class="nav-text">程序</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -331,7 +370,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">151</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -344,7 +383,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">98</span>
+        <span class="site-state-item-count">101</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -370,15 +409,15 @@
         
         
           <li>
-            <a href="/Ball-Eat-Chameleons-AGC021/" title="Ball Eat Chameleons[AGC021]" target="_blank">Ball Eat Chameleons[AGC021]</a>
+            <a href="/%E5%9B%9E%E5%BF%86%E5%BD%95/" title="回忆录" target="_blank">回忆录</a>
           </li>
         
           <li>
-            <a href="/Mike-and-Friends-CF547E/" title="Mike and Friends[CF547E]" target="_blank">Mike and Friends[CF547E]</a>
+            <a href="/%E7%9B%B8%E4%BC%BC%E5%AD%90%E4%B8%B2-bzoj3230/" title="相似子串[bzoj3230]" target="_blank">相似子串[bzoj3230]</a>
           </li>
         
           <li>
-            <a href="/Berserk-Robot-CF538G/" title="Berserk Robot[CF538G]" target="_blank">Berserk Robot[CF538G]</a>
+            <a href="/%E5%BA%8F%E5%88%97%E5%A6%99%E5%A6%99%E5%80%BC-uoj549/" title="序列妙妙值[uoj549]" target="_blank">序列妙妙值[uoj549]</a>
           </li>
         
       </ul>
@@ -403,7 +442,7 @@
 <div class="copyright">
   
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="user"></i>
   </span>
@@ -527,7 +566,7 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://yoursite.com/Ball-Eat-Chameleons-AGC021/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://ouqingliang.gitee.io/Ball-Eat-Chameleons-AGC021/',]
       });
       });
   </script>

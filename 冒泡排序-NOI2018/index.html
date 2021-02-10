@@ -19,25 +19,25 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"ouqingliang.gitee.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="链接loj">
 <meta property="og:type" content="article">
 <meta property="og:title" content="冒泡排序[NOI2018]">
-<meta property="og:url" content="http://yoursite.com/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-NOI2018/index.html">
+<meta property="og:url" content="https://ouqingliang.gitee.io/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-NOI2018/index.html">
 <meta property="og:site_name" content="Oql&#39;s blog">
 <meta property="og:description" content="链接loj">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-30T11:09:23.000Z">
-<meta property="article:modified_time" content="2020-06-30T12:03:26.923Z">
+<meta property="article:modified_time" content="2020-08-12T23:51:41.428Z">
 <meta property="article:author" content="oql">
 <meta property="article:tag" content="思维题">
 <meta property="article:tag" content="容斥原理">
 <meta property="article:tag" content="组合数学">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-NOI2018/">
+<link rel="canonical" href="https://ouqingliang.gitee.io/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-NOI2018/">
 
 
 <script id="page-configurations">
@@ -125,7 +125,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">98</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">101</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">151</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-NOI2018/">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.gitee.io/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-NOI2018/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/bear.jpg">
@@ -243,7 +243,7 @@
         <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://loj.ac/problem/2719" target="_blank" rel="noopener">loj</a></p>
 <a id="more"></a>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>显然我们需要分析一下达到交换次数下界的排列的充要条件。</p>
-<p>如果有三个数 $a_i,a_j,a_k(i<j<k)$ 满足 $a_i>a_j&gt;a_k$，那么这个排列一定不合法。因为 $a_j$ 至少要向右和向左都交换一次，那么这两次交换对这个 $a_j$ 是毫无意义的。</j<k)$></p>
+<p>如果有三个数 $a_i,a_j,a_k (i &lt; j &lt; k)$ 满足 $a_i&gt;a_j&gt;a_k$，那么这个排列一定不合法。因为 $a_j$ 至少要向右和向左都交换一次，那么这两次交换对这个 $a_j$ 是毫无意义的。</p>
 <p>那么剩下的情况只有最长下降子序列长度不超过 $2$ 的情况。可以发现，这样的情况一定合法。</p>
 <p>如果不考虑字典序的限制，只统计有多少个排列满足最长下降子序列长度不超过 $2$。</p>
 <p>尝试DP，设 $f_{i,j}$ 表示考虑到第 $i$ 位，前缀最大值为 $j$ 的方案数。看看 $f_{i,j}$ 能转移到哪里去。显然 $f_{i+1,k}(k&gt;j)$ 是一定可以的，且系数是 $1$。那么能否转移到 $f_{i+1,j}$ 呢？可以发现，如果你第 $i+1$ 位填的不是前 $i$ 位最小的没有出现过的正整数 $t$ 的话，后面一定会填上这个 $t$，此时 $j,a_{i+1},t$ 就会形成一个长度为 $3$ 的下降子序列了。因此 $f_{i,j}$ 给 $f_{i+1,j}$ 的贡献的系数为 $1$，且必须满足 $i+1\leq j$（不然就没数可填了）。</p>
@@ -354,7 +354,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">151</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -367,7 +367,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">98</span>
+        <span class="site-state-item-count">101</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -393,15 +393,15 @@
         
         
           <li>
-            <a href="/Ball-Eat-Chameleons-AGC021/" title="Ball Eat Chameleons[AGC021]" target="_blank">Ball Eat Chameleons[AGC021]</a>
+            <a href="/%E5%9B%9E%E5%BF%86%E5%BD%95/" title="回忆录" target="_blank">回忆录</a>
           </li>
         
           <li>
-            <a href="/Mike-and-Friends-CF547E/" title="Mike and Friends[CF547E]" target="_blank">Mike and Friends[CF547E]</a>
+            <a href="/%E7%9B%B8%E4%BC%BC%E5%AD%90%E4%B8%B2-bzoj3230/" title="相似子串[bzoj3230]" target="_blank">相似子串[bzoj3230]</a>
           </li>
         
           <li>
-            <a href="/Berserk-Robot-CF538G/" title="Berserk Robot[CF538G]" target="_blank">Berserk Robot[CF538G]</a>
+            <a href="/%E5%BA%8F%E5%88%97%E5%A6%99%E5%A6%99%E5%80%BC-uoj549/" title="序列妙妙值[uoj549]" target="_blank">序列妙妙值[uoj549]</a>
           </li>
         
       </ul>
@@ -426,7 +426,7 @@
 <div class="copyright">
   
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="user"></i>
   </span>
@@ -550,7 +550,7 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://yoursite.com/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-NOI2018/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://ouqingliang.gitee.io/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-NOI2018/',]
       });
       });
   </script>

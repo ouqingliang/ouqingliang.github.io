@@ -19,24 +19,24 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"ouqingliang.gitee.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="题意给一个 $n+m$ 个点的二分图，求有多少个点集，满足存在至少一个二分图匹配，使得该点集都在这个匹配中，且该点集的权值和大于某个值 $D$。 $n,m\leq 20,D\leq 4\times 10^8$。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bipartite Blanket[bzoj4788]">
-<meta property="og:url" content="http://yoursite.com/Bipartite-Blanket-bzoj4788/index.html">
+<meta property="og:url" content="https://ouqingliang.gitee.io/Bipartite-Blanket-bzoj4788/index.html">
 <meta property="og:site_name" content="Oql&#39;s blog">
 <meta property="og:description" content="题意给一个 $n+m$ 个点的二分图，求有多少个点集，满足存在至少一个二分图匹配，使得该点集都在这个匹配中，且该点集的权值和大于某个值 $D$。 $n,m\leq 20,D\leq 4\times 10^8$。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-21T07:12:59.000Z">
 <meta property="article:modified_time" content="2020-04-21T07:30:24.512Z">
 <meta property="article:author" content="oql">
-<meta property="article:tag" content="状态压缩">
 <meta property="article:tag" content="Hall定理">
+<meta property="article:tag" content="状态压缩">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/Bipartite-Blanket-bzoj4788/">
+<link rel="canonical" href="https://ouqingliang.gitee.io/Bipartite-Blanket-bzoj4788/">
 
 
 <script id="page-configurations">
@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">98</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">101</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">151</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Bipartite-Blanket-bzoj4788/">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.gitee.io/Bipartite-Blanket-bzoj4788/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/bear.jpg">
@@ -257,8 +257,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag"><i class="fa fa-tag"></i> 状态压缩</a>
               <a href="/tags/Hall%E5%AE%9A%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> Hall定理</a>
+              <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag"><i class="fa fa-tag"></i> 状态压缩</a>
           </div>
 
         
@@ -271,8 +271,8 @@
       <i class="fa fa-chevron-left"></i> 经典题[20200415模拟]
     </a></div>
       <div class="post-nav-item">
-    <a href="/20200513%E6%A8%A1%E6%8B%9F/" rel="next" title="20200513模拟">
-      20200513模拟 <i class="fa fa-chevron-right"></i>
+    <a href="/loj6198-%E8%B0%A2%E7%89%B9/" rel="next" title="[loj6198]谢特">
+      [loj6198]谢特 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -348,7 +348,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">151</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -361,7 +361,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">98</span>
+        <span class="site-state-item-count">101</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -387,15 +387,15 @@
         
         
           <li>
-            <a href="/Ball-Eat-Chameleons-AGC021/" title="Ball Eat Chameleons[AGC021]" target="_blank">Ball Eat Chameleons[AGC021]</a>
+            <a href="/%E5%9B%9E%E5%BF%86%E5%BD%95/" title="回忆录" target="_blank">回忆录</a>
           </li>
         
           <li>
-            <a href="/Mike-and-Friends-CF547E/" title="Mike and Friends[CF547E]" target="_blank">Mike and Friends[CF547E]</a>
+            <a href="/%E7%9B%B8%E4%BC%BC%E5%AD%90%E4%B8%B2-bzoj3230/" title="相似子串[bzoj3230]" target="_blank">相似子串[bzoj3230]</a>
           </li>
         
           <li>
-            <a href="/Berserk-Robot-CF538G/" title="Berserk Robot[CF538G]" target="_blank">Berserk Robot[CF538G]</a>
+            <a href="/%E5%BA%8F%E5%88%97%E5%A6%99%E5%A6%99%E5%80%BC-uoj549/" title="序列妙妙值[uoj549]" target="_blank">序列妙妙值[uoj549]</a>
           </li>
         
       </ul>
@@ -420,7 +420,7 @@
 <div class="copyright">
   
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="user"></i>
   </span>
@@ -544,7 +544,7 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://yoursite.com/Bipartite-Blanket-bzoj4788/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://ouqingliang.gitee.io/Bipartite-Blanket-bzoj4788/',]
       });
       });
   </script>

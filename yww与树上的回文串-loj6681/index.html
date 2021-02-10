@@ -19,26 +19,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"ouqingliang.gitee.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","width":240,"display":"post","padding":18,"offset":18,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="题目链接loj">
 <meta property="og:type" content="article">
 <meta property="og:title" content="yww与树上的回文串[loj6681]">
-<meta property="og:url" content="http://yoursite.com/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/index.html">
+<meta property="og:url" content="https://ouqingliang.gitee.io/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/index.html">
 <meta property="og:site_name" content="Oql&#39;s blog">
 <meta property="og:description" content="题目链接loj">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/1.png">
+<meta property="og:image" content="https://ouqingliang.gitee.io/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/1.png">
 <meta property="article:published_time" content="2020-04-11T04:06:02.000Z">
 <meta property="article:modified_time" content="2020-04-13T00:38:56.506Z">
 <meta property="article:author" content="oql">
 <meta property="article:tag" content="AC自动机">
 <meta property="article:tag" content="点分治">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/1.png">
+<meta name="twitter:image" content="https://ouqingliang.gitee.io/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/1.png">
 
-<link rel="canonical" href="http://yoursite.com/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/">
+<link rel="canonical" href="https://ouqingliang.gitee.io/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/">
 
 
 <script id="page-configurations">
@@ -126,7 +126,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">98</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">101</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">143</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">151</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -195,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.gitee.io/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/bear.jpg">
@@ -288,8 +288,8 @@
       <i class="fa fa-chevron-left"></i> USACO 2020 US Open Platinum
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020GDOI%E6%A8%A1%E6%8B%9FDay12/" rel="next" title="2020GDOI模拟Day12">
-      2020GDOI模拟Day12 <i class="fa fa-chevron-right"></i>
+    <a href="/Fake-bullions-CF804F/" rel="next" title="Fake bullions[CF804F]">
+      Fake bullions[CF804F] <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -365,7 +365,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">151</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -378,7 +378,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">98</span>
+        <span class="site-state-item-count">101</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -404,15 +404,15 @@
         
         
           <li>
-            <a href="/Ball-Eat-Chameleons-AGC021/" title="Ball Eat Chameleons[AGC021]" target="_blank">Ball Eat Chameleons[AGC021]</a>
+            <a href="/%E5%9B%9E%E5%BF%86%E5%BD%95/" title="回忆录" target="_blank">回忆录</a>
           </li>
         
           <li>
-            <a href="/Mike-and-Friends-CF547E/" title="Mike and Friends[CF547E]" target="_blank">Mike and Friends[CF547E]</a>
+            <a href="/%E7%9B%B8%E4%BC%BC%E5%AD%90%E4%B8%B2-bzoj3230/" title="相似子串[bzoj3230]" target="_blank">相似子串[bzoj3230]</a>
           </li>
         
           <li>
-            <a href="/Berserk-Robot-CF538G/" title="Berserk Robot[CF538G]" target="_blank">Berserk Robot[CF538G]</a>
+            <a href="/%E5%BA%8F%E5%88%97%E5%A6%99%E5%A6%99%E5%80%BC-uoj549/" title="序列妙妙值[uoj549]" target="_blank">序列妙妙值[uoj549]</a>
           </li>
         
       </ul>
@@ -437,7 +437,7 @@
 <div class="copyright">
   
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="user"></i>
   </span>
@@ -561,7 +561,7 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://yoursite.com/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://ouqingliang.gitee.io/yww%E4%B8%8E%E6%A0%91%E4%B8%8A%E7%9A%84%E5%9B%9E%E6%96%87%E4%B8%B2-loj6681/',]
       });
       });
   </script>
