@@ -8,7 +8,7 @@
       <link href="/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
       <url>/%E5%9B%9E%E5%BF%86%E5%BD%95/</url>
       
-        <content type="html"><![CDATA[<a id="more"></a><p><br></p><div class="pdfobject-container" data-target="https://ouqingliang.gitee.io/file/recollection.pdf" data-height="500px"></div><p><br></p>]]></content>
+        <content type="html"><![CDATA[<a id="more"></a><p><br></p><p><a href="https://ouqingliang.gitee.io/file/recollection.pdf">回忆录链接</a></p><p><br></p>]]></content>
       
       
       
@@ -563,9 +563,9 @@
             
             <tag> PAM </tag>
             
-            <tag> 分块 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 分块 </tag>
             
             <tag> 半平面交 </tag>
             
@@ -755,11 +755,11 @@
             
             <tag> 二分 </tag>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
+            
+            <tag> DP </tag>
             
             <tag> 构造题 </tag>
             
@@ -1980,9 +1980,9 @@
             
             <tag> 数位DP </tag>
             
-            <tag> 平衡树 </tag>
-            
             <tag> 随机 </tag>
+            
+            <tag> 平衡树 </tag>
             
             <tag> 启发式合并 </tag>
             
@@ -2487,9 +2487,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 树状数组 </tag>
             
@@ -2663,9 +2663,9 @@
       
         <tags>
             
-            <tag> 点分治 </tag>
-            
             <tag> 倍增 </tag>
+            
+            <tag> 点分治 </tag>
             
             <tag> 强连通分量 </tag>
             
@@ -3104,9 +3104,9 @@
             
             <tag> 树形DP </tag>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 区间DP </tag>
             
@@ -3247,11 +3247,11 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
+            
+            <tag> DP </tag>
             
             <tag> 倍增 </tag>
             
