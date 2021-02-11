@@ -755,11 +755,11 @@
             
             <tag> 二分 </tag>
             
+            <tag> DP </tag>
+            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
-            
-            <tag> DP </tag>
             
             <tag> 构造题 </tag>
             
@@ -2487,9 +2487,9 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 树状数组 </tag>
             
@@ -2663,9 +2663,9 @@
       
         <tags>
             
-            <tag> 点分治 </tag>
-            
             <tag> 倍增 </tag>
+            
+            <tag> 点分治 </tag>
             
             <tag> 强连通分量 </tag>
             
@@ -3100,13 +3100,13 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 树形DP </tag>
             
-            <tag> 贪心 </tag>
+            <tag> 线段树 </tag>
             
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 区间DP </tag>
             
@@ -3247,11 +3247,11 @@
       
         <tags>
             
+            <tag> DP </tag>
+            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
-            
-            <tag> DP </tag>
             
             <tag> 倍增 </tag>
             
@@ -4119,9 +4119,9 @@
             
             <tag> 思维题 </tag>
             
-            <tag> 贪心 </tag>
-            
             <tag> Trie </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> exgcd </tag>
             
@@ -4301,9 +4301,9 @@
       
         <tags>
             
-            <tag> 思维题 </tag>
-            
             <tag> 虚树 </tag>
+            
+            <tag> 思维题 </tag>
             
             <tag> DP </tag>
             
