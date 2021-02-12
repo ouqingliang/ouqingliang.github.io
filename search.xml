@@ -406,9 +406,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> Lucas定理 </tag>
             
@@ -470,9 +470,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> DP </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> DP </tag>
             
             <tag> 并查集 </tag>
             
@@ -755,9 +755,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> bfs </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> bfs </tag>
             
             <tag> DP </tag>
             
@@ -792,9 +792,9 @@
             
             <tag> 交互题 </tag>
             
-            <tag> bfs </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> bfs </tag>
             
             <tag> 数据分治 </tag>
             
@@ -1276,9 +1276,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> DP </tag>
             
         </tags>
       
@@ -2893,9 +2893,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> 哈希 </tag>
             
@@ -3102,11 +3102,11 @@
             
             <tag> 线段树 </tag>
             
+            <tag> 树形DP </tag>
+            
             <tag> 贪心 </tag>
             
             <tag> DP </tag>
-            
-            <tag> 树形DP </tag>
             
             <tag> 区间DP </tag>
             
@@ -3247,13 +3247,13 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> 贪心 </tag>
             
-            <tag> 倍增 </tag>
+            <tag> bfs </tag>
             
             <tag> DP </tag>
+            
+            <tag> 倍增 </tag>
             
         </tags>
       
@@ -3916,9 +3916,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 期望 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> FFT </tag>
             
@@ -4183,9 +4183,9 @@
             
             <tag> 思维题 </tag>
             
-            <tag> PAM </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> PAM </tag>
             
         </tags>
       
@@ -4301,9 +4301,9 @@
       
         <tags>
             
-            <tag> 虚树 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 虚树 </tag>
             
             <tag> DP </tag>
             
