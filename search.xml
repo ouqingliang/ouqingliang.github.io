@@ -406,9 +406,9 @@
       
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> Lucas定理 </tag>
             
@@ -755,11 +755,11 @@
             
             <tag> 二分 </tag>
             
+            <tag> DP </tag>
+            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
-            
-            <tag> DP </tag>
             
             <tag> 构造题 </tag>
             
@@ -2487,9 +2487,9 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 树状数组 </tag>
             
@@ -2893,9 +2893,9 @@
       
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> 哈希 </tag>
             
@@ -3104,9 +3104,9 @@
             
             <tag> 树形DP </tag>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 区间DP </tag>
             
@@ -3247,11 +3247,11 @@
       
         <tags>
             
+            <tag> DP </tag>
+            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
-            
-            <tag> DP </tag>
             
             <tag> 倍增 </tag>
             
@@ -3916,9 +3916,9 @@
       
         <tags>
             
-            <tag> 期望 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 期望 </tag>
             
             <tag> FFT </tag>
             
@@ -4119,9 +4119,9 @@
             
             <tag> 思维题 </tag>
             
-            <tag> 贪心 </tag>
-            
             <tag> Trie </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> exgcd </tag>
             
@@ -4301,9 +4301,9 @@
       
         <tags>
             
-            <tag> 思维题 </tag>
-            
             <tag> 虚树 </tag>
+            
+            <tag> 思维题 </tag>
             
             <tag> DP </tag>
             
