@@ -563,9 +563,9 @@
             
             <tag> PAM </tag>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 分块 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 半平面交 </tag>
             
@@ -4247,9 +4247,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 状态压缩 </tag>
+            
+            <tag> 容斥原理 </tag>
             
         </tags>
       
@@ -4301,9 +4301,9 @@
       
         <tags>
             
-            <tag> 思维题 </tag>
-            
             <tag> 虚树 </tag>
+            
+            <tag> 思维题 </tag>
             
             <tag> DP </tag>
             
