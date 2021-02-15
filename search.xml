@@ -2663,9 +2663,9 @@
       
         <tags>
             
-            <tag> 点分治 </tag>
-            
             <tag> 倍增 </tag>
+            
+            <tag> 点分治 </tag>
             
             <tag> 强连通分量 </tag>
             
@@ -4247,9 +4247,9 @@
       
         <tags>
             
-            <tag> 状态压缩 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 状态压缩 </tag>
             
         </tags>
       
