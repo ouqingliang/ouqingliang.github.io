@@ -112,9 +112,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> 拉格朗日插值 </tag>
             
@@ -563,9 +563,9 @@
             
             <tag> PAM </tag>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 分块 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 半平面交 </tag>
             
@@ -693,9 +693,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> DP </tag>
             
@@ -755,11 +755,11 @@
             
             <tag> 二分 </tag>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
+            
+            <tag> DP </tag>
             
             <tag> 构造题 </tag>
             
@@ -1095,11 +1095,11 @@
       
         <tags>
             
+            <tag> 思维题 </tag>
+            
             <tag> 组合数学 </tag>
             
             <tag> 容斥原理 </tag>
-            
-            <tag> 思维题 </tag>
             
         </tags>
       
@@ -1837,9 +1837,9 @@
             
             <tag> 后缀数组 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -1980,9 +1980,9 @@
             
             <tag> 数位DP </tag>
             
-            <tag> 平衡树 </tag>
-            
             <tag> 随机 </tag>
+            
+            <tag> 平衡树 </tag>
             
             <tag> 启发式合并 </tag>
             
@@ -2487,9 +2487,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 树状数组 </tag>
             
@@ -3104,9 +3104,9 @@
             
             <tag> 树形DP </tag>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 区间DP </tag>
             
@@ -3247,11 +3247,11 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
+            
+            <tag> DP </tag>
             
             <tag> 倍增 </tag>
             
@@ -4181,9 +4181,9 @@
             
             <tag> 期望 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> PAM </tag>
             
