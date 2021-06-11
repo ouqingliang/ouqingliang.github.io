@@ -8,7 +8,7 @@
       <link href="/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
       <url>/%E5%9B%9E%E5%BF%86%E5%BD%95/</url>
       
-        <content type="html"><![CDATA[<a id="more"></a><p><br></p><p><a href="https://ouqingliang.gitee.io/file/recollection.pdf">回忆录链接</a></p><p><br></p>]]></content>
+        <content type="html"><![CDATA[<a id="more"></a><p><br></p><p><a href="https://ouqingliang.github.io/file/recollection.pdf" target="_blank" rel="noopener">回忆录链接</a></p><p><br></p>]]></content>
       
       
       
@@ -112,9 +112,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> 拉格朗日插值 </tag>
             
@@ -406,9 +406,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> Lucas定理 </tag>
             
@@ -563,9 +563,9 @@
             
             <tag> PAM </tag>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 分块 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 半平面交 </tag>
             
@@ -693,9 +693,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> DP </tag>
             
@@ -755,11 +755,11 @@
             
             <tag> 二分 </tag>
             
+            <tag> DP </tag>
+            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
-            
-            <tag> DP </tag>
             
             <tag> 构造题 </tag>
             
@@ -790,11 +790,11 @@
             
             <tag> 后缀数组 </tag>
             
+            <tag> 交互题 </tag>
+            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
-            
-            <tag> 交互题 </tag>
             
             <tag> 数据分治 </tag>
             
@@ -1095,11 +1095,11 @@
       
         <tags>
             
+            <tag> 思维题 </tag>
+            
             <tag> 组合数学 </tag>
             
             <tag> 容斥原理 </tag>
-            
-            <tag> 思维题 </tag>
             
         </tags>
       
@@ -1837,9 +1837,9 @@
             
             <tag> 后缀数组 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -2487,9 +2487,9 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 树状数组 </tag>
             
@@ -2663,9 +2663,9 @@
       
         <tags>
             
-            <tag> 倍增 </tag>
-            
             <tag> 点分治 </tag>
+            
+            <tag> 倍增 </tag>
             
             <tag> 强连通分量 </tag>
             
@@ -2893,9 +2893,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> 哈希 </tag>
             
@@ -3104,9 +3104,9 @@
             
             <tag> 树形DP </tag>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 区间DP </tag>
             
@@ -3247,11 +3247,11 @@
       
         <tags>
             
+            <tag> DP </tag>
+            
             <tag> 贪心 </tag>
             
             <tag> bfs </tag>
-            
-            <tag> DP </tag>
             
             <tag> 倍增 </tag>
             
@@ -3916,9 +3916,9 @@
       
         <tags>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 期望 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> FFT </tag>
             
@@ -4181,9 +4181,9 @@
             
             <tag> 期望 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> PAM </tag>
             
@@ -4301,9 +4301,9 @@
       
         <tags>
             
-            <tag> 虚树 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 虚树 </tag>
             
             <tag> DP </tag>
             
