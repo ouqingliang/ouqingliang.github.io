@@ -112,9 +112,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 思维题 </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> 拉格朗日插值 </tag>
             
@@ -563,9 +563,9 @@
             
             <tag> PAM </tag>
             
-            <tag> 分块 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 分块 </tag>
             
             <tag> 半平面交 </tag>
             
@@ -755,9 +755,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> bfs </tag>
             
@@ -1095,11 +1095,11 @@
       
         <tags>
             
+            <tag> 思维题 </tag>
+            
             <tag> 组合数学 </tag>
             
             <tag> 容斥原理 </tag>
-            
-            <tag> 思维题 </tag>
             
         </tags>
       
@@ -1980,9 +1980,9 @@
             
             <tag> 数位DP </tag>
             
-            <tag> 平衡树 </tag>
-            
             <tag> 随机 </tag>
+            
+            <tag> 平衡树 </tag>
             
             <tag> 启发式合并 </tag>
             
@@ -2487,9 +2487,9 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 树状数组 </tag>
             
@@ -3104,9 +3104,9 @@
             
             <tag> 树形DP </tag>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 区间DP </tag>
             
@@ -3247,9 +3247,9 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> bfs </tag>
             
