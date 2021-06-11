@@ -112,9 +112,9 @@
       
         <tags>
             
-            <tag> 思维题 </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> 思维题 </tag>
             
             <tag> 拉格朗日插值 </tag>
             
@@ -1095,11 +1095,11 @@
       
         <tags>
             
-            <tag> 思维题 </tag>
-            
             <tag> 组合数学 </tag>
             
             <tag> 容斥原理 </tag>
+            
+            <tag> 思维题 </tag>
             
         </tags>
       
@@ -1980,9 +1980,9 @@
             
             <tag> 数位DP </tag>
             
-            <tag> 随机 </tag>
-            
             <tag> 平衡树 </tag>
+            
+            <tag> 随机 </tag>
             
             <tag> 启发式合并 </tag>
             
@@ -4301,9 +4301,9 @@
       
         <tags>
             
-            <tag> 思维题 </tag>
-            
             <tag> 虚树 </tag>
+            
+            <tag> 思维题 </tag>
             
             <tag> DP </tag>
             
