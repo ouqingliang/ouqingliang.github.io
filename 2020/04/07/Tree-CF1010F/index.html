@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ouqingliang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="题目链接链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tree[CF1010F]">
+<meta property="og:url" content="https://ouqingliang.github.io/2020/04/07/Tree-CF1010F/index.html">
+<meta property="og:site_name" content="Oql&#39;s Blog">
+<meta property="og:description" content="题目链接链接">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-07T13:33:02.000Z">
+<meta property="article:modified_time" content="2020-04-08T02:11:10.000Z">
+<meta property="article:author" content="Oql">
+<meta property="article:tag" content="分治">
+<meta property="article:tag" content="FFT">
+<meta property="article:tag" content="组合数学">
+<meta property="article:tag" content="树链剖分">
+<meta property="article:tag" content="链分治">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ouqingliang.github.io/2020/04/07/Tree-CF1010F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ouqingliang.github.io/2020/04/07/Tree-CF1010F/","path":"2020/04/07/Tree-CF1010F/","title":"Tree[CF1010F]"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Tree[CF1010F] | Oql's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Oql's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">125</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">211</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">程序</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oql"
+      src="/images/bear.jpg">
+  <p class="site-author-name" itemprop="name">Oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ouqingliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ouqingliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1692110604@qq.com" title="E-Mail → mailto:1692110604@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.github.io/2020/04/07/Tree-CF1010F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bear.jpg">
+      <meta itemprop="name" content="Oql">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Tree[CF1010F] | Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Tree[CF1010F]
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-07 21:33:02" itemprop="dateCreated datePublished" datetime="2020-04-07T21:33:02+08:00">2020-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-04-08 10:11:10" itemprop="dateModified" datetime="2020-04-08T10:11:10+08:00">2020-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CF/" itemprop="url" rel="index"><span itemprop="name">CF</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1010/problem/F">链接</a></p>
+<span id="more"></span>
+
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给你一棵有根二叉树，现在你要在上面填数。</p>
+<p>根节点为 $1$，且已经填上了数字 $x$。</p>
+<p>树边可以任意断掉，最后保留存在能到根节点路径的节点所形成的子树。</p>
+<p>对于子树中的这些节点 $u$，满足它所有儿子所填的数之和小于等于 $u$ 填的数。</p>
+<p>问最后有多少种形态。两种形态不同当且仅当子树的节点集合不同；或者集合相同，但存在一个节点 $u$，使得在两种方案中所填之数不同。</p>
+<p>模 $998244353$。</p>
+<p>$n\leq 10^5$，时限7s。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这题也是够毒瘤了QwQ。</p>
+<p>先来看看不能断树边该怎么算。</p>
+<p>设 $a_u$ 为节点 $u$ 所填的数字。对于所有的 $u$ ，要使得满足它所有儿子所填的数之和小于等于 $u$ 填的数，我们转换条件，设：$b_u=a_u-\sum_{v\in son_u}a_v$。</p>
+<p>那么就会有 $b_u\geq 0$，且可以发现，每个不同的 $b$ 一一对应这不同的 $a$。</p>
+<p>并且还有 $\sum_{i=1}^nb_i=n$。</p>
+<p>那么有插板法可得总方案数为 $\binom{n+x-1}{n}$。这个 $n$ 表示树的节点个数。</p>
+<p>现在题目转换成，对于每个 $i$，求有多少个包含 $1$ 号点的连通子图，且大小为 $i$。</p>
+<p>显然我们可以树形DP，设 $f_{u,i}$ 表示子树 $u$ 中节点个数为 $i$ 的方案数。</p>
+<p>当有两个儿子的时候，有：$f_{u,i}=\sum_{j+k=i-1}f_{v,j}\times f_{w,k},f_{u,0}=1$。</p>
+<p>设 $f_u$ 的OGF为 $F_u$，上式写成生成函数的形式是：$F_u=xF_vF_w+1$。</p>
+<p>当 $u$ 为空的时候，$F_u=1$。</p>
+<p>显然上式用FFT优化，但显然还是没有用的。</p>
+<p>那就先考虑链吧？这个很简单。</p>
+<p>链中每个点插多一个子树呢？</p>
+<p>那么我对于每个点 $u$，设插进去的这个子树算出来的生成函数乘以 $x$ 后的式子为 $g_u$。</p>
+<p>对于这条链，考虑从上往下计算，则有：$F_u=F_{son_u}g_u+1$</p>
+<p>我们不妨将这条链从上往下标号为 $1,2\cdots k$。那么最终的生成函数就是：</p>
+<p>$$F=(g_1(g_2(g_3\cdots)+1))+1\=\sum_{i=0}^k\prod_{j=1}^ig_j$$</p>
+<p>考虑分治计算这个东西，设当前的分治结构为 $[l,r]$，$s=\prod_{i=l}^rg_i$，$F=\sum_{i=l-1}^r\prod_{j=l}^ig_j$，那么有：</p>
+<p>$$s_{[l,r]}=s_{[l,mid]}\times s_{[mid+1,r]}\\F_{[l,r]}=(F_{[l,mid]}-1)\times s_{[mid+1,r]}+F_{[mid+1,r]}$$</p>
+<p>可以用ntt优化上面的乘法。</p>
+<p>那么可以先树链剖分进行链分治，对于每条链，我们按照上面的方法算。设链顶的节点的子树大小为 $siz$ ，那么上面的方法的复杂度就是 $O(siz\log ^2siz)$。</p>
+<p>由于每个节点往上跳只会统计最多 $\log n$ 次，那么总的复杂度就是 $O(n\log ^3n)$。</p>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FO(x) freopen(#x<span class="string">&quot;.in&quot;</span>,<span class="string">&quot;r&quot;</span>,stdin),freopen(#x<span class="string">&quot;.out&quot;</span>,<span class="string">&quot;W&quot;</span>,stdout)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fd(i,j,k) for(int i=(j),end_i=(k);i&gt;=end_i;i--)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEBUG(x) cerr&lt;&lt;#x&lt;&lt;<span class="string">&quot;=&quot;</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> cle(x) memset(x,0,sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> lowbit(x) ((x)&amp;-(x))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned ll</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> lb long db</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> se second</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> x=<span class="number">0</span>; <span class="type">char</span> ch=<span class="built_in">getchar</span>(); <span class="type">bool</span> f=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;ch&lt;<span class="string">&#x27;0&#x27;</span>||ch&gt;<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(ch^<span class="number">48</span>);</span><br><span class="line">    <span class="keyword">return</span> f?-x:x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Add</span><span class="params">(ll x,ll y)</span></span>&#123;x+=y; <span class="keyword">return</span> (x&lt;mod)?x:x-mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Dec</span><span class="params">(ll x,ll y)</span></span>&#123;x-=y; <span class="keyword">return</span> (x&lt;<span class="number">0</span>)?x+mod:x;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Mul</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> x*y%mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Pow</span><span class="params">(ll x,ll y)</span></span>&#123;y%=(mod<span class="number">-1</span>);ll ans=<span class="number">1</span>;<span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=x*x%mod)<span class="keyword">if</span>(y&amp;<span class="number">1</span>) ans=ans*x%mod;<span class="keyword">return</span> ans;&#125;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">100005</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> M=<span class="number">1</span>&lt;&lt;<span class="number">18</span>;</span><br><span class="line"><span class="keyword">typedef</span> vector&lt;ll&gt; Poly;</span><br><span class="line"><span class="keyword">namespace</span> P&#123;</span><br><span class="line">    <span class="type">int</span> R[M]; ll W[M];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">PolyInit</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ll wn;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;M;i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            W[i]=<span class="number">1</span>; wn=<span class="built_in">Pow</span>(<span class="number">3</span>,(mod<span class="number">-1</span>)/<span class="number">2</span>/i);</span><br><span class="line">            <span class="built_in">fo</span>(j,<span class="number">1</span>,i<span class="number">-1</span>) W[i+j]=W[i+j<span class="number">-1</span>]*wn%mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">ntt</span><span class="params">(ll *a,<span class="type">int</span> n,<span class="type">int</span> opt)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ll w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            R[i]=(R[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)*(n&gt;&gt;<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(i&lt;R[i]) <span class="built_in">swap</span>(a[i],a[R[i]]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j+=(i&lt;&lt;<span class="number">1</span>))</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;i;k++)</span><br><span class="line">                    w=W[i+k]*a[i+j+k]%mod,</span><br><span class="line">                    a[i+j+k]=<span class="built_in">Dec</span>(a[j+k],w),</span><br><span class="line">                    a[j+k]=<span class="built_in">Add</span>(a[j+k],w);</span><br><span class="line">        <span class="keyword">if</span>(opt==<span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">reverse</span>(a+<span class="number">1</span>,a+n);</span><br><span class="line">        w=<span class="built_in">Pow</span>(n,mod<span class="number">-2</span>);</span><br><span class="line">        <span class="built_in">fo</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) a[i]=w*a[i]%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">ntt</span><span class="params">(Poly &amp;A,<span class="type">int</span> n,<span class="type">int</span> opt)</span> </span>&#123;<span class="built_in">ntt</span>(&amp;A[<span class="number">0</span>],n,opt);&#125;</span><br><span class="line">    <span class="keyword">inline</span> Poly <span class="keyword">operator</span>*(Poly A,Poly B)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> n=A.<span class="built_in">size</span>(),m=B.<span class="built_in">size</span>(),k=n+m<span class="number">-1</span>,len=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(;len&lt;=k;len&lt;&lt;=<span class="number">1</span>);</span><br><span class="line">        A.<span class="built_in">resize</span>(len); B.<span class="built_in">resize</span>(len);</span><br><span class="line">        <span class="built_in">ntt</span>(A,len,<span class="number">1</span>); <span class="built_in">ntt</span>(B,len,<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">fo</span>(i,<span class="number">0</span>,len<span class="number">-1</span>) A[i]=<span class="number">1ll</span>*A[i]*B[i]%mod;</span><br><span class="line">        <span class="built_in">ntt</span>(A,len,<span class="number">-1</span>);</span><br><span class="line">        A.<span class="built_in">resize</span>(k);</span><br><span class="line">        <span class="keyword">return</span> A;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">inline</span> Poly <span class="keyword">operator</span>+(<span class="type">const</span> Poly &amp;A,<span class="type">const</span> Poly &amp;B)</span><br><span class="line">    &#123;</span><br><span class="line">        Poly C=A;</span><br><span class="line">        C.<span class="built_in">resize</span>(<span class="built_in">max</span>(A.<span class="built_in">size</span>(),B.<span class="built_in">size</span>()));</span><br><span class="line">        <span class="built_in">fo</span>(i,<span class="number">0</span>,B.<span class="built_in">size</span>()<span class="number">-1</span>) C[i]=<span class="built_in">Add</span>(C[i],B[i]);</span><br><span class="line">        <span class="keyword">return</span> C;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> P;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="keyword">namespace</span> Tree&#123;</span><br><span class="line">    <span class="type">int</span> son[N],siz[N],oth[N]; </span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; adj[N];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        adj[x].<span class="built_in">pb</span>(y); adj[y].<span class="built_in">pb</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs1</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> pre)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        siz[u]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:adj[u]) <span class="keyword">if</span>(v!=pre)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">dfs1</span>(v,u);</span><br><span class="line">            oth[u]^=v;</span><br><span class="line">            siz[u]+=siz[v];</span><br><span class="line">            <span class="keyword">if</span>(siz[son[u]]&lt;siz[v]) son[u]=v;</span><br><span class="line">        &#125;</span><br><span class="line">        oth[u]^=son[u];</span><br><span class="line">    &#125;</span><br><span class="line">    Poly p[N],w[N];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r,Poly &amp;f,Poly &amp;g)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l==r)&#123;f=g=w[l]; <span class="keyword">return</span>;&#125;</span><br><span class="line">        <span class="type">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        Poly lf,lg,rf,rg;</span><br><span class="line">        <span class="built_in">solve</span>(l,mid,lf,lg); <span class="built_in">solve</span>(mid+<span class="number">1</span>,r,rf,rg);</span><br><span class="line">        g=lg*rg; f=rf*lg+lf;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Poly <span class="title">dfs2</span><span class="params">(<span class="type">int</span> u)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> m=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> v=u;v;v=son[v])</span><br><span class="line">        &#123;</span><br><span class="line">            p[v].<span class="built_in">clear</span>();</span><br><span class="line">            <span class="keyword">if</span>(oth[v]) p[v]=<span class="built_in">dfs2</span>(oth[v]);</span><br><span class="line">            <span class="keyword">if</span>(p[v].<span class="built_in">empty</span>()) p[v].<span class="built_in">pb</span>(<span class="number">0</span>);</span><br><span class="line">            p[v][<span class="number">0</span>]++; p[v].<span class="built_in">insert</span>(p[v].<span class="built_in">begin</span>(),<span class="number">0</span>);</span><br><span class="line">            w[++m].<span class="built_in">swap</span>(p[v]);</span><br><span class="line">        &#125;</span><br><span class="line">        Poly f,g;</span><br><span class="line">        <span class="built_in">solve</span>(<span class="number">1</span>,m,f,g);</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">    &#125;</span><br><span class="line">    Poly f;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> ll <span class="title">work</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">dfs1</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        f=<span class="built_in">dfs2</span>(<span class="number">1</span>);</span><br><span class="line">        ll ans=<span class="number">0</span>,now=<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">        &#123;</span><br><span class="line">            ans=<span class="built_in">Add</span>(ans,<span class="built_in">Mul</span>(now,f[i]));</span><br><span class="line">            now=<span class="built_in">Mul</span>(now,<span class="built_in">Mul</span>(<span class="built_in">Add</span>(x,i),<span class="built_in">Pow</span>(i,mod<span class="number">-2</span>)));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">PolyInit</span>();</span><br><span class="line">    n=<span class="built_in">read</span>();</span><br><span class="line">    ll x; <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;x); x%=mod;</span><br><span class="line">    <span class="built_in">fo</span>(i,<span class="number">2</span>,n) Tree::<span class="built_in">add</span>(<span class="built_in">read</span>(),<span class="built_in">read</span>());</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,Tree::<span class="built_in">work</span>(x));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%88%86%E6%B2%BB/" rel="tag"><i class="fa fa-tag"></i> 分治</a>
+              <a href="/tags/FFT/" rel="tag"><i class="fa fa-tag"></i> FFT</a>
+              <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 组合数学</a>
+              <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" rel="tag"><i class="fa fa-tag"></i> 树链剖分</a>
+              <a href="/tags/%E9%93%BE%E5%88%86%E6%B2%BB/" rel="tag"><i class="fa fa-tag"></i> 链分治</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/07/%E6%B0%AA%E9%87%91%E6%89%8B%E6%B8%B8-CTS2019/" rel="prev" title="氪金手游[CTS2019]">
+                  <i class="fa fa-chevron-left"></i> 氪金手游[CTS2019]
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/04/08/K-Paths-CF981H/" rel="next" title="K Paths[CF981H]">
+                  K Paths[CF981H] <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oql</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

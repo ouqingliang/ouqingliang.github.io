@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ouqingliang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="链接gym">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021 CCPC 桂林站">
+<meta property="og:url" content="https://ouqingliang.github.io/2021/11/17/2021-CCPC-%E6%A1%82%E6%9E%97%E7%AB%99/index.html">
+<meta property="og:site_name" content="Oql&#39;s Blog">
+<meta property="og:description" content="链接gym">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-17T14:37:48.000Z">
+<meta property="article:modified_time" content="2021-11-18T02:31:58.000Z">
+<meta property="article:author" content="Oql">
+<meta property="article:tag" content="最短路">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="二分">
+<meta property="article:tag" content="SAM">
+<meta property="article:tag" content="计算几何">
+<meta property="article:tag" content="dfs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ouqingliang.github.io/2021/11/17/2021-CCPC-%E6%A1%82%E6%9E%97%E7%AB%99/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ouqingliang.github.io/2021/11/17/2021-CCPC-%E6%A1%82%E6%9E%97%E7%AB%99/","path":"2021/11/17/2021-CCPC-桂林站/","title":"2021 CCPC 桂林站"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>2021 CCPC 桂林站 | Oql's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Oql's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">125</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">211</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Hero-Named-Magnus"><span class="nav-number">2.1.</span> <span class="nav-text">A. Hero Named Magnus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-A-Plus-B-Problem"><span class="nav-number">2.2.</span> <span class="nav-text">B. A Plus B Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-AC-Automaton"><span class="nav-number">2.3.</span> <span class="nav-text">C. AC Automaton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Assumption-is-All-You-Need"><span class="nav-number">2.4.</span> <span class="nav-text">D. Assumption is All You Need</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Buy-and-Delete"><span class="nav-number">2.5.</span> <span class="nav-text">E. Buy and Delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Illuminations-II"><span class="nav-number">2.6.</span> <span class="nav-text">F. Illuminations II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">2.6.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="nav-number">2.6.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.6.3.</span> <span class="nav-text">程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G-Occupy-the-Cities"><span class="nav-number">2.7.</span> <span class="nav-text">G. Occupy the Cities</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I-PTSD"><span class="nav-number">2.8.</span> <span class="nav-text">I. PTSD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J-Suffix-Automaton"><span class="nav-number">2.9.</span> <span class="nav-text">J. Suffix Automaton</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SAM"><span class="nav-number">2.9.1.</span> <span class="nav-text">SAM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SA"><span class="nav-number">2.9.2.</span> <span class="nav-text">SA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Tax"><span class="nav-number">2.10.</span> <span class="nav-text">K.Tax</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oql"
+      src="/images/bear.jpg">
+  <p class="site-author-name" itemprop="name">Oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ouqingliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ouqingliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1692110604@qq.com" title="E-Mail → mailto:1692110604@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.github.io/2021/11/17/2021-CCPC-%E6%A1%82%E6%9E%97%E7%AB%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bear.jpg">
+      <meta itemprop="name" content="Oql">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="2021 CCPC 桂林站 | Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2021 CCPC 桂林站
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-17 22:37:48" itemprop="dateCreated datePublished" datetime="2021-11-17T22:37:48+08:00">2021-11-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-18 10:31:58" itemprop="dateModified" datetime="2021-11-18T10:31:58+08:00">2021-11-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/XCPC/" itemprop="url" rel="index"><span itemprop="name">XCPC</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/">gym</a></p>
+<span id="more"></span>
+
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="A-Hero-Named-Magnus"><a href="#A-Hero-Named-Magnus" class="headerlink" title="A. Hero Named Magnus"></a>A. <a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/A">Hero Named Magnus</a></h3><p>输出 $2x-1$。</p>
+<h3 id="B-A-Plus-B-Problem"><a href="#B-A-Plus-B-Problem" class="headerlink" title="B. A Plus B Problem"></a>B. <a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/B">A Plus B Problem</a></h3><p>直接模拟加法即可。</p>
+<p>使用线段树二分或者二分+线段树找到第一个 $9$ 或者 $0$ 即可。</p>
+<p>使用线段树二分，时间复杂度 $O(n\log n)$。</p>
+<h3 id="C-AC-Automaton"><a href="#C-AC-Automaton" class="headerlink" title="C. AC Automaton"></a>C. <a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/C">AC Automaton</a></h3><p>好毒瘤啊，不会。</p>
+<h3 id="D-Assumption-is-All-You-Need"><a href="#D-Assumption-is-All-You-Need" class="headerlink" title="D. Assumption is All You Need"></a>D. <a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/D">Assumption is All You Need</a></h3><p>注意到，从小到大将数移到原来的位置后，就可以当做这个数字消失，也就是不再管它的位置。</p>
+<p>大概是因为按照从小到大，没有归位的数都可以跨过去。</p>
+<p>那么直接模拟即可。时间复杂度 $O(n^2)$。</p>
+<h3 id="E-Buy-and-Delete"><a href="#E-Buy-and-Delete" class="headerlink" title="E. Buy and Delete"></a>E. <a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/E">Buy and Delete</a></h3><p>最多只可能删除两次。</p>
+<p>一次删掉 $x&lt;y$ 的，另一次删掉 $x&gt;y$ 的。</p>
+<p>那么找到最小环即可。</p>
+<p>时间复杂度 $O(nm\log n)$。</p>
+<h3 id="F-Illuminations-II"><a href="#F-Illuminations-II" class="headerlink" title="F. Illuminations II"></a>F. <a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/F">Illuminations II</a></h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>大凸包里包着小凸包，从大凸包的周长上任意选择一点作为光源，问小凸包期望被照亮的长度。</p>
+<p>$n,m\le 2\times 10^5$。</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>考虑反面，枚举小凸包的每一条边，看大凸包中有多长的线中的点能照到这条边。</p>
+<p>这相当于求一条直线切一个凸包，问切成两部分后在直线右侧的长度和。</p>
+<p>扫描线，维护直线切到凸包中的两条线段即可。</p>
+<p>注意几乎平行的线段可能会有精度问题，判断点关于线的位置时需要注意。</p>
+<h4 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FO(x) freopen(#x<span class="string">&quot;.in&quot;</span>,<span class="string">&quot;r&quot;</span>,stdin),freopen(#x<span class="string">&quot;.out&quot;</span>,<span class="string">&quot;w&quot;</span>,stdout)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ff(i,j,k) for(int i=(j),end_i=(k);i&lt; end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fd(i,j,k) for(int i=(j),end_i=(k);i&gt;=end_i;i--)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEBUG(x) cerr&lt;&lt;#x&lt;&lt;<span class="string">&quot;=&quot;</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> cle(x) memset(x,0,sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> lowbit(x) ((x)&amp;-(x))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned ll</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> db long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> se second</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> x=<span class="number">0</span>; <span class="type">char</span> ch=<span class="built_in">getchar</span>(); <span class="type">bool</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(;ch&lt;<span class="string">&#x27;0&#x27;</span>||ch&gt;<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(ch^<span class="number">48</span>);</span><br><span class="line">	<span class="keyword">return</span> f?-x:x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CASET fo(___,1,read())</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> db eps=<span class="number">1e-8</span>;</span><br><span class="line"><span class="type">const</span> db pi=<span class="built_in">acos</span>(<span class="number">-1.</span>);</span><br><span class="line"><span class="type">const</span> db inf=<span class="number">1e20</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sgn</span><span class="params">(db x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">fabs</span>(x)&lt;eps) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> db <span class="title">sqr</span><span class="params">(db x)</span></span>&#123;<span class="keyword">return</span> x*x;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span>&#123;</span><br><span class="line">	db x,y;</span><br><span class="line">	<span class="built_in">Point</span>()&#123;x=y=<span class="number">0</span>;&#125;</span><br><span class="line">	<span class="built_in">Point</span>(db _x,db _y)&#123;x=_x,y=_y;&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">input</span><span class="params">()</span></span>&#123;<span class="built_in">scanf</span>(<span class="string">&quot;%Lf%Lf&quot;</span>,&amp;x,&amp;y);&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> <span class="type">bool</span> <span class="keyword">operator</span>==(Point A,Point B)&#123;<span class="keyword">return</span> <span class="built_in">sgn</span>(A.x-B.x)==<span class="number">0</span>&amp;&amp;<span class="built_in">sgn</span>(A.y-B.y)==<span class="number">0</span>;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> <span class="type">bool</span> <span class="keyword">operator</span>&lt;(Point A,Point B)&#123;<span class="keyword">return</span> <span class="built_in">sgn</span>(A.x-B.x)==<span class="number">0</span>?<span class="built_in">sgn</span>(A.y-B.y)&lt;<span class="number">0</span>:A.x&lt;B.x;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> Point <span class="keyword">operator</span>+(Point A,Point B)&#123;<span class="keyword">return</span> <span class="built_in">Point</span>(A.x+B.x,A.y+B.y);&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> Point <span class="keyword">operator</span>-(Point A,Point B)&#123;<span class="keyword">return</span> <span class="built_in">Point</span>(A.x-B.x,A.y-B.y);&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> Point <span class="keyword">operator</span>*(Point A,db k)&#123;<span class="keyword">return</span> <span class="built_in">Point</span>(A.x*k,A.y*k);&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> Point <span class="keyword">operator</span>/(Point A,db k)&#123;<span class="keyword">return</span> <span class="built_in">Point</span>(A.x/k,A.y/k);&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> db <span class="keyword">operator</span>^(Point A,Point B)&#123;<span class="keyword">return</span> A.x*B.y-A.y*B.x;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> db <span class="keyword">operator</span>*(Point A,Point B)&#123;<span class="keyword">return</span> A.x*B.x+A.y*B.y;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> db <span class="title">len2</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="built_in">sqr</span>(x)+<span class="built_in">sqr</span>(y);&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> db <span class="title">len</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="built_in">sqrt</span>(<span class="built_in">len2</span>());&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> db <span class="title">angle</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="built_in">atan2</span>(y,x);&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Line</span>&#123;</span><br><span class="line">	Point s,e;</span><br><span class="line">	<span class="built_in">Line</span>()&#123;&#125;</span><br><span class="line">	<span class="built_in">Line</span>(Point _s,Point _e)&#123;s=_s,e=_e;&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">adjust</span><span class="params">()</span></span>&#123;<span class="keyword">if</span>(e&lt;s) <span class="built_in">swap</span>(e,s);&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> <span class="type">bool</span> <span class="keyword">operator</span>==(Line A,Line B)&#123;<span class="keyword">return</span> A.s==B.s&amp;&amp;A.e==B.e;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> db <span class="title">len</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (e-s).<span class="built_in">len</span>();&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">relation</span><span class="params">(Point p)</span><span class="comment">//1-&gt;left,2-&gt;right,3-&gt;on it.</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> c=<span class="built_in">sgn</span>((p-s)^(e-s));</span><br><span class="line">		<span class="keyword">return</span> !c?<span class="number">3</span>:(<span class="number">1</span>+(c&gt;<span class="number">0</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">bool</span> <span class="title">parallel</span><span class="params">(Line v)</span></span>&#123;<span class="keyword">return</span> <span class="built_in">sgn</span>((e-s)^(v.e-v.s))==<span class="number">0</span>;&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">linecrossline</span><span class="params">(Line v)</span><span class="comment">//0 parallel,1 same,2 inter</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>((*<span class="keyword">this</span>).<span class="built_in">parallel</span>(v)) <span class="keyword">return</span> v.<span class="built_in">relation</span>(s)==<span class="number">3</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">Point <span class="title">Intersection</span><span class="params">(Line v)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		db a1=(v.e-v.s)^(s-v.s);</span><br><span class="line">		db a2=(v.e-v.s)^(e-v.s);</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Point</span>((s.x*a2-e.x*a1)/(a2-a1),(s.y*a2-e.y*a1)/(a2-a1));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">200010</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line">Point a[N],b[N];</span><br><span class="line">db sum,s[N];</span><br><span class="line">Line li[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> db <span class="title">ask</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l&lt;r) <span class="keyword">return</span> s[r<span class="number">-1</span>]-s[l];</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> s[n<span class="number">-1</span>]-s[l]+(r?s[r<span class="number">-1</span>]:<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>(); m=<span class="built_in">read</span>();</span><br><span class="line">	<span class="built_in">ff</span>(i,<span class="number">0</span>,n) a[i].<span class="built_in">input</span>();</span><br><span class="line">	<span class="built_in">ff</span>(i,<span class="number">0</span>,m) b[i].<span class="built_in">input</span>();</span><br><span class="line">	Line now=<span class="built_in">Line</span>(b[<span class="number">0</span>],b[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">ff</span>(i,<span class="number">0</span>,n) li[i]=<span class="built_in">Line</span>(a[i],a[(i+<span class="number">1</span>)%n]),sum+=li[i].<span class="built_in">len</span>();</span><br><span class="line">	<span class="built_in">ff</span>(i,<span class="number">0</span>,n) s[i]=li[i].<span class="built_in">len</span>()+(i?s[i<span class="number">-1</span>]:<span class="number">0.0</span>);</span><br><span class="line">	<span class="type">int</span> l,r;</span><br><span class="line">	<span class="built_in">ff</span>(i,<span class="number">0</span>,n)</span><br><span class="line">		<span class="keyword">if</span>(now.<span class="built_in">relation</span>(a[i])==<span class="number">1</span>&amp;&amp;now.<span class="built_in">relation</span>(a[(i+<span class="number">1</span>)%n])!=<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			l=i; <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">ff</span>(i,<span class="number">0</span>,n)</span><br><span class="line">		<span class="keyword">if</span>(now.<span class="built_in">relation</span>(a[i])==<span class="number">2</span>&amp;&amp;now.<span class="built_in">relation</span>(a[(i+<span class="number">1</span>)%n])!=<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			r=i; <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	db ans=(<span class="built_in">ask</span>(l,r)+(now.<span class="built_in">Intersection</span>(li[l])-a[(l+<span class="number">1</span>)%n]).<span class="built_in">len</span>()+(now.<span class="built_in">Intersection</span>(li[r])-a[r]).<span class="built_in">len</span>())/sum*now.<span class="built_in">len</span>();</span><br><span class="line">	<span class="built_in">ff</span>(i,<span class="number">1</span>,m)</span><br><span class="line">	&#123;</span><br><span class="line">		now=<span class="built_in">Line</span>(b[i],b[(i+<span class="number">1</span>)%m]);</span><br><span class="line">		<span class="keyword">for</span>(;;)</span><br><span class="line">			<span class="keyword">if</span>(now.<span class="built_in">relation</span>(a[l])!=<span class="number">2</span>&amp;&amp;now.<span class="built_in">relation</span>(a[(l+<span class="number">1</span>)%n])!=<span class="number">1</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				l=(l+<span class="number">1</span>)%n;</span><br><span class="line">		<span class="keyword">for</span>(;;)</span><br><span class="line">			<span class="keyword">if</span>(now.<span class="built_in">relation</span>(a[r])!=<span class="number">1</span>&amp;&amp;now.<span class="built_in">relation</span>(a[(r+<span class="number">1</span>)%n])!=<span class="number">2</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				r=(r+<span class="number">1</span>)%n;</span><br><span class="line">		ans+=(<span class="built_in">ask</span>(l,r)+(now.<span class="built_in">Intersection</span>(li[l])-a[(l+<span class="number">1</span>)%n]).<span class="built_in">len</span>()+(now.<span class="built_in">Intersection</span>(li[r])-a[r]).<span class="built_in">len</span>())/sum*now.<span class="built_in">len</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%.12Lf&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="G-Occupy-the-Cities"><a href="#G-Occupy-the-Cities" class="headerlink" title="G. Occupy the Cities"></a>G. <a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/G">Occupy the Cities</a></h3><p>一个比较好写的方法是：二分，然后贪心判断是否可行。</p>
+<h3 id="I-PTSD"><a href="#I-PTSD" class="headerlink" title="I. PTSD"></a>I. <a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/I">PTSD</a></h3><p>从后往前贪心，看能否找到一个更大的去匹配即可。</p>
+<h3 id="J-Suffix-Automaton"><a href="#J-Suffix-Automaton" class="headerlink" title="J. Suffix Automaton"></a>J. <a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/J">Suffix Automaton</a></h3><h4 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h4><p>对反串建立SAM，每个节点的贡献是 $[len_{fa_x}+1,len_x]$。</p>
+<p>为了满足字典序，我们找出每个点相对于父节点第一个多出来的字符，这个就相当于是原串的某个前缀再加一个字符。对于树中每个点，按照这个字符进行排序，就能按照字典序的要求来了。</p>
+<p>找原串中第一个出现的字符串相当于找反串最后一次出现的字符串，在parent-tree中进行一遍dfs就可以找到right集合中最大的那个数。</p>
+<h4 id="SA"><a href="#SA" class="headerlink" title="SA"></a>SA</h4><p>每个点的贡献是 $[height_x+1,n-sa_x+1]$。</p>
+<p>SA本身就满足字典序。</p>
+<p>找原串中第一个出现的字符串可以通过倍增找到。</p>
+<p>对于以上两个算法，剩下的就是找到答案。</p>
+<p>对询问离线，然后对若干条线段在数轴上从左到右扫描线，变成若干次单点修改，查找第 $k$ 小的值。用线段树维护即可。</p>
+<p>时间复杂度 $O(n\sum+n\log n)$ 或 $O(n\log n)$。</p>
+<h3 id="K-Tax"><a href="#K-Tax" class="headerlink" title="K.Tax"></a>K.<a target="_blank" rel="noopener" href="https://codeforces.com/gym/103409/problem/K">Tax</a></h3><p>建出最短路图后，直接dfs即可。</p>
+<p>时间复杂度 $O(x^{\frac{n}{x}})$。</p>
+<p>设 $f(x)=x^{\frac{n}{x}}$，则 $\ln f(x)=\frac{n}{x}\ln x$，$\frac{f’(x)}{f(x)}=n\times \frac{1-\ln x}{x^2}$。</p>
+<p>易知 $x$ 取 $e$ 时，$f(x)$ 取得最大值。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="tag"><i class="fa fa-tag"></i> 最短路</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag"><i class="fa fa-tag"></i> 贪心</a>
+              <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
+              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"><i class="fa fa-tag"></i> 二分</a>
+              <a href="/tags/SAM/" rel="tag"><i class="fa fa-tag"></i> SAM</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag"><i class="fa fa-tag"></i> 计算几何</a>
+              <a href="/tags/dfs/" rel="tag"><i class="fa fa-tag"></i> dfs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/14/2021-CCPC-%E5%B9%BF%E5%B7%9E%E7%AB%99/" rel="prev" title="2021 CCPC 广州站">
+                  <i class="fa fa-chevron-left"></i> 2021 CCPC 广州站
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/21/2021-CCPC-%E5%A8%81%E6%B5%B7%E7%AB%99/" rel="next" title="2021 CCPC 威海站">
+                  2021 CCPC 威海站 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oql</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ouqingliang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="题目链接题目链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021 ICPC 沈阳站">
+<meta property="og:url" content="https://ouqingliang.github.io/2021/11/27/2021-ICPC-%E6%B2%88%E9%98%B3%E7%AB%99/index.html">
+<meta property="og:site_name" content="Oql&#39;s Blog">
+<meta property="og:description" content="题目链接题目链接">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-27T14:54:53.000Z">
+<meta property="article:modified_time" content="2021-11-28T04:43:04.000Z">
+<meta property="article:author" content="Oql">
+<meta property="article:tag" content="网络流">
+<meta property="article:tag" content="容斥原理">
+<meta property="article:tag" content="双连通分量">
+<meta property="article:tag" content="SAM">
+<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="状态压缩DP">
+<meta property="article:tag" content="线性代数">
+<meta property="article:tag" content="bfs">
+<meta property="article:tag" content="树形DP">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ouqingliang.github.io/2021/11/27/2021-ICPC-%E6%B2%88%E9%98%B3%E7%AB%99/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ouqingliang.github.io/2021/11/27/2021-ICPC-%E6%B2%88%E9%98%B3%E7%AB%99/","path":"2021/11/27/2021-ICPC-沈阳站/","title":"2021 ICPC 沈阳站"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>2021 ICPC 沈阳站 | Oql's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Oql's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">125</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">211</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B"><span class="nav-number">2.1.</span> <span class="nav-text">B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E"><span class="nav-number">2.2.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F"><span class="nav-number">2.3.</span> <span class="nav-text">F</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G"><span class="nav-number">2.4.</span> <span class="nav-text">G</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H"><span class="nav-number">2.5.</span> <span class="nav-text">H</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I"><span class="nav-number">2.6.</span> <span class="nav-text">I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J"><span class="nav-number">2.7.</span> <span class="nav-text">J</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L"><span class="nav-number">2.8.</span> <span class="nav-text">L</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#M"><span class="nav-number">2.9.</span> <span class="nav-text">M</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oql"
+      src="/images/bear.jpg">
+  <p class="site-author-name" itemprop="name">Oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ouqingliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ouqingliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1692110604@qq.com" title="E-Mail → mailto:1692110604@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.github.io/2021/11/27/2021-ICPC-%E6%B2%88%E9%98%B3%E7%AB%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bear.jpg">
+      <meta itemprop="name" content="Oql">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="2021 ICPC 沈阳站 | Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2021 ICPC 沈阳站
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-27 22:54:53" itemprop="dateCreated datePublished" datetime="2021-11-27T22:54:53+08:00">2021-11-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-28 12:43:04" itemprop="dateModified" datetime="2021-11-28T12:43:04+08:00">2021-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/XCPC/" itemprop="url" rel="index"><span itemprop="name">XCPC</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103427/problems">题目链接</a></p>
+<span id="more"></span>
+
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>枚举每一个位，枚举每个连通块对应选的是什么时最优，求个和即可。在枚举时可判断是否合法。</p>
+<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>签到题。</p>
+<h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><p>暴力即可。</p>
+<h3 id="G"><a href="#G" class="headerlink" title="G"></a>G</h3><h3 id="H"><a href="#H" class="headerlink" title="H"></a>H</h3><p>线图上的图匹配相当于原图中相邻两边的匹配。</p>
+<p>性质一：一个有偶数条边的树可以匹配完。</p>
+<p>证明：从最深叶子结点选择两条边，变成一个子问题。</p>
+<p>性质二：一个有偶数条边的连通图可以完全匹配。</p>
+<p>证明：相当于dfs树中加上若干条返祖边，在叶子结点选边匹配的时候优先选返祖边即可。</p>
+<p>那么只剩下边为奇数的情况。显然如果删掉某条边后不改变图连通性，那么就可以删掉该边，否则该边为割边，删掉后需要满足两边边数均为偶数即可。这些均可在求割边时找出。</p>
+<p>时间复杂度 $O(n+m)$。</p>
+<h3 id="I"><a href="#I" class="headerlink" title="I"></a>I</h3><p>将 $a,b,c,d$ 视为未知数。四个 $az_i+b=w_i(cz_i+d)$ 转换为线性齐次方程组。</p>
+<p>由克拉默法则： $a,b,c,d$ 有非零解当且仅当：</p>
+<p>$$\begin{vmatrix}<br>z_1 &amp; 1 &amp; w_1z_1 &amp; w_1\\<br>z_2 &amp; 1 &amp; w_2z_2 &amp; w_2\\<br>z_3 &amp; 1 &amp; w_3z_3 &amp; w_3\\<br>z_0 &amp; 1 &amp; f(z_0)z_0 &amp; f(z_0)<br>\end{vmatrix}= 0$$</p>
+<p>直接解出 $f(z_0)$ 即可。</p>
+<h3 id="J"><a href="#J" class="headerlink" title="J"></a>J</h3><p>将询问的两个数的每一位的差算出来，组成一个新的数 $x$。</p>
+<p>然后预处理出 $0$ 到 $x$ 的距离即可。</p>
+<h3 id="L"><a href="#L" class="headerlink" title="L"></a>L</h3><p>设假设树上至少有 $i$ 对节点选择了的方案数为 $f(i)$，那么答案为 $\sum_{i=0}^n(-1)^if(i)\frac{(2(n-i))!}{(n-i)!2^{n-i}}$。 </p>
+<p>求 $f(i)$ 用树形背包即可。</p>
+<p>时间复杂度 $O(n^2)$。</p>
+<h3 id="M"><a href="#M" class="headerlink" title="M"></a>M</h3><p>对反串建立SAM，对parent-tree中每个节点的边按字典序进行排序以后，相当于求一个前缀最大值。</p>
+<p>时间复杂度 $O(n\sum)$。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 网络流</a>
+              <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 容斥原理</a>
+              <a href="/tags/%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 双连通分量</a>
+              <a href="/tags/SAM/" rel="tag"><i class="fa fa-tag"></i> SAM</a>
+              <a href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag"><i class="fa fa-tag"></i> 模拟</a>
+              <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9DP/" rel="tag"><i class="fa fa-tag"></i> 状态压缩DP</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 线性代数</a>
+              <a href="/tags/bfs/" rel="tag"><i class="fa fa-tag"></i> bfs</a>
+              <a href="/tags/%E6%A0%91%E5%BD%A2DP/" rel="tag"><i class="fa fa-tag"></i> 树形DP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/21/2021-CCPC-%E5%A8%81%E6%B5%B7%E7%AB%99/" rel="prev" title="2021 CCPC 威海站">
+                  <i class="fa fa-chevron-left"></i> 2021 CCPC 威海站
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/02/2021-ICPC-%E4%B8%8A%E6%B5%B7%E7%AB%99/" rel="next" title="2021 ICPC 上海站">
+                  2021 ICPC 上海站 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oql</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

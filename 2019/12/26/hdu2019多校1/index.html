@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ouqingliang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="2019 Multi-University Training Contest 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hdu2019多校1">
+<meta property="og:url" content="https://ouqingliang.github.io/2019/12/26/hdu2019%E5%A4%9A%E6%A0%A11/index.html">
+<meta property="og:site_name" content="Oql&#39;s Blog">
+<meta property="og:description" content="2019 Multi-University Training Contest 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-26T10:53:51.000Z">
+<meta property="article:modified_time" content="2020-01-03T09:04:54.000Z">
+<meta property="article:author" content="Oql">
+<meta property="article:tag" content="最短路">
+<meta property="article:tag" content="网络流">
+<meta property="article:tag" content="SAM">
+<meta property="article:tag" content="FFT">
+<meta property="article:tag" content="线性基">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ouqingliang.github.io/2019/12/26/hdu2019%E5%A4%9A%E6%A0%A11/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ouqingliang.github.io/2019/12/26/hdu2019%E5%A4%9A%E6%A0%A11/","path":"2019/12/26/hdu2019多校1/","title":"hdu2019多校1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>hdu2019多校1 | Oql's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Oql's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">125</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">211</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-B-Operation"><span class="nav-number">1.</span> <span class="nav-text">Problem B Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-D-Vacation"><span class="nav-number">2.</span> <span class="nav-text">Problem D Vacation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-1"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="nav-number">2.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-E-Path"><span class="nav-number">3.</span> <span class="nav-text">Problem E Path</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-2"><span class="nav-number">3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-F-Typewriter"><span class="nav-number">4.</span> <span class="nav-text">Problem F Typewriter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-3"><span class="nav-number">4.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-3"><span class="nav-number">4.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-I-String"><span class="nav-number">5.</span> <span class="nav-text">Problem I String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-4"><span class="nav-number">5.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-4"><span class="nav-number">5.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-L-Sequence"><span class="nav-number">6.</span> <span class="nav-text">Problem L Sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-5"><span class="nav-number">6.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-5"><span class="nav-number">6.2.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oql"
+      src="/images/bear.jpg">
+  <p class="site-author-name" itemprop="name">Oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ouqingliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ouqingliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1692110604@qq.com" title="E-Mail → mailto:1692110604@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.github.io/2019/12/26/hdu2019%E5%A4%9A%E6%A0%A11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bear.jpg">
+      <meta itemprop="name" content="Oql">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="hdu2019多校1 | Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hdu2019多校1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-12-26 18:53:51" itemprop="dateCreated datePublished" datetime="2019-12-26T18:53:51+08:00">2019-12-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-01-03 17:04:54" itemprop="dateModified" datetime="2020-01-03T17:04:54+08:00">2020-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hdu/" itemprop="url" rel="index"><span itemprop="name">hdu</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hdu/%E5%A4%9A%E6%A0%A1/" itemprop="url" rel="index"><span itemprop="name">多校</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/contests/contest_show.php?cid=848">2019 Multi-University Training Contest 1</a></p>
+<span id="more"></span>
+
+<h3 id="Problem-B-Operation"><a href="#Problem-B-Operation" class="headerlink" title="Problem B Operation"></a>Problem B Operation</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>有一个序列 $a$，刚开始长度为 $n$。一共 $m$ 次操作，共两种操作：</p>
+<p>1，询问在区间 $[l,r]$ 中选一些元素使得异或和最大。输出异或和。</p>
+<p>2，在该序列结尾添加一个数。</p>
+<p>$n,m\leq 5\times 10^5,0\leq a_i &lt; 2^{30}$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>一个很显然的做法是线段树维护线性基合并，时间 $O(n\log^2w\log n)$，其中 $w$ 为 $a_i$ 的位数。但是显然过不去。</p>
+<p>因为只是从结尾加一个数，考虑维护前缀的线性基。</p>
+<p>但查询的时候还需要知道线性基里的数是否满足它的下标比 $l-1$ 大。</p>
+<p>这时候可以在线性基里记录第 $i$ 位的下标 $p_i$。</p>
+<p>那么插入的时候贪心，如果遇到一个下标比它小的数，那么把 $p_i$ 和值替换，然后拿原来的数继续往下贪心即可。</p>
+<p>询问的时候判断一下 $l\leq p_i$ 就可以了。</p>
+<p>时间复杂度 $O(n\log w)$。</p>
+<h3 id="Problem-D-Vacation"><a href="#Problem-D-Vacation" class="headerlink" title="Problem D Vacation"></a>Problem D Vacation</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>$n+1$ 辆车，每辆车有长度 $l$，车头到终点距离 $s$，最大速度 $v$。模拟整个过程，一辆车无法超过另一辆车，接触后只能以前面的车的速度行驶。问第 $0$ 辆车的车头通过终点的时间。</p>
+<p>$n\leq 10^5,l_i,s_i,v_i\leq 10^9,s_i\geq s_{i+1}+l_{i+1}$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>最后 0 车通过终点的时候肯定是与前面一堆车一起的，枚举最前面的车是哪一辆，计算出通过时间，取最大值即为答案。</p>
+<p>时间复杂度 $O(n)$</p>
+<h3 id="Problem-E-Path"><a href="#Problem-E-Path" class="headerlink" title="Problem E Path"></a>Problem E Path</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>一个有向图，问需要割哪些边，使得 $1$ 到 $n$ 的最短路变大。一个方案费用为边权之和。输出最小费用。</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>建出最短路图，然后跑最小割即可。</p>
+<h3 id="Problem-F-Typewriter"><a href="#Problem-F-Typewriter" class="headerlink" title="Problem F Typewriter"></a>Problem F Typewriter</h3><h4 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h4><p>给一个字符串 $s$，有两种操作：</p>
+<p>1，花费 $p$ 在当前字符串后添加一个字母。</p>
+<p>2，花费 $q$ 在当前字符串后添加一个当前字符串的子串。</p>
+<p>当前字符串刚开始为空串，求使得变为 $s$ 的最少花费。</p>
+<p>$n\leq 2\times 10^5$</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>容易想到 dp，设 $f_i$ 表示匹配到第 $i$ 位时的答案。</p>
+<p>设 $j$ 为使得 $s[1,j]\in s[j+1,i]$ 的最大的 $j$。</p>
+<p>对于每个 $i$ 求出了 $j$ 就可以 dp 了。</p>
+<p>发现当 $i$ 增大时 $j$ 不减。</p>
+<p>用 SAM 维护 $s[1,j]$ ，若 $s[j+1,i]$ 匹配不了，则把 $s_{j+1}$ 扔进 SAM 里，维护一下 $s[j+1,i]$ 在 SAM 中的位置以及是否匹配。</p>
+<p>匹配位置最多往回跳 $n$ 次，最多往前加 $n$ 次。</p>
+<p>时间复杂度 $O(n)$</p>
+<h3 id="Problem-I-String"><a href="#Problem-I-String" class="headerlink" title="Problem I String"></a>Problem I String</h3><h4 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h4><p>给一个字符串 $s$，构造一个字典序最小的，第 $i$ 个小写字母出现次数在 $[l_i,r_i]$ 范围内的子序列。</p>
+<p>$n\leq 10^5$</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>贪心，顺次考虑当前位能填的字母，从小到大枚举，判断是否可行的办法是先用序列自动机找到最靠前的那一位，然后记录每个字母是否出现的后缀和，再判断一下就可以了。</p>
+<p>时间复杂度 $O(|S|\sum)$，其中 $\sum$ 为字符集大小。</p>
+<h3 id="Problem-L-Sequence"><a href="#Problem-L-Sequence" class="headerlink" title="Problem L Sequence"></a>Problem L Sequence</h3><h4 id="题意-5"><a href="#题意-5" class="headerlink" title="题意"></a>题意</h4><p>一个长度为 $n$ 的序列 $a$，有 $m$ 次操作，每次操作一个 $k(k\in [1,3])$ ，则新的序列 $a$ 满足 $a’<em>{i}=\sum</em>{j=i-kx}a_j(k\geq 0)$</p>
+<p>求出 $m$ 次操作后的序列，模 $998244353$。</p>
+<p>$n\leq 10^5,m\leq 10^6$</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>设该序列生成函数为 $A(x)=\sum_{i=1}^{n}a_ix^i$</p>
+<p>那么一次操作相当于给 $A(x)$ 乘上一个 $\sum_{i=0}x^{ik}$</p>
+<p>因此最后答案与操作顺序无关。</p>
+<p>很显然的做法是多项式快速幂，比较卡常，好像过不了（反正当时没有过）。</p>
+<p>那么考虑 $(\sum_{i=0}x^{ik})^m$ 等于什么。</p>
+<p>由于 $(\sum_{i=0}x^i)^m=\sum_{i=0}\binom{m-1+i}{m-1}x^i$</p>
+<p>那么 $(\sum_{i=0}x^{ik})^m=\sum_{i=0}\binom{m-1+i}{m-1}x^{ik}$</p>
+<p>这样对于每个 $k$ 就只需要做一次卷积就可以了。</p>
+<p>时间复杂度 $O(n\log n)$ </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="tag"><i class="fa fa-tag"></i> 最短路</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 网络流</a>
+              <a href="/tags/SAM/" rel="tag"><i class="fa fa-tag"></i> SAM</a>
+              <a href="/tags/FFT/" rel="tag"><i class="fa fa-tag"></i> FFT</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" rel="tag"><i class="fa fa-tag"></i> 线性基</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/12/26/%E5%B1%80%E9%83%A8%E6%9E%81%E5%B0%8F%E5%80%BC-cqoi2012/" rel="prev" title="局部极小值[cqoi2012]">
+                  <i class="fa fa-chevron-left"></i> 局部极小值[cqoi2012]
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/12/27/hdu2019%E5%A4%9A%E6%A0%A12/" rel="next" title="hdu2019多校2">
+                  hdu2019多校2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oql</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
