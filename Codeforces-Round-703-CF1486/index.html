@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ouqingliang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="problems’s link 退役选手一个无聊的晚上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round #703[CF1486]">
+<meta property="og:url" content="https://ouqingliang.github.io/Codeforces-Round-703-CF1486/index.html">
+<meta property="og:site_name" content="Oql&#39;s Blog">
+<meta property="og:description" content="problems’s link 退役选手一个无聊的晚上。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-19T02:06:51.000Z">
+<meta property="article:modified_time" content="2021-02-19T02:37:44.000Z">
+<meta property="article:author" content="Oql">
+<meta property="article:tag" content="最短路">
+<meta property="article:tag" content="二分">
+<meta property="article:tag" content="LCA">
+<meta property="article:tag" content="交互题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ouqingliang.github.io/Codeforces-Round-703-CF1486/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ouqingliang.github.io/Codeforces-Round-703-CF1486/","path":"Codeforces-Round-703-CF1486/","title":"Codeforces Round #703[CF1486]"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Codeforces Round #703[CF1486] | Oql's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Oql's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">121</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">211</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A"><span class="nav-number">1.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B"><span class="nav-number">2.</span> <span class="nav-text">B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C"><span class="nav-number">3.</span> <span class="nav-text">C</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D"><span class="nav-number">4.</span> <span class="nav-text">D</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E"><span class="nav-number">5.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F"><span class="nav-number">6.</span> <span class="nav-text">F</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oql"
+      src="/images/bear.jpg">
+  <p class="site-author-name" itemprop="name">Oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ouqingliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ouqingliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1692110604@qq.com" title="E-Mail → mailto:1692110604@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.github.io/Codeforces-Round-703-CF1486/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bear.jpg">
+      <meta itemprop="name" content="Oql">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Codeforces Round #703[CF1486] | Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Codeforces Round #703[CF1486]
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-19 10:06:51" itemprop="dateCreated datePublished" datetime="2021-02-19T10:06:51+08:00">2021-02-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CF/" itemprop="url" rel="index"><span itemprop="name">CF</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1486/problems">problems’s link</a></p>
+<p>退役选手一个无聊的晚上。</p>
+<span id="more"></span>
+
+<p>退役半年，手速和思维都降下来了呀。</p>
+<h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>从前往后贪心，第 $i$ 个位置看是否能把它搞成 $i-1$。</p>
+<p>然而因为自己智障还WA了两发。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n,x,flag;</span><br><span class="line">ll s;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	CASET</span><br><span class="line">	&#123;</span><br><span class="line">		n=<span class="built_in">read</span>(); s=<span class="number">0</span>; flag=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">ff</span>(i,<span class="number">0</span>,n)</span><br><span class="line">		&#123;</span><br><span class="line">			x=<span class="built_in">read</span>();</span><br><span class="line">			<span class="keyword">if</span>(x+s&lt;i) flag=<span class="number">0</span>;</span><br><span class="line">			s=x+s-i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">puts</span>(flag?<span class="string">&quot;YES&quot;</span>:<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>显然 $x,y$ 坐标分开，然后中位数。</p>
+<p>3min看完题+写完。（英文水平有所上升）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> n,a[N],b[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	CASET</span><br><span class="line">	&#123;</span><br><span class="line">		n=<span class="built_in">read</span>();</span><br><span class="line">		<span class="built_in">fo</span>(i,<span class="number">1</span>,n) a[i]=<span class="built_in">read</span>(),b[i]=<span class="built_in">read</span>();</span><br><span class="line">		<span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">sort</span>(b+<span class="number">1</span>,b+n+<span class="number">1</span>);</span><br><span class="line">		<span class="type">int</span> m=n&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(n&amp;<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">&quot;1\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,<span class="number">1ll</span>*(b[m+<span class="number">1</span>]-b[m]+<span class="number">1</span>)*(a[m+<span class="number">1</span>]-a[m]+<span class="number">1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>交互题。</p>
+<p>一开始还以为是个什么难题。</p>
+<p>结果发现自己是在打div.2，在打div.2的C。</p>
+<p>于是先找出整体次大，然后看最大在哪一边，然后二分即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">ask</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l&gt;=r||r&gt;n) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;? %d %d\n&quot;</span>,l,r);</span><br><span class="line">	<span class="built_in">fflush</span>(stdout);</span><br><span class="line">	<span class="type">int</span> x; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==r) <span class="keyword">return</span> l;</span><br><span class="line">	<span class="keyword">if</span>(l+<span class="number">1</span>==r) <span class="keyword">return</span> l^r^<span class="built_in">ask</span>(l,r);</span><br><span class="line">	<span class="type">int</span> mid=<span class="built_in">ask</span>(l,r);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">ask</span>(mid,r)==mid)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> L=mid+<span class="number">1</span>,R=r,m;</span><br><span class="line">		<span class="keyword">for</span>(;L+<span class="number">1</span>&lt;R;)</span><br><span class="line">		&#123;</span><br><span class="line">			m=(L+R)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">ask</span>(mid,m)==mid) R=m;</span><br><span class="line">			<span class="keyword">else</span> L=m+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(L==R) <span class="keyword">return</span> L;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">solve</span>(L,R);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> L=l,R=mid<span class="number">-1</span>,m;</span><br><span class="line">		<span class="keyword">for</span>(;L+<span class="number">1</span>&lt;R;)</span><br><span class="line">		&#123;</span><br><span class="line">			m=(L+R)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">ask</span>(m,mid)==mid) L=m;</span><br><span class="line">			<span class="keyword">else</span> R=m<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(L==R) <span class="keyword">return</span> L;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">solve</span>(L,R);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>();</span><br><span class="line">	<span class="type">int</span> ans=<span class="built_in">solve</span>(<span class="number">1</span>,n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;! %d\n&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>一眼题。</p>
+<p>直接二分答案，然后奇偶分开讨论，顺着扫一遍，用个数据结构维护就好了。这里用set。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">200010</span>;</span><br><span class="line">set&lt;<span class="type">int</span>&gt; s[<span class="number">2</span>];</span><br><span class="line"><span class="type">int</span> b[N],a[N];</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) b[i]=b[i<span class="number">-1</span>]+(a[i]&gt;=x);</span><br><span class="line">	s[<span class="number">0</span>].<span class="built_in">clear</span>(); s[<span class="number">1</span>].<span class="built_in">clear</span>();</span><br><span class="line">	<span class="type">int</span> j;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n-m+<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		s[i&amp;<span class="number">1</span>].<span class="built_in">insert</span>(i<span class="number">-2</span>*b[i<span class="number">-1</span>]);</span><br><span class="line">		j=i+m<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">if</span>(s[j&amp;<span class="number">1</span>].<span class="built_in">lower_bound</span>(<span class="number">-2</span>*b[j]+j+<span class="number">2</span>)!=s[j&amp;<span class="number">1</span>].<span class="built_in">end</span>()) &#123;<span class="keyword">return</span> <span class="number">1</span>;&#125;</span><br><span class="line">		<span class="keyword">if</span>(s[!(j&amp;<span class="number">1</span>)].<span class="built_in">lower_bound</span>(<span class="number">-2</span>*b[j]+j+<span class="number">3</span>)!=s[!(j&amp;<span class="number">1</span>)].<span class="built_in">end</span>()) &#123;<span class="keyword">return</span> <span class="number">1</span>;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>(); m=<span class="built_in">read</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) a[i]=<span class="built_in">read</span>();</span><br><span class="line">	<span class="type">int</span> l=<span class="number">0</span>,r=n+<span class="number">1</span>,mid;</span><br><span class="line">	<span class="keyword">for</span>(;l+<span class="number">1</span>&lt;r;)</span><br><span class="line">	&#123;</span><br><span class="line">		mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">check</span>(mid)) l=mid;</span><br><span class="line">		<span class="keyword">else</span> r=mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,l);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>$1\leq w_i\leq 50$，这性质很有用。</p>
+<p>于是记 $f_{i,j}$ 表示走到 $i$，上一条边的费用是 $j$ 的最短路。特别地，$f_{i,0}$ 表示走完两条路。</p>
+<p>于是dijkstra即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">100010</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> M=<span class="number">400010</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> K=<span class="number">52</span>;</span><br><span class="line"><span class="type">const</span> ll inf=<span class="number">1e18</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">int</span> ver[M],val[M],head[N],ne[M],tot;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y,<span class="type">int</span> z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ver[++tot]=y; val[tot]=z; ne[tot]=head[x]; head[x]=tot;</span><br><span class="line">	ver[++tot]=x; val[tot]=z; ne[tot]=head[y]; head[y]=tot;</span><br><span class="line">&#125;</span><br><span class="line">ll f[N][K];</span><br><span class="line"><span class="type">bool</span> vis[N][K];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">	<span class="type">int</span> x,y; ll d;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">inline</span> <span class="type">bool</span> <span class="keyword">operator</span>&lt;(<span class="type">const</span> node &amp;A,<span class="type">const</span> node &amp;B)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> A.d&gt;B.d;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt; q;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>(); m=<span class="built_in">read</span>();</span><br><span class="line">	<span class="type">int</span> x,y,z;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,m) x=<span class="built_in">read</span>(),y=<span class="built_in">read</span>(),z=<span class="built_in">read</span>(),<span class="built_in">add</span>(x,y,z);</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) <span class="built_in">fo</span>(j,<span class="number">0</span>,<span class="number">50</span>) f[i][j]=inf;</span><br><span class="line">	f[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">0</span>; q.<span class="built_in">push</span>((node)&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;);</span><br><span class="line">	<span class="keyword">for</span>(;!q.<span class="built_in">empty</span>();)</span><br><span class="line">	&#123;</span><br><span class="line">		node u=q.<span class="built_in">top</span>(); q.<span class="built_in">pop</span>();</span><br><span class="line">		<span class="keyword">if</span>(vis[u.x][u.y]) <span class="keyword">continue</span>;</span><br><span class="line">		vis[u.x][u.y]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(!u.y)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i=head[u.x],v;i;i=ne[i])</span><br><span class="line">			&#123;</span><br><span class="line">				v=ver[i];</span><br><span class="line">				<span class="keyword">if</span>(f[v][val[i]]&gt;f[u.x][<span class="number">0</span>])</span><br><span class="line">				&#123;</span><br><span class="line">					f[v][val[i]]=f[u.x][<span class="number">0</span>];</span><br><span class="line">					q.<span class="built_in">push</span>((node)&#123;v,val[i],f[u.x][<span class="number">0</span>]&#125;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i=head[u.x],v;i;i=ne[i])</span><br><span class="line">			&#123;</span><br><span class="line">				v=ver[i];</span><br><span class="line">				<span class="keyword">if</span>(f[v][<span class="number">0</span>]&gt;f[u.x][u.y]+(u.y+val[i])*(u.y+val[i]))</span><br><span class="line">				&#123;</span><br><span class="line">					f[v][<span class="number">0</span>]=f[u.x][u.y]+(u.y+val[i])*(u.y+val[i]);</span><br><span class="line">					q.<span class="built_in">push</span>((node)&#123;v,<span class="number">0</span>,f[v][<span class="number">0</span>]&#125;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ll ans;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(f[i][<span class="number">0</span>]==inf) f[i][<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%lld &quot;</span>,f[i][<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><p>将 $1$ 作为根。</p>
+<p>不难发现，如果两条路径有且仅有一个相交的点，那么肯定是两条路径的lca中的一个。</p>
+<p>分两种情况。</p>
+<p>1，两条路径lca相同。用总数减去不合法的情况即可。</p>
+<p>2，两条路径lca不同。树上差分一下统计一些东西就可以了。</p>
+<p>可以做到线性。</p>
+<p>懒得写代码了，睡觉去了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="tag"><i class="fa fa-tag"></i> 最短路</a>
+              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"><i class="fa fa-tag"></i> 二分</a>
+              <a href="/tags/LCA/" rel="tag"><i class="fa fa-tag"></i> LCA</a>
+              <a href="/tags/%E4%BA%A4%E4%BA%92%E9%A2%98/" rel="tag"><i class="fa fa-tag"></i> 交互题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E7%9B%B8%E4%BC%BC%E5%AD%90%E4%B8%B2-bzoj3230/" rel="prev" title="相似子串[bzoj3230]">
+                  <i class="fa fa-chevron-left"></i> 相似子串[bzoj3230]
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/JSOI2018-%E6%BD%9C%E5%85%A5%E8%A1%8C%E5%8A%A8/" rel="next" title="[JSOI2018]潜入行动">
+                  [JSOI2018]潜入行动 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oql</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

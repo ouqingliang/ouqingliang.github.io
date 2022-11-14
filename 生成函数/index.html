@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ouqingliang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="生成函数知识点总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成函数">
+<meta property="og:url" content="https://ouqingliang.github.io/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Oql&#39;s Blog">
+<meta property="og:description" content="生成函数知识点总结。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-07T01:50:24.000Z">
+<meta property="article:modified_time" content="2020-03-25T05:25:16.000Z">
+<meta property="article:author" content="Oql">
+<meta property="article:tag" content="生成函数">
+<meta property="article:tag" content="FFT">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ouqingliang.github.io/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ouqingliang.github.io/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/","path":"生成函数/","title":"生成函数"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>生成函数 | Oql's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Oql's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">121</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">211</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">简单的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">图计数问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E6%A0%87%E5%8F%B7%E6%97%A0%E5%90%91%E5%9B%BE%E6%95%B0%E9%87%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">带标号无向图数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E6%A0%87%E5%8F%B7%E6%97%A0%E5%90%91%E8%BF%9E%E9%80%9A%E5%9B%BE%E6%95%B0%E9%87%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">带标号无向连通图数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E6%A0%87%E5%8F%B7DAG%E6%95%B0%E9%87%8F"><span class="nav-number">2.1.3.</span> <span class="nav-text">带标号DAG数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E6%A0%87%E5%8F%B7%E7%9A%84DAG%E6%95%B0%E9%87%8F%EF%BC%8C%E8%A6%81%E6%B1%82%E5%9B%BE%E5%BC%B1%E8%BF%9E%E9%80%9A"><span class="nav-number">2.1.4.</span> <span class="nav-text">带标号的DAG数量，要求图弱连通</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%8F%8D%E6%BC%94"><span class="nav-number">2.2.</span> <span class="nav-text">拉格朗日反演</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oql"
+      src="/images/bear.jpg">
+  <p class="site-author-name" itemprop="name">Oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ouqingliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ouqingliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1692110604@qq.com" title="E-Mail → mailto:1692110604@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.github.io/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bear.jpg">
+      <meta itemprop="name" content="Oql">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="生成函数 | Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          生成函数
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-07 09:50:24" itemprop="dateCreated datePublished" datetime="2020-02-07T09:50:24+08:00">2020-02-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>生成函数知识点总结。</p>
+<span id="more"></span>
+
+<h2 id="简单的介绍"><a href="#简单的介绍" class="headerlink" title="简单的介绍"></a>简单的介绍</h2><p>对于一个序列 $\{a_0,a_1\cdots\}$，我们想把这个数列表示出来，把它写成一个函数的形式。因此就有了以下的两种形式：</p>
+<ul>
+<li><p>普通型生成函数(OGF)：$f(x)=\sum_{i=0}a_ix^i$ ，主要用来解决无标号，组合问题。</p>
+</li>
+<li><p>指数级生成函数(EGF)：$f(x)=\sum_{i=0}\frac{a_i}{i!}x^i$ ，主要用来解决有标号，排列问题。</p>
+</li>
+</ul>
+<p><strong>主要和多项式各种运算搭配使用。</strong></p>
+<p>一些例子：</p>
+<p>OGF：</p>
+<ul>
+<li><p>$\{ 1,1,1,\cdots\}$ 的OGF为：$\sum_{i=0}x^i=\frac{1}{1-x}$</p>
+</li>
+<li><p>$\{ 1,a,a^2,\cdots\}$ 的OGF为：$\sum_{i=0}a^ix^i=\frac{1}{1-ax}$</p>
+</li>
+<li><p>$\{ 1,-1,1,-1,\cdots\}$ 的OGF为：$\sum_{i=0}(-1)^ix^i=\frac{1}{1+x}$</p>
+</li>
+<li><p>$\frac{1}{1-x}$ 求 $n$ 次导得到的是杨辉三角第 $n+1$ 列的数。</p>
+</li>
+</ul>
+<p>EGF：</p>
+<ul>
+<li>$\{1,1,1,\cdots\}$的EGF为：$\sum_{i=0}\frac{x^i}{i!}=e^x$</li>
+<li>$\frac{e^x+e^{-x}}{2}=\sum_{i=0}\frac{x^{2i}}{(2i)!}$</li>
+<li>$\frac{e^x-e^{-x}}{2}=\sum_{i=0}\frac{x^{2i+1}}{(2i+1)!}$</li>
+<li>$\ln(1-x)=-\sum_{i=1}\frac{x^i}{i}$</li>
+</ul>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="图计数问题"><a href="#图计数问题" class="headerlink" title="图计数问题"></a>图计数问题</h3><p>以下问题，$n\leq 10^5$。模$998244353$。</p>
+<h4 id="带标号无向图数量"><a href="#带标号无向图数量" class="headerlink" title="带标号无向图数量"></a>带标号无向图数量</h4><p>$f_i=2^{\binom{i}{2}}$</p>
+<h4 id="带标号无向连通图数量"><a href="#带标号无向连通图数量" class="headerlink" title="带标号无向连通图数量"></a>带标号无向连通图数量</h4><p>设答案为$g_i$，其生成函数为$G$，第1题的生成函数是$F$，那么一个无向图就是由一些无向连通图组合起来的。</p>
+<p>那么可以枚举一个无向图是由多少个连通图组成的，假设为$i$，那么答案跟$F^i(x)$所对应的系数有关系。因为无序，所以要除一个$i!$，因此有：</p>
+<p>$F(x)=\sum_{i=0}^{\infty}\frac{G^i(x)}{i!}=e^{G(x)}$</p>
+<p>同时求$\ln$得$G(x)=\ln F(x)$</p>
+<p>多项式求$\ln$即可。</p>
+<h4 id="带标号DAG数量"><a href="#带标号DAG数量" class="headerlink" title="带标号DAG数量"></a>带标号DAG数量</h4><p>很明显先dp，设$f_i$为$i$个点带标号的DAG数量。$f_0=1$。先假设有$j$个点度数为0，符合上述条件的$j$个点的集合有$\binom{i}{j}$个；这$j$个点可以任意向其他$i-j$个点连边，方案数有$2^{j(i-j)}$个；剩下的$i-j$个点也必须是个DAG，方案数为$f_{i-j}$乘法原理得方案数为$\binom{i}{j}2^{j(i-j)}f_{i-j}$，可是剩下的$i-j$个点中也还是有一些度数为0的点的，那么容斥一下就好了。</p>
+<p>得到dp方程式：$f_i=\sum_{j=1}^i(-1)^{j-1}\binom{i}{j}2^{j(i-j)}f_{i-j}$</p>
+<p>时间复杂度$O(n^2)$</p>
+<p>考虑优化，式子右边很像一个卷积形式，但是$2^{j(i-j)}$很难化简。。。</p>
+<p>可以发现，$2^{j(i-j)}={2^{j^2}}\times {2^{-ij}}$，有没有办法把$-ij$化成只跟$j$和$i-j$和$i$有关的东西乘起来呢？</p>
+<p>初中知识：$(i-j)^2=i^2+j^2-2ij$</p>
+<p>因此$2^{i(i-j)}={2^{i^2}}\times {2^{-ij}}=(\sqrt{2})^{i^2-(i-j)^2-j^2}$</p>
+<p>那$\sqrt{2}$在模$998244353$意义下是什么来的呀？</p>
+<p>不用怕，$2$在模$998244353$意义下有二次剩余的呢。</p>
+<p>因此$dp$式可化成：</p>
+<p>$$\frac{f_i}{(\sqrt{2})^{i^2}i!}=\sum_{j=1}^i\frac{(-1)^{j-1}}{(\sqrt{2})^{j^2}j!}\times \frac{f_{i-j}}{(\sqrt{2})^{({i-j})^2}(i-j)!}$$</p>
+<p>设$F(i)=\frac{f_i}{(\sqrt{2})^{i^2}i!}$,$G(i)=\frac{(-1)^{i-1}}{(\sqrt{2})^{i^2}i!}(i\geq1)，G(0)=0$</p>
+<p>那么$F=GF+1$，即$F=\frac{1}{1-G}$</p>
+<p>多项式求逆，时间复杂度$O(n \log n)$</p>
+<h4 id="带标号的DAG数量，要求图弱连通"><a href="#带标号的DAG数量，要求图弱连通" class="headerlink" title="带标号的DAG数量，要求图弱连通"></a>带标号的DAG数量，要求图弱连通</h4><p>和第二题是一样的。设$H(x)$为该题答案的指数型生成函数，$F(x)$为第三题的指数型生成函数，那么$F(x)=e^{H(x)}$，$H(x)=\ln F(x)$，多项式求$\ln$即可。</p>
+<h3 id="拉格朗日反演"><a href="#拉格朗日反演" class="headerlink" title="拉格朗日反演"></a>拉格朗日反演</h3><p>若两个函数 $F(x),G(x)$ 满足：$F(G(x))=x$。</p>
+<p>则有：$[x^n]G(x)=\frac{1}{n}[x^{n-1}] (\frac{x}{F(x)})^n$</p>
+<p>证明：懒得证了，会用就行。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 生成函数</a>
+              <a href="/tags/FFT/" rel="tag"><i class="fa fa-tag"></i> FFT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%BA%8F%E5%88%97-CCPC-Wannafly-WC-Day7/" rel="prev" title="序列[CCPC Wannafly WC Day7]">
+                  <i class="fa fa-chevron-left"></i> 序列[CCPC Wannafly WC Day7]
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="next" title="网络流">
+                  网络流 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oql</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

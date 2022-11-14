@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ouqingliang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="链接题目链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021 Jiangxi Provincial Collegiate Programming Contest">
+<meta property="og:url" content="https://ouqingliang.github.io/2021-Jiangxi-Provincial-Collegiate-Programming-Contest/index.html">
+<meta property="og:site_name" content="Oql&#39;s Blog">
+<meta property="og:description" content="链接题目链接">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-11T01:27:03.000Z">
+<meta property="article:modified_time" content="2021-11-11T11:44:54.000Z">
+<meta property="article:author" content="Oql">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="构造">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="思维题">
+<meta property="article:tag" content="二分">
+<meta property="article:tag" content="找规律">
+<meta property="article:tag" content="莫队">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ouqingliang.github.io/2021-Jiangxi-Provincial-Collegiate-Programming-Contest/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ouqingliang.github.io/2021-Jiangxi-Provincial-Collegiate-Programming-Contest/","path":"2021-Jiangxi-Provincial-Collegiate-Programming-Contest/","title":"2021 Jiangxi Provincial Collegiate Programming Contest"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>2021 Jiangxi Provincial Collegiate Programming Contest | Oql's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Oql's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">121</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">211</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Mio-visits-ACGN-Exhibition"><span class="nav-number">2.1.</span> <span class="nav-text">A. Mio visits ACGN Exhibition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Continued-Fraction"><span class="nav-number">2.2.</span> <span class="nav-text">B. Continued Fraction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Crystal-Caves"><span class="nav-number">2.3.</span> <span class="nav-text">C. Crystal Caves</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Character-Distance"><span class="nav-number">2.4.</span> <span class="nav-text">D. Character Distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-The-Legend-of-God-Flukehn-in-Eastern"><span class="nav-number">2.5.</span> <span class="nav-text">E. The Legend of God Flukehn in Eastern</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">2.5.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.5.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Four-Column-Hanoi-Tower"><span class="nav-number">2.6.</span> <span class="nav-text">F. Four Column Hanoi Tower</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G-Magic-Number-Group"><span class="nav-number">2.7.</span> <span class="nav-text">G. Magic Number Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H-Hearthstone-So-Easy"><span class="nav-number">2.8.</span> <span class="nav-text">H. Hearthstone So Easy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I-Homework"><span class="nav-number">2.9.</span> <span class="nav-text">I. Homework</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J-LRU"><span class="nav-number">2.10.</span> <span class="nav-text">J. LRU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Many-Littles-Make-a-Mickle"><span class="nav-number">2.11.</span> <span class="nav-text">K. Many Littles Make a Mickle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L-It-Rains-Again"><span class="nav-number">2.12.</span> <span class="nav-text">L. It Rains Again</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oql"
+      src="/images/bear.jpg">
+  <p class="site-author-name" itemprop="name">Oql</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ouqingliang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ouqingliang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1692110604@qq.com" title="E-Mail → mailto:1692110604@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ouqingliang.github.io/2021-Jiangxi-Provincial-Collegiate-Programming-Contest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bear.jpg">
+      <meta itemprop="name" content="Oql">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="2021 Jiangxi Provincial Collegiate Programming Contest | Oql's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2021 Jiangxi Provincial Collegiate Programming Contest
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-11 09:27:03" itemprop="dateCreated datePublished" datetime="2021-11-11T09:27:03+08:00">2021-11-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/XCPC/" itemprop="url" rel="index"><span itemprop="name">XCPC</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103366/problems">题目链接</a></p>
+<span id="more"></span>
+
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="A-Mio-visits-ACGN-Exhibition"><a href="#A-Mio-visits-ACGN-Exhibition" class="headerlink" title="A. Mio visits ACGN Exhibition"></a>A. Mio visits ACGN Exhibition</h3><p>设 $f_{i,j,k}$ 表示到达 $(i,j)$ 时用了 $k$ 个 $0$ 的方案数，最终将结果就是 $\sum_i f_{n,m,i}$。</p>
+<p>滚动数组优化空间即可。</p>
+<p>时间复杂度 $O(n^3)$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FO(x) freopen(#x<span class="string">&quot;.in&quot;</span>,<span class="string">&quot;r&quot;</span>,stdin),freopen(#x<span class="string">&quot;.out&quot;</span>,<span class="string">&quot;w&quot;</span>,stdout)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ff(i,j,k) for(int i=(j),end_i=(k);i&lt; end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fd(i,j,k) for(int i=(j),end_i=(k);i&gt;=end_i;i--)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEBUG(x) cerr&lt;&lt;#x&lt;&lt;<span class="string">&quot;=&quot;</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> cle(x) memset(x,0,sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> lowbit(x) ((x)&amp;-(x))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned ll</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> lb long db</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> se second</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> x=<span class="number">0</span>; <span class="type">char</span> ch=<span class="built_in">getchar</span>(); <span class="type">bool</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(;ch&lt;<span class="string">&#x27;0&#x27;</span>||ch&gt;<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(ch^<span class="number">48</span>);</span><br><span class="line">	<span class="keyword">return</span> f?-x:x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CASET fo(___,1,read())</span></span><br><span class="line"><span class="type">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Add</span><span class="params">(ll x,ll y)</span></span>&#123;x+=y;<span class="keyword">return</span> x&gt;=mod?x-mod:x;&#125;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">503</span>;</span><br><span class="line"><span class="type">int</span> n,m,p,q;</span><br><span class="line"><span class="type">int</span> a[N][N];</span><br><span class="line">ll f[<span class="number">2</span>][N][N+N];</span><br><span class="line"><span class="type">int</span> d;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>(); m=<span class="built_in">read</span>(); p=<span class="built_in">read</span>(); q=n+m<span class="number">-1</span>-<span class="built_in">read</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">1</span>,m)</span><br><span class="line">			a[i][j]=<span class="built_in">read</span>();</span><br><span class="line">	f[<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	d=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		d=<span class="number">1</span>-d;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">1</span>,m) <span class="built_in">fo</span>(k,<span class="number">0</span>,n+m) f[d][j][k]=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">1</span>,m) <span class="built_in">fo</span>(k,<span class="number">0</span>,n+m) f[d][j][k+(!a[i][j])]=<span class="built_in">Add</span>(f[d][j<span class="number">-1</span>][k],f[<span class="number">1</span>-d][j][k]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,p,q) ans=<span class="built_in">Add</span>(ans,f[d][m][i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="B-Continued-Fraction"><a href="#B-Continued-Fraction" class="headerlink" title="B. Continued Fraction"></a>B. Continued Fraction</h3><p>直接模拟欧几里得过程即可。</p>
+<p>写到一半才看到 $\gcd(x,y)=1$ 的条件。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="type">int</span> x,y;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	CASET</span><br><span class="line">	&#123;</span><br><span class="line">		x=<span class="built_in">read</span>(); y=<span class="built_in">read</span>();</span><br><span class="line">		vec.<span class="built_in">clear</span>(); vec.<span class="built_in">pb</span>(x/y);</span><br><span class="line">		x%=y; <span class="built_in">swap</span>(x,y);</span><br><span class="line">		<span class="keyword">for</span>(;y;)</span><br><span class="line">		&#123;</span><br><span class="line">			vec.<span class="built_in">pb</span>(x/y);</span><br><span class="line">			x%=y;</span><br><span class="line">			<span class="built_in">swap</span>(x,y);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,vec.<span class="built_in">size</span>()<span class="number">-1</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> v:vec) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,v);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-Crystal-Caves"><a href="#C-Crystal-Caves" class="headerlink" title="C. Crystal Caves"></a>C. Crystal Caves</h3><p>有一个重要的性质：每一层只会选择它的两个端点中的一个。</p>
+<p>从后往前进行DP，设 $f_{i,j}$ 表示考虑到第 $i$ 层时，$[i,n]$ 层中有 $j$ 个用了左边时，第 $i\sim n$ 层对答案的贡献的最小值。</p>
+<p>那么只需要算第 $i$ 层的贡献即可。</p>
+<p>时间复杂度 $O(n^2)$。</p>
+<h3 id="D-Character-Distance"><a href="#D-Character-Distance" class="headerlink" title="D. Character Distance"></a>D. Character Distance</h3><p><del>构造题好麻烦。。。</del></p>
+<p>首先特判掉存在只出现一次的数，这时候只需要排序后输出就好了。</p>
+<p>显然最优的方案只有可能是选出一种数，然后剩下的排序。</p>
+<p>假设选择了 $x$，那么就会有两种情况：</p>
+<ol>
+<li><p>从 $x$ 的开头 $i$ 开始选，后面的数足够多，能选上，也就是 $i+(num-1)\times d\le n$。</p>
+</li>
+<li><p>不满足第一种的条件时，只能让 $x$ 的开头往后延。</p>
+</li>
+</ol>
+<p>对于两种情况，我们贪心的从后面开始选，显然开头的位置是越大越好的。</p>
+<p>对两种方法，取字典序最小的就可以了。</p>
+<h3 id="E-The-Legend-of-God-Flukehn-in-Eastern"><a href="#E-The-Legend-of-God-Flukehn-in-Eastern" class="headerlink" title="E. The Legend of God Flukehn in Eastern"></a>E. The Legend of God Flukehn in Eastern</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>在一二维平面上 $n$ 个卒子，每次你能且仅能选择一个往下走一步。</p>
+<p>将军初始在 $(0,0)$ 上，每次必须选择上左下右，上左，上右六个方向中的一个走一格。</p>
+<p>任意时刻将军与卒子在同一格，则卒子被吃掉。你和将军轮流走，你先走。</p>
+<p>问走最优策略时，将军最多能吃多少个卒子。</p>
+<p>$n\le 10^6$。</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>大毒瘤题。</p>
+<p>三人用了差不多1h分析性质：</p>
+<ol>
+<li>设卒子相对于将军形成的向量为 $(x,y)$，则当且仅当 $y&lt;|x|$ 时卒子能走掉。</li>
+</ol>
+<p>证明：显然。</p>
+<ol start="2">
+<li>最多只能保留一个卒子。</li>
+</ol>
+<p>证明：当只剩下两个卒子时，先走到其中一个卒子的列中，如果此时该卒子在将军上方，那么能吃掉其中一个，否则一直追着这个卒子，直到第二个卒子满足性质1的条件为止。</p>
+<ol start="3">
+<li>如果能吃完所有卒子，那么一定是按 $y$ 从小到大的顺序吃的。</li>
+</ol>
+<p>证明：显然。</p>
+<ol start="4">
+<li>对于某个时刻，如果有任何一个卒子满足性质一，那么它就能走掉。</li>
+</ol>
+<p>证明：显然。</p>
+<ol start="5">
+<li>对于两个卒子 $i,j$ （不妨设 $y_i\le y_j$），若存在某个时刻使得 $y_j-y_i&lt;|x_j-x_i|$，且 $|x_j-x_i|&gt;1$，那么其中一个可以走掉。</li>
+</ol>
+<p>证明：根据性质3，将军要先去吃 $y$ 比较小的卒子，再它吃掉这个卒子后，另外一个卒子一定满足性质 $1$。</p>
+<ol start="6">
+<li>对于两个卒子 $i,j$ （不妨设 $y_i\le y_j$），若在初始时刻使得 $y_j-y_i-y_i&lt;|x_j-x_i|$，且 $|x_j-x_i|&gt;1$，那么其中一个可以走掉。</li>
+</ol>
+<p>根据性质5，任何两个 $|x_j-x_i|&gt;1$ 的卒子，如果想要保住卒子 $j$，那么就需要在将军吃掉 $i$ 之前，$j$ 一直往下，直到 $i,j$ 满足性质5为止。而将军吃掉卒子 $i$ <strong>大概</strong>需要花费 $y_i$ 步，也就是 $j$ 能走 $y_i$ 步向下。（这里的大概是因为需要下方的点不满足性质7才可以）</p>
+<ol start="7">
+<li>对于两个卒子 $i,j$ 满足 $|x_j-x_i|=1$ ， $y_j-y_i-y_i\le 0$ 且存在第三者 $k$ 使得 $x_i\neq x_k,x_j\neq x_k$，且 $y_k\geq y_i$， 那么这三个的其中一个可以走掉。</li>
+</ol>
+<p>如果没有第三者，这两个卒子一定走不掉，因为可以先吃完 $k$ 再去吃 $i,j$（这里 $k,i$ 或 $k,j$ 均不满足性质6，否则可以溜掉）。否则显然可以走掉。</p>
+<p>综上，根据如上性质，我们只需要判断：</p>
+<ol>
+<li><p>是否存在一个卒子 $i$，使得 $y_i&lt;|x_i|$。</p>
+</li>
+<li><p>是否存在两个卒子 $i,j$，使得 $y_i\le y_j,y_j-2y_i &lt; |x_j-x_i|,1 &lt; |x_j-x_i|$。</p>
+</li>
+<li><p>是否存在三个卒子 $i,j,k$，使得 $y_i\le y_j,y_i\le y_k,y_j-2y_i &lt; 1 = |x_j-x_i|,x_i\neq x_k,x_j\neq x_k$。</p>
+</li>
+</ol>
+<p>代码过于丑陋就不放了。。。</p>
+<h3 id="F-Four-Column-Hanoi-Tower"><a href="#F-Four-Column-Hanoi-Tower" class="headerlink" title="F. Four Column Hanoi Tower"></a>F. Four Column Hanoi Tower</h3><p>设 $f_i$ 表示4座塔的答案，$g_i$ 表示3座塔的答案。</p>
+<p>那么就有：$f_i=\min(2f_k+g_{n-k}),f_1=1$ 以及 $g_i=2g_{i-1}+1,g_1=1$。</p>
+<p>然后打个表，发现前几项为 $1,3,5,9,13,17,25,33,41,49,\cdots$。一阶差分为 $2,2,4,4,4,8,8,8,8,\cdots$。</p>
+<p>直接上 Python 即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">now = cnt = <span class="number">2</span></span><br><span class="line">las = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">10001</span>):</span><br><span class="line">	las = las+<span class="number">1</span></span><br><span class="line">	a.append(a[-<span class="number">1</span>]+now)</span><br><span class="line">	<span class="keyword">if</span> las == cnt:</span><br><span class="line">		cnt = cnt+<span class="number">1</span></span><br><span class="line">		las = <span class="number">0</span></span><br><span class="line">		now = now+now</span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n):</span><br><span class="line">	<span class="built_in">print</span>(a[<span class="built_in">int</span>(<span class="built_in">input</span>())])</span><br></pre></td></tr></table></figure>
+
+<h3 id="G-Magic-Number-Group"><a href="#G-Magic-Number-Group" class="headerlink" title="G. Magic Number Group"></a>G. Magic Number Group</h3><p>对每个数分解质因数后，剩下的是区间众数。每个位置最多挂上 $7$ 个数。</p>
+<p>直接使用莫队即可。时间复杂度 $O(7n\sqrt{n})$。</p>
+<p>有点小卡常。</p>
+<h3 id="H-Hearthstone-So-Easy"><a href="#H-Hearthstone-So-Easy" class="headerlink" title="H. Hearthstone So Easy"></a>H. Hearthstone So Easy</h3><p>只有三种情况：</p>
+<ol>
+<li>$n=1$，A直接死了。</li>
+<li>A能在第一次干剩B到最多一滴血，A赢。</li>
+<li>否则B赢。</li>
+</ol>
+<h3 id="I-Homework"><a href="#I-Homework" class="headerlink" title="I. Homework"></a>I. Homework</h3><p>换根DP即可。</p>
+<h3 id="J-LRU"><a href="#J-LRU" class="headerlink" title="J. LRU"></a>J. LRU</h3><p>显然满足二分性，于是二分后，然后随便判断。可以做到 $O(n\log n)$。</p>
+<h3 id="K-Many-Littles-Make-a-Mickle"><a href="#K-Many-Littles-Make-a-Mickle" class="headerlink" title="K. Many Littles Make a Mickle"></a>K. Many Littles Make a Mickle</h3><p>输出 $m\sum_{i=1}^ni^2$。</p>
+<h3 id="L-It-Rains-Again"><a href="#L-It-Rains-Again" class="headerlink" title="L. It Rains Again"></a>L. It Rains Again</h3><p>线段投影到 $x$ 轴，然后随便做。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DP/" rel="tag"><i class="fa fa-tag"></i> DP</a>
+              <a href="/tags/%E6%9E%84%E9%80%A0/" rel="tag"><i class="fa fa-tag"></i> 构造</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 数学</a>
+              <a href="/tags/%E6%80%9D%E7%BB%B4%E9%A2%98/" rel="tag"><i class="fa fa-tag"></i> 思维题</a>
+              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"><i class="fa fa-tag"></i> 二分</a>
+              <a href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag"><i class="fa fa-tag"></i> 找规律</a>
+              <a href="/tags/%E8%8E%AB%E9%98%9F/" rel="tag"><i class="fa fa-tag"></i> 莫队</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E4%BB%A3%E6%95%B0%E4%BD%99%E5%AD%90%E5%BC%8F%E7%9A%84%E6%B1%82%E6%B3%95/" rel="prev" title="代数余子式的求法">
+                  <i class="fa fa-chevron-left"></i> 代数余子式的求法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-CCPC-%E5%B9%BF%E5%B7%9E%E7%AB%99/" rel="next" title="2021 CCPC 广州站">
+                  2021 CCPC 广州站 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oql</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
