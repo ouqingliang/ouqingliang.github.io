@@ -176,6 +176,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -251,7 +252,7 @@
 <p>排序后，找到同正同负的下标，按照乘积的大小从大到小排序，假设有 $k$ 对这样的数，那么前 $k$ 个的选法一定是按照顺序来的。剩下 $n-k$ 对一正一负，使用FFT计算即可。</p>
 <p>时间复杂度 $O(n\log n)$。</p>
 <h2 id="F-Fields-Division"><a href="#F-Fields-Division" class="headerlink" title="F. Fields Division"></a>F. Fields Division</h2><p>删掉 $n$ 个点后，$n-1$ 所在连通块形成的集合即为其中一个集合。</p>
-<h2 id="G-Generator-Tree"><a href="#G-Generator-Tree" class="headerlink" title="G. Generator Tree"></a>G. Generator Tree</h2><p>树哈希：$f_u=1+\sum_{v\in son_u}f_v\times prime[siz_v]$。</p>
+<h2 id="G-Generator-Tree"><a href="#G-Generator-Tree" class="headerlink" title="G. Generator Tree"></a>G. Generator Tree</h2><p>树哈希：$f_u&#x3D;1+\sum_{v\in son_u}f_v\times prime[siz_v]$。</p>
 <p>每棵树，枚举它节点个数的因数 $d$，判断是否能被分解为 $\frac{n}{d}$ 棵同构的树。</p>
 <p>若能，那么肯定存在一个大小为 $d$ 的子树，算出其哈希值后，用一个数组标记表示已经算过了，模拟将这个大小为 $d$ 的子树删去，然后继续做即可。</p>
 <h2 id="H-Hamilton-The-Musical"><a href="#H-Hamilton-The-Musical" class="headerlink" title="H. Hamilton - The Musical"></a>H. Hamilton - The Musical</h2><p>二分图带权匹配模板。</p>
@@ -264,6 +265,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -317,6 +320,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

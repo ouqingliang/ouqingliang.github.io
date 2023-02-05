@@ -176,6 +176,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -265,12 +266,12 @@
 <p>由期望线性性，我们将上面拆成三部分，前两部分的 $dis_{1,i}$ 的期望值可以通过递推计算，设为 $f_i$。</p>
 <p>而对于 $u,v(u&lt;v)$ 而言，我们需要求出 $dis_{1,lca(u,v)}$ 的期望值：</p>
 <ul>
-<li>对于 $v$，选择 $v$ 的一个父亲 $i$，概率为 $\frac{a_i}{\sum_{j=1}^{i-1}a_j}$。</li>
-<li>如果 $i=u$，则表示找到了 $lca$，返回 $f_u$。</li>
-<li>如果 $i&gt;u$，则令 $u’=u,v’=i$，继续递归。</li>
-<li>否则 $i&lt;u$，则令 $u’=i,v’=u$，继续递归。</li>
+<li>对于 $v$，选择 $v$ 的一个父亲 $i$，概率为 $\frac{a_i}{\sum_{j&#x3D;1}^{i-1}a_j}$。</li>
+<li>如果 $i&#x3D;u$，则表示找到了 $lca$，返回 $f_u$。</li>
+<li>如果 $i&gt;u$，则令 $u’&#x3D;u,v’&#x3D;i$，继续递归。</li>
+<li>否则 $i&lt;u$，则令 $u’&#x3D;i,v’&#x3D;u$，继续递归。</li>
 </ul>
-<p>可以发现，$lca(u,v)$ 必须 $\le u$。因此， $dis_{1,lca(u,v)}$ 的期望和 $v$ 没有任何关系。设 $g_u$ 为此时的期望值，则有：$g_u=\frac{a_uf_u+\sum_{j=1}^{u-1}a_jg_j}{\sum_{j=1}^ua_j}$，也可以递推求出。</p>
+<p>可以发现，$lca(u,v)$ 必须 $\le u$。因此， $dis_{1,lca(u,v)}$ 的期望和 $v$ 没有任何关系。设 $g_u$ 为此时的期望值，则有：$g_u&#x3D;\frac{a_uf_u+\sum_{j&#x3D;1}^{u-1}a_jg_j}{\sum_{j&#x3D;1}^ua_j}$，也可以递推求出。</p>
 <p>时间复杂度 $O(n+q)$。</p>
 <h2 id="F-Find-the-XOR"><a href="#F-Find-the-XOR" class="headerlink" title="F. Find the XOR"></a>F. Find the XOR</h2><p>首先根据经典结论，两点间的异或和可以看成随便一棵生成树中两点走树边的异或和再异或上若干个环的值。</p>
 <p>环的异或值一共有 $m-n+1$ 个，将这些数扔进线性基 $Base$ 里。</p>
@@ -279,7 +280,7 @@
 <p>运用了线性基的若干重要性质：</p>
 <ul>
 <li>首先，$f(x)\oplus g(x)$ 等于 $Base$ 中能异或出的最大值。考虑用归纳证明即可。那么可以将 $g(x)$ 转换成 $f(x)$ 了。</li>
-<li>对于 $f(x)$，有 ：$f(x)\oplus f(y)=f(x\oplus y)$。</li>
+<li>对于 $f(x)$，有 ：$f(x)\oplus f(y)&#x3D;f(x\oplus y)$。</li>
 </ul>
 <p>那么，经过这些转化后就比较简单了。</p>
 
@@ -288,6 +289,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -341,6 +344,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

@@ -171,6 +171,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -416,7 +417,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>$n$ 组人，第 $i$ 组 $a_i$ 个人，需要安排在一个$m$ 个座位的，编号为 $0,1,\cdots,m-1$ 的圆桌上，每个位置只能最多做一个人。</p>
-<p>其中第 $i$ 组的人能坐在 $\{ l_i,(l_i+1)\%m,(l_i+2)\% m,\cdots,r_i\}$的位置上。</p>
+<p>其中第 $i$ 组的人能坐在 ${ l_i,(l_i+1)%m,(l_i+2)% m,\cdots,r_i}$的位置上。</p>
 <p>问是否存在一种合法的安排。</p>
 <p>$n\leq 10^5,m\leq 10^9$</p>
           <!--noindex-->
@@ -851,9 +852,9 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=6618">Good Numbers</a></p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>定义一个正整数 $n$ 是好数当且仅当 $n$ 在<strong>8进制</strong>表示下所有的数码出现的次数为<strong>3的倍数(出现0次亦可)</strong>。</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>定义一个正整数 $n$ 是好数当且仅当 $n$ 在<strong>8进制</strong>表示下所有的数码出现的次数为**3的倍数(出现0次亦可)**。</p>
 <p>有多少个 $k$ 位的8进制数（不含前导0），满足这个数是好的，且是 $p$ 的倍数。对 $10^9+9$ 取模。</p>
-<p>例如：当 $k=3,p=2$ 时，好数有 $222(8),444(8),666(8)$ 三个。</p>
+<p>例如：当 $k&#x3D;3,p&#x3D;2$ 时，好数有 $222(8),444(8),666(8)$ 三个。</p>
 <p>$1\le k \le 10^{18},p&lt;8$</p>
           <!--noindex-->
             <div class="post-button">
@@ -1089,6 +1090,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -258,7 +259,7 @@
 <p>用反悔贪心，对于环内的点形成的边全部删掉，新建一个节点 $w$，对于环上的每个点 $v$，对于原图所有的边 $(u,v,z)$，其中 $u$ 不在环上，将这条边改成 $(u,w,z-in[v])$。</p>
 <p>然后将环中所有的 $in[v]$ 都加进答案 $ans$ 里。然后考虑新图的答案。</p>
 <p>如果遇到某个 $rt$ 外的点没有入边，则无解。</p>
-<p>每次图至少减少一个点，每次的时间复杂度为 $O(n+m)=O(m)$。时间复杂度 $O(nm)$。</p>
+<p>每次图至少减少一个点，每次的时间复杂度为 $O(n+m)&#x3D;O(m)$。时间复杂度 $O(nm)$。</p>
 <h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>这个优化是Tarjan提出的，能将算法优化到 $O(n+m\log m)$。</p>
 <p>考虑将朱-刘算法的步骤改一下，变成每次加一条边进去，答案加上这条边的权值，这条边的出点为上一次加进去的入点。直到碰到已加入的点为止。如果成环则处理这个环，否则不处理。</p>
 <p>重复上面的过程，直到所有点都被标记过，用并查集维护每个点在新图中被合并成哪个点。</p>
@@ -274,6 +275,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -331,6 +334,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

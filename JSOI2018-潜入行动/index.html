@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -253,7 +254,7 @@
 <p>子树在 $i$ 处合并，分情况讨论即可。</p>
 <p>注意空间限制，只能开下int。</p>
 <p>时间复杂度 $O(nk)$。</p>
-<p>证明：对于 $i$ 的儿子 $son$，要与 $i$ 合并，那么时间复杂度为 $O(\min\{siz_i,k\}\times \min\{siz_{son},k\})$。</p>
+<p>证明：对于 $i$ 的儿子 $son$，要与 $i$ 合并，那么时间复杂度为 $O(\min{siz_i,k}\times \min{siz_{son},k})$。</p>
 <p>当 $siz_i,siz_{son}$ 大于 $k$ 时，只有 $\frac{n}{k}$ 个点，总时间复杂度 $O(nk)$。</p>
 <p>当 $siz_{son}$ 小于 $k$ 时，考虑 $son$ 子树中的每个点，他一直合并上去时，需要花费的时间不会超过 $k$，总时间复杂度 $O(nk)$。</p>
 <p>于是总复杂度还是 $O(nk)$ 。证毕。</p>
@@ -265,6 +266,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -321,6 +324,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -251,12 +252,12 @@
 <span id="more"></span>
 
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><del>拉格朗日乘数法模板题。</del></p>
-<p>由于 $n$ 比较小，我们可以暴力枚举这 $n$ 个点顺时针的顺序，一共有 $(n-1)!$ 种。$n$ 个点分别和原点连线，设这 $n$ 条直线的夹角为 $\alpha <em>i$，显然 $a_i$ 不会超过 $\pi$ 。凸包面积为 $\frac{1}{2}\sum</em>{i=1}^nr_ir_{i\% n+1}\sin\alpha_i$。</p>
-<p>好看一点，设 $R_i=r_ir_{i \% n+1}$，我们需要最大化 $\sum_{i=1}^nR_i\sin \alpha _i$，满足条件 $\sum \alpha_i=2\pi$。</p>
-<p>由拉格朗日乘数法的套路，设函数 $F(\alpha_1,\alpha_2,\cdots,\alpha_n,\lambda)=\sum_{i=1}^nR_i\sin \alpha <em>i+\lambda(2\pi-\sum</em>{i=1}^n\alpha_i)$。</p>
+<p>由于 $n$ 比较小，我们可以暴力枚举这 $n$ 个点顺时针的顺序，一共有 $(n-1)!$ 种。$n$ 个点分别和原点连线，设这 $n$ 条直线的夹角为 $\alpha <em>i$，显然 $a_i$ 不会超过 $\pi$ 。凸包面积为 $\frac{1}{2}\sum</em>{i&#x3D;1}^nr_ir_{i% n+1}\sin\alpha_i$。</p>
+<p>好看一点，设 $R_i&#x3D;r_ir_{i % n+1}$，我们需要最大化 $\sum_{i&#x3D;1}^nR_i\sin \alpha _i$，满足条件 $\sum \alpha_i&#x3D;2\pi$。</p>
+<p>由拉格朗日乘数法的套路，设函数 $F(\alpha_1,\alpha_2,\cdots,\alpha_n,\lambda)&#x3D;\sum_{i&#x3D;1}^nR_i\sin \alpha <em>i+\lambda(2\pi-\sum</em>{i&#x3D;1}^n\alpha_i)$。</p>
 <p>求偏导数可得：</p>
-<p>$$\frac{\partial F}{\partial \alpha_i}=R_i\cos {\alpha_i}-\lambda=0 \\ \frac{\partial F}{\partial \lambda}=2\pi-\sum_{i=1}^na_i=0$$</p>
-<p>也就是：$\cos \alpha_i=\frac{\lambda}{R_i}$。</p>
+<p>$$\frac{\partial F}{\partial \alpha_i}&#x3D;R_i\cos {\alpha_i}-\lambda&#x3D;0 \ \frac{\partial F}{\partial \lambda}&#x3D;2\pi-\sum_{i&#x3D;1}^na_i&#x3D;0$$</p>
+<p>也就是：$\cos \alpha_i&#x3D;\frac{\lambda}{R_i}$。</p>
 <p>当 $0\leq \alpha_i\leq \pi$ 时，$\cos \alpha_i$ 单调递减。</p>
 <p>满足单调性，那么我们就可以二分这个 $\lambda$，然后就可以算出此时的 $a_i$ 了。</p>
 <p>时间复杂度 $O(n!\log Ans)$。</p>
@@ -269,6 +270,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -326,6 +329,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

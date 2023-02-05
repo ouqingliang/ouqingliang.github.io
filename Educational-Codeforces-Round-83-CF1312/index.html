@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -256,29 +257,29 @@
 <p>G和E都花了太长时间了。证明自己的思维还是太慢。</p>
 <h3 id="Problem-A"><a href="#Problem-A" class="headerlink" title="Problem A"></a>Problem A</h3><p>求正 $n$ 边形中选出 $m$ 个顶点是否能组成正 $m$ 边形。</p>
 <p>显然：$m|n$。</p>
-<h3 id="Problem-B"><a href="#Problem-B" class="headerlink" title="Problem B"></a>Problem B</h3><p>构造一种方案，将数组重排后，使得不存在 $i-a_i = j-a_j$ 的情况。</p>
+<h3 id="Problem-B"><a href="#Problem-B" class="headerlink" title="Problem B"></a>Problem B</h3><p>构造一种方案，将数组重排后，使得不存在 $i-a_i &#x3D; j-a_j$ 的情况。</p>
 <p>显然从大到小输出即可。</p>
 <p>求方案数？</p>
 <h3 id="Problem-C"><a href="#Problem-C" class="headerlink" title="Problem C"></a>Problem C</h3><p>一个数组，可以选择一个 $m$，然后对于每个 $i\in[1,m]$，将数组的某个位置减去 $k^i$。问是否存在一个 $m$，使得数组全为 $0$？</p>
 <p>从大到小暴力即可。</p>
 <h3 id="Problem-D"><a href="#Problem-D" class="headerlink" title="Problem D"></a>Problem D</h3><p>太长了，懒得写了。</p>
-<p>先特判 $n=2$ 的情况。</p>
+<p>先特判 $n&#x3D;2$ 的情况。</p>
 <p>枚举最大的那个的值以及位置，再枚举左右相等的那个点谁，然后组合数化简一下即可。</p>
 <h3 id="Problem-E"><a href="#Problem-E" class="headerlink" title="Problem E"></a>Problem E</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>一个数列 $a$，每次可以将两个相邻且相等的数合成一个，权值加 $1$。</p>
 <p>问数列 $a$ 最短能变成多少。</p>
 <p>$n\leq 500$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>区间DP，看区间 $[i,j]$ 能否合成一个数 $k$，然后再一次 DP/bfs 就可以了。</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>区间DP，看区间 $[i,j]$ 能否合成一个数 $k$，然后再一次 DP&#x2F;bfs 就可以了。</p>
 <p>时间复杂度 $O(n^3)$。</p>
 <h3 id="Problem-F"><a href="#Problem-F" class="headerlink" title="Problem F"></a>Problem F</h3><p>留坑。。。</p>
 <h3 id="Problem-G"><a href="#Problem-G" class="headerlink" title="Problem G"></a>Problem G</h3><p>为什么最后这道题这么简单啊。。。</p>
 <h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>太长了，不写了。</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>设在 $S$ 中的点为关键点。</p>
 <p>显然考虑按dfs进行DP，设 $f_i$ 表示到 $i$ 这个节点的最短时间， $d_i$ 为深度，$s_i$ 为到考虑到当前的dfs序为止时，$i$ 的子树中的有多少个关键点。</p>
-<p>若点 $i$ 不是关键点，有：$f_i=\min\{f_j+d_i-d_j\}$，其中 $j$ 为 $i$ 祖先。</p>
-<p>若点 $i$ 是关键点，就会多一种转移： $f_i=\min\{f_j+s_j\}$，其中 $j$ 为 $i$ 祖先。</p>
+<p>若点 $i$ 不是关键点，有：$f_i&#x3D;\min{f_j+d_i-d_j}$，其中 $j$ 为 $i$ 祖先。</p>
+<p>若点 $i$ 是关键点，就会多一种转移： $f_i&#x3D;\min{f_j+s_j}$，其中 $j$ 为 $i$ 祖先。</p>
 <p>第二种转移需要支持区间 $+1$。即遇到一个关键点的时候需要令 $s_j$ 加上 $1$。</p>
 <p>因此只需要实现一个单点覆盖和区间加，查询区间最大值的数据结构即可。</p>
-<p>线段树/set/可删堆可以很轻松的维护。</p>
+<p>线段树&#x2F;set&#x2F;可删堆可以很轻松的维护。</p>
 <p>时间复杂度 $O(n\log n)$。</p>
 
     </div>
@@ -286,6 +287,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -346,6 +349,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

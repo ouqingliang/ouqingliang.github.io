@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -268,10 +269,10 @@
 <p>显然有 $f_{i+1}-f_i\leq f_i-f_{i-1}$，也就是说，$f_i$ 会形成一个上凸包的形式。</p>
 <p>考虑如何将两个区间合并到一起。</p>
 <p>设这两个区间为 $a,b$，假设先不考虑两个区间衔接的地方是否将选两次合成一次，那么就有：</p>
-<p>$$f_{ab}(i)=\max_{j+k=i}\{f_a(j)+f_b(k)\}$$</p>
+<p>$$f_{ab}(i)&#x3D;\max_{j+k&#x3D;i}{f_a(j)+f_b(k)}$$</p>
 <p>又由于这个 $f$ 是一个上凸包的形式，这个式子相当于是对 $f_a$ 和 $f_b$ 两个凸包做了一次闵科夫斯基和。</p>
 <p>那么就可以用归并的思路，将 $f_a,f_b$ 合并到一起。</p>
-<p>考虑两个区间衔接的地方是否将选两次合成一次：对于每个区间，记录 $g_{0/1,0/1}$ 表示左右端点是否选择时的 $f$ 数组，当 $a$ 的右端点和 $b$ 的左端点均选择的时候，实际上就是将 $f_{ab}$ 向左移了一位。</p>
+<p>考虑两个区间衔接的地方是否将选两次合成一次：对于每个区间，记录 $g_{0&#x2F;1,0&#x2F;1}$ 表示左右端点是否选择时的 $f$ 数组，当 $a$ 的右端点和 $b$ 的左端点均选择的时候，实际上就是将 $f_{ab}$ 向左移了一位。</p>
 <p>那么就可以将这两个区间在线性时间内的答案合并到一起。</p>
 <p>可以开一个线段树。预处理出线段树中区间的答案。</p>
 <p>这一部分的时间复杂度是 $O(n\log n)$ 的，有个 $2^4$ 的常数。</p>
@@ -294,6 +295,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -354,6 +357,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

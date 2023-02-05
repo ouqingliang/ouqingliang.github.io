@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -264,12 +265,12 @@
 <p>把 $f_S$ 的状态改一改，变成至少是 $S$ 中的人在 $1$ <strong>之后</strong>死的概率。</p>
 <p>那么答案即为：$\sum_S (-1)^Sf_S$</p>
 <p>而 $f_S$ 显然与不在 $S$ 的且不是 $1$ 的猎人无关。</p>
-<p>则 $f_S=\frac{w_1}{w_1+\sum_{i\in S} w_i}$</p>
-<p>有一个很重要的数据范围是 $\sum_{i=1}^nw_i\leq 10^5$</p>
+<p>则 $f_S&#x3D;\frac{w_1}{w_1+\sum_{i\in S} w_i}$</p>
+<p>有一个很重要的数据范围是 $\sum_{i&#x3D;1}^nw_i\leq 10^5$</p>
 <p>那就是说 $f_S$ 的分母不会超过 $10^5$。</p>
-<p>那或许可以试着枚举 $j$，然后求出所有满足 $\sum_{i\in S}w_i=j$ 的集合的 $(-1)^S$ 的和？</p>
+<p>那或许可以试着枚举 $j$，然后求出所有满足 $\sum_{i\in S}w_i&#x3D;j$ 的集合的 $(-1)^S$ 的和？</p>
 <p>考虑每个 $w_i$ 的贡献，选相当于乘 $-1$，不会相当于乘 $1$。则可以设以下生成函数：$(1-x^{w_i})$</p>
-<p>$j$ 的答案即为 $\prod_{i=2}^n (1-x^{w_i})$ 的第 $j$ 项的系数。</p>
+<p>$j$ 的答案即为 $\prod_{i&#x3D;2}^n (1-x^{w_i})$ 的第 $j$ 项的系数。</p>
 <p>分治FFT 即可。</p>
 <p>时间复杂度 $O(n\log ^2n)$</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>一道思维较好的容斥。</p>
@@ -279,6 +280,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -337,6 +340,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

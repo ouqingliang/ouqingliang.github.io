@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -255,7 +256,7 @@
 <p>那么剩下的情况只有最长下降子序列长度不超过 $2$ 的情况。可以发现，这样的情况一定合法。</p>
 <p>如果不考虑字典序的限制，只统计有多少个排列满足最长下降子序列长度不超过 $2$。</p>
 <p>尝试DP，设 $f_{i,j}$ 表示考虑到第 $i$ 位，前缀最大值为 $j$ 的方案数。看看 $f_{i,j}$ 能转移到哪里去。显然 $f_{i+1,k}(k&gt;j)$ 是一定可以的，且系数是 $1$。那么能否转移到 $f_{i+1,j}$ 呢？可以发现，如果你第 $i+1$ 位填的不是前 $i$ 位最小的没有出现过的正整数 $t$ 的话，后面一定会填上这个 $t$，此时 $j,a_{i+1},t$ 就会形成一个长度为 $3$ 的下降子序列了。因此 $f_{i,j}$ 给 $f_{i+1,j}$ 的贡献的系数为 $1$，且必须满足 $i+1\leq j$（不然就没数可填了）。</p>
-<p>考虑这个 $f_{i,j}$ 的组合意义，显然是从 $(0,0)$ 开始走，每次可以往右边且纵坐标不比当前点小的格点走，不经过 $y=x-1$，走到 $(n,n)$ 的方案数。</p>
+<p>考虑这个 $f_{i,j}$ 的组合意义，显然是从 $(0,0)$ 开始走，每次可以往右边且纵坐标不比当前点小的格点走，不经过 $y&#x3D;x-1$，走到 $(n,n)$ 的方案数。</p>
 <p>用折线法容斥一下，把不经过直线的限制去掉。剩下的是一个组合数。</p>
 <p>现在考虑字典序的限制。假设我们从第 $i$ 位开始打破字典序的限制，那么就相当于前面的情况，只不过不是从 $(0,0)$ 开始走罢了。</p>
 <p>预处理组合数，枚举从哪一位开始打破限制就好了。注意及时break。</p>
@@ -268,6 +269,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -326,6 +329,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

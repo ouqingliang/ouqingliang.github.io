@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -250,7 +251,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><a target="_blank" rel="noopener" href="https://acm.hdu.edu.cn/search.php?field=problem&key=2021%A1%B0MINIEYE%B1%AD%A1%B1%D6%D0%B9%FA%B4%F3%D1%A7%C9%FA%CB%E3%B7%A8%C9%E8%BC%C6%B3%AC%BC%B6%C1%AA%C8%FC%A3%A83%A3%A9&source=1&searchmode=source">链接</a></p>
+        <p><a target="_blank" rel="noopener" href="https://acm.hdu.edu.cn/search.php?field=problem&key=2021%EF%BF%BD%EF%BF%BDMINIEYE%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%D0%B9%EF%BF%BD%EF%BF%BD%EF%BF%BD%D1%A7%EF%BF%BD%EF%BF%BD%EF%BF%BD%E3%B7%A8%EF%BF%BD%EF%BF%BD%C6%B3%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD3%EF%BF%BD%EF%BF%BD&source=1&searchmode=source">链接</a></p>
 <span id="more"></span>
 
 <h3 id="1001"><a href="#1001" class="headerlink" title="1001"></a>1001</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给定一棵树，有点权 $p_i$。</p>
@@ -267,9 +268,9 @@
 <h3 id="1003"><a href="#1003" class="headerlink" title="1003"></a>1003</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>给定两个十进制的数字串 $S,T$，均有通配字符‘*’，对于每个 $i(0\le i \le |T|)$，问若能至多失配 $i$ 次，字符串 $S$ 中长度为 $T$ 的子串有多少个能与之匹配。</p>
 <p>$|T|\le |S|\le 2\times 10^5$。</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>含通配字符的通常可以用FFT去进行解决。设 $f_i$ 表示 $S[i,i+|T|-1]$ 与 $T$ 匹配的次数，算出 $f_i$ 即可。</p>
-<p>这里将每个数字 $k$ 分开考虑，设 $a_i=[S_i==k],b_i=[T_i==k]$，对于该字符，$S[j,j+|T|-1]$ 与 $T$ 匹配的次数为 $\sum_{i=0}^{|T|-1}a_{i+j}b_i$。</p>
+<p>这里将每个数字 $k$ 分开考虑，设 $a_i&#x3D;[S_i&#x3D;&#x3D;k],b_i&#x3D;[T_i&#x3D;&#x3D;k]$，对于该字符，$S[j,j+|T|-1]$ 与 $T$ 匹配的次数为 $\sum_{i&#x3D;0}^{|T|-1}a_{i+j}b_i$。</p>
 <p>将 $b_i$ 反串，然后FFT即可。</p>
-<p>但是，对于通配字符，它们在每个数字中都会被统计到，统计多了 $10-1=9$ 次，于是再做一次跟通配字符相关的FFT，减去其 $9$ 倍的贡献即可。</p>
+<p>但是，对于通配字符，它们在每个数字中都会被统计到，统计多了 $10-1&#x3D;9$ 次，于是再做一次跟通配字符相关的FFT，减去其 $9$ 倍的贡献即可。</p>
 <p>时间复杂度 $O(11n\log n)$。</p>
 <h3 id="1006"><a href="#1006" class="headerlink" title="1006"></a>1006</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>$n$ 个工人，$n$ 件物品要加工。第 $i$ 个人加工 $j$ 物品能获得 $a_i+b_j$ 的收益。</p>
 <p>每个人只能加工最多一个物品，每个物品最多只能被一个人加工。</p>
@@ -290,7 +291,7 @@
 <p>求这样的路径中 $(\sum a_{i,j})\times (\sum b_{i,j})$ 的最大值。</p>
 <p>$n\le 100,a_{i,j},b_{i,j} \le 10^6$。</p>
 <p>数据随机。</p>
-<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>设 $f_{i,j,k}$ 表示走到 $(i,j)$ ，$\sum a =k$  时 $b_{i,j}$ 的最大值。</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>设 $f_{i,j,k}$ 表示走到 $(i,j)$ ，$\sum a &#x3D;k$  时 $b_{i,j}$ 的最大值。</p>
 <p>对于同一个 $i,j$，若 $k_1\le k_2$ 且 $f_{i,j,k_1}\le f_{i,j,k_2}$，则 $k_1$ 完全没用。</p>
 <p>在随机情况下，合法的 $k$ 大概只有几千。</p>
 <p>于是复杂度为 $O(n^2k)$。</p>
@@ -300,6 +301,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -357,6 +360,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

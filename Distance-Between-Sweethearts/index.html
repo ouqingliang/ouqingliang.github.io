@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -241,15 +242,15 @@
 <span id="more"></span>
 
 <p>给定六个不大于 $2000$ 的整数，$UI_{g},UA_{g},UG_{g},UI_{b},UA_{b},UG_{b}$，</p>
-<p>求和：$\max\{|I_b-I_g|,|A_b-A_g|,|G_b-G_g|\}\bigoplus I_b\bigoplus A_b\bigoplus G_b\bigoplus I_g\bigoplus A_g\bigoplus G_g$，且满足：</p>
-<p> $I_{g}\in\{0,UI_{g}\},A_{g}\in\{0,UA_{g}\},G_{g}\in\{0,UG_{g}\}$</p>
-<p>$I_{b}\in\{0,UI_{b}\},A_{b}\in\{0,UA_{b}\},G_{b}\in\{0,UG_{b}\}$</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>那个 $\max$ 比较烦人，把那个 $\max$ 扔掉，假设为 $k=\max\{x,y,z\}$。</p>
-<p>要求出 $f_i$，表示在最大值为 $k$ 的情况下 $I_b\bigoplus A_b\bigoplus G_b\bigoplus I_g\bigoplus A_g\bigoplus G_g=i$ 的方案数。</p>
+<p>求和：$\max{|I_b-I_g|,|A_b-A_g|,|G_b-G_g|}\bigoplus I_b\bigoplus A_b\bigoplus G_b\bigoplus I_g\bigoplus A_g\bigoplus G_g$，且满足：</p>
+<p> $I_{g}\in{0,UI_{g}},A_{g}\in{0,UA_{g}},G_{g}\in{0,UG_{g}}$</p>
+<p>$I_{b}\in{0,UI_{b}},A_{b}\in{0,UA_{b}},G_{b}\in{0,UG_{b}}$</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>那个 $\max$ 比较烦人，把那个 $\max$ 扔掉，假设为 $k&#x3D;\max{x,y,z}$。</p>
+<p>要求出 $f_i$，表示在最大值为 $k$ 的情况下 $I_b\bigoplus A_b\bigoplus G_b\bigoplus I_g\bigoplus A_g\bigoplus G_g&#x3D;i$ 的方案数。</p>
 <p>但这样显然没法做，因为我们无法确定最大值是否为 $k$。</p>
 <p>为了确定最大值为 $k$，我们可以利用 $[1,k-1]$ 的答案。</p>
-<p>也就是把 $f_i$ 的状态改为 ：在最大值 $\leq k$ 的情况下 $I_b\bigoplus A_b\bigoplus G_b\bigoplus I_g\bigoplus A_g\bigoplus G_g=i$ 的方案数。</p>
-<p>把六个异或的顺序改一改：$(I_b\bigoplus I_g)\bigoplus (G_b\bigoplus G_g)\bigoplus (A_b\bigoplus A_g)=i$</p>
+<p>也就是把 $f_i$ 的状态改为 ：在最大值 $\leq k$ 的情况下 $I_b\bigoplus A_b\bigoplus G_b\bigoplus I_g\bigoplus A_g\bigoplus G_g&#x3D;i$ 的方案数。</p>
+<p>把六个异或的顺序改一改：$(I_b\bigoplus I_g)\bigoplus (G_b\bigoplus G_g)\bigoplus (A_b\bigoplus A_g)&#x3D;i$</p>
 <p>只需要看统计 $I_b\bigoplus I_g$ 的出现次数($G,A$ 同理)，然后 $\mbox {FWT}$ 就可以了。</p>
 <p>此时可以把 $I_b,I_g$ 相差不超过 $k$ 的统计一下就好了。</p>
 <p>时间复杂度 $O(n^2\log n)$</p>
@@ -261,6 +262,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -318,6 +321,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

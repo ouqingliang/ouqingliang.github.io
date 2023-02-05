@@ -180,6 +180,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -255,15 +256,15 @@
         <p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/contests/contest_show.php?cid=849">2019 Multi-University Training Contest 2</a></p>
 <span id="more"></span>
 
-<h3 id="Problem-E-Everything-Is-Generated-In-Equal-Probability"><a href="#Problem-E-Everything-Is-Generated-In-Equal-Probability" class="headerlink" title="Problem E  Everything Is Generated In Equal Probability"></a>Problem E  Everything Is Generated In Equal Probability</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>有一序列 $A$ ，$h(A)$ 表示 $A$ 的逆序对个数，设函数 $g(A)=g(B)+h(A)$，其中 $B$ 为 $A$ 的 $2^n$ 种子序列中等概率选取的一个子序列。</p>
+<h3 id="Problem-E-Everything-Is-Generated-In-Equal-Probability"><a href="#Problem-E-Everything-Is-Generated-In-Equal-Probability" class="headerlink" title="Problem E  Everything Is Generated In Equal Probability"></a>Problem E  Everything Is Generated In Equal Probability</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>有一序列 $A$ ，$h(A)$ 表示 $A$ 的逆序对个数，设函数 $g(A)&#x3D;g(B)+h(A)$，其中 $B$ 为 $A$ 的 $2^n$ 种子序列中等概率选取的一个子序列。</p>
 <p>设 $f(n)$ 表示任意选取长度为 $n$ 的排列 $P$，$g(P)$ 的期望。</p>
 <p>对于 $i\in[1,n]$ ，求 $f(i)$</p>
 <p>$n\leq 3000$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑一个长度为 $n$ 的排列，由期望的线性性，可知长度为 $n$ 的排列的逆序对个数 $w(n)$=每对 $(i,j)$ 组成逆序对的期望之和，即 $w(n)=\frac{\binom{n}{2}}{2}$。</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑一个长度为 $n$ 的排列，由期望的线性性，可知长度为 $n$ 的排列的逆序对个数 $w(n)$&#x3D;每对 $(i,j)$ 组成逆序对的期望之和，即 $w(n)&#x3D;\frac{\binom{n}{2}}{2}$。</p>
 <p>因此有：</p>
-<p>$$f(i)=\frac{1}{2^i}\sum_{j=0}^{i}\binom{i}{j}f(j)+w(i)$$</p>
+<p>$$f(i)&#x3D;\frac{1}{2^i}\sum_{j&#x3D;0}^{i}\binom{i}{j}f(j)+w(i)$$</p>
 <p>将 $f(i)$ 从和式提出，移项得：</p>
-<p>$f(i)=\frac{1}{2^i-1}\sum_{j=0}^{i-1}\binom{i}{j}f(j)+\frac{2^i}{2^i-1}w(i)$</p>
+<p>$f(i)&#x3D;\frac{1}{2^i-1}\sum_{j&#x3D;0}^{i-1}\binom{i}{j}f(j)+\frac{2^i}{2^i-1}w(i)$</p>
 <p>$O(n^2)$ 求出 $f(n)$ 。</p>
 <h3 id="Problem-H-Harmonious-Army"><a href="#Problem-H-Harmonious-Army" class="headerlink" title="Problem H Harmonious Army"></a>Problem H Harmonious Army</h3><h3 id="Problem-I-I-Love-Palindrome-String"><a href="#Problem-I-I-Love-Palindrome-String" class="headerlink" title="Problem I I Love Palindrome String"></a>Problem I I Love Palindrome String</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>给一字符串 $s$，$\forall i\in[1,|S|]$，求有多少个长度为 $i$ 的子串满足它是回文串且该子串的前一半也是回文串。</p>
 <p>$|S|\leq 3\times 10^5,\sum|S|\leq 4\times 10^6$ </p>
@@ -287,6 +288,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -346,6 +349,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -252,15 +253,15 @@
 
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>可以发现，最大值这种东西一般都不太好做。考虑转换成最小值（即第一次被覆盖）。</p>
 <p>由期望下的Min-Max容斥得到：</p>
-<p>$$E(\max(S))=\sum_{T\in S,T\not= \varnothing }E(\min(T))(-1)^{|T|+1}$$</p>
+<p>$$E(\max(S))&#x3D;\sum_{T\in S,T\not&#x3D; \varnothing }E(\min(T))(-1)^{|T|+1}$$</p>
 <p>其中 $E(\min(T))$ 表示 $T$ 集合中物品中的其中一个，第一次被覆盖的期望时间。</p>
 <p>设选一次相邻的两个物品中至少含有一个 $T$ 集合中物品的概率为 $P$。</p>
-<p>设 $f(i)$ 表示前 $i$ 次覆盖都没有覆盖成功的概率，显然有：$f(i)=(1-P)^i$。</p>
-<p>那么 $T$ 集合中物品第一次被覆盖的期望时间为：$\sum_{i=0}^{\infty} f(i)=\sum_{i=0}^{\infty}(1-P)^i$</p>
-<p>由于 $P\not =0$，那么 $1-P&lt;1$，则上式收敛，那么有：$E(\min (T))=\frac{1}{1-(1-P)}=\frac{1}{P}$</p>
-<p>这个 $P=\frac{W_T}{2nm-n-m}$，其中 $W_T$ 为选两个相邻物品至少包含一个 $T$ 集合中物品的方案数。</p>
+<p>设 $f(i)$ 表示前 $i$ 次覆盖都没有覆盖成功的概率，显然有：$f(i)&#x3D;(1-P)^i$。</p>
+<p>那么 $T$ 集合中物品第一次被覆盖的期望时间为：$\sum_{i&#x3D;0}^{\infty} f(i)&#x3D;\sum_{i&#x3D;0}^{\infty}(1-P)^i$</p>
+<p>由于 $P\not &#x3D;0$，那么 $1-P&lt;1$，则上式收敛，那么有：$E(\min (T))&#x3D;\frac{1}{1-(1-P)}&#x3D;\frac{1}{P}$</p>
+<p>这个 $P&#x3D;\frac{W_T}{2nm-n-m}$，其中 $W_T$ 为选两个相邻物品至少包含一个 $T$ 集合中物品的方案数。</p>
 <p>$n$ 这么小，那么就可以考虑轮廓线DP了。</p>
-<p>设 $f_{i,j,s,k}$ 表示考虑到第 $i$ 列第 $j$ 行，状态为 $s$，$W_T=k$ 的容斥系数和。</p>
+<p>设 $f_{i,j,s,k}$ 表示考虑到第 $i$ 列第 $j$ 行，状态为 $s$，$W_T&#x3D;k$ 的容斥系数和。</p>
 <p>最后的答案为 $\sum_{s}\sum_{k}\frac{f_{m,n,s,k}\times (2nm-n-m)}{k}$。</p>
 <p>这个DP很好转移，考虑4个方向的情况就好了。</p>
 <p>时间复杂度 $O(2^nn^2m^2)$。</p>
@@ -272,6 +273,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -330,6 +333,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

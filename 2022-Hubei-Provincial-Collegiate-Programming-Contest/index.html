@@ -176,6 +176,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -253,7 +254,7 @@
 <h2 id="D-Transition"><a href="#D-Transition" class="headerlink" title="D. Transition"></a>D. Transition</h2><p>性质：</p>
 <ul>
 <li>不会有 $j-i\geq 3$ 的点。</li>
-<li>一个 $j-i=2$ 的点可以被两个翻转代替。</li>
+<li>一个 $j-i&#x3D;2$ 的点可以被两个翻转代替。</li>
 <li>两个交换操作不会重叠。</li>
 </ul>
 <p>DP，设 $f_i$ 表示考虑前 $i$ 个时的（最小操作数，方案数）。从 $f_{i-1,i-2,i-3}$ 转移过来即可。</p>
@@ -285,8 +286,8 @@
 
 
 
-<p>$w=p_u^{a_u\times b_{x_1}\times b_{x_2}\times \cdots \times b_{x_k}}$</p>
-<p>如果 $w\bmod p_{x_k}^{a_{x_k}}=0$，那么 $p_u=p_{x_k}$ 且 $a_u\times b_{x_1}\times b_{x_2}\times \cdots \times b_{x_k}\geq a_{x_k}$。</p>
+<p>$w&#x3D;p_u^{a_u\times b_{x_1}\times b_{x_2}\times \cdots \times b_{x_k}}$</p>
+<p>如果 $w\bmod p_{x_k}^{a_{x_k}}&#x3D;0$，那么 $p_u&#x3D;p_{x_k}$ 且 $a_u\times b_{x_1}\times b_{x_2}\times \cdots \times b_{x_k}\geq a_{x_k}$。</p>
 <p>dfs，对于第 $i$ 个点，在 </p>
 
     </div>
@@ -294,6 +295,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -347,6 +350,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -256,15 +257,15 @@
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这种毒瘤DP谁想得到。。。</p>
 <p>显然恰好为 $k$ 比较难算，</p>
 <p>由于 $k$ 比较小，考虑DP，设 $g_i$ 表示前 $i$ 列中，第 $i$ 列的第一行格子必须不安全时的答案。</p>
-<p>那么显然 $g_i$ 只跟前 $k$ 个值有关系。那么有 $g_i=\sum_{j=1}^kg_{i-j}h_j$。</p>
+<p>那么显然 $g_i$ 只跟前 $k$ 个值有关系。那么有 $g_i&#x3D;\sum_{j&#x3D;1}^kg_{i-j}h_j$。</p>
 <p>最终的答案显然为 $\frac{g_{n+1}}{1-q}$。</p>
 <p>如果算出了 $h_j$ 以及前 $k$ 项，那么就可以用常系数线性齐次递推做了，暴力多项式取模即可做到 $O(k^2\log n)$。</p>
 <p>这个 $h_j$ 表示的 $j-1$ 列，$1001$ 行时，最大面积不超过 $k$ 的方案数。</p>
-<p>考虑一个<del>我如何都想不到的</del>DP：设 $f_{i,j}$ 表示只有 $j$ 列，不考虑前 $i$ 行（即前 $i$ 行全都是安全的），第 $i+1$ 行开始出现不安全的，且最大面积不超过 $k$ 的方案数。设 $g_{i,j}=\sum_{k\geq i} f_{k,j}$。</p>
-<p>那么当 $ij&gt;k$ 时，$f_{i,j}=0$。</p>
+<p>考虑一个<del>我如何都想不到的</del>DP：设 $f_{i,j}$ 表示只有 $j$ 列，不考虑前 $i$ 行（即前 $i$ 行全都是安全的），第 $i+1$ 行开始出现不安全的，且最大面积不超过 $k$ 的方案数。设 $g_{i,j}&#x3D;\sum_{k\geq i} f_{k,j}$。</p>
+<p>那么当 $ij&gt;k$ 时，$f_{i,j}&#x3D;0$。</p>
 <p>否则，枚举第 $i+1$ 行，从左到右第 $1$ 个出现的不安全的点。</p>
 <p>那么有：</p>
-<p>$$f_{i,j}=\sum_{k=1}^jq^i(1-q)g_{i+1,k-1}g_{i,j-k}$$</p>
+<p>$$f_{i,j}&#x3D;\sum_{k&#x3D;1}^jq^i(1-q)g_{i+1,k-1}g_{i,j-k}$$</p>
 <p>这个DP看起来是 $O(k^3)$ 的，但由于 $ij\leq k$，实际上是 $O(k^2\log k)$ 的。</p>
 <p>那么 $h_i$ 就很容易用 $f_{1,x}$ 来表示了。</p>
 <p>时间复杂度 $O(k^2(\log k+\log n))$。</p>
@@ -276,6 +277,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -333,6 +336,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

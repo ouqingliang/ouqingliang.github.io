@@ -180,6 +180,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -251,32 +252,32 @@
         <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>$m$ 个整数变量，求满足一下条件的正整数解的个数对 $998244353$ 取模后的结果。</p>
 <ul>
 <li>$\forall i\in [1,n],1\leq x_i\leq T$</li>
-<li>$\sum_{i=1}^m\leq S$。</li>
+<li>$\sum_{i&#x3D;1}^m\leq S$。</li>
 </ul>
 <p>$n\leq 10^{18},n\leq 10^9,nT\leq S,m-n\leq 10^5$</p>
 <span id="more"></span>
 
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>考场上只能做到 $m-n=1$ 的情况。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>考场上只能做到 $m-n&#x3D;1$ 的情况。</p>
 <p>这题太毒瘤了…</p>
-<p>由于 $nT\leq S$，那么考虑暴力枚举前 $n$ 个数选了 $x_i$，那么这时，后面 $m-n$ 个数就有 $\binom{S-\sum_{i=1}^nx_i}{m-n}$ 种情况。</p>
+<p>由于 $nT\leq S$，那么考虑暴力枚举前 $n$ 个数选了 $x_i$，那么这时，后面 $m-n$ 个数就有 $\binom{S-\sum_{i&#x3D;1}^nx_i}{m-n}$ 种情况。</p>
 <p>这个东西显然没法直接求，考虑这个组合数，我们把它转换成上升幂的形式。</p>
-<p>$$ans=\frac{1}{(m-n)!}\sum_{x_1,x_2,\cdots,x_n}(S-(m-n)+1-\sum_{x=1}^mx_i)^{\overline{m-n}}$$</p>
+<p>$$ans&#x3D;\frac{1}{(m-n)!}\sum_{x_1,x_2,\cdots,x_n}(S-(m-n)+1-\sum_{x&#x3D;1}^mx_i)^{\overline{m-n}}$$</p>
 <p>然后由第一类斯特林数的性质得到：</p>
-<p>$$ans=\frac{1}{(m-n)!}\sum_{i=0}^{m-n}\left <a href="S-(m-n)+1-\sum_{i=1}^nx_i"> ^{m-n} _{\ \ \ i}\right </a>^{i}$$</p>
+<p>$$ans&#x3D;\frac{1}{(m-n)!}\sum_{i&#x3D;0}^{m-n}\left <a href="S-(m-n)+1-%5Csum_%7Bi=1%7D%5Enx_i"> ^{m-n} _{\ \ \ i}\right </a>^{i}$$</p>
 <p>而第一类斯特林数可以 $O(n\log n)$ 求出来。</p>
-<p>以下为了方便，设 $k=m-n$，用 $S$ 代表原来的 $S-(m-n)+1$。</p>
+<p>以下为了方便，设 $k&#x3D;m-n$，用 $S$ 代表原来的 $S-(m-n)+1$。</p>
 <p>那么原式就变为：</p>
-<p>$$\frac{1}{k!}\sum_{i=0}^k\left <a href="S-\sum_{j=1}^nx_j"> ^{k} _{i} \right </a>^{i}$$</p>
+<p>$$\frac{1}{k!}\sum_{i&#x3D;0}^k\left <a href="S-%5Csum_%7Bj=1%7D%5Enx_j"> ^{k} _{i} \right </a>^{i}$$</p>
 <p>由多项式定理暴力展开： </p>
-<p>$$(S-\sum_{j=1}^nx_j)^i=\sum_{a_0+a_1+\cdots+a_n=i}\frac{i!}{a_0!a_1!\cdots a_n!}S^{a_0}(-x_1)^{a_1}\cdots (-x_n)^{a_n}$$</p>
+<p>$$(S-\sum_{j&#x3D;1}^nx_j)^i&#x3D;\sum_{a_0+a_1+\cdots+a_n&#x3D;i}\frac{i!}{a_0!a_1!\cdots a_n!}S^{a_0}(-x_1)^{a_1}\cdots (-x_n)^{a_n}$$</p>
 <p>那么就可以用EGF来算一下。</p>
-<p>设 $G(x)=\sum \frac{S^i}{i!}x^i,F(x)=\sum_{i=0}^{\infty}\frac{(-1)^i\sum_{j=1}^{T}j^i}{i!}x^i$</p>
+<p>设 $G(x)&#x3D;\sum \frac{S^i}{i!}x^i,F(x)&#x3D;\sum_{i&#x3D;0}^{\infty}\frac{(-1)^i\sum_{j&#x3D;1}^{T}j^i}{i!}x^i$</p>
 <p>那么 $i$ 次方的答案就是 $[x^i] i!G(x)F^n(x)$。</p>
 <p>也就是说，如果搞出了 $F(x)$，然后多项式快速幂就可以了。</p>
-<p>剩下的问题是，对于所有的 $k$，计算 $\sum_{i=1}^Ti^k$。</p>
+<p>剩下的问题是，对于所有的 $k$，计算 $\sum_{i&#x3D;1}^Ti^k$。</p>
 <p>可以用伯努利数来算。</p>
 <p>由伯努利数的性质可以得到：</p>
-<p>$$\sum_{i=0}^{n-1}i^k=\frac{1}{k+1}\sum_{i=0}^k\binom{k+1}{i}B_in^{k+1-i}$$</p>
+<p>$$\sum_{i&#x3D;0}^{n-1}i^k&#x3D;\frac{1}{k+1}\sum_{i&#x3D;0}^k\binom{k+1}{i}B_in^{k+1-i}$$</p>
 <p>伯努利数可以用多项式求逆 $O(n\log n)$ 求出前几项。</p>
 <p>上式也是一个卷积形式，很容易算出。</p>
 <p>所以你只需要，求出第一类斯特林数的其中一列，多项式快速幂，以及伯努利数前 $n$ 项。</p>
@@ -290,6 +291,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -349,6 +352,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

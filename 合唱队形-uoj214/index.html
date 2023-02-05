@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -255,17 +256,17 @@
 <p>既然 $n,m\leq 30$ 暂时看起来不可做，那就先试试80pts的部分分吧。</p>
 <p>首先直接统计显然不可做。设这些长度为 $m$ 的集合为 $S$，现在需要统计的是最小值的期望。</p>
 <p>由Min-Max容斥得到：</p>
-<p>$$E(\min(S))=\sum_{T\not =\varnothing,T\in S}(-1)^{|T|-1}E(\max(T))$$</p>
+<p>$$E(\min(S))&#x3D;\sum_{T\not &#x3D;\varnothing,T\in S}(-1)^{|T|-1}E(\max(T))$$</p>
 <p>那么设 $g(T)$ 表示要使得 $T$ 集合中的点满足条件需要多少个覆盖，设总覆盖数为 $s$，那么现在需要求在 $s$ 个覆盖中，每次随机选择一个，问第一次出现 $T$ 集合中所有数时的期望次数。</p>
 <p>然后你就可以枚举 $t$，表示当操作次数 $\leq t$ 时已经全部覆盖的期望。</p>
 <p>还是容斥一下，枚举至少有 $i$ 个数没覆盖，那么就有：</p>
-<p>$$ans=\sum_{T=\varnothing,T\in S}(-1)^{|T|-1}\sum_{t=0}^{\infty}\sum_{i=0}^{g(T)}(-1)^{i-1}\binom{g(T)}{i}(\frac{s-i}{s})^t$$</p>
+<p>$$ans&#x3D;\sum_{T&#x3D;\varnothing,T\in S}(-1)^{|T|-1}\sum_{t&#x3D;0}^{\infty}\sum_{i&#x3D;0}^{g(T)}(-1)^{i-1}\binom{g(T)}{i}(\frac{s-i}{s})^t$$</p>
 <p>把 $t$ 移过去，化简得到：</p>
-<p>$$ans=\sum_{T=\varnothing,T\in S}(-1)^{|T|-1}\sum_{i=0}^{g(T)}(-1)^{i-1}\binom{g(T)}{i}(\frac{s}{i})$$</p>
+<p>$$ans&#x3D;\sum_{T&#x3D;\varnothing,T\in S}(-1)^{|T|-1}\sum_{i&#x3D;0}^{g(T)}(-1)^{i-1}\binom{g(T)}{i}(\frac{s}{i})$$</p>
 <p>时间复杂度 $O(2^{n-m+1}n)\sim O(2^{n-m+1}n^2)$。</p>
 <p>这样子就有 80分了。<del>也就只想到这里了。</del></p>
 <p>可以发现，一旦 $g(T)$ 知道是多少了，那么也就可以算了。</p>
-<p>因此转换为统计使得 $g(T)=j$ 的集合 $T$ 的 $(-1)^{|T|-1}$ 的和。</p>
+<p>因此转换为统计使得 $g(T)&#x3D;j$ 的集合 $T$ 的 $(-1)^{|T|-1}$ 的和。</p>
 <p>而对于一个点而言，他需要学哪些字母是由前面 $m$ 个点所决定的，如果前面 $m$ 个点中某个点 $i$ ，满足 $[i,i+m-1]$ 在 $T$ 中，那么这个点就需要选择对应的字母。</p>
 <p>根据这个性质，状压DP即可。</p>
 <p>时间复杂度 $O(2^mn^3)$。</p>
@@ -284,6 +285,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -342,6 +345,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

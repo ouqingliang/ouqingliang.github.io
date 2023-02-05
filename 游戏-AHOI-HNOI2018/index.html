@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#y-leq-x"><span class="nav-number">2.1.</span> <span class="nav-text">$y\leq x$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#100"><span class="nav-number">2.2.</span> <span class="nav-text">$100\%$</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">程序</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#y-leq-x"><span class="nav-number">2.1.</span> <span class="nav-text">$y\leq x$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#100"><span class="nav-number">2.2.</span> <span class="nav-text">$100%$</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">程序</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -257,14 +258,14 @@
 <p>首先经过胡乱分析发现，一个点能走到的点集是一个区间。</p>
 <p>因此对于每个点 $i$，求出这个 $[l_i,r_i]$ 区间，然后就可以 $O(1)$ 判断了。</p>
 <p>对于一个门，我们假设 $x$ 向 $y$ 连一条边。</p>
-<p>前 $20\%$ 的很简单，我们只需考虑 $y\leq x$ 的 $40$ 分。</p>
+<p>前 $20%$ 的很简单，我们只需考虑 $y\leq x$ 的 $40$ 分。</p>
 <h4 id="y-leq-x"><a href="#y-leq-x" class="headerlink" title="$y\leq x$"></a>$y\leq x$</h4><p>这一部分保证了钥匙一定在门的左侧。</p>
 <p>也就是说，如果你往左走，碰到了一扇门，那么你就没了，你一定走不过这扇门。那么，$l_i$ 的值就很容易求出来了。</p>
 <p>现在来看看 $r_i$ 怎么求。如果某个点 $i$ 能走到 $r_i$，且另外一个点 $j$ 能走到 $i$，那么 $r_j$ 就至少是 $r_i$ 了。</p>
 <p>可以用一个单调栈，里面存当前情况下，被门隔开的所有区间。从后往前枚举每个线段，判断这个区间是否能和栈顶的区间合并（也就是这个门能否被打开），如果可以就并到一起。</p>
 <p>判断一个门能否打开相当于判断这个钥匙是否在当前区间内。</p>
 <p>时间复杂度 $O(n)$。</p>
-<h4 id="100"><a href="#100" class="headerlink" title="$100\%$"></a>$100\%$</h4><p>这时候，如果按照上面的方法从右往左做，$l_i$ 是会发生改变。</p>
+<h4 id="100"><a href="#100" class="headerlink" title="$100%$"></a>$100%$</h4><p>这时候，如果按照上面的方法从右往左做，$l_i$ 是会发生改变。</p>
 <p>但是，你发现它还是不能从右往左跨过 $y\leq x$ 的门。</p>
 <p>那么当一个 $[l_i,r_i]$ 的右端点变大之后，$l_i$ 能去到哪里呢？</p>
 <p>显然最多最多不会超过第一个 $y\leq x$ 的门，记这个为 $le_i$。</p>
@@ -284,6 +285,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -341,6 +344,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

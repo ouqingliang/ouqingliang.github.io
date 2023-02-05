@@ -185,6 +185,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -257,10 +258,10 @@
 <span id="more"></span>
 
 <p>A,B都没什么好说的。</p>
-<h3 id="C-Meaningless-Operations"><a href="#C-Meaningless-Operations" class="headerlink" title="C. Meaningless Operations"></a>C. Meaningless Operations</h3><p>题意：多次询问，求 $f(a)=\max_{0 &lt; b &lt; a}\gcd(a\oplus b,a &amp; b)$。</p>
+<h3 id="C-Meaningless-Operations"><a href="#C-Meaningless-Operations" class="headerlink" title="C. Meaningless Operations"></a>C. Meaningless Operations</h3><p>题意：多次询问，求 $f(a)&#x3D;\max_{0 &lt; b &lt; a}\gcd(a\oplus b,a &amp; b)$。</p>
 <p>先用二进制表示 $a$，显然有 $\gcd(a\oplus b,a&amp; b)\leq a\oplus b$，设 $a$ 的最高二进制位为 $x$，则 $a\oplus b\leq 2^{x+1}-1$。</p>
-<p>可以发现，当 $a\not = 2^{x+1}-1$ 时，$a\oplus b$ 能取到最大值。此时有：$a+b=2^{x+1}-1$，则 $a&amp; b=0$，因此 $\gcd$ 也能取到最大值。</p>
-<p>那么当 $a=2^{x+1}-1$ 时，$a\oplus b=a-b,a&amp; b=b$，则 $\gcd(a\oplus b,a&amp; b)=\gcd(a-b,b)=\gcd(a,b)$，找到 $a$ 的最大不是本身的因子即可。</p>
+<p>可以发现，当 $a\not &#x3D; 2^{x+1}-1$ 时，$a\oplus b$ 能取到最大值。此时有：$a+b&#x3D;2^{x+1}-1$，则 $a&amp; b&#x3D;0$，因此 $\gcd$ 也能取到最大值。</p>
+<p>那么当 $a&#x3D;2^{x+1}-1$ 时，$a\oplus b&#x3D;a-b,a&amp; b&#x3D;b$，则 $\gcd(a\oplus b,a&amp; b)&#x3D;\gcd(a-b,b)&#x3D;\gcd(a,b)$，找到 $a$ 的最大不是本身的因子即可。</p>
 <h3 id="D-Jongmah"><a href="#D-Jongmah" class="headerlink" title="D. Jongmah"></a>D. Jongmah</h3><p>如果出现了三个 $(x-1,x,x+1)$，则可以用 $(x-1,x-1,x-1),(x,x,x),(x+1,x+1,x+1)$ 代替。</p>
 <p>也就是一种合法的方案一定能转换成每种 $(x-1,x,x+1)$ 不超过 $2$ 个的形式。</p>
 <p>设 $f_{i,j,k}$ 表示考虑到第 $i$ 位，$(i-1,i,i+1)$ 有 $j$ 个，$(i,i+1,i+2)$ 有 $k$ 个的最大值，然后DP即可。</p>
@@ -270,10 +271,10 @@
 
 <h3 id="E-Magic-Stones"><a href="#E-Magic-Stones" class="headerlink" title="E. Magic Stones"></a>E. Magic Stones</h3><p>题意：给一个序列 $c$，每次选一个 $i\in[2,n-1]$，将 $c_i$ 变成 $c_{i-1}+c_{i+1}-c_i$，问是否能将 $c$ 变成序列 $t$。</p>
 <p>这种题通常都是差分或者前缀和就搞出来了。</p>
-<p>首先必须要有 $c_1=t_1,c_n=t_n$。</p>
-<p>我们进行差分，设 $a_i=c_{i}-c_{i-1}$，发现上述的操作实际上是在交换两个相邻的 $a_i$。题意转换成你可以交换任意相邻的数字，使得最后序列等于某个序列，排个序就没了。</p>
+<p>首先必须要有 $c_1&#x3D;t_1,c_n&#x3D;t_n$。</p>
+<p>我们进行差分，设 $a_i&#x3D;c_{i}-c_{i-1}$，发现上述的操作实际上是在交换两个相邻的 $a_i$。题意转换成你可以交换任意相邻的数字，使得最后序列等于某个序列，排个序就没了。</p>
 <h3 id="F-Nearest-Leaf"><a href="#F-Nearest-Leaf" class="headerlink" title="F. Nearest Leaf"></a>F. Nearest Leaf</h3><p>题意：</p>
-<p>给定一棵带边权树，满足按照节点编号从小到大的顺序dfs得到的dfs序 $dfn_i=i$。</p>
+<p>给定一棵带边权树，满足按照节点编号从小到大的顺序dfs得到的dfs序 $dfn_i&#x3D;i$。</p>
 <p>多次询问，可离线，求 $[l,r]$ 中所有的叶子结点点 $v$ 最近的距离。</p>
 <p>$n,q\leq 5\times 10^5$</p>
 <p>那就离线吧，把询问挂到树上，然后在dfs时处理询问。</p>
@@ -305,14 +306,14 @@
 <h3 id="H-Modest-Substrings"><a href="#H-Modest-Substrings" class="headerlink" title="H. Modest Substrings"></a>H. Modest Substrings</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>求一个字典序最小的长度为 $n$ 的数字串，满足不含前导零的子串所表示的数字在 $[l,r]$ 内的子串数目最多。输出这个子串数目和字符串。</p>
 <p>$1\leq l \leq r \leq 10^{800},n\leq 200$，时限 5s，空间 1G。</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>如果 $r-l$ 比较小的话，我们就可以把所有在 $[l,r]$ 内的数字建出一个AC自动机，然后在上面跑DP就好了。</p>
-<p>类似于数位DP，如果某个时刻你选的数字已经脱离限制了，那么以后随便填就都可满足了。比如 $l=227$，$r=403$，第一位选了 $2$，当第二位选了 $3$ 的时候，后面随便乱选都满足在 $[l,r]$ 里面了（对应在AC自动机上是一个满10叉树）。</p>
-<p>我们找到哪些前缀会在选完前缀的最后一个数后脱离限制。发现最多有 $800\times 10 \times 2=16000$ 个这样的前缀，找这些前缀分类讨论一下即可找到。</p>
+<p>类似于数位DP，如果某个时刻你选的数字已经脱离限制了，那么以后随便填就都可满足了。比如 $l&#x3D;227$，$r&#x3D;403$，第一位选了 $2$，当第二位选了 $3$ 的时候，后面随便乱选都满足在 $[l,r]$ 里面了（对应在AC自动机上是一个满10叉树）。</p>
+<p>我们找到哪些前缀会在选完前缀的最后一个数后脱离限制。发现最多有 $800\times 10 \times 2&#x3D;16000$ 个这样的前缀，找这些前缀分类讨论一下即可找到。</p>
 <p>要注意，脱离了限制不代表一定可以满足在 $[l,r]$ 内，这个前缀还需要加上一定个数的字符才能在 $[l,r]$ 内。</p>
 <p>然后对这些前缀建立AC自动机，然后在AC机上进行DP。</p>
 <p>设 $f_{i,j}$ 表示考虑到第 $i$ 位，当前在AC自动机的第 $j$ 个点上的最值。</p>
 <p>考虑往后转移，设此时字符串是 $s$，你在后面填上一个字符 $c$，看这个此时这个字符 $c$ 的贡献。</p>
 <p>这个贡献相当于枚举 $s+c$ 的后缀，看这个后缀是否脱离限制，且后面能给它加足够的点来完成。那么设 $h_{j,k}$ 表示节点 $j$ 的点的fail链的所有点中，当中有 $h_{j,k}$ 个前缀满足需要再加 $k$ 个字符才能在 $[l,r]$ 内。</p>
-<p>那么这个DP就是：$f_{i+1,ne_{j,c}}=\max\{f_{i,j}+\sum_{k\leq n-i-1}h_{ne_{j,c},k}\}$。</p>
+<p>那么这个DP就是：$f_{i+1,ne_{j,c}}&#x3D;\max{f_{i,j}+\sum_{k\leq n-i-1}h_{ne_{j,c},k}}$。</p>
 <p>$h$ 做个前缀和即可快速转移。</p>
 <p>时间复杂度 $O(nm\Sigma)$，其中 $m$ 为 AC自动机点数，$\Sigma$ 为字符集大小。</p>
 <p>输出方案倒退回去再正推贪心即可。</p>
@@ -324,6 +325,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -385,6 +388,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

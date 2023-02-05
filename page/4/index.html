@@ -171,6 +171,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -1005,8 +1006,8 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给定一个 $n$ 阶方阵 $A$:</p>
-<p>$A=\begin{bmatrix}<br>a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\<br>a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n}\\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>a_{n,1} &amp; a_{n,2} &amp; \cdots &amp; a_{n,n}<br>\end{bmatrix}$</p>
-<p>记 $M_{i,j}$ 为矩阵 $A$ 去掉第 $i$ 行和第 $j$ 列后的矩阵或其行列式，$A_{i,j}=(-1)^{i+j}M_{i,j}$，即代数余子式。</p>
+<p>$A&#x3D;\begin{bmatrix}<br>a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \<br>a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n}\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>a_{n,1} &amp; a_{n,2} &amp; \cdots &amp; a_{n,n}<br>\end{bmatrix}$</p>
+<p>记 $M_{i,j}$ 为矩阵 $A$ 去掉第 $i$ 行和第 $j$ 列后的矩阵或其行列式，$A_{i,j}&#x3D;(-1)^{i+j}M_{i,j}$，即代数余子式。</p>
 <p>求所有的代数余子式 $A_{i,j}$。</p>
 <p>$n\le 500$。</p>
           <!--noindex-->
@@ -1065,6 +1066,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -261,24 +262,24 @@
 <p>$n\leq 10^5$，时限7s。</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这题也是够毒瘤了QwQ。</p>
 <p>先来看看不能断树边该怎么算。</p>
-<p>设 $a_u$ 为节点 $u$ 所填的数字。对于所有的 $u$ ，要使得满足它所有儿子所填的数之和小于等于 $u$ 填的数，我们转换条件，设：$b_u=a_u-\sum_{v\in son_u}a_v$。</p>
+<p>设 $a_u$ 为节点 $u$ 所填的数字。对于所有的 $u$ ，要使得满足它所有儿子所填的数之和小于等于 $u$ 填的数，我们转换条件，设：$b_u&#x3D;a_u-\sum_{v\in son_u}a_v$。</p>
 <p>那么就会有 $b_u\geq 0$，且可以发现，每个不同的 $b$ 一一对应这不同的 $a$。</p>
-<p>并且还有 $\sum_{i=1}^nb_i=n$。</p>
+<p>并且还有 $\sum_{i&#x3D;1}^nb_i&#x3D;n$。</p>
 <p>那么有插板法可得总方案数为 $\binom{n+x-1}{n}$。这个 $n$ 表示树的节点个数。</p>
 <p>现在题目转换成，对于每个 $i$，求有多少个包含 $1$ 号点的连通子图，且大小为 $i$。</p>
 <p>显然我们可以树形DP，设 $f_{u,i}$ 表示子树 $u$ 中节点个数为 $i$ 的方案数。</p>
-<p>当有两个儿子的时候，有：$f_{u,i}=\sum_{j+k=i-1}f_{v,j}\times f_{w,k},f_{u,0}=1$。</p>
-<p>设 $f_u$ 的OGF为 $F_u$，上式写成生成函数的形式是：$F_u=xF_vF_w+1$。</p>
-<p>当 $u$ 为空的时候，$F_u=1$。</p>
+<p>当有两个儿子的时候，有：$f_{u,i}&#x3D;\sum_{j+k&#x3D;i-1}f_{v,j}\times f_{w,k},f_{u,0}&#x3D;1$。</p>
+<p>设 $f_u$ 的OGF为 $F_u$，上式写成生成函数的形式是：$F_u&#x3D;xF_vF_w+1$。</p>
+<p>当 $u$ 为空的时候，$F_u&#x3D;1$。</p>
 <p>显然上式用FFT优化，但显然还是没有用的。</p>
 <p>那就先考虑链吧？这个很简单。</p>
 <p>链中每个点插多一个子树呢？</p>
 <p>那么我对于每个点 $u$，设插进去的这个子树算出来的生成函数乘以 $x$ 后的式子为 $g_u$。</p>
-<p>对于这条链，考虑从上往下计算，则有：$F_u=F_{son_u}g_u+1$</p>
+<p>对于这条链，考虑从上往下计算，则有：$F_u&#x3D;F_{son_u}g_u+1$</p>
 <p>我们不妨将这条链从上往下标号为 $1,2\cdots k$。那么最终的生成函数就是：</p>
-<p>$$F=(g_1(g_2(g_3\cdots)+1))+1\=\sum_{i=0}^k\prod_{j=1}^ig_j$$</p>
-<p>考虑分治计算这个东西，设当前的分治结构为 $[l,r]$，$s=\prod_{i=l}^rg_i$，$F=\sum_{i=l-1}^r\prod_{j=l}^ig_j$，那么有：</p>
-<p>$$s_{[l,r]}=s_{[l,mid]}\times s_{[mid+1,r]}\\F_{[l,r]}=(F_{[l,mid]}-1)\times s_{[mid+1,r]}+F_{[mid+1,r]}$$</p>
+<p>$$F&#x3D;(g_1(g_2(g_3\cdots)+1))+1\&#x3D;\sum_{i&#x3D;0}^k\prod_{j&#x3D;1}^ig_j$$</p>
+<p>考虑分治计算这个东西，设当前的分治结构为 $[l,r]$，$s&#x3D;\prod_{i&#x3D;l}^rg_i$，$F&#x3D;\sum_{i&#x3D;l-1}^r\prod_{j&#x3D;l}^ig_j$，那么有：</p>
+<p>$$s_{[l,r]}&#x3D;s_{[l,mid]}\times s_{[mid+1,r]}\F_{[l,r]}&#x3D;(F_{[l,mid]}-1)\times s_{[mid+1,r]}+F_{[mid+1,r]}$$</p>
 <p>可以用ntt优化上面的乘法。</p>
 <p>那么可以先树链剖分进行链分治，对于每条链，我们按照上面的方法算。设链顶的节点的子树大小为 $siz$ ，那么上面的方法的复杂度就是 $O(siz\log ^2siz)$。</p>
 <p>由于每个节点往上跳只会统计最多 $\log n$ 次，那么总的复杂度就是 $O(n\log ^3n)$。</p>
@@ -298,6 +299,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -358,6 +361,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

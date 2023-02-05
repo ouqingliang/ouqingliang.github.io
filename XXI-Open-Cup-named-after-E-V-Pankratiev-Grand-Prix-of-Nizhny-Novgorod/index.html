@@ -176,6 +176,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -258,28 +259,28 @@
 <h2 id="E-Smol-Vertex-Cover"><a href="#E-Smol-Vertex-Cover" class="headerlink" title="E. Smol Vertex Cover"></a>E. Smol Vertex Cover</h2><p>先用带花树求出一个一般图最大匹配 $M$。设最小点覆盖所需点数为 $C$。</p>
 <p>显然有，$M\le C$，而题目要求 $C\le M+1$。</p>
 <ul>
-<li>$C=M$</li>
+<li>$C&#x3D;M$</li>
 </ul>
 <p>对于每条在最大匹配内的边，都有且仅有一个点是选的；对于不在最大匹配内的边的点，两个至少选一个。</p>
-<p>有且仅有相当于 $i\oplus j=1$，至少选一个相当于 $i\text{ or }j=1$。2-SAT。</p>
+<p>有且仅有相当于 $i\oplus j&#x3D;1$，至少选一个相当于 $i\text{ or }j&#x3D;1$。2-SAT。</p>
 <ul>
-<li>$C=M+1$</li>
+<li>$C&#x3D;M+1$</li>
 </ul>
-<p>枚举哪个点是必须选择的，然后和 $C=M$ 的情况类似，判断的时候也做一遍 2-SAT即可。</p>
+<p>枚举哪个点是必须选择的，然后和 $C&#x3D;M$ 的情况类似，判断的时候也做一遍 2-SAT即可。</p>
 <p>总的时间复杂度 $O(n^3)$。</p>
 <h2 id="G-Remove-the-Prime"><a href="#G-Remove-the-Prime" class="headerlink" title="G. Remove the Prime"></a>G. Remove the Prime</h2><p>因式分解后，变成简单的取石子游戏。</p>
 <p>Pollard-rho分解即可。</p>
 <h2 id="H-Excluded-Min"><a href="#H-Excluded-Min" class="headerlink" title="H. Excluded Min"></a>H. Excluded Min</h2><h2 id="I-Trade"><a href="#I-Trade" class="headerlink" title="I. Trade"></a>I. Trade</h2><p>重要性质：$p_i$ 均不一样。</p>
 <p>假设要选某些纪念品，那么一定是将这些纪念品的 $p$ 从大到小排序后依次选择。</p>
-<p>那么总的和即为 $\sum_{i=1}^kc_i+(i-1)p_i\le k+\sum_{i=1}^k(i-1)(k-i+1)\le O(\frac{k^3}{6})$，那么最多就选 $O((6S)^{\frac{1}{3}})$ 个物品。</p>
+<p>那么总的和即为 $\sum_{i&#x3D;1}^kc_i+(i-1)p_i\le k+\sum_{i&#x3D;1}^k(i-1)(k-i+1)\le O(\frac{k^3}{6})$，那么最多就选 $O((6S)^{\frac{1}{3}})$ 个物品。</p>
 <p>排序，暴力DP。</p>
 <h2 id="J-Increasing-or-Decreasing"><a href="#J-Increasing-or-Decreasing" class="headerlink" title="J. Increasing or Decreasing"></a>J. Increasing or Decreasing</h2><p>先对整个序列进行一遍从小到大的排序，然后假设前 $i-1$ 个已经找到，找到 $b_i$ 所在位置，然后看是最大值还是最小值。使用 $n-1$ 次，剩下最后一个不用管它。加上先前的整个排序，刚好使用 $n$ 次。</p>
 <p>时间复杂度 $O(n^2\log n)$。</p>
 <h2 id="L-Extreme-Wealth"><a href="#L-Extreme-Wealth" class="headerlink" title="L. Extreme Wealth"></a>L. Extreme Wealth</h2><p>答案为 $\frac{2^{a+b}}{\binom{a+b}{a}}$，即 $\frac{2^{a+b}a!b!}{(a+b)!}$。</p>
 <p>$a,b$ 小的时候随便算，我们只考虑 $a,b$ 很大的情况。</p>
-<p>考虑 $a=b$ ，此时阶乘用斯特林公式近似算。得到 $\frac{2^{a+a}a!a!}{(a+a)!}=\sqrt{\pi a}$。</p>
+<p>考虑 $a&#x3D;b$ ，此时阶乘用斯特林公式近似算。得到 $\frac{2^{a+a}a!a!}{(a+a)!}&#x3D;\sqrt{\pi a}$。</p>
 <p>设答案为 $S(a,b)$，考虑从 $S(a,b-1)$ 推导出 $S(a,b)$，其中 $a&lt;b$，有：</p>
-<p>$S(a,b)=\frac{2b}{a+b}S(a,b-1)$。</p>
+<p>$S(a,b)&#x3D;\frac{2b}{a+b}S(a,b-1)$。</p>
 <p>随着 $b$ 越来越大，$\frac{2b}{a+b}$ 越来越接近 $2$，这样很快就可以超出 $10^9$了，暴力模拟即可。</p>
 <h2 id="M-Discrete-Logarithm-is-a-Joke"><a href="#M-Discrete-Logarithm-is-a-Joke" class="headerlink" title="M. Discrete Logarithm is a Joke"></a>M. Discrete Logarithm is a Joke</h2><p>签到题。知道了 $a_{10^6}$ 后，倒推即可。</p>
 
@@ -288,6 +289,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -341,6 +344,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

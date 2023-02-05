@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -271,8 +272,8 @@
 <p>因此，先把到 $s$ 和 $t$ 的最短路预处理，然后进行离散化，那么这个状态就是 $O(n^2)$ 级别的了。设第 $i$ 个点在这两个离散化数组中的下标是 $id1_i,id2_i$。</p>
 <p>考虑DP，设 $f_{k,i,j}$ 表示状态为 $(k,i,j)$ 时，第一个人减去第二个人的值是多少。设 $sum(i,j,k,l)$ 表示满足 $id1_x\in[i,j],id2_x\in[k,l]$ 的 $x$ 点的权值之和。</p>
 <p>那么有：</p>
-<p>$$f_{0,i,j}=\max\{f_{1,k,j}+sum(i,k-1,j,\infty)|k&gt;i\}$$</p>
-<p>$$f_{1,i,j}=\min\{f_{0,i,k}+sum(i,\infty,j,k-1)|k&gt;j\}$$</p>
+<p>$$f_{0,i,j}&#x3D;\max{f_{1,k,j}+sum(i,k-1,j,\infty)|k&gt;i}$$</p>
+<p>$$f_{1,i,j}&#x3D;\min{f_{0,i,k}+sum(i,\infty,j,k-1)|k&gt;j}$$</p>
 <p>此外，还需满足每个人每次必须能够至少选定一个城市的条件，也就是必须有至少一个点在里面。</p>
 <p>算 $sum$ 可以二维前缀和搞一搞就好。</p>
 <p>DP直接暴力是 $O(n^3)$ 的，然后你发现用一个前缀最值优化一下就好了。</p>
@@ -285,6 +286,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -342,6 +345,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

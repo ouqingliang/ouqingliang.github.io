@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -254,11 +255,11 @@
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT3871">luogu</a></p>
 <span id="more"></span>
 
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>设选了 $R$ 个红球，则选了 $B=k-R$ 个蓝球。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>设选了 $R$ 个红球，则选了 $B&#x3D;k-R$ 个蓝球。</p>
 <p>考虑一只变色龙最后是红色的当且仅当：</p>
 <ol>
 <li>所吃红球&gt;蓝球；</li>
-<li>所吃红球=蓝球，且最后一次吃的是蓝球。</li>
+<li>所吃红球&#x3D;蓝球，且最后一次吃的是蓝球。</li>
 </ol>
 <p>接下来来看什么时候可行。</p>
 <p>分类讨论：</p>
@@ -267,12 +268,12 @@
 </li>
 <li><p>$R\geq B+n$，此时方案数显然为 $\binom{R+B}{B}$，因为每只变色龙都可以符合第一种情况。</p>
 </li>
-<li><p>$R=B$，这时候必须满足序列中最后一个是蓝球，否则必然不合法，然后转换成 $(R,B-1)$ 的问题。</p>
+<li><p>$R&#x3D;B$，这时候必须满足序列中最后一个是蓝球，否则必然不合法，然后转换成 $(R,B-1)$ 的问题。</p>
 </li>
 <li><p>$R\in (B,B+n)$，这时候需要有 $n-(R-B)$ 只变色龙符合第二种情况。并且，当这只变色龙吃的球的个数大于 $2$ 的话，可以将最后的一个红球和蓝球不吃，让给剩下 $R-B$ 只满足第一种情况的变色龙吃，也能满足情况。</p>
 <p>因此，这种情况就变成了给定一个 <code>R,B</code> 序列，里面有 $R$ 个 <code>R</code>，$B$ 个 <code>B</code>，至少要找到 $n-(R-B)$ 个互不相交的子序列，且这个子序列是 <code>RB</code>，问符合情况的方案数。</p>
 <p>把 <code>R</code> 看成 $+1$，<code>B</code> 看成 $-1$，上面的条件相当于：</p>
-<p>对于每个前缀都满足前缀和 $\geq B-(n-(R-B))=R-n$</p>
+<p>对于每个前缀都满足前缀和 $\geq B-(n-(R-B))&#x3D;R-n$</p>
 <p>这时候由经典的折线法容斥一下就好了，得到方案数：$\binom{R+B}{R}-\binom{R+B}{2R-n+1}$。</p>
 </li>
 </ol>
@@ -285,6 +286,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -342,6 +345,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

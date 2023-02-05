@@ -180,6 +180,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -260,12 +261,12 @@
 <p>$1 &lt; x &lt; p$</p>
 <p>$3\leq p \leq 10^{15},p\in \mathbb{P}$</p>
 <p>保证有解。</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>先把 $a\equiv bx(\bmod p) (a &lt; b )$ 换成 $a=bx-py(y&gt;0)$的形式。</p>
-<p>根据题意可得 $0&lt;a=bx-py&lt;b$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>先把 $a\equiv bx(\bmod p) (a &lt; b )$ 换成 $a&#x3D;bx-py(y&gt;0)$的形式。</p>
+<p>根据题意可得 $0&lt;a&#x3D;bx-py&lt;b$</p>
 <p>即：$py&lt;bx,b(x-1)&lt;py$</p>
 <p>由 $x&gt;1$，$y&gt;0$，可得： $\frac{p}{x}&lt;\frac{b}{y}&lt;\frac{p}{x-1}$</p>
 <p>$p,x,x-1$ 都已知，转换成 $\frac{a}{b}&lt;\frac{x}{y}&lt;\frac{c}{d}$ 且 $x$ 最小的问题。</p>
-<p>当 $\frac{a}{b}$ 与 $\frac{c}{d}$ 间存在整数时，取 $y=1$ 会使得 $x$ 的最小值最小。</p>
+<p>当 $\frac{a}{b}$ 与 $\frac{c}{d}$ 间存在整数时，取 $y&#x3D;1$ 会使得 $x$ 的最小值最小。</p>
 <p>当不存在整数时，考虑减小范围。</p>
 <p>不等式两边同时减去 $z$ 得：</p>
 <p>$\frac{a-bz}{b}&lt;\frac{x-yz}{y}&lt;\frac{c-dz}{d}$</p>
@@ -273,9 +274,9 @@
 <p>不等式取倒数得：</p>
 <p>$\frac{d}{c-dz}&lt;\frac{y}{x-yz}&lt;\frac{b}{a-bz}$</p>
 <p>变成更小的子问题。</p>
-<p>正确性：递归处理同时保证 $y$ 最小的同时 $x-yz$ 最小，而 $x=(x-yz)+yz$，因此能保证 $x$ 最小。</p>
+<p>正确性：递归处理同时保证 $y$ 最小的同时 $x-yz$ 最小，而 $x&#x3D;(x-yz)+yz$，因此能保证 $x$ 最小。</p>
 <p>时间复杂度为ex_gcd的时间，即 $O(\log p)$</p>
-<h3 id="Problem-B-three-arrays"><a href="#Problem-B-three-arrays" class="headerlink" title="Problem B three arrays"></a>Problem B three arrays</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>有两个长度为 $n$ 的数组 $a,b$，任意排列 $a$ 和 $b$ 后，记 $c_i=a_i\bigoplus b_i$</p>
+<h3 id="Problem-B-three-arrays"><a href="#Problem-B-three-arrays" class="headerlink" title="Problem B three arrays"></a>Problem B three arrays</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>有两个长度为 $n$ 的数组 $a,b$，任意排列 $a$ 和 $b$ 后，记 $c_i&#x3D;a_i\bigoplus b_i$</p>
 <p>求字典序最小的 $c$。</p>
 <p>$n\leq 10^5$,$a_i,b_i&lt; 2^{30}$</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>一道不错的题。</p>
@@ -293,7 +294,7 @@
 <p>时间复杂度 $O(n(\log w+\log n))$，其中 $w$ 为 $a,b$ 中元素的最大值。</p>
 <h3 id="Problem-D-equation"><a href="#Problem-D-equation" class="headerlink" title="Problem D equation"></a>Problem D equation</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>两个长度为 $n$ 的序列 $a,b$ 和整数 $C$</p>
 <p>求下列方程所有的解，以分数形式输出。</p>
-<p>$$\sum_{i=1}^n|xa_i+b_i|=C$$</p>
+<p>$$\sum_{i&#x3D;1}^n|xa_i+b_i|&#x3D;C$$</p>
 <p>$n\leq10^5,1\leq a_i,|b_i|\leq 10^3,C\leq 10^9$</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>一次函数之和为一次函数，而 $|xa_i+b_i|$ 为一条折线，相当于两个一次函数。</p>
 <p>$n$ 条这样的折线相加后，斜率和截距最多只会在 $n$ 个点处发生变化。</p>
@@ -308,6 +309,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -367,6 +370,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

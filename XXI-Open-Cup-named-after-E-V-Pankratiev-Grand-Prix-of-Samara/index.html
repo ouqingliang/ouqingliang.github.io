@@ -176,6 +176,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -248,7 +249,7 @@
 <p>最后20min过了两题代码量超小的题。。。</p>
 <span id="more"></span>
 
-<h2 id="B-Fakes-and-Shidget"><a href="#B-Fakes-and-Shidget" class="headerlink" title="B. Fakes and Shidget"></a>B. Fakes and Shidget</h2><p>由题意，我们要求的是，在每一对 $(a,b),(c,d)$ 选择一个，求 $\max\{\frac{\sum_{i=1}^n b_i}{\sum_{i=1}^na_i}\}$。</p>
+<h2 id="B-Fakes-and-Shidget"><a href="#B-Fakes-and-Shidget" class="headerlink" title="B. Fakes and Shidget"></a>B. Fakes and Shidget</h2><p>由题意，我们要求的是，在每一对 $(a,b),(c,d)$ 选择一个，求 $\max{\frac{\sum_{i&#x3D;1}^n b_i}{\sum_{i&#x3D;1}^na_i}}$。</p>
 <p>直接01分数规划即可。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> n,a[N],b[N],c[N],d[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n);</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">		<span class="built_in">read</span>(a[i],b[i],c[i],d[i]);</span><br><span class="line">	db l=<span class="number">0</span>,r=<span class="number">1e9</span>,mid;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,<span class="number">100</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		mid=(l+r)/<span class="number">2.</span>;</span><br><span class="line">		db ans=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">			ans+=<span class="built_in">max</span>(b[i]-a[i]*mid,d[i]-c[i]*mid);</span><br><span class="line">		<span class="keyword">if</span>(ans&gt;=<span class="number">0</span>) l=mid;</span><br><span class="line">		<span class="keyword">else</span> r=mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%.10lf&quot;</span>,mid);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -272,19 +273,19 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> n,k;</span><br><span class="line"><span class="type">char</span> s[N];</span><br><span class="line"><span class="type">int</span> now[<span class="number">26</span>];</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; vec[<span class="number">26</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s\n%d&quot;</span>,s+<span class="number">1</span>,&amp;k);</span><br><span class="line">	n=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n) vec[s[i]-<span class="string">&#x27;a&#x27;</span>].<span class="built_in">pb</span>(i);</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,k)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> pos;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">0</span>,<span class="number">25</span>)</span><br><span class="line">			<span class="keyword">if</span>(now[j]&lt;vec[j].<span class="built_in">size</span>())</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(n-vec[j][now[j]]&gt;=k-i)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">putchar</span>(j+<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">					pos=vec[j][now[j]];</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">0</span>,<span class="number">25</span>)</span><br><span class="line">			<span class="keyword">for</span>(;now[j]&lt;vec[j].<span class="built_in">size</span>()&amp;&amp;vec[j][now[j]]&lt;=pos;now[j]++);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="H-Video-Reviews-2"><a href="#H-Video-Reviews-2" class="headerlink" title="H. Video Reviews - 2"></a>H. Video Reviews - 2</h2><p>考虑最后一个人 $a_n$，如果 $a_n&lt;m$，那么一定不选。转换为 $(n-1,m-1)$ 的子问题。</p>
-<p>如果 $a_n\geq m$，且 $n=m$，则这个一定会被选；如果 $n&gt;m$，则这个可能被选，但实际上选前面的一定不会更差，因此这个一定不会选。<br>那么就可以直接从 $a_n$ 开始倒退至 $a_1$ 即可。</p>
+<p>如果 $a_n\geq m$，且 $n&#x3D;m$，则这个一定会被选；如果 $n&gt;m$，则这个可能被选，但实际上选前面的一定不会更差，因此这个一定不会选。<br>那么就可以直接从 $a_n$ 开始倒退至 $a_1$ 即可。</p>
 <p>由于 $z_j$ 有逆元，同一段内可以由 $a_{i+1}$ 直接推出 $a_i$，不同段的边界处需要预处理顺推一遍进行计算。</p>
 <p>时间复杂度 $O(n)$，空间复杂度 $O(m)$。</p>
 <h2 id="J-Lost-Island"><a href="#J-Lost-Island" class="headerlink" title="J. Lost Island"></a>J. Lost Island</h2><p>第三次见到这种题了。</p>
 <p>我们记一个颜色的状态为 $(a_i,b_i)$。设某个人的颜色为 $i$。</p>
-<p>若 $a_i=b_i&gt;0$，则这人看到外面只有 $b_{i}-1$ 个，不合理。因此这个知道自己就是 $i$，将在第 $1$ 天自杀。</p>
-<p>若 $a_i=b_i+1$，则这人假设自己不是 $i$，那么外面这些颜色 $i$ 的人看到的状态应为 $(a_i-1,b_i)$，将在第 $1$ 天自杀，但他们并没有，于是这人在第 $2$ 天知道自己是颜色 $i$。</p>
+<p>若 $a_i&#x3D;b_i&gt;0$，则这人看到外面只有 $b_{i}-1$ 个，不合理。因此这个知道自己就是 $i$，将在第 $1$ 天自杀。</p>
+<p>若 $a_i&#x3D;b_i+1$，则这人假设自己不是 $i$，那么外面这些颜色 $i$ 的人看到的状态应为 $(a_i-1,b_i)$，将在第 $1$ 天自杀，但他们并没有，于是这人在第 $2$ 天知道自己是颜色 $i$。</p>
 <p>以此类推，在 $x+1$ 天，某人假设自己不是 $i$，那么外面的人将在第 $x$ 天自杀，但是并没有，于是这人在 $x+1$ 这天自杀。</p>
 <p>因此，对于 $b_i&gt;0$，颜色为 $i$ 的人将在 $a_i-b_i+1$ 天自杀。</p>
 <ul>
-<li>若不存在 $b_i=0$，则 $a_i-b_i+1$ 最大的那些人将在次大的 $a_j-b_j+1$ 之后一天自杀，因为其他人都死光了。</li>
-<li>若只存在一个 $b_i=0$，则 $i$ 颜色的人在 $a_i-b_i+1$ 最大的下一天自杀。</li>
-<li>若存在两个或以上 $b_i=0$，则所有 $b_i=0$ 的人将活下来。</li>
+<li>若不存在 $b_i&#x3D;0$，则 $a_i-b_i+1$ 最大的那些人将在次大的 $a_j-b_j+1$ 之后一天自杀，因为其他人都死光了。</li>
+<li>若只存在一个 $b_i&#x3D;0$，则 $i$ 颜色的人在 $a_i-b_i+1$ 最大的下一天自杀。</li>
+<li>若存在两个或以上 $b_i&#x3D;0$，则所有 $b_i&#x3D;0$ 的人将活下来。</li>
 </ul>
 <p>时间复杂度 $O(n)$。</p>
 <h2 id="K-Bloodseeker"><a href="#K-Bloodseeker" class="headerlink" title="K. Bloodseeker"></a>K. Bloodseeker</h2><p>首先我们把这些怪分为两类：$h_i\geq t_i$ 和 $h_i&lt;t_i$。</p>
@@ -304,6 +305,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -357,6 +360,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

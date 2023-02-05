@@ -183,6 +183,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -262,7 +263,7 @@
 <p>注意，当两个人位置一样的时候，你不知道哪个人在左边，所以需要两边都算。（否则会得到一发罚时）</p>
 <h3 id="E-The-Journey-of-Geor-Autumn"><a href="#E-The-Journey-of-Geor-Autumn" class="headerlink" title="E. The Journey of Geor Autumn"></a>E. The Journey of Geor Autumn</h3><p>要使得 $a_i&gt;\min(a_{i-k},a_{i-k+1},\cdots,a_{i-1})$，最难处理的是 $1$。</p>
 <p>显然，$1$ 要放在前 $k$ 个位置中的一个，假设为 $i$，那么变成 $n-i$ 的一个子问题。</p>
-<p>设总方案数为 $f_n$，有DP式：$f_n=\sum_{i=1}^{\min(n,k)}\frac{n-1}{i-1}\times (i-1)!\times f_{n-i}$</p>
+<p>设总方案数为 $f_n$，有DP式：$f_n&#x3D;\sum_{i&#x3D;1}^{\min(n,k)}\frac{n-1}{i-1}\times (i-1)!\times f_{n-i}$</p>
 <p>化简后，前缀和优化即可。</p>
 <p>时间复杂度 $O(n)$。</p>
 <h3 id="G-Fibonacci"><a href="#G-Fibonacci" class="headerlink" title="G. Fibonacci"></a>G. Fibonacci</h3><p>除了前两个，以后都是奇偶相间。签到题。</p>
@@ -279,19 +280,19 @@
 <p>建出异色图的 dfs 树。</p>
 <p>分三种情况：</p>
 <ol>
-<li><p>$u=0$ 或 $v=0$，则两点在异色图中连通即可。</p>
+<li><p>$u&#x3D;0$ 或 $v&#x3D;0$，则两点在异色图中连通即可。</p>
 </li>
-<li><p>$\text{lca}(u,v)=u$ 或 $v$，那么与 $0$ 连通即可。</p>
+<li><p>$\text{lca}(u,v)&#x3D;u$ 或 $v$，那么与 $0$ 连通即可。</p>
 </li>
-<li><p>当不满足上述情况时，设 $w=\text{lca}(u,v)$，我们要不经过 $w$ ，到达其中一个点（不妨为 $u$），然后从这个点回去 $w$，再去走到另外一个点 $v$。</p>
+<li><p>当不满足上述情况时，设 $w&#x3D;\text{lca}(u,v)$，我们要不经过 $w$ ，到达其中一个点（不妨为 $u$），然后从这个点回去 $w$，再去走到另外一个点 $v$。</p>
 </li>
 </ol>
 <p>这相当于从 $fa_w$ 到 $u$ 有两条点不重复的路径，即在同一个点双上。</p>
 <p>时间复杂度 $O(n\log n)$，主要在lca上。</p>
 <p><del>过了之后发现自己写的是边双。。。这都能过</del></p>
 <h3 id="L-Traveling-in-the-Grid-World"><a href="#L-Traveling-in-the-Grid-World" class="headerlink" title="L. Traveling in the Grid World"></a>L. Traveling in the Grid World</h3><p>首先，一个非常显然的结论是，最多只可能选择一个中转点。</p>
-<p>当 $\gcd(n,m)=1$ 时，不需要选中转点。</p>
-<p>否则这个中转点一定在 $y=\frac{m}{n}x$ 附近，且不在上面。</p>
+<p>当 $\gcd(n,m)&#x3D;1$ 时，不需要选中转点。</p>
+<p>否则这个中转点一定在 $y&#x3D;\frac{m}{n}x$ 附近，且不在上面。</p>
 <p>枚举即可。</p>
 <h3 id="M-Gitignore"><a href="#M-Gitignore" class="headerlink" title="M. Gitignore"></a>M. Gitignore</h3><p>签到题，用map维护字符串建出树，树形DP即可。</p>
 
@@ -300,6 +301,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -362,6 +365,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

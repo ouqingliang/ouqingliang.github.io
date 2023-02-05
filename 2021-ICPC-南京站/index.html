@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -262,7 +263,7 @@
 <p>11点比赛。</p>
 <p>meaningful上来就发现A是签到，然后靠着巨快的手速拿到一血。</p>
 <p>接着我简单告诉了meaningful M题题意，然后去看其他题。CRH380BL-2339一直在想D。期间发现J看来十分好做。</p>
-<p>然后meaningful就会M了，我想了想后也会了。15min的时候交了1发然后WA。然后我突然想到 $n=1$ 要特判，加了以后就过了。</p>
+<p>然后meaningful就会M了，我想了想后也会了。15min的时候交了1发然后WA。然后我突然想到 $n&#x3D;1$ 要特判，加了以后就过了。</p>
 <p>然后meaningful就把C秒了，我写了个线性最大子段和顺利的1A了。</p>
 <p>接着开始写J，我天真的写了个dfs，结果十分显然的T了。</p>
 <p>接着换CRH380BL-2339上，但是有点想错了，导致一直WA。而我在旁边想了好一会儿四元环计数发现不太会容斥，然后跃跃欲试想要把J加一个记忆化，以及和他们一起思考D题，结果发现完全帮不上忙。</p>
@@ -276,7 +277,7 @@
 <p>出来以后发现是Rank14，本赛季打得最好的一次。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>分四种情况讨论即可。</p>
 <h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>设 $s_{l,r}(x)$ 表示 $x$ 在 $[l,r]$ 的出现次数。那么就是枚举 $x$，然后选择一段区间，使得 $s_{1,n}(x)+(s_{l,r}(x-k)-s_{l,r}(x))$ 最大。</p>
-<p>记 $s_i=[a_i=x-k]-[a_i=x]$，然后分开跑最大子段和。</p>
+<p>记 $s_i&#x3D;[a_i&#x3D;x-k]-[a_i&#x3D;x]$，然后分开跑最大子段和。</p>
 <p>时间复杂度 $O(n)$。</p>
 <h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>考虑进行完第 $i$ 轮操作之后，前面 $[1,i]$ 已经有序了。那么几乎所有的位置的贡献就是前面比他大的数有多少个，剩下的贡献有两次，最大的一次。</p>
 <p>按照这个情况分类讨论就好了，有亿点细节。时间复杂度 $O(n\log n)$。</p>
@@ -290,13 +291,15 @@
 <p><strong>有这么一个性质：对于一个数 $x$，有若干整数 $a_1,a_2,\cdots,a_n$，用不同的顺序，不管上取整还是下取整去除 $x$，最终结果最多只有两种。</strong></p>
 <p>那这样对于某个特定的 $a-b$ 的因子 $d$ 而言，满足条件的 $(a,b)$ 最多只有几种，因此有用的 $f(a,b)$ 的个数为 $O(d(a-b))$。直接上记忆化就好了。</p>
 <h3 id="M"><a href="#M" class="headerlink" title="M"></a>M</h3><p>当 $n\geq 2$ 时，相当于给每个数选一个加还是减，至少有一个减，一个加。</p>
-<p>当 $n=1$ 时，特判一下。</p>
+<p>当 $n&#x3D;1$ 时，特判一下。</p>
 
     </div>
 
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -357,6 +360,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

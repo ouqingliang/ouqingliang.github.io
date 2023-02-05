@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -250,7 +251,7 @@
 <span id="more"></span>
 
 <h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>对于每一个二进制位，无论如何操作，1的个数都是不会变化的。</p>
-<p>假设你现在进行一次操作，原本是 $x,y(x\leq y)$，现在变成了 $x-z,y+z(z\leq 0)$，那么贡献的差就是 $(x-z)^2+(y+z)^2-(x^2+y^2)=2(y-x)z+z^2\geq 0$。</p>
+<p>假设你现在进行一次操作，原本是 $x,y(x\leq y)$，现在变成了 $x-z,y+z(z\leq 0)$，那么贡献的差就是 $(x-z)^2+(y+z)^2-(x^2+y^2)&#x3D;2(y-x)z+z^2\geq 0$。</p>
 <p>也就是最大值越大越好。那么从大到小，对于每一位贪心即可。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n,x,cnt[<span class="number">21</span>];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		x=<span class="built_in">read</span>();</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">0</span>,<span class="number">20</span>) <span class="keyword">if</span>((<span class="number">1</span>&lt;&lt;j)&amp;x) cnt[j]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		x=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">0</span>,<span class="number">20</span>) <span class="keyword">if</span>(cnt[j]) x|=(<span class="number">1</span>&lt;&lt;j),cnt[j]--;</span><br><span class="line">		ans+=<span class="number">1ll</span>*x*x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -272,6 +273,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -329,6 +332,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

@@ -25,13 +25,13 @@
 <meta property="og:site_name" content="Oql&#39;s Blog">
 <meta property="og:description" content="problems">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ouqingliang.github.io/Codeforces-Round-783-Div-1/Codeforces-Round-783-Div-1%5CC1.png">
-<meta property="og:image" content="https://ouqingliang.github.io/Codeforces-Round-783-Div-1/Codeforces-Round-783-Div-1%5CC2.png">
+<meta property="og:image" content="https://ouqingliang.github.io/Codeforces-Round-783-Div-1%5CC1.png">
+<meta property="og:image" content="https://ouqingliang.github.io/Codeforces-Round-783-Div-1%5CC2.png">
 <meta property="article:published_time" content="2022-04-20T12:46:06.000Z">
 <meta property="article:modified_time" content="2022-04-21T06:13:08.000Z">
 <meta property="article:author" content="Oql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ouqingliang.github.io/Codeforces-Round-783-Div-1/Codeforces-Round-783-Div-1%5CC1.png">
+<meta name="twitter:image" content="https://ouqingliang.github.io/Codeforces-Round-783-Div-1%5CC1.png">
 
 
 <link rel="canonical" href="https://ouqingliang.github.io/Codeforces-Round-783-Div-1/">
@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -251,17 +252,17 @@
 <span id="more"></span>
 
 <h2 id="A-Make-it-Increasing"><a href="#A-Make-it-Increasing" class="headerlink" title="A. Make it Increasing"></a>A. Make it Increasing</h2><p>暴力枚举 $0$ 所在位置，然后贪心。时间复杂度 $O(n^2)$。</p>
-<h2 id="B-Optimal-Partition"><a href="#B-Optimal-Partition" class="headerlink" title="B. Optimal Partition"></a>B. Optimal Partition</h2><p>设 $f_i$ 表示前 $i$ 个的最大值。则有 $f_i=\min\{f_j+g(j,i)\}$，其中 $g(j,i)$ 为区间 $[j,i]$ 的价值。</p>
+<h2 id="B-Optimal-Partition"><a href="#B-Optimal-Partition" class="headerlink" title="B. Optimal Partition"></a>B. Optimal Partition</h2><p>设 $f_i$ 表示前 $i$ 个的最大值。则有 $f_i&#x3D;\min{f_j+g(j,i)}$，其中 $g(j,i)$ 为区间 $[j,i]$ 的价值。</p>
 <p>分三种情况，大力线段树即可。时间复杂度 $O(n\log n)$。</p>
 <h2 id="C-Half-Queen-Cover"><a href="#C-Half-Queen-Cover" class="headerlink" title="C. Half Queen Cover"></a>C. Half Queen Cover</h2><p><del>永远几乎不会构造题。</del></p>
 <p>首先对于一个 $k\times k$ 的矩阵，可以用一条斜线去构造它。如图所示：</p>
-<p><img src="Codeforces-Round-783-Div-1%5CC1.png" alt="C1"></p>
+<p><img src="/Codeforces-Round-783-Div-1%5CC1.png" alt="C1"></p>
 <p>之后剩下的没被覆盖的点，再用一条斜线即可覆盖。如图：</p>
-<p><img src="Codeforces-Round-783-Div-1%5CC2.png" alt="C2"></p>
+<p><img src="/Codeforces-Round-783-Div-1%5CC2.png" alt="C2"></p>
 <p>于是大概需要 $\frac{2n+1}{3}$ 个就可以了。</p>
 <h2 id="D-Edge-Elimination"><a href="#D-Edge-Elimination" class="headerlink" title="D. Edge Elimination"></a>D. Edge Elimination</h2><p>树形DP，设 $f_u$ 表示节点 $u$ 与其父亲的边，需要在父亲节点的度数模 $2$ 的结果为 $f_u$ 时才可以消去。</p>
 <p>那么一个节点的所有儿子的 $f_v$ 值的 $0,1$ 个数不能超过一个很小的数。</p>
-<p>那么就有对于所有的叶子 $v$，$f_v=1$ （需要父亲的度数为奇数，这样这条边相邻的边就是父亲度数减一了。</p>
+<p>那么就有对于所有的叶子 $v$，$f_v&#x3D;1$ （需要父亲的度数为奇数，这样这条边相邻的边就是父亲度数减一了。</p>
 <p>根节点特殊，讨论一下即可。其他的点，根据度数奇偶性以及 $f_v$ 的 $0,1$ 个数共四种情况讨论，其他情况则无解。</p>
 <p>判断完无解后，构造方案就很容易了，相当于 $0,1,0,1\cdots$ 或 $1,0,1,0\cdots$ 依次弄。</p>
 <p>时间复杂度 $O(n)$。</p>
@@ -271,6 +272,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -324,6 +327,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

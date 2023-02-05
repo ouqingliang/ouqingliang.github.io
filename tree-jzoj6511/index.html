@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -254,7 +255,7 @@
 
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>显然直接算是非常不好算的。因为有 $3$ 个数，如果能减少到枚举两个数或者一个就更好了。</p>
 <p>对于一条有向的路径 $(u,v)$，我们定义 $W_{u,v}$ 为该路径权值模 $P$ 后是否不为 $0$。</p>
-<p>那么一共有 $2^3=8$ 种情况，我们需要算的只有两种。</p>
+<p>那么一共有 $2^3&#x3D;8$ 种情况，我们需要算的只有两种。</p>
 <p>无论如何，先列个表看看再说：</p>
 <table>
 <thead>
@@ -319,11 +320,11 @@
 <p>那么可以枚举这两组 $W$ 是哪两组，剩下那组不管它，然后把方案数加起来后，除以 $2$ 就是答案了。</p>
 <p>分三类讨论：</p>
 <ol>
-<li>$W_{u,v}\not = W_{u,t}$</li>
-<li>$W_{u,v}\not = W_{t,v}$</li>
-<li>$W_{u,t}\not = W_{t,v}$</li>
+<li>$W_{u,v}\not &#x3D; W_{u,t}$</li>
+<li>$W_{u,v}\not &#x3D; W_{t,v}$</li>
+<li>$W_{u,t}\not &#x3D; W_{t,v}$</li>
 </ol>
-<p>这样来看，我们只需要对于每个点 $u$，都算出 $W_{u,i}=0$ 和 $W_{i,u}=0$ 有多少种，这样就可以算出答案了。</p>
+<p>这样来看，我们只需要对于每个点 $u$，都算出 $W_{u,i}&#x3D;0$ 和 $W_{i,u}&#x3D;0$ 有多少种，这样就可以算出答案了。</p>
 <p>至此，我们把枚举三个点变成了枚举两个点的路径问题。</p>
 <p>跟树上所有的路径相关的，考虑点分治。</p>
 <p>对于点分治过程中的一个分治结构，我们考虑用容斥的方法减去子树自己对自己的贡献。</p>
@@ -332,7 +333,7 @@
 <p><img src="/tree-jzoj6511/tree.png" alt="tree"></p>
 <p>如图，$w_i,l_i$ 表示为该链（有方向）的权值以及长度。</p>
 <p>那么将这两条链合起来的权值就是：$w_2\times K^{l_1}+w_1$</p>
-<p>要使得这个权值为 $0$，则有：$w_2=\frac{-w_1}{K^{l_1}}$。</p>
+<p>要使得这个权值为 $0$，则有：$w_2&#x3D;\frac{-w_1}{K^{l_1}}$。</p>
 <p>$W_{u,i}$ 同理。</p>
 <p>那么先来一次dfs，用个 map 或者哈希记录 $\frac{-w_1}{K^{l_1}}$ 的出现次数，然后再来一次dfs统计即可。</p>
 <p>时间复杂度 $O(n\log n)$ 或 $O(n\log ^2n)$。</p>
@@ -342,6 +343,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -399,6 +402,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

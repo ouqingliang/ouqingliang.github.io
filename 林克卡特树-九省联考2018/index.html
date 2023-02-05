@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -258,7 +259,7 @@
 <span id="more"></span>
 
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>稍微转换一下，考虑 $k$ 比较小的情况，发现就是找 $k+1$ 条互不相交的路径，使得链的权值之和最大。</p>
-<p>那么60分的DP做法就呼之欲出了，设 $f_{i,j,0/1/2}$ 表示以 $i$ 为根节点的子树中，选了 $j$ 条路径，没有一条链传给父亲，有一条链传给父亲，子树有两条链在 $i$ 处结合的最大价值。</p>
+<p>那么60分的DP做法就呼之欲出了，设 $f_{i,j,0&#x2F;1&#x2F;2}$ 表示以 $i$ 为根节点的子树中，选了 $j$ 条路径，没有一条链传给父亲，有一条链传给父亲，子树有两条链在 $i$ 处结合的最大价值。</p>
 <p>然后转移只需要分三种情况讨论一下。</p>
 <p>这种选 $k$ 次的一般都会满足单调性，也就是设答案为 $f(k)$，则 $f(k)-f(k-1)$ 不递减。证明并不会，只能意会QwQ。</p>
 <p>那么就可以用wqs二分了，二分斜率 $mid$，然后转换成只需要判断是否可以选出 $k+1$ 条路径，满足路径都大于等于这个斜率 $mid$，那么将每条路径的贡献减去 $mid$，变成判断是否可以选出 $k+1$ 条大于等于 $0$ 的路径，且价值和最大，就可以了。</p>
@@ -272,6 +273,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -329,6 +332,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

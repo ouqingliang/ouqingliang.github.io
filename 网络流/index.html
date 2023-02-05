@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -249,7 +250,7 @@
 <span id="more"></span>
 
 <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>网络流，费用流。</p>
-<h2 id="一，简单点的"><a href="#一，简单点的" class="headerlink" title="一，简单点的"></a>一，简单点的</h2><h3 id="1，二分图相关问题"><a href="#1，二分图相关问题" class="headerlink" title="1，二分图相关问题"></a>1，二分图相关问题</h3><p>设 $|X|+|Y|=n$</p>
+<h2 id="一，简单点的"><a href="#一，简单点的" class="headerlink" title="一，简单点的"></a>一，简单点的</h2><h3 id="1，二分图相关问题"><a href="#1，二分图相关问题" class="headerlink" title="1，二分图相关问题"></a>1，二分图相关问题</h3><p>设 $|X|+|Y|&#x3D;n$</p>
 <p>二分图最大匹配：$(S,x_i,1),(x_i,y_j,1),(y_j,T,1)$，设答案为 $t$。</p>
 <p>最大独立集：$n-t$</p>
 <h3 id="2，多源多汇"><a href="#2，多源多汇" class="headerlink" title="2，多源多汇"></a>2，多源多汇</h3><p>直接新建超级源汇即可。</p>
@@ -260,7 +261,7 @@
 <p>因此答案即为 $n$ - 最大匹配数。</p>
 <h2 id="二，不那么简单的"><a href="#二，不那么简单的" class="headerlink" title="二，不那么简单的"></a>二，不那么简单的</h2><h3 id="1，无源汇有上下界可行流"><a href="#1，无源汇有上下界可行流" class="headerlink" title="1，无源汇有上下界可行流"></a>1，无源汇有上下界可行流</h3><p>首先每条边必须得跑下界。</p>
 <p>然后考虑一个附加流，每条的边权为上界与下界的差。</p>
-<p>每条边最终的流量=网络流中反向边权值+下界。</p>
+<p>每条边最终的流量&#x3D;网络流中反向边权值+下界。</p>
 <p>对于每个点必须满足流量平衡，设 $d_u$ 为入边下界之和-出边下界之和，若 $d_u&gt;0$ 则表明需要流多一点，$d_u&lt;0$ 则表明可以流少一点。</p>
 <p>因此新建超级源汇，若 $d_u&lt;0$，则连边 $(u,t,-d_u)$，否则连边 $(s,u,d_u)$。当且仅当源点的出边满流时有解。</p>
 <h3 id="2，有源汇有上下界可行流"><a href="#2，有源汇有上下界可行流" class="headerlink" title="2，有源汇有上下界可行流"></a>2，有源汇有上下界可行流</h3><p>加入一条下界为 $0$，上界为 $\infty$ 的从 $t$ 到 $s$ 的边，变成上面的做法。</p>
@@ -272,13 +273,13 @@
 <h2 id="三，比较难的"><a href="#三，比较难的" class="headerlink" title="三，比较难的"></a>三，比较难的</h2><h3 id="1，混合图的欧拉回路判定"><a href="#1，混合图的欧拉回路判定" class="headerlink" title="1，混合图的欧拉回路判定"></a>1，混合图的欧拉回路判定</h3><p>混合图：既有有向，又有无向边的图。</p>
 <p>欧拉回路：每条边只能且必须经过一次，最终回到起点的路径。</p>
 <p>首先随便给无向边定向。</p>
-<p>然后设 $d_i=出度-入度$，每给一个无向边反向都会使得某个点的 $d$ 减二，某个点的 $d$ 加二。因此若 $d_i$ 为奇数则一定无解。</p>
+<p>然后设 $d_i&#x3D;出度-入度$，每给一个无向边反向都会使得某个点的 $d$ 减二，某个点的 $d$ 加二。因此若 $d_i$ 为奇数则一定无解。</p>
 <p>若所有 $d_i$ 均为偶数，则将原图的无向边建边，容量为 $1$。然后新建源汇，容量为 $|\frac{d_i}{2}|$ 即可。</p>
 <h3 id="2，混合图的欧拉路径判定"><a href="#2，混合图的欧拉路径判定" class="headerlink" title="2，混合图的欧拉路径判定"></a>2，混合图的欧拉路径判定</h3><p>若这没有 $d_i$ 为奇数的点，转成 1。</p>
 <p>若有且只有两个 $d_i$ 为奇数的点，且一个为整，一个为负。则连一条边，变成 1。</p>
 <p>其他情况无解。</p>
 <h3 id="3，最大密度子图"><a href="#3，最大密度子图" class="headerlink" title="3，最大密度子图"></a>3，最大密度子图</h3><p>每个边有边权，点有点权，要去选出一个子图，使得 $\frac{\sum_{i\in E}e_i}{\sum_{i\in V} v_i}$ 最大。</p>
-<p>显然0/1分数规划，二分答案 $mid$，有：$\frac{\sum_{i\in E}e_i}{\sum_{i\in V} v_i}\geq mid$，即 $e-mid\times v\geq 0$。</p>
+<p>显然0&#x2F;1分数规划，二分答案 $mid$，有：$\frac{\sum_{i\in E}e_i}{\sum_{i\in V} v_i}\geq mid$，即 $e-mid\times v\geq 0$。</p>
 <p>一条边选了，则它的两个点都必须选。</p>
 <p>十分像最大权闭合子图的形式！</p>
 <p>对于原图的每条边看做一个点，做最大权闭合子图即可判断 $mid$ 是否合法。</p>
@@ -288,6 +289,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -344,6 +347,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

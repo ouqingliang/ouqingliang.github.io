@@ -180,6 +180,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -252,20 +253,20 @@
 <span id="more"></span>
 
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="B-Strange-Permutations"><a href="#B-Strange-Permutations" class="headerlink" title="B. Strange Permutations"></a>B. Strange Permutations</h3><p>一个长度为 $n$ 的置换形成了若干个有向环，那么在上面填排列后，环中边上相邻的点的数不能为 $i-&gt;i+1$。</p>
-<p>直接枚举比较难，考虑容斥，记 $f(k)$ 表示选择了 $k$ 条边，使得每条边都满足 $i-&gt;i+1$ 的方案数，那么剩下 $n-k$ 个可以随便选，也就是 $(n-k)!$，答案就是 $\sum_{i=0}^n(-1)^if(i)(n-i)!$。</p>
+<p>直接枚举比较难，考虑容斥，记 $f(k)$ 表示选择了 $k$ 条边，使得每条边都满足 $i-&gt;i+1$ 的方案数，那么剩下 $n-k$ 个可以随便选，也就是 $(n-k)!$，答案就是 $\sum_{i&#x3D;0}^n(-1)^if(i)(n-i)!$。</p>
 <p>考虑 $f(i)$ 的求法，注意到一个整环不可能把所有边都选上以外，其他都可以。那么答案就是 $[x^i]\sum ((x+1)^{k_i}-x^{k_i})$。</p>
 <p>分治FFT即可。</p>
 <h3 id="C-Strange-Matrices"><a href="#C-Strange-Matrices" class="headerlink" title="C. Strange Matrices"></a>C. Strange Matrices</h3><p>$n,m\le 8$，考虑轮廓线DP，对于每个点，会有三种状态：什么事都没有的，需要这一行给它的，需要同一列中的下面点给它的。那么DP时记录一下本行当前的状态，以及当前 $m$ 个数的状态就可以了。</p>
 <p>时间复杂度 $O(nm3^{10})$。</p>
-<h3 id="D-Strange-Fractions"><a href="#D-Strange-Fractions" class="headerlink" title="D. Strange Fractions"></a>D. Strange Fractions</h3><p>可以发现，若 $(a,b)=1$，则 $(a^2+b^2,ab)=1$。那么 $p=a^2+b^2,q=ab$。随便做。</p>
-<p>证明：$(a,b)=1$，则 $(a+b,a)=(a+b,b)=1$，则 $(a+b,ab)=1$，则 $(a^2+b^2,ab)=((a+b)^2,ab)=1$。</p>
+<h3 id="D-Strange-Fractions"><a href="#D-Strange-Fractions" class="headerlink" title="D. Strange Fractions"></a>D. Strange Fractions</h3><p>可以发现，若 $(a,b)&#x3D;1$，则 $(a^2+b^2,ab)&#x3D;1$。那么 $p&#x3D;a^2+b^2,q&#x3D;ab$。随便做。</p>
+<p>证明：$(a,b)&#x3D;1$，则 $(a+b,a)&#x3D;(a+b,b)&#x3D;1$，则 $(a+b,ab)&#x3D;1$，则 $(a^2+b^2,ab)&#x3D;((a+b)^2,ab)&#x3D;1$。</p>
 <h3 id="E-Strange-Integers"><a href="#E-Strange-Integers" class="headerlink" title="E. Strange Integers"></a>E. Strange Integers</h3><p>排序以后贪心即可。</p>
 <h3 id="G-Edge-Groups"><a href="#G-Edge-Groups" class="headerlink" title="G. Edge Groups"></a>G. Edge Groups</h3><p>简单树形DP。</p>
 <h3 id="H-Life-is-a-Game"><a href="#H-Life-is-a-Game" class="headerlink" title="H. Life is a Game"></a>H. Life is a Game</h3><p>Kruskal重构树+树上倍增。</p>
 <h3 id="I-Steadily-Growing-Steam"><a href="#I-Steadily-Growing-Steam" class="headerlink" title="I. Steadily Growing Steam"></a>I. Steadily Growing Steam</h3><p>简单DP，设 $f_{i,j,k}$ 表示处理到第 $i$ 个时，用了 $j$ 次，差值为 $k$ 的最大值。</p>
-<h3 id="J-Two-Binary-Strings-Problem"><a href="#J-Two-Binary-Strings-Problem" class="headerlink" title="J. Two Binary Strings Problem"></a>J. Two Binary Strings Problem</h3><p>记 $s_i$ 表示前缀和，$f(l,r)=1$ 当且仅当 $2s_r-r&gt;2s_{l-1}-(l-1)$。</p>
-<p>记 $t_i=2s_i-i$，按照 $t_i$ 排序，从小到大枚举，每次用bitset处理一下即可。</p>
-<p>注意 $t_i=0$ 时的特判。</p>
+<h3 id="J-Two-Binary-Strings-Problem"><a href="#J-Two-Binary-Strings-Problem" class="headerlink" title="J. Two Binary Strings Problem"></a>J. Two Binary Strings Problem</h3><p>记 $s_i$ 表示前缀和，$f(l,r)&#x3D;1$ 当且仅当 $2s_r-r&gt;2s_{l-1}-(l-1)$。</p>
+<p>记 $t_i&#x3D;2s_i-i$，按照 $t_i$ 排序，从小到大枚举，每次用bitset处理一下即可。</p>
+<p>注意 $t_i&#x3D;0$ 时的特判。</p>
 <h3 id="K-Circle-of-Life"><a href="#K-Circle-of-Life" class="headerlink" title="K. Circle of Life"></a>K. Circle of Life</h3><p>打表找规律题。</p>
 <h3 id="M-Harmony-in-Harmony"><a href="#M-Harmony-in-Harmony" class="headerlink" title="M. Harmony in Harmony"></a>M. Harmony in Harmony</h3><p>神仙结论题，不太会…</p>
 
@@ -274,6 +275,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -333,6 +336,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

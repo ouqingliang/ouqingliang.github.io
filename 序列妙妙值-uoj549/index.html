@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -250,7 +251,7 @@
 <span id="more"></span>
 
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>考虑Dp，设 $f_{j,i}$ 表示考虑选了 $j$ 个非空子序列，选到 $i$ 的最小值。设 $s_i$ 为 $a_i$ 的前缀异或和。</p>
-<p>$f_{j,i}=\min_{k\in[0,i-1]}\{f_{j-1,k}+(s_i \text{xor} s_k)\}$。</p>
+<p>$f_{j,i}&#x3D;\min_{k\in[0,i-1]}{f_{j-1,k}+(s_i \text{xor} s_k)}$。</p>
 <p>这时就有几种思路：拆位，Trie，和DP优化。</p>
 <p>然后发现拆位和Trie都似乎不太可做的样子，那就只有Dp优化了叭。</p>
 <p>看到部分分 $a_i&lt;2^8$，于是我们对于每个 $s_k$，记录 $f_{j-1,k}$ 的最小值，然后更新时 $O(2^8)$ 枚举即可。</p>
@@ -268,6 +269,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -325,6 +328,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

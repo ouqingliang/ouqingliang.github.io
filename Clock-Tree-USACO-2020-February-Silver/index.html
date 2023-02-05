@@ -180,6 +180,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -251,7 +252,7 @@
         <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>一个 $n$ 个点的树，点有点权 $a_i$，每次选择一个相连的点，每走一次到该点，该点的点权变为 $(a_i+1)\bmod k$。</p>
 <p>可以从任意点开始，任意点结束，能重复经过多次。</p>
 <p>问有多少个出发点，满足最后存在一种方案使得点权均为 $0$。</p>
-<p>原题：$n\leq 2500,k=12$</p>
+<p>原题：$n\leq 2500,k&#x3D;12$</p>
 <p>加强版：$n\leq 2\times 10^6,k\leq 10^9$。</p>
 <span id="more"></span>
 
@@ -271,7 +272,7 @@
 <p>考虑最后一次经过根节点的情况，如果要满足条件，那么只能剩下一条 $k-1$ 的链，且此时根节点为 $0$。</p>
 <p>如图所示：</p>
 <p><img src="/Clock-Tree-USACO-2020-February-Silver/1.png" alt="1"></p>
-<p>那么可以发现，如果让链上最后两个 $k-1$ 相互抵消，那么一直抵消下去，最后最多剩下一个 $k-1$，再让这个 $k-1$ 和根节点相互抵消，此时根节点变为了 $1$。也就是说，根节点还需要 $k-1$ 次才变为 $0$。这种情况也是可以的，即 $f_{root}=k-1$。</p>
+<p>那么可以发现，如果让链上最后两个 $k-1$ 相互抵消，那么一直抵消下去，最后最多剩下一个 $k-1$，再让这个 $k-1$ 和根节点相互抵消，此时根节点变为了 $1$。也就是说，根节点还需要 $k-1$ 次才变为 $0$。这种情况也是可以的，即 $f_{root}&#x3D;k-1$。</p>
 <p>时间复杂度 $O(n^2)$。</p>
 <p><strong>到这里就做完了原题。</strong></p>
 <h4 id="Part-2-n-leq-10-6"><a href="#Part-2-n-leq-10-6" class="headerlink" title="Part 2:$n\leq 10^6$"></a>Part 2:$n\leq 10^6$</h4><p>显然换根DP就好了。</p>
@@ -283,7 +284,7 @@
 <p>奇数层的答案是偶数层的相反数。</p>
 <p>因此直接暴算就好了，维护一下层数的奇偶性，就dfs也不用了。</p>
 <p><del>这还是树形DP吗？</del></p>
-<p>注意 $n=1$ 的特判。</p>
+<p>注意 $n&#x3D;1$ 的特判。</p>
 <p>时间复杂度 $O(n)$。</p>
 <h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> x=<span class="number">0</span>; <span class="type">char</span> ch=<span class="built_in">getchar</span>(); <span class="type">bool</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(;ch&lt;<span class="string">&#x27;0&#x27;</span>||ch&gt;<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(ch^<span class="number">48</span>);</span><br><span class="line">	<span class="keyword">return</span> f?-x:x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> n,k,a[N];</span><br><span class="line">ll s1[<span class="number">2</span>],s2[<span class="number">2</span>],ans,tmp;</span><br><span class="line"><span class="type">bool</span> d[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>(); k=<span class="built_in">read</span>();</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=<span class="built_in">read</span>();</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,(a[<span class="number">1</span>]?<span class="number">0</span>:<span class="number">1</span>))&amp;<span class="number">0</span>;</span><br><span class="line">	s1[<span class="number">0</span>]++; s2[<span class="number">0</span>]=a[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		d[i]=d[<span class="built_in">read</span>()]^<span class="number">1</span>;</span><br><span class="line">		s1[d[i]]+=i,s2[d[i]]+=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	tmp=(s2[<span class="number">1</span>]%k-s2[<span class="number">0</span>]%k+k)%k;</span><br><span class="line">	<span class="keyword">if</span>(tmp==<span class="number">0</span>||tmp==k<span class="number">-1</span>) ans+=s1[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">if</span>(tmp==<span class="number">0</span>||tmp==  <span class="number">1</span>) ans+=s1[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans)&amp;<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -293,6 +294,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -350,6 +353,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

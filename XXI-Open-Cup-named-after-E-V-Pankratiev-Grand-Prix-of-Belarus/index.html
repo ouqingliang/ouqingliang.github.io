@@ -176,6 +176,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -250,37 +251,37 @@
 <h2 id="A-Belarusian-State-University"><a href="#A-Belarusian-State-University" class="headerlink" title="A. Belarusian State University"></a>A. Belarusian State University</h2><p>需要深入理解FWT的本质。</p>
 <p>FWT的分治中，是拆开某一位去分治的。</p>
 <p>对于每一位的处理，实际上就是相当于处理一种运算关系。</p>
-<p>而我们的目标是处理 $2^4=16$ 种二元0/1运算，我们会的只有 $or,and,xor$ 三种。</p>
+<p>而我们的目标是处理 $2^4&#x3D;16$ 种二元0&#x2F;1运算，我们会的只有 $or,and,xor$ 三种。</p>
 <p>而我们可以将这个运算转换成取反，固定某个变量的值，以及上面三种常规操作的若干种，从而解决某一位的问题。</p>
 <p>分类讨论 $16$ 种情况即可。。</p>
 <p>时间复杂度 $O(2^nn)$。</p>
 <h2 id="B-Beautiful-Sequence-Unraveling"><a href="#B-Beautiful-Sequence-Unraveling" class="headerlink" title="B. Beautiful Sequence Unraveling"></a>B. Beautiful Sequence Unraveling</h2><h2 id="C-Brave-Seekers-of-Unicorns"><a href="#C-Brave-Seekers-of-Unicorns" class="headerlink" title="C. Brave Seekers of Unicorns"></a>C. Brave Seekers of Unicorns</h2><p>DP，设 $f_i$ 表示序列最后一位为 $i$ 的总方案数。设 $s_i$ 为其前缀和，最终答案为 $s_n$。考虑用所有的方案数减去不合法的，也就是：</p>
-<p>$f_i=s_{i-1}-\sum_{k&lt;k\oplus i&lt;i}f_k$。</p>
+<p>$f_i&#x3D;s_{i-1}-\sum_{k&lt;k\oplus i&lt;i}f_k$。</p>
 <p>而对于所有的 $k&lt;k\oplus i&lt;i$，$k$ 的规律是 $k$ 的最高位比 $i$ 小，且该最高位中 $i$ 这一位为 $1$。</p>
 <p>然后就是 $O(\log n)$ 个区间和了。</p>
 <p>时间复杂度 $O(n\log n)$。</p>
-<h2 id="D-Bank-Security-Unification"><a href="#D-Bank-Security-Unification" class="headerlink" title="D. Bank Security Unification"></a>D. Bank Security Unification</h2><p>设 $f_i$ 表示考虑前 $i$ 个，其中第 $i$ 个必选的最大值，有 $f_i=\max \{f_j+a_j&amp; a_i\}$。</p>
+<h2 id="D-Bank-Security-Unification"><a href="#D-Bank-Security-Unification" class="headerlink" title="D. Bank Security Unification"></a>D. Bank Security Unification</h2><p>设 $f_i$ 表示考虑前 $i$ 个，其中第 $i$ 个必选的最大值，有 $f_i&#x3D;\max {f_j+a_j&amp; a_i}$。</p>
 <p>优化，我们只需要对于每一位考虑前边的出现过这一位为 $1$ 的最大下标即可。</p>
 <ul>
 <li>证明： 设 $a_i&amp;a_j$ 的最大位为 $k$，对于任一更小的 $j’$，且满足 $a_i&amp; a_{j’}$ 最大位为第 $k$ 位，那么显然有 $a_{j’}&amp; a_{i}&lt;2^{k+1}\le a_{j’}&amp; a_j+a_j&amp; a_i$。说明 $i,j’$ 中间多选一个 $j$ 会比较优。</li>
 </ul>
 <p>时间复杂度 $O(n\log C)$。</p>
-<h2 id="E-Brief-Statements-Union"><a href="#E-Brief-Statements-Union" class="headerlink" title="E. Brief Statements Union"></a>E. Brief Statements Union</h2><p>拆位后，变成 $01$ 序列。$and=1$ 的限制相当于表示 $[l_i,r_i]$ 全是 $1$；$and=0$ 的限制表示 $[l_i,r_i]$ 不全为 $1$。</p>
-<p>假设 $and=1$ 的都选，差分后，求出有多少个 $and=0$ 的区间全是 $1$。</p>
+<h2 id="E-Brief-Statements-Union"><a href="#E-Brief-Statements-Union" class="headerlink" title="E. Brief Statements Union"></a>E. Brief Statements Union</h2><p>拆位后，变成 $01$ 序列。$and&#x3D;1$ 的限制相当于表示 $[l_i,r_i]$ 全是 $1$；$and&#x3D;0$ 的限制表示 $[l_i,r_i]$ 不全为 $1$。</p>
+<p>假设 $and&#x3D;1$ 的都选，差分后，求出有多少个 $and&#x3D;0$ 的区间全是 $1$。</p>
 <p>如果是 $0$ 个，随便删哪个线段均可；</p>
-<p>如果是 $1$ 个，可以删掉这个 $and=0$ 的区间；</p>
-<p>如果 $&gt;1$ 个，则不能删掉 $and=0$ 的区间；</p>
-<p>下面考虑删掉任意一个 $and=1$ 的区间后合法的情况。那么删掉这个区间后合法当且仅当删掉后能满足所有 $and=0$ 的区间的限制。</p>
-<p>还是利用每个点被 $and=1$ 的线段覆盖次数的数组，找到所有的只被一条线段覆盖过的点就可以了。</p>
+<p>如果是 $1$ 个，可以删掉这个 $and&#x3D;0$ 的区间；</p>
+<p>如果 $&gt;1$ 个，则不能删掉 $and&#x3D;0$ 的区间；</p>
+<p>下面考虑删掉任意一个 $and&#x3D;1$ 的区间后合法的情况。那么删掉这个区间后合法当且仅当删掉后能满足所有 $and&#x3D;0$ 的区间的限制。</p>
+<p>还是利用每个点被 $and&#x3D;1$ 的线段覆盖次数的数组，找到所有的只被一条线段覆盖过的点就可以了。</p>
 <p>时间复杂度 $O(n\log C)$。</p>
 <h2 id="F-Border-Similarity-Undertaking"><a href="#F-Border-Similarity-Undertaking" class="headerlink" title="F. Border Similarity Undertaking"></a>F. Border Similarity Undertaking</h2><p>分治，然后预处理出左右两边的最远距离，以及能遇到的一些最大值。暴力枚举，时间复杂度 $O(nm\log nm)$。</p>
 <h2 id="G-Biological-Software-Utilities"><a href="#G-Biological-Software-Utilities" class="headerlink" title="G. Biological Software Utilities"></a>G. Biological Software Utilities</h2><p>不妨设有 $2n$ 个点，如何求有完美匹配的树的个数？</p>
-<p>首先枚举 $2n$ 个点的不同的匹配情况，答案是 $\prod_{i=1}^n(2i-1)$。</p>
+<p>首先枚举 $2n$ 个点的不同的匹配情况，答案是 $\prod_{i&#x3D;1}^n(2i-1)$。</p>
 <p>然后对于每种匹配间进行连边，每次连边有 $4$ 种情况，且需要连成一个 $n$ 个点的树，答案是 $4^{n-1}\times n^{n-2}$。</p>
 <p>时间复杂度 $O(n)$。</p>
-<h2 id="H-Bytelandia-States-Union"><a href="#H-Bytelandia-States-Union" class="headerlink" title="H. Bytelandia States Union"></a>H. Bytelandia States Union</h2><p>对于一条路径 $(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)$，它的权值总和为 $x_n^2y_n^2-x_1^2y_1^2+\sum_{i=1}^{n-1}(x_i^2+y_i^2)$。</p>
-<p>那么，相当于算 $\sum_{i=1}^n(x_i^2+y_i^2)$ 的最小值。</p>
-<p>考虑每次移动，$(x^2+y^2)$ 的变化是 $\pm 2x/2y+1$ 的。</p>
+<h2 id="H-Bytelandia-States-Union"><a href="#H-Bytelandia-States-Union" class="headerlink" title="H. Bytelandia States Union"></a>H. Bytelandia States Union</h2><p>对于一条路径 $(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)$，它的权值总和为 $x_n^2y_n^2-x_1^2y_1^2+\sum_{i&#x3D;1}^{n-1}(x_i^2+y_i^2)$。</p>
+<p>那么，相当于算 $\sum_{i&#x3D;1}^n(x_i^2+y_i^2)$ 的最小值。</p>
+<p>考虑每次移动，$(x^2+y^2)$ 的变化是 $\pm 2x&#x2F;2y+1$ 的。</p>
 <p>先不妨设 $x_1\le x_n$。</p>
 <p>如果 $y_1\geq y_n$，那么显然先一直往下走，然后再往右走最优。</p>
 <p>如果 $y_1\le y_n$，那么就从 $(x_1,y_1)$ 一直移动 $x$ 或 $y$ 中的较小值，直到他们相等，$(x_n,y_n)$ 也是如此。经过这样的操作以后，就变成从 $(x_1,x_1)$ 移动到 $(x_n,x_n)$ 了，这个很容易算出最小值。</p>
@@ -298,6 +299,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -351,6 +354,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

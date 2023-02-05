@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -250,7 +251,7 @@
         <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/611/problem/H">CF</a></p>
 <span id="more"></span>
 
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先简化一下，将位数相同的点搞在一起形成一个大的点，那么一共就有 $m=\left \lfloor \log_{10}n \right \rfloor \leq 6$ 个大点。对于每个大点，随便选择一个点作为关键点。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先简化一下，将位数相同的点搞在一起形成一个大的点，那么一共就有 $m&#x3D;\left \lfloor \log_{10}n \right \rfloor \leq 6$ 个大点。对于每个大点，随便选择一个点作为关键点。</p>
 <p>如果有解，那么肯定存在一种情况，使得一条原树中的边，其中一个点连向的是关键点。</p>
 <p>那么关键点之间形成的，是一个树结构。</p>
 <p>根据prufer数列，我们有 $m^{m-2}$ 种树。</p>
@@ -269,6 +270,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -327,6 +330,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

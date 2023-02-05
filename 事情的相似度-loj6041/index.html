@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -256,7 +257,7 @@
 <p>接着我想了一个 $n\sqrt n\log n$ 的做法，也就是用莫队，然后每次增加或删除一个点用个 set 去维护它，这个过程需要求个 lca。</p>
 <p>不过不需要这么麻烦（也不知能不能过）。</p>
 <p>显然将所有的询问离线，按 $r$ 从小到大排序。</p>
-<p>对于两个前缀 $a,b$ 的贡献，不妨在 $a$ 那里统计它，那么假设考虑到右端点到 $r$ 时，$a$ 的最大值为 $mx_a$，那么答案就是 $\max_{l\leq i \leq r}\{mx_i\}$。</p>
+<p>对于两个前缀 $a,b$ 的贡献，不妨在 $a$ 那里统计它，那么假设考虑到右端点到 $r$ 时，$a$ 的最大值为 $mx_a$，那么答案就是 $\max_{l\leq i \leq r}{mx_i}$。</p>
 <p>现在只需要看这个 $mx_i$ 怎么求。</p>
 <p>考虑新加一个节点 $pos_i$ 上去，然后将它到根中所有的点都染成颜色 $i$。那么这条路径中的点之前的颜色就能有贡献，对于一种颜色 $j$，显然染成 $j$ 的节点形成了一条到根的连续的路径。那么颜色 $j$ 的需要跟 $mx_j$ 比较的数就是 $pos_i$ 往根跳的路径中，第一个为颜色 $j$ 的节点的 $len$。</p>
 <p>但是你会发现，有些颜色会被覆盖掉，$mx$ 的值不对。不过这是没有关系的，因为是按顺序加进去的，其他颜色会统计这个贡献。</p>
@@ -270,6 +271,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -328,6 +331,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

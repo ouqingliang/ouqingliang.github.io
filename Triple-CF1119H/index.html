@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -254,17 +255,17 @@
 <p>$1\leq n \leq 10^5,1\leq k \leq 17$</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>一个显然的做法是每个数组对应一个生成函数，都做一次 $\mbox{FWT}$。时间复杂度 $O(nk2^k)$，显然不行。</p>
 <p>但这个生成函数只有三个位置有数，比较特殊。</p>
-<p>考虑将 $\{ a_i,b_i,c_i\}$ 变为 $\{0,a_i\bigoplus b_i,a_i\bigoplus c_i\}$，最后异或上 $\bigoplus_{i=1}^n a_i$ 就是答案。</p>
+<p>考虑将 ${ a_i,b_i,c_i}$ 变为 ${0,a_i\bigoplus b_i,a_i\bigoplus c_i}$，最后异或上 $\bigoplus_{i&#x3D;1}^n a_i$ 就是答案。</p>
 <p>那么 $\mbox{FWT}$ 以后就只剩下四种答案：$x+y+z$,$x+y-z$,$x-y+z$,$x-y-z$。</p>
 <p>最后乘起来的结果就是 $(x+y+z)^{a_1}(x+y-z)^{a_2}(x-y+z)^{a_3}(x-y-z)^{a_4}$</p>
 <p>求出了 $a_1,a_2,a_3,a_4$ 就可以了。</p>
-<p>首先有 $a_1+a_2+a_3+a_4=n$</p>
-<p>我们发现当 $x=0,y=1,z=0$ 的时候答案只跟 $y$ 有关，由于$FWT(A+B)=FWT(A)+FWT(B)$，那么对于每个 $i$ ，将 $f[a_i\bigoplus b_i]$ 加 $1$ 后，$FWT$ 一下，求出的 $f_i$ 就有： $a_1+a_2-a_3-a_4=f_i$。</p>
-<p>同理对 $z$ 进行同样的处理，有 $a_1-a_2+a_3-a_4=f_i$。</p>
+<p>首先有 $a_1+a_2+a_3+a_4&#x3D;n$</p>
+<p>我们发现当 $x&#x3D;0,y&#x3D;1,z&#x3D;0$ 的时候答案只跟 $y$ 有关，由于$FWT(A+B)&#x3D;FWT(A)+FWT(B)$，那么对于每个 $i$ ，将 $f[a_i\bigoplus b_i]$ 加 $1$ 后，$FWT$ 一下，求出的 $f_i$ 就有： $a_1+a_2-a_3-a_4&#x3D;f_i$。</p>
+<p>同理对 $z$ 进行同样的处理，有 $a_1-a_2+a_3-a_4&#x3D;f_i$。</p>
 <p>还差一个方程就可以解出来了。</p>
 <p>可以发现，我们上面处理的是 $a$^$b$ 和 $a$^$c$ 的，还有一个 $b$^$c$ 没有处理。</p>
-<p>考虑变为 $\{a_i\bigoplus b_i,0,c_i\bigoplus b_i\}$，这时候会有四种答案：$x+y+z,x+y-z,-x+y+z,-x+y-z$</p>
-<p>将 $f[b_i\bigoplus c_i]$ 加 $1$ 后 $FWT$，就相当于 $a_1-a_2+a_4-a_3=f_i$</p>
+<p>考虑变为 ${a_i\bigoplus b_i,0,c_i\bigoplus b_i}$，这时候会有四种答案：$x+y+z,x+y-z,-x+y+z,-x+y-z$</p>
+<p>将 $f[b_i\bigoplus c_i]$ 加 $1$ 后 $FWT$，就相当于 $a_1-a_2+a_4-a_3&#x3D;f_i$</p>
 <p>于是便可以解出 $a_1,a_2,a_3,a_4$。</p>
 <p>然后快速幂，再 $UFWT$ 一下就好了。</p>
 <p>时间复杂度 $O((n+2^k)k)$</p>
@@ -276,6 +277,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -332,6 +335,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

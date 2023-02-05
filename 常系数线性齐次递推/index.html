@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -247,30 +248,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>给定一递推式：$f_n=\sum_{i=1}^{k}a_if_{n-i}$，其中 $a_1,a_2,\cdots,a_k$ 为常实数，并给定 $f_0,f_1,\cdots, f_{k-1}$。</p>
+        <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>给定一递推式：$f_n&#x3D;\sum_{i&#x3D;1}^{k}a_if_{n-i}$，其中 $a_1,a_2,\cdots,a_k$ 为常实数，并给定 $f_0,f_1,\cdots, f_{k-1}$。</p>
 <p>求 $f_n$。</p>
 <span id="more"></span>
 
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><p>设 ：</p>
-<p>$$V_i=\begin{bmatrix}<br>f_i\\<br>f_{i+1}\\<br>\vdots\\<br>f_{i+k-1}<br>\end{bmatrix},M=\begin{bmatrix}<br>0 &amp; 1 &amp; 0 &amp; \cdots \\<br>0 &amp; 0 &amp; \ddots &amp; \vdots \\<br>0 &amp; 0 &amp; \cdots &amp; 1 \<br>a_k &amp; a_{k-1} &amp; \cdots &amp; a_1<br>\end{bmatrix}$$</p>
-<p>，则有：$V_{i+1}=M\times  V_i$。</p>
-<p>若要计算 $f_n$，可计算 $V_n=M^n\times V_0$。</p>
+<p>$$V_i&#x3D;\begin{bmatrix}<br>f_i\<br>f_{i+1}\<br>\vdots\<br>f_{i+k-1}<br>\end{bmatrix},M&#x3D;\begin{bmatrix}<br>0 &amp; 1 &amp; 0 &amp; \cdots \<br>0 &amp; 0 &amp; \ddots &amp; \vdots \<br>0 &amp; 0 &amp; \cdots &amp; 1 \<br>a_k &amp; a_{k-1} &amp; \cdots &amp; a_1<br>\end{bmatrix}$$</p>
+<p>，则有：$V_{i+1}&#x3D;M\times  V_i$。</p>
+<p>若要计算 $f_n$，可计算 $V_n&#x3D;M^n\times V_0$。</p>
 <p>利用矩阵乘法，算出 $M^n$，时间复杂度 $O(k^3\log n)$。</p>
 <h3 id="利用特征方程与多项式"><a href="#利用特征方程与多项式" class="headerlink" title="利用特征方程与多项式"></a>利用特征方程与多项式</h3><h4 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h4><p>我们现在是要求 $M^n$。</p>
-<p>设 $f(x)=x^n$。</p>
-<p>若能找到一个多项式 $g$，使得 $g(M)=0$，那么就可以将 $f(x)$ 表示成 $A(x)g(x)+B(x)$ 了，其中 $B(x)$ 的次数小于 $g(x)$ 的次数。然后求 $f(M)$ 就相当于求 $B(M)$。</p>
-<p>$g(x)$ 可取矩阵 $M$ 的特征方程 $\Gamma (x)=\text{det}(Ix-M)$，其中 $I$ 为单位矩阵，$\text{det}(A)$ 表示 $A$ 的行列式。</p>
-<p>因为根据Cayley-Hamilton定理， $\Gamma (M)=0$。</p>
-<p>而 $M$ 矩阵十分特殊，根据归纳等方法可证明：$\Gamma (x)=\text{det}(Ix-M)=x^k-\sum_{i=1}^ka_ix_{k-i}$。</p>
-<p>显然有 $x^nV_0=f(x)V_0$，当 $x=M$ 时，</p>
-<p>$x^nV_0=f(x)V_0=B(x)V_0=\sum_{i=0}^{k-1}x^ib_iV_0$。</p>
+<p>设 $f(x)&#x3D;x^n$。</p>
+<p>若能找到一个多项式 $g$，使得 $g(M)&#x3D;0$，那么就可以将 $f(x)$ 表示成 $A(x)g(x)+B(x)$ 了，其中 $B(x)$ 的次数小于 $g(x)$ 的次数。然后求 $f(M)$ 就相当于求 $B(M)$。</p>
+<p>$g(x)$ 可取矩阵 $M$ 的特征方程 $\Gamma (x)&#x3D;\text{det}(Ix-M)$，其中 $I$ 为单位矩阵，$\text{det}(A)$ 表示 $A$ 的行列式。</p>
+<p>因为根据Cayley-Hamilton定理， $\Gamma (M)&#x3D;0$。</p>
+<p>而 $M$ 矩阵十分特殊，根据归纳等方法可证明：$\Gamma (x)&#x3D;\text{det}(Ix-M)&#x3D;x^k-\sum_{i&#x3D;1}^ka_ix_{k-i}$。</p>
+<p>显然有 $x^nV_0&#x3D;f(x)V_0$，当 $x&#x3D;M$ 时，</p>
+<p>$x^nV_0&#x3D;f(x)V_0&#x3D;B(x)V_0&#x3D;\sum_{i&#x3D;0}^{k-1}x^ib_iV_0$。</p>
 <p>将 $x$ 换成 $M$：</p>
-<p>$V_n=M^nV_0=\sum_{i=0}^{k-1}b_iM^iV_0=\sum_{i=0}^{k-1}b_iV_i$。</p>
+<p>$V_n&#x3D;M^nV_0&#x3D;\sum_{i&#x3D;0}^{k-1}b_iM^iV_0&#x3D;\sum_{i&#x3D;0}^{k-1}b_iV_i$。</p>
 <p>取出 $V$ 中的第一行，有 ：</p>
-<p>$f_n=\sum_{i=0}^{k-1}b_if_i$。</p>
+<p>$f_n&#x3D;\sum_{i&#x3D;0}^{k-1}b_if_i$。</p>
 <p>因此，只需求出所有的 $b_i$ 即可，也就是求出 $B(x)$。</p>
-<p>由上面的推导，$B(x)=f(x)\bmod \Gamma (x)$。</p>
-<p>由于 $f(x)=x^n$，考虑倍增，然后边乘边对 $g$ 取模。</p>
+<p>由上面的推导，$B(x)&#x3D;f(x)\bmod \Gamma (x)$。</p>
+<p>由于 $f(x)&#x3D;x^n$，考虑倍增，然后边乘边对 $g$ 取模。</p>
 <p>暴力多项式乘法及取模，时间复杂度 $O(k^2\log n)$。</p>
 <p>用FFT优化，时间复杂度 $O(k\log k\log n)$。</p>
 <h4 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h4><p>多项式取模：</p>
@@ -283,6 +284,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -341,6 +344,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

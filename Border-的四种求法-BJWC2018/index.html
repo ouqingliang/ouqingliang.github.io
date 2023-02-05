@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -257,7 +258,7 @@
 <li>判断一个子串 $S[l,i]$ 是否是 $S[l,r]$ 的border的方法为：$i-l+1\leq lcp(i,r)$ 且 $i\in[l,r)$</li>
 </ul>
 <h4 id="分析做法"><a href="#分析做法" class="headerlink" title="分析做法"></a>分析做法</h4><p>$lcp(i,r)$ 显然是SAM的fail树中 $i,r$ 的LCA的 $len$ 值。</p>
-<p>假设我们枚举LCA，那么判断条件就变为 $i-l+1\leq len_{lca}$ ， $l\leq i &lt; r$，也就是 $l\leq i \leq \min\{len_{lca}+l-1,r-1\}$。除此之外还要满足 $i$ 在 $lca$ 的子树内。</p>
+<p>假设我们枚举LCA，那么判断条件就变为 $i-l+1\leq len_{lca}$ ， $l\leq i &lt; r$，也就是 $l\leq i \leq \min{len_{lca}+l-1,r-1}$。除此之外还要满足 $i$ 在 $lca$ 的子树内。</p>
 <p>我们需要在 $lca$ 的子树中找到一个 $i$，使得满足上述条件且值最大。那么在fail树上用线段树合right集合，然后在线段树上二分就好了。</p>
 <p>但是枚举 $lca$ 的复杂度是 $O(n)$ 的。</p>
 <p>考虑树链剖分，然后进行链分治。</p>
@@ -282,6 +283,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -340,6 +343,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

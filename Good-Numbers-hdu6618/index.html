@@ -18,12 +18,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"ouqingliang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Good Numbers 题意定义一个正整数 $n$ 是好数当且仅当 $n$ 在8进制表示下所有的数码出现的次数为3的倍数(出现0次亦可)。 有多少个 $k$ 位的8进制数（不含前导0），满足这个数是好的，且是 $p$ 的倍数。对 $10^9+9$ 取模。 例如：当 $k&#x3D;3,p&#x3D;2$ 时，好数有 $222(8),444(8),666(8)$ 三个。 $1\le k \le 10^{18},p&amp;l">
+    <meta name="description" content="Good Numbers 题意定义一个正整数 $n$ 是好数当且仅当 $n$ 在8进制表示下所有的数码出现的次数为**3的倍数(出现0次亦可)**。 有多少个 $k$ 位的8进制数（不含前导0），满足这个数是好的，且是 $p$ 的倍数。对 $10^9+9$ 取模。 例如：当 $k&#x3D;3,p&#x3D;2$ 时，好数有 $222(8),444(8),666(8)$ 三个。 $1\le k \">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Good Numbers[hdu6618]">
 <meta property="og:url" content="https://ouqingliang.github.io/Good-Numbers-hdu6618/index.html">
 <meta property="og:site_name" content="Oql&#39;s Blog">
-<meta property="og:description" content="Good Numbers 题意定义一个正整数 $n$ 是好数当且仅当 $n$ 在8进制表示下所有的数码出现的次数为3的倍数(出现0次亦可)。 有多少个 $k$ 位的8进制数（不含前导0），满足这个数是好的，且是 $p$ 的倍数。对 $10^9+9$ 取模。 例如：当 $k&#x3D;3,p&#x3D;2$ 时，好数有 $222(8),444(8),666(8)$ 三个。 $1\le k \le 10^{18},p&amp;l">
+<meta property="og:description" content="Good Numbers 题意定义一个正整数 $n$ 是好数当且仅当 $n$ 在8进制表示下所有的数码出现的次数为**3的倍数(出现0次亦可)**。 有多少个 $k$ 位的8进制数（不含前导0），满足这个数是好的，且是 $p$ 的倍数。对 $10^9+9$ 取模。 例如：当 $k&#x3D;3,p&#x3D;2$ 时，好数有 $222(8),444(8),666(8)$ 三个。 $1\le k \">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-27T09:53:12.000Z">
 <meta property="article:modified_time" content="2020-02-06T09:55:40.000Z">
@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -248,19 +249,19 @@
     
     <div class="post-body" itemprop="articleBody">
         <p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=6618">Good Numbers</a></p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>定义一个正整数 $n$ 是好数当且仅当 $n$ 在<strong>8进制</strong>表示下所有的数码出现的次数为<strong>3的倍数(出现0次亦可)</strong>。</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>定义一个正整数 $n$ 是好数当且仅当 $n$ 在<strong>8进制</strong>表示下所有的数码出现的次数为**3的倍数(出现0次亦可)**。</p>
 <p>有多少个 $k$ 位的8进制数（不含前导0），满足这个数是好的，且是 $p$ 的倍数。对 $10^9+9$ 取模。</p>
-<p>例如：当 $k=3,p=2$ 时，好数有 $222(8),444(8),666(8)$ 三个。</p>
+<p>例如：当 $k&#x3D;3,p&#x3D;2$ 时，好数有 $222(8),444(8),666(8)$ 三个。</p>
 <p>$1\le k \le 10^{18},p&lt;8$</p>
 <span id="more"></span>
 
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>因为只有8进制，考虑状压dp，设 $f[i][S][j]$ 表示考虑第 $i$ 位，8个位出现次数模 $3$ 的状态，当前数模 $p$ 的余数为 $j$ 的方案数。时间复杂度 $O(8kpw)$，其中 $w$ 为 $3^8=6561$。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>因为只有8进制，考虑状压dp，设 $f[i][S][j]$ 表示考虑第 $i$ 位，8个位出现次数模 $3$ 的状态，当前数模 $p$ 的余数为 $j$ 的方案数。时间复杂度 $O(8kpw)$，其中 $w$ 为 $3^8&#x3D;6561$。</p>
 <p>发现瓶颈在于 $k$。</p>
 <p>考虑优化 $k$，可以倍增dp，类似于快速幂的处理方法。</p>
 <p>考虑从第 $i$ 位转移到第 $2i$ 位：</p>
 <p>把 $2i$ 个位拆成前 $i$ 位和后 $i$ 位，枚举这两个状态。</p>
 <p>那么有：</p>
-<p>$$f[2i][S_1\bigoplus S_2][j_1+t\times j_2]+=f[i][S_1][j_1]\times f[i][S_2][j_2]$$</p>
+<p>$$f[2i][S_1\bigoplus S_2][j_1+t\times j_2]+&#x3D;f[i][S_1][j_1]\times f[i][S_2][j_2]$$</p>
 <p>其中 $\bigoplus$ 代表3进制不进位加法（异或）。</p>
 <p>从 $i$ 位转移到 $i+1$ 位比较容易。</p>
 <p>时间复杂度 $O(w^2p^2\log k)$。</p>
@@ -278,6 +279,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -336,6 +339,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

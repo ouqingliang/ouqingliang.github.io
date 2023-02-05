@@ -182,6 +182,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -261,7 +262,7 @@
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>因为有赋值操作，那么相当于在赋值操作中选择一个，然后在乘法操作中选择若干个，问最后的值可以是多少。（注意，如果没有赋值操作，那么直接输出 $p-1$。）</p>
 <p>由于 $p$ 为奇质数，我们求出它的原根 $g$，将乘法转化为加法。</p>
 <p>考场中想到用bitset，但是应该是过不了的。</p>
-<p>考虑每次操作，相当于找到所有 $bit_i=1,bit_{(i+x)\bmod p}=0$ 的 $i$，并把 $bit_{(i+x)\bmod p}$ 设为 $1$。</p>
+<p>考虑每次操作，相当于找到所有 $bit_i&#x3D;1,bit_{(i+x)\bmod p}&#x3D;0$ 的 $i$，并把 $bit_{(i+x)\bmod p}$ 设为 $1$。</p>
 <p>考虑 $i$ 向 $(i+x)\bmod p$ 连边，这样就形成了若干个环，环中 $1-&gt;0$ 和 $0-&gt;1$ 的个数显然是相等的。也就是说，如果能快速找到所有的 $bit_i\neq bit_{(i+x)\bmod p}$ 就可以了。</p>
 <p>从小到大枚举，二分+树状数组找到第一个 $i$ 即可，此处可以用哈希判断一下。</p>
 <p>时间复杂度 $O(n\log ^2q)$。</p>
@@ -269,13 +270,13 @@
 <p>kmp，然后差分一下即可。</p>
 <h3 id="E-CHASE"><a href="#E-CHASE" class="headerlink" title="E. CHASE!"></a>E. CHASE!</h3><p>设 $f_i$ 表示最多选择  $i$ 次的期望。</p>
 <p>设当且选出来的和为 $X$，若 $X\geq f_{i-1}$ 时不重新选，否则重新选。</p>
-<p>则有：$f_i=E(X&gt;\lfloor f_{i-1}\rfloor)+f_{i-1}P(X\le \lfloor f_{i-1}\rfloor )$</p>
+<p>则有：$f_i&#x3D;E(X&gt;\lfloor f_{i-1}\rfloor)+f_{i-1}P(X\le \lfloor f_{i-1}\rfloor )$</p>
 <p>计算 $E,P$ 可用ntt预处理，也可暴力two-pointer计算。</p>
 <h3 id="F-Stone"><a href="#F-Stone" class="headerlink" title="F. Stone"></a>F. Stone</h3><p>神仙题。</p>
-<p>考虑如果出现了奇数，那么先手将 $s$ 取奇数，将所有的奇数变成偶数。这样就赢了，且赢的方案数为(最小的奇数+1)/2。</p>
+<p>考虑如果出现了奇数，那么先手将 $s$ 取奇数，将所有的奇数变成偶数。这样就赢了，且赢的方案数为(最小的奇数+1)&#x2F;2。</p>
 <p>否则，如果全是偶数，且 $s$ 为奇数，那么先手必败。因此 $s$ 必须为偶数，那么 $a_i$ 全都除去 $2$，就又变回来原来的问题了。</p>
 <h3 id="G-Desserts"><a href="#G-Desserts" class="headerlink" title="G. Desserts"></a>G. Desserts</h3><p>就因为在这道题上自己的失误错失Au…</p>
-<p>给定 $n$ 个数 $a_i$，满足 $\sum_{i=1}^na_i\le 10^5$。记 $f(x)=\prod_{i=1}^n\binom{a_i}{x}$，对于 $i\in [1,m]$，求 $f(i)$。</p>
+<p>给定 $n$ 个数 $a_i$，满足 $\sum_{i&#x3D;1}^na_i\le 10^5$。记 $f(x)&#x3D;\prod_{i&#x3D;1}^n\binom{a_i}{x}$，对于 $i\in [1,m]$，求 $f(i)$。</p>
 <p>一开始就直接开始莽多点求值，结果发现旁边的人过了才反应过来。</p>
 <p>分块，对于小于等于 $\sqrt{10^5}$ 的记录有多少个，对于大于 $\sqrt{10^5}$ 的直接暴力枚举即可。</p>
 <p>时间复杂度 $O(n\sqrt{n})$。</p>
@@ -284,23 +285,23 @@
 <h3 id="I-Distance"><a href="#I-Distance" class="headerlink" title="I. Distance"></a>I. Distance</h3><p>显然可以对每个质数分开来统计：</p>
 <p>我们枚举质数 $p$，其贡献为：$2\times p\sum_{p^c\le n}\lfloor \frac{n}{p^c}\rfloor(n-\lfloor \frac{n}{p^c}\rfloor)$。乘 $2$ 是因为不妨假设的 $i$ 中 $p$ 的次数比 $j$ 小。</p>
 <p>对于 $c\geq 2$ 的情况，显然有 $p\le \sqrt{n}$，暴力枚举 $\sqrt{n}$ 以内质数即可。</p>
-<p>对于 $c=1$，其对答案贡献经过整除分块后，需要计算 $\frac{n}{i}$ 以内的质数的和。这显然是Min25筛的前一部分。</p>
+<p>对于 $c&#x3D;1$，其对答案贡献经过整除分块后，需要计算 $\frac{n}{i}$ 以内的质数的和。这显然是Min25筛的前一部分。</p>
 <p>时间复杂度 $O(\frac{n^{\frac{3}{4}}}{\log n})$。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e6</span>+<span class="number">5</span>;</span><br><span class="line">ll n;</span><br><span class="line"><span class="type">int</span> sqr;</span><br><span class="line"><span class="type">int</span> m;</span><br><span class="line"><span class="type">int</span> id1[N],id2[N]; ll w[N];</span><br><span class="line"><span class="type">bool</span> vis[N];</span><br><span class="line"><span class="type">int</span> cnt,pri[N];</span><br><span class="line">ll s1[N],s[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">init_prime</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">2</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i]) &#123;pri[++cnt]=i;s1[cnt]=<span class="built_in">Add</span>(s1[cnt<span class="number">-1</span>],i);&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;(ll)i*pri[j]&lt;=n;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			vis[i*pri[j]]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i%pri[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">id</span><span class="params">(ll _n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (_n&lt;=sqr)?id1[_n]:id2[n/_n];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll inv2=(mod+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	sqr=<span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="built_in">init_prime</span>(sqr);</span><br><span class="line">	ll l=<span class="number">1</span>,r;</span><br><span class="line">	<span class="keyword">for</span>(;l&lt;=n;l=r+<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		r=n/(n/l);</span><br><span class="line">		w[++m]=n/l;</span><br><span class="line">		s[m]=<span class="built_in">Mul</span>((w[m]+<span class="number">1</span>)%mod,w[m]%mod)*inv2%mod<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">if</span>(w[m]&lt;=sqr) id1[w[m]]=m;</span><br><span class="line">		<span class="keyword">else</span> id2[r]=m;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,cnt)</span><br><span class="line">	&#123;</span><br><span class="line">		ll k=<span class="number">1ll</span>*pri[i]*pri[i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m&amp;&amp;k&lt;=w[j];j++)</span><br><span class="line">			s[j]=<span class="built_in">Dec</span>(s[j],<span class="built_in">Mul</span>(pri[i],<span class="built_in">Dec</span>(s[<span class="built_in">id</span>(w[j]/pri[i])],s1[i<span class="number">-1</span>])));</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans=<span class="number">0</span>,now,sum;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,cnt)</span><br><span class="line">	&#123;</span><br><span class="line">		now=<span class="number">1ll</span>*pri[i]*pri[i]; sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;now&lt;=n;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			sum=<span class="built_in">Add</span>(sum,(n/now)%mod*((n-(n/now))%mod)%mod);</span><br><span class="line">			now=now*pri[i];</span><br><span class="line">		&#125;</span><br><span class="line">		ans=<span class="built_in">Add</span>(ans,sum*pri[i]%mod);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(l=<span class="number">1</span>;l&lt;=n;l=r+<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		r=n/(n/l);</span><br><span class="line">		sum=(n/l)%mod*((n-(n/l))%mod)%mod;</span><br><span class="line">		ans=<span class="built_in">Add</span>(ans,<span class="built_in">Dec</span>(s[<span class="built_in">id</span>(r)],s[<span class="built_in">id</span>(l<span class="number">-1</span>)])*sum%mod);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans*<span class="number">2</span>%mod);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="J-Circular-Billiard-Table"><a href="#J-Circular-Billiard-Table" class="headerlink" title="J. Circular Billiard Table"></a>J. Circular Billiard Table</h3><p>签到题，算一算gcd即可。</p>
 <h3 id="K-Tiny-Stars"><a href="#K-Tiny-Stars" class="headerlink" title="K. Tiny Stars"></a>K. Tiny Stars</h3><p>考虑 $i-&gt;\frac{a}{i}-&gt;i$，但是这样的花费是 $16n$ 的，行不通。</p>
 <p>考虑减少一点 $i-&gt;\frac{a}{i}$，可以发现：$i-&gt;\frac{a}{i}-&gt;\frac{1}{i}-&gt;ai-&gt;i$。</p>
-<p>此时的花费为 $4n+\frac{(14+1)n}{2}=11.5n$，可以通过。</p>
+<p>此时的花费为 $4n+\frac{(14+1)n}{2}&#x3D;11.5n$，可以通过。</p>
 <p>那么怎么能在不知道 $a$ 的情况下顺利连成上述情况呢？</p>
-<p>考虑原根，将乘除转化为加减，设 $g^t=a$，有 $g^i-&gt;g^{t-i}-&gt;g^{n-1-i}$。</p>
+<p>考虑原根，将乘除转化为加减，设 $g^t&#x3D;a$，有 $g^i-&gt;g^{t-i}-&gt;g^{n-1-i}$。</p>
 <p>易知 $i,n-1-i$ 同奇偶，那么只要 $i$ 与 $t-i$ 不同奇偶性就可以了。</p>
 <p>即 $t$ 为奇数，显然有 $\frac{1}{2}$ 的概率可以成功。</p>
 <h3 id="M-810975"><a href="#M-810975" class="headerlink" title="M. 810975"></a>M. 810975</h3><p>容斥，考虑算出 $\le k$ 的答案即可。</p>
-<p> 考虑 $n-m$ 个 $0$ 将线段分成 $n-m+1$ 段，每一段的长度不超过 $k$。总和为 $m$，那么相当于求 $x_1+x_2+\cdots+x_{n-m+1}=m,x_i\in [0,k]$ 的方案数。</p>
+<p> 考虑 $n-m$ 个 $0$ 将线段分成 $n-m+1$ 段，每一段的长度不超过 $k$。总和为 $m$，那么相当于求 $x_1+x_2+\cdots+x_{n-m+1}&#x3D;m,x_i\in [0,k]$ 的方案数。</p>
 <p>两种办法：</p>
 <ul>
-<li>考虑生成函数，即求 $<a href="1+x+\cdots+x^k">x^m</a>^{n-m+1}$。用快速幂或者等比数列求和。</li>
+<li>考虑生成函数，即求 $<a href="1+x+%5Ccdots+x%5Ek">x^m</a>^{n-m+1}$。用快速幂或者等比数列求和。</li>
 <li>容斥，考虑至少 $i$ 个 $x$ 违反了 $[0,k]$ 的限制即可。</li>
 </ul>
 
@@ -309,6 +310,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -370,6 +373,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -248,8 +249,8 @@
         <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/UVA1104">luogu</a></p>
 <span id="more"></span>
 
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>可以通过连 $\infty/ -\infty$ 的边来实现强制相等。</strong></p>
-<p>首先，每个格子选的总数难以确定，那么我们可以枚举格子选的总数 $k$，然后最后看看这时候的答案是否和这个 $k$ 相等。枚举以后，每行和每列的限制就确定了，设 $mx=\lfloor k\times \frac{a}{b}\rfloor$。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>可以通过连 $\infty&#x2F; -\infty$ 的边来实现强制相等。</strong></p>
+<p>首先，每个格子选的总数难以确定，那么我们可以枚举格子选的总数 $k$，然后最后看看这时候的答案是否和这个 $k$ 相等。枚举以后，每行和每列的限制就确定了，设 $mx&#x3D;\lfloor k\times \frac{a}{b}\rfloor$。</p>
 <p>根据网络流的套路，我们将行列分别建点。然后连边。</p>
 <p>首先建一个源点 $s$ 和汇点 $t$，$s$ 向每行的点连一条 $[0,mx]$ 的边，每列向 $t$ 连一条 $[0,mx]$ 的边，表示不超过 $mx$ 的限制。</p>
 <p>对于每个格子 $(i,j)$ ：可选连 $[0,1]$，必选连 $[1,1]$，不选啥都不干。</p>
@@ -266,6 +267,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -322,6 +325,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

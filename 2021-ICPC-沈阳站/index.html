@@ -185,6 +185,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -266,13 +267,13 @@
 <p>证明：相当于dfs树中加上若干条返祖边，在叶子结点选边匹配的时候优先选返祖边即可。</p>
 <p>那么只剩下边为奇数的情况。显然如果删掉某条边后不改变图连通性，那么就可以删掉该边，否则该边为割边，删掉后需要满足两边边数均为偶数即可。这些均可在求割边时找出。</p>
 <p>时间复杂度 $O(n+m)$。</p>
-<h3 id="I"><a href="#I" class="headerlink" title="I"></a>I</h3><p>将 $a,b,c,d$ 视为未知数。四个 $az_i+b=w_i(cz_i+d)$ 转换为线性齐次方程组。</p>
+<h3 id="I"><a href="#I" class="headerlink" title="I"></a>I</h3><p>将 $a,b,c,d$ 视为未知数。四个 $az_i+b&#x3D;w_i(cz_i+d)$ 转换为线性齐次方程组。</p>
 <p>由克拉默法则： $a,b,c,d$ 有非零解当且仅当：</p>
-<p>$$\begin{vmatrix}<br>z_1 &amp; 1 &amp; w_1z_1 &amp; w_1\\<br>z_2 &amp; 1 &amp; w_2z_2 &amp; w_2\\<br>z_3 &amp; 1 &amp; w_3z_3 &amp; w_3\\<br>z_0 &amp; 1 &amp; f(z_0)z_0 &amp; f(z_0)<br>\end{vmatrix}= 0$$</p>
+<p>$$\begin{vmatrix}<br>z_1 &amp; 1 &amp; w_1z_1 &amp; w_1\<br>z_2 &amp; 1 &amp; w_2z_2 &amp; w_2\<br>z_3 &amp; 1 &amp; w_3z_3 &amp; w_3\<br>z_0 &amp; 1 &amp; f(z_0)z_0 &amp; f(z_0)<br>\end{vmatrix}&#x3D; 0$$</p>
 <p>直接解出 $f(z_0)$ 即可。</p>
 <h3 id="J"><a href="#J" class="headerlink" title="J"></a>J</h3><p>将询问的两个数的每一位的差算出来，组成一个新的数 $x$。</p>
 <p>然后预处理出 $0$ 到 $x$ 的距离即可。</p>
-<h3 id="L"><a href="#L" class="headerlink" title="L"></a>L</h3><p>设假设树上至少有 $i$ 对节点选择了的方案数为 $f(i)$，那么答案为 $\sum_{i=0}^n(-1)^if(i)\frac{(2(n-i))!}{(n-i)!2^{n-i}}$。 </p>
+<h3 id="L"><a href="#L" class="headerlink" title="L"></a>L</h3><p>设假设树上至少有 $i$ 对节点选择了的方案数为 $f(i)$，那么答案为 $\sum_{i&#x3D;0}^n(-1)^if(i)\frac{(2(n-i))!}{(n-i)!2^{n-i}}$。 </p>
 <p>求 $f(i)$ 用树形背包即可。</p>
 <p>时间复杂度 $O(n^2)$。</p>
 <h3 id="M"><a href="#M" class="headerlink" title="M"></a>M</h3><p>对反串建立SAM，对parent-tree中每个节点的边按字典序进行排序以后，相当于求一个前缀最大值。</p>
@@ -283,6 +284,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -347,6 +350,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

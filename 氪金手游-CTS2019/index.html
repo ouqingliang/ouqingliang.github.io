@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -258,7 +259,7 @@
 <p>首先如果把题目的有向变成无向，那么就是一棵无根树。</p>
 <p>假设权值已经固定了。</p>
 <p>再假设它是一个外向树的结构，那么显然可以树形DP一下：</p>
-<p>设 $f_u$ 表示子树内答案，有：$f_u=\prod_{v\in son_u}f_v\frac{w_u}{\sum_{v\in tree_u} w_v}$。</p>
+<p>设 $f_u$ 表示子树内答案，有：$f_u&#x3D;\prod_{v\in son_u}f_v\frac{w_u}{\sum_{v\in tree_u} w_v}$。</p>
 <p>但是现在权值 $w_i$ 不固定，那么 $\sum_{v\in tree_u} w_v$ 也不固定，那么在DP的时候还需要记多一维表示子树的 $w_v$ 的和，这个还是 $O(n)$ 级别。那么时间复杂度 $O(n^2)$。</p>
 <p>想到这里，你就会获得0分的好成绩。。。</p>
 <p>那么当这棵树不是外向树的时候的概率该怎么算呢？</p>
@@ -274,6 +275,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -331,6 +334,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

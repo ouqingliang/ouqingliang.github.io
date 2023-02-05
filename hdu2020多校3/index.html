@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -267,11 +268,11 @@
 <p>多次询问，求 $[l,r]$ 内的数有多少个分类为 $d$。</p>
 <p>$T\le 1000,d\in[0,9],1\le l \le r \le 10^{18}$，时限 $3s$。</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><h5 id="比赛时做法"><a href="#比赛时做法" class="headerlink" title="比赛时做法"></a>比赛时做法</h5><p>一道非常显然的数位DP题。</p>
-<p>在数位DP打破限制之后，相当于有 $10$ 个变量，此时为 $a_i$。最终为 $a’_i$，要求 $a’_d&gt;a’_i(i\not=d)$。</p>
+<p>在数位DP打破限制之后，相当于有 $10$ 个变量，此时为 $a_i$。最终为 $a’_i$，要求 $a’_d&gt;a’_i(i\not&#x3D;d)$。</p>
 <p>此时可以在 $a$ 的基础上进行若干次将 $a_i+1$ 的操作，设这个次数为 $k$。</p>
-<p>那么枚举 $a_d$ 加了 $j$ 次，然后算出将其他 $a_i$  加 $k’=k-j$ 次后满足的条件的方案数，乘上系数 $\binom{k}{j}$ 即可。</p>
-<p>这是对于所有的 $i\not =d$，你可以算出一个次数 $t_i$，表示第 $i$ 个数码最多只能加这么多次。</p>
-<p>那么这个方案数就是 $k’![x^{k’}]\prod <em>{d\not=i}(\sum</em>{j=0}^{t_i}\frac{x^j}{j!})$</p>
+<p>那么枚举 $a_d$ 加了 $j$ 次，然后算出将其他 $a_i$  加 $k’&#x3D;k-j$ 次后满足的条件的方案数，乘上系数 $\binom{k}{j}$ 即可。</p>
+<p>这是对于所有的 $i\not &#x3D;d$，你可以算出一个次数 $t_i$，表示第 $i$ 个数码最多只能加这么多次。</p>
+<p>那么这个方案数就是 $k’![x^{k’}]\prod <em>{d\not&#x3D;i}(\sum</em>{j&#x3D;0}^{t_i}\frac{x^j}{j!})$</p>
 <p>暴力卷积，时间复杂度 $O(18^2\times 9)$。</p>
 <p>时间复杂度 $O(18^4\times 9\times 10 \times T)$，有若干小常数。</p>
 <p>跑了大概3s+秒，然后神奇地将卷积数组改成了long double就跑得飞快。</p>
@@ -284,6 +285,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -341,6 +344,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

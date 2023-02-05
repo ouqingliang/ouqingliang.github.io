@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -257,48 +258,48 @@
 <p>1，记两个字符串 $a,b$ 按顺序拼接而成的字符串为 $ab$.</p>
 <p>2，记 $s^R$为 $s$ 按位翻转后的结果。</p>
 <p>3，记 $\mbox border(a)$ 为一个最长的字符串，满足该字符串既是 $a$ 的前缀，也是 $a$ 的后缀。</p>
-<p>4，记周期 $u$ 为对于任意的 $i$ 满足 $s_i=s_{i+u}$，则 $u$ 为字符串的一个周期。</p>
-<p>5，定义循环串为：设最小的 $u$，满足 $u$ 为 $s$ 的周期，且 $u||S|$，$u\not = |S|$，则 $s$ 为循环串。</p>
-<p>6，定义双回文串：$s=ab$，其中 $a,b$ 为非空回文串，则 $s$ 为双回文串。</p>
+<p>4，记周期 $u$ 为对于任意的 $i$ 满足 $s_i&#x3D;s_{i+u}$，则 $u$ 为字符串的一个周期。</p>
+<p>5，定义循环串为：设最小的 $u$，满足 $u$ 为 $s$ 的周期，且 $u||S|$，$u\not &#x3D; |S|$，则 $s$ 为循环串。</p>
+<p>6，定义双回文串：$s&#x3D;ab$，其中 $a,b$ 为非空回文串，则 $s$ 为双回文串。</p>
 <p>7，定义非严格双回文串：严格双回文或者非空回文串。</p>
 <h3 id="简单性质"><a href="#简单性质" class="headerlink" title="简单性质"></a>简单性质</h3><p>这些性质都比较显然。</p>
 <p>1，若 $s$ 为回文串，则 $\mbox {border(s)}$ 为回文串。</p>
-<p>2，若 $t=\mbox {border(s)}$，且 $2|t|\geq |s|$，则 $s$ 为回文当且仅当 $t$ 为回文。</p>
+<p>2，若 $t&#x3D;\mbox {border(s)}$，且 $2|t|\geq |s|$，则 $s$ 为回文当且仅当 $t$ 为回文。</p>
 <p>3，若 $a,b$ 均为 $s$ 周期，且 $a+b\leq |s|$，则 $\gcd(a,b)$ 是 $s$ 的周期。</p>
 <h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><h4 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h4><p>描述</p>
-<p>$s=x_1x_2=y_1y_2=z_1z_2$，且 $|x_1|&lt;|y_1|&lt;|z_1|$，若 $x_2,y_1,y_2,z_1$ 均为非空回文串，则 $x_1,z_2$ 也是回文串。</p>
+<p>$s&#x3D;x_1x_2&#x3D;y_1y_2&#x3D;z_1z_2$，且 $|x_1|&lt;|y_1|&lt;|z_1|$，若 $x_2,y_1,y_2,z_1$ 均为非空回文串，则 $x_1,z_2$ 也是回文串。</p>
 <p>证明：</p>
 <p><img src="/Palindromic-Magic-CF1081H/1.png" alt="0"></p>
 <h4 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h4><p>描述：</p>
-<p>若 $s$ 为双回文串，设 $a$ 为最长回文前缀，$b$ 为最长回文后缀，$s=ax=yb$，则 $x,y$ 至少有一个为回文串。</p>
+<p>若 $s$ 为双回文串，设 $a$ 为最长回文前缀，$b$ 为最长回文后缀，$s&#x3D;ax&#x3D;yb$，则 $x,y$ 至少有一个为回文串。</p>
 <p>证明：</p>
 <p>由引理1推得。</p>
 <h4 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h4><p>若 $s$ 有两种及以上不同的弱双回文拆分，则 $s$ 为循环串。</p>
-<h4 id="引理4"><a href="#引理4" class="headerlink" title="引理4"></a>引理4</h4><p>设 $s=x_1y_1=x_2y_2=\cdots=x_my_m$ ， $\forall i\in[1,m)$， 若 $|x_i|&lt;|x_{i+1}|$，则 $x_i=\mbox{border}(x_{i+1})$ 和 $y_{i+1}=\mbox {border}(y_i)$ 至少一个成立。</p>
+<h4 id="引理4"><a href="#引理4" class="headerlink" title="引理4"></a>引理4</h4><p>设 $s&#x3D;x_1y_1&#x3D;x_2y_2&#x3D;\cdots&#x3D;x_my_m$ ， $\forall i\in[1,m)$， 若 $|x_i|&lt;|x_{i+1}|$，则 $x_i&#x3D;\mbox{border}(x_{i+1})$ 和 $y_{i+1}&#x3D;\mbox {border}(y_i)$ 至少一个成立。</p>
 <p>不会证。。。</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>好了写了这么多终于到重要部分了。。。</p>
 <p>如果不是求本质不同，就是问有多少种是直接拼起来的话，那么答案就是 $a$ 和 $b$ 的本质不同的回文串的个数的乘积。</p>
 <p>那么多出来的情况就是满足有多种双回文拆分的字符串。</p>
 <p>由引理3可得：这个字符串是<strong>循环串</strong>。</p>
-<p>由引理4可得：若这个字符串的一种拆分为 $s=xy$，且 $x$ 变为 $\mbox{border}(x)$ 或者 $y$ 变为 $\mbox{border}(y)$ 后仍能形成 $s$，就要减去这种情况。</p>
+<p>由引理4可得：若这个字符串的一种拆分为 $s&#x3D;xy$，且 $x$ 变为 $\mbox{border}(x)$ 或者 $y$ 变为 $\mbox{border}(y)$ 后仍能形成 $s$，就要减去这种情况。</p>
 <p>所以答案就是( $a$ 和 $b$ 的本质不同的回文串的个数的乘积）- ($x$ 变为 $\mbox{border}(x)$后仍能形成 $s$ 的方案数) - ($y$ 变为 $\mbox{border}(y)$后仍能形成 $s$ 的方案数) + ($x$ 变为 $\mbox{border}(x)$ 且 $y$ 变为 $\mbox{border}(y)$ 后仍能形成 $s$ 的方案数)。</p>
 <p>分三类讨论：</p>
 <h4 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h4><p>此时要算： $a$ 和 $b$ 的本质不同的回文串的个数的乘积</p>
 <p>这个是个人都会算，对 $a,b$ 串建出 $\mbox PAM$ 后，节点个数-2 就是本质不同的回文串个数了。</p>
 <h4 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h4><p>此时要算：($x$ 变为 $\mbox{border}(x)$后仍能形成 $s$ 的方案数) + ($y$ 变为 $\mbox{border}(y)$后仍能形成 $s$ 的方案数) </p>
 <p>$y$ 的情况和 $x$ 类似，我们只需考虑 $x$。</p>
-<p>设 $x=\mbox{border}(x)w$，转换成求满足 $wS$，满足 $S,wS$ 为非空的回文串，且 $wS$ 在 $b$ 串中出现过的方案数。</p>
+<p>设 $x&#x3D;\mbox{border}(x)w$，转换成求满足 $wS$，满足 $S,wS$ 为非空的回文串，且 $wS$ 在 $b$ 串中出现过的方案数。</p>
 <p>由于 $w$ 为 $x$ 的最小正周期，所以 $w$ 不为循环串。</p>
 <p>因此分类讨论一下可得：</p>
 <h5 id="分类1"><a href="#分类1" class="headerlink" title="分类1"></a>分类1</h5><p>当 $|w|\leq |S|$ 时：</p>
 <p>此时 $|w|\leq \frac{|wS|}{2}$，又因为 $wS$ 一定是循环串，因此 $w$ 为 $wS$ 的一个周期。</p>
-<p>若 $S\not =\mbox{border}(wS)$，则 $wS$ 存在一个小于 $w$ 的周期，因此 $w$ 为循环串，不可能。</p>
-<p>因此只需满足 $S=\mbox{border}(wS)$即可。</p>
+<p>若 $S\not &#x3D;\mbox{border}(wS)$，则 $wS$ 存在一个小于 $w$ 的周期，因此 $w$ 为循环串，不可能。</p>
+<p>因此只需满足 $S&#x3D;\mbox{border}(wS)$即可。</p>
 <p>用哈希算个数即可。</p>
 <h5 id="分类2"><a href="#分类2" class="headerlink" title="分类2"></a>分类2</h5><p>当 $|w|&gt;|S|$ 时：</p>
-<p>因为 $w$ 不为循环串，由引理3得 $w$ 最多存在一种双回文拆分，又由于 $wS,S$ 为回文串，则$w=ST$，由引理2可得知，只需要找到 $w$ 的最长回文前后缀，就可以找到 $S$，这个显然可以正反串都建立 $PAM$ 后在 $fail$ 树上倍增即可。然后还是用哈希找到是否存在 $wS$ 就可以了。注意 $S$ 不能为空串的情况。 </p>
+<p>因为 $w$ 不为循环串，由引理3得 $w$ 最多存在一种双回文拆分，又由于 $wS,S$ 为回文串，则$w&#x3D;ST$，由引理2可得知，只需要找到 $w$ 的最长回文前后缀，就可以找到 $S$，这个显然可以正反串都建立 $PAM$ 后在 $fail$ 树上倍增即可。然后还是用哈希找到是否存在 $wS$ 就可以了。注意 $S$ 不能为空串的情况。 </p>
 <h4 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h4><p>此时要算：$x$ 变为 $\mbox{border}(x)$ 且 $y$ 变为 $\mbox{border}(y)$ 后仍能形成 $s$ 的方案数。</p>
-<p>设 $x=w_x\mbox{border}(x),y=\mbox{border}(y)w_y$，直接用哈希算出 $w_x=w_y$ 的情况就可以啦。</p>
+<p>设 $x&#x3D;w_x\mbox{border}(x),y&#x3D;\mbox{border}(y)w_y$，直接用哈希算出 $w_x&#x3D;w_y$ 的情况就可以啦。</p>
 <h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>因此需要 $PAM$ + 哈希 + 倍增。</p>
 <p>时间复杂度 $O(n\log n)$</p>
 <p>代码<del>也就</del>250行<del>而已</del>。</p>
@@ -308,6 +309,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -366,6 +369,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

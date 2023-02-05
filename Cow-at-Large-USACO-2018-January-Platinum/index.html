@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -262,7 +263,7 @@
 <p>但是我们统计的是标记点的个数啊。考虑是否可以转换成跟标记点子树中的点有关的东西。</p>
 <p>可以发现，这些标记点不会存在祖先关系。也就是说，一棵子树的贡献是 $1$。</p>
 <p>但是怎么在不知道这个树是什么样的情况下，给节点定点权，使得所有点的权值加起来为 $1$ 呢？</p>
-<p>考虑度数 $d_i$，当一棵树有 $x$ 个点的时候，$\sum d_i=2x-2$，这个树的根节点会多统计一条，也就是说，子树中是：$\sum d_i=2x-1$，即：$\sum(2-d_i)=1$。</p>
+<p>考虑度数 $d_i$，当一棵树有 $x$ 个点的时候，$\sum d_i&#x3D;2x-2$，这个树的根节点会多统计一条，也就是说，子树中是：$\sum d_i&#x3D;2x-1$，即：$\sum(2-d_i)&#x3D;1$。</p>
 <p>这个做法也太清奇了。。。</p>
 <p>那么现在就变成，每个点的点权 $a_i$ 为 $2-d_i$，对于每个节点 $x$，计算 $\sum_{f_y\leq dis_{x,y}}a_i$ 的和。</p>
 <p>剩下的就很简单了。点分治，然后做个前缀和，对于每个子树点的贡献减去即可。</p>
@@ -277,6 +278,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -334,6 +337,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

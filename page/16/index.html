@@ -171,6 +171,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -682,7 +683,7 @@
 <h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>小数数学题。</p>
 <h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><p>考虑每一位的贡献，最后乘起来就好了。</p>
 <p>现在题目变成 $m$ 个限制，每个限制形如 $[l,r]$ 不全为 $1$ 或者必须全为 $1$。</p>
-<p>那么设 $f_i$ 表示考虑到第 $i$ 位，且该位选 $0$ 的方案数。若该位必须选 $1$，则 $f_i=0$。</p>
+<p>那么设 $f_i$ 表示考虑到第 $i$ 位，且该位选 $0$ 的方案数。若该位必须选 $1$，则 $f_i&#x3D;0$。</p>
 <p>然后two-pointer维护合法区间即可。</p>
 <p>时间复杂度 $O(k(n+m))$。</p>
 <h3 id="G"><a href="#G" class="headerlink" title="G"></a>G</h3><p>为什么会有这么sb的题。。。</p>
@@ -1077,6 +1078,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

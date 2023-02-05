@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -255,18 +256,18 @@
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4720">luogu</a></p>
 <h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>Lucas定理：当 $p$ 是质数时，有 $\binom{n}{m}\equiv \binom{\frac{n}{p}}{\frac{m}{p}}\binom{n\bmod p}{m\bmod p}\pmod p$</p>
 <p>那么当 $p$ 不是质数时，是否也能计算呢？</p>
-<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><h4 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h4><p>如果要算 $\binom{n}{m}\bmod p$，只需要把 $p$ 质因数分解，$p=\sum_{i=1}^mp_i^{a_i}$。</p>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><h4 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h4><p>如果要算 $\binom{n}{m}\bmod p$，只需要把 $p$ 质因数分解，$p&#x3D;\sum_{i&#x3D;1}^mp_i^{a_i}$。</p>
 <p>那么对于任意的 $i$，算出 $\binom{n}{m}\bmod p_i^{a_i}$，然后用CRT合并。</p>
 <h4 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h4><p>现在只需要算组合数对 $p^k$ 取模的结果。</p>
-<p>将 $\binom{n}{m}$ 分解成阶乘形式：$\binom{n}{m}=\frac{n!}{m!(n-m)!}$</p>
-<p>那么将阶乘搞成 $p^t\times y$ 的形式（其中 $\gcd(y,p)=1$），跟 $p$ 有关的幂用 $n!$ 的减去 $m!$ 和 $(n-m)!$ 的幂就可以算了。</p>
+<p>将 $\binom{n}{m}$ 分解成阶乘形式：$\binom{n}{m}&#x3D;\frac{n!}{m!(n-m)!}$</p>
+<p>那么将阶乘搞成 $p^t\times y$ 的形式（其中 $\gcd(y,p)&#x3D;1$），跟 $p$ 有关的幂用 $n!$ 的减去 $m!$ 和 $(n-m)!$ 的幂就可以算了。</p>
 <p>剩下的 $y$ 是有逆元的，可以直接算。</p>
 <h4 id="Part-3"><a href="#Part-3" class="headerlink" title="Part 3"></a>Part 3</h4><p>现在只需要分解 $n!$ 就好了。</p>
-<p>我们将 $n!=1\times 2\times \cdots \times n$ 分成几部分。</p>
+<p>我们将 $n!&#x3D;1\times 2\times \cdots \times n$ 分成几部分。</p>
 <p>第一部分是 $p$ 的倍数，分别是 $1p,2p\cdots \left \lfloor \frac{n}{p} \right \rfloor p$，那么可以表示为 $p^{\left \lfloor \frac{n}{p} \right \rfloor}\times (\left \lfloor \frac{n}{p} \right \rfloor)!$。</p>
 <p>第二部分则不是 $p$ 的倍数。这一部分构成了一个模 $p^k$ 的循环节。</p>
 <p>由于 $p^k$ 不会超过 $10^7$，因此可以预处理这个循环节。</p>
-<p>设 $sum_j\equiv \sum_{i=1,i\bmod p\not = 0}^ji\pmod p^k$</p>
+<p>设 $sum_j\equiv \sum_{i&#x3D;1,i\bmod p\not &#x3D; 0}^ji\pmod p^k$</p>
 <p>然后就变成 $sum_{p^k}$ 的 $\left \lfloor \frac{n}{p} \right \rfloor$ 次幂乘上 $sum_{n\bmod p^k}$。</p>
 <h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>预处理的时间为 $O(p^k)$，算一次组合数的复杂度为 $O(\log_pn\times log_2n)$。</p>
 <h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>根据不知道是什么定理，$sum_{p^k}$ 要么是 $1$ 要么是 $-1$。</p>
@@ -279,6 +280,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -337,6 +340,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

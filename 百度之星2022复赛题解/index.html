@@ -176,6 +176,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -255,15 +256,15 @@
 <p>设 $f_{i,j,k}$ 表示以 $i$ 为根的子树中，与 $i$ 相连的连通块中，所有点与 $i$ 的最大距离为 $j$，连通块大小为 $k$ 的方案数。枚举与 $i$ 相连的每个点，选择是否与 $i$ 合并，然后DP即可。</p>
 <p>时间复杂度 $O(nkm)$。</p>
 <h2 id="C-最大值"><a href="#C-最大值" class="headerlink" title="C. 最大值"></a>C. 最大值</h2><p>本题是本场比赛通过人数第二多的题。</p>
-<p>答案即为 $n\times \sum_{i=1}^mi^{n-1}$。</p>
+<p>答案即为 $n\times \sum_{i&#x3D;1}^mi^{n-1}$。</p>
 <p>当 $m\le B$ 时，暴力。时间复杂度 $O(m\log n)$。</p>
 <p>当 $m&gt;B$ 时，拉格朗日插值，或者求出伯努利数或第二类斯特林数算自然数幂和即可。时间复杂度 $O(n\log n)$。</p>
-<p>取 $B=\sqrt{nm}$，时间复杂度 $O(\sqrt{nm}\log n)$。可适当调整块大小。</p>
-<h2 id="D-子序列2"><a href="#D-子序列2" class="headerlink" title="D. 子序列2"></a>D. 子序列2</h2><p>将询问按 $k$ 从小到大排序，设 $f_{l,r,0/1,1/1}$ 表示区间 $[l,r]$ 内子序列的开头是否 $&lt;k$ ，结尾是否 $&lt;k$ 的方案数。</p>
+<p>取 $B&#x3D;\sqrt{nm}$，时间复杂度 $O(\sqrt{nm}\log n)$。可适当调整块大小。</p>
+<h2 id="D-子序列2"><a href="#D-子序列2" class="headerlink" title="D. 子序列2"></a>D. 子序列2</h2><p>将询问按 $k$ 从小到大排序，设 $f_{l,r,0&#x2F;1,1&#x2F;1}$ 表示区间 $[l,r]$ 内子序列的开头是否 $&lt;k$ ，结尾是否 $&lt;k$ 的方案数。</p>
 <p>动态DP，用线段树维护矩阵转移即可。</p>
 <p>时间复杂度 $O((n+m)\log n)$。</p>
 <h2 id="E-项链"><a href="#E-项链" class="headerlink" title="E. 项链"></a>E. 项链</h2><p>设字符串总长为 $k$。</p>
-<p>由 Polya 定理，答案为 $g(n)=\frac{\sum_{d|n}f(\frac{n}{d})\varphi(d)}{n}$。</p>
+<p>由 Polya 定理，答案为 $g(n)&#x3D;\frac{\sum_{d|n}f(\frac{n}{d})\varphi(d)}{n}$。</p>
 <p>其中 $f(m)$ 表示长度为 $m$ 的环，没有循环同构的答案。</p>
 <p>可以发现，求出所有的 $f(m)$ 后，预处理欧拉函数</p>
 <p>考虑反面，我们算出所有的不是好串的串。</p>
@@ -273,13 +274,13 @@
 <p>直接算，复杂度 $O(n\times k^3)$，不足以通过。</p>
 <p>可以使用以下的方法处理：</p>
 <ul>
-<li>设 $w=\lfloor \sqrt{n} \rfloor$，预处理出：$A^0\sim A^w-1,A^{1\times w}\sim A^{\lceil \frac{n}{w} \rceil}\times w$，即可用 $O(k^2)$ 算出 $A^m$ 的迹。总的时间复杂度 $O(\sqrt{n}k^3+nk^2)$。</li>
+<li>设 $w&#x3D;\lfloor \sqrt{n} \rfloor$，预处理出：$A^0\sim A^w-1,A^{1\times w}\sim A^{\lceil \frac{n}{w} \rceil}\times w$，即可用 $O(k^2)$ 算出 $A^m$ 的迹。总的时间复杂度 $O(\sqrt{n}k^3+nk^2)$。</li>
 </ul>
 <p>需要注意，当 $m$ 比较小时，不能将 $&gt; m$ 的字符串扔进AC自动机里。</p>
 <p>那么对于 $m\le 50$ 的答案，可以选择暴力重构AC自动机去计算 $f(m)$。</p>
 <p>然后狄利克雷卷积算出所有的 $g$ 即可。总的时间复杂度 $O(nk^2+\sqrt{n}k^3+n\log n)$，足以通过本题。</p>
 <h2 id="F-字符串"><a href="#F-字符串" class="headerlink" title="F. 字符串"></a>F. 字符串</h2><p>建出SA，将 height数组按 $\geq k$ 的点分成若干<strong>段</strong>。</p>
-<p>设 $f(m)=2^m-m-1$。</p>
+<p>设 $f(m)&#x3D;2^m-m-1$。</p>
 <p>对于每个区间 $[l,r]$，设区间内的所有后缀在某个<strong>段</strong>里的个数是 $m$，那么其答案为所有这些<strong>段</strong>的 $f(m)$ 值的和。</p>
 <p>莫队，维护这些和即可。</p>
 <p>时间复杂度 $O(n\log n+n\sqrt{m})$。</p>
@@ -289,6 +290,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -342,6 +345,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

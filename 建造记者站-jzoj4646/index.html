@@ -183,6 +183,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -256,7 +257,7 @@
 <span id="more"></span>
 
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="算法一"><a href="#算法一" class="headerlink" title="算法一"></a>算法一</h4><p>考虑DP，设 $f_{k,i}$ 表示选了 $k$ 个记者站时，考虑了前 $i$ 个村庄，第 $i$ 个村庄上有一个记者站的最小花费。</p>
-<p>那么有DP式子：$f_{k,i}=\min_{1\le j &lt;i}(f_{k-1,j}+c_i+g_{j,i})$</p>
+<p>那么有DP式子：$f_{k,i}&#x3D;\min_{1\le j &lt;i}(f_{k-1,j}+c_i+g_{j,i})$</p>
 <p>其中 $g_{j,i}$ 表示，$[j,i]$ 内只有 $i,j$ 两个点被选时，不能被覆盖的点的 $P$ 值的和。</p>
 <p>暴力预处理 $g_{l,r}$，暴力计算 $f_{k,i}$，时间复杂度 $O(n^3+n^2m)$，得分30分。</p>
 <h4 id="算法二"><a href="#算法二" class="headerlink" title="算法二"></a>算法二</h4><p><del>盲猜 $g$ 满足四边形不等式，打表验证。</del></p>
@@ -280,6 +281,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -340,6 +343,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

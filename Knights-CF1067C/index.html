@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -260,12 +261,12 @@
 <p>如图所示：</p>
 <p><img src="/Knights-CF1067C/2.png" alt="2"></p>
 <p>红色的即为黑色两行通过上面的方法新搞出来的格子。</p>
-<p>那么每次长度-4，设这黑色两行长度为 $m$，则一共大概有：$\frac{m\times \frac{m}{4}}{2}\times 2=\frac{m^2}{4}$。</p>
-<p>显然有：$2n=m$，则一共约有 $\frac{n^2}{16}$ 个格子。还差一点。</p>
+<p>那么每次长度-4，设这黑色两行长度为 $m$，则一共大概有：$\frac{m\times \frac{m}{4}}{2}\times 2&#x3D;\frac{m^2}{4}$。</p>
+<p>显然有：$2n&#x3D;m$，则一共约有 $\frac{n^2}{16}$ 个格子。还差一点。</p>
 <p>既然两行搞不定，我们尝试来三行的。</p>
 <p>显然这三行不需要全都涂满。经过乱搞发现这样就可以变成三行了：</p>
 <p><img src="/Knights-CF1067C/3.png" alt="3"></p>
-<p>大概满足条件 $n=\frac{3}{2}m$，所以一共大概有 $\frac{m^2}{4}=\frac{n^2}{9}$ 个格子。</p>
+<p>大概满足条件 $n&#x3D;\frac{3}{2}m$，所以一共大概有 $\frac{m^2}{4}&#x3D;\frac{n^2}{9}$ 个格子。</p>
 <p>这样就可以做了。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fo</span>(i,<span class="number">1</span>,n) <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>,<span class="number">19260817</span>+i,<span class="number">19890604</span>+i);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(n%<span class="number">3</span>!=<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>,<span class="number">19260817</span>+n,<span class="number">19890604</span>+n);</span><br><span class="line">		n--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n/<span class="number">3</span>) <span class="built_in">printf</span>(<span class="string">&quot;3 %d\n&quot;</span>,<span class="number">2</span>*i);</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n/<span class="number">3</span>+<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">&quot;2 %d\n&quot;</span>,<span class="number">2</span>*i<span class="number">-1</span>);</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n/<span class="number">3</span>) <span class="built_in">printf</span>(<span class="string">&quot;1 %d\n&quot;</span>,<span class="number">2</span>*i);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -275,6 +276,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -331,6 +334,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

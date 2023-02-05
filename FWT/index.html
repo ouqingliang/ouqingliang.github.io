@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -248,15 +249,15 @@
         <p>$\mbox{FWT}$ 知识点总结</p>
 <span id="more"></span>
 
-<h2 id="FWT及FMT"><a href="#FWT及FMT" class="headerlink" title="FWT及FMT"></a>FWT及FMT</h2><h3 id="先来看看FMT"><a href="#先来看看FMT" class="headerlink" title="先来看看FMT"></a>先来看看FMT</h3><p>我们记得，$\mbox{FFT}$做的是这样的卷积：$\sum_{i+j=k}A_iB_j=C_k$</p>
+<h2 id="FWT及FMT"><a href="#FWT及FMT" class="headerlink" title="FWT及FMT"></a>FWT及FMT</h2><h3 id="先来看看FMT"><a href="#先来看看FMT" class="headerlink" title="先来看看FMT"></a>先来看看FMT</h3><p>我们记得，$\mbox{FFT}$做的是这样的卷积：$\sum_{i+j&#x3D;k}A_iB_j&#x3D;C_k$</p>
 <p>但如果我们把符号换一下呢？</p>
-<p>比如说或/与卷积：$\sum_{i|j=k}A_iB_j=C_k,\sum_{i&amp;j=k}A_iB_j=C_k$</p>
+<p>比如说或&#x2F;与卷积：$\sum_{i|j&#x3D;k}A_iB_j&#x3D;C_k,\sum_{i&amp;j&#x3D;k}A_iB_j&#x3D;C_k$</p>
 <p>还是像fft的思路，考虑一个数组，有个变换，使得数组变换后能实现对应位置相乘。</p>
-<p>即：$FMT(A)[x]\cdot FMT(B)[x]=FMT(C)[x]$.</p>
-<p>当是或卷积时，$FMT(A)[x]=\sum_{i|x}A_i$.</p>
-<p>因为：$(\sum_{i|x}A_i)(\sum_{j|x}B_j)=\sum_{i|x,j|x}A_iB_j=\sum_{k|x}(\sum_{i|j=k}A_iB_j)=\sum_{k|x}C_k$</p>
+<p>即：$FMT(A)[x]\cdot FMT(B)[x]&#x3D;FMT(C)[x]$.</p>
+<p>当是或卷积时，$FMT(A)[x]&#x3D;\sum_{i|x}A_i$.</p>
+<p>因为：$(\sum_{i|x}A_i)(\sum_{j|x}B_j)&#x3D;\sum_{i|x,j|x}A_iB_j&#x3D;\sum_{k|x}(\sum_{i|j&#x3D;k}A_iB_j)&#x3D;\sum_{k|x}C_k$</p>
 <p>那如何快速求 $FMT(A)$ 及其逆变换呢？</p>
-<p>与卷积与或卷积类似：$FMT(A)[x]=\sum_{x|i}A_i$</p>
+<p>与卷积与或卷积类似：$FMT(A)[x]&#x3D;\sum_{x|i}A_i$</p>
 <p>考虑基于枚举二进制位的分治，假设第 $i$ 位的二进制已经处理完了，然后看加上第 $i+1$ 位后答案应该是怎么样的：如果这一位是 0，那么不变，否则因为是枚举子集，加上 $i+1$ 位不取的结果即可。</p>
 <p>那么逆变换就是把正变换的贡献减去即可。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//或卷积模板,opt=1时为正变换，-1时为逆变换</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FMT</span><span class="params">(<span class="type">int</span> * a, <span class="type">int</span> n, <span class="type">int</span> opt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> p=i&lt;&lt;<span class="number">1</span>,j=<span class="number">0</span>;j&lt;n;j+=p)</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;i;++k)</span><br><span class="line">                A[i + j + k]+=opt*A[j + k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -264,44 +265,44 @@
 <p>或卷积的正变换其实就是高维前缀和（子集和），逆变换就是子集反演。</p>
 <p>与卷积和或卷积类似了。</p>
 <p>时间复杂度$O(n\log n)$</p>
-<h2 id="再来看看FWT"><a href="#再来看看FWT" class="headerlink" title="再来看看FWT"></a>再来看看FWT</h2><p>定义 $k$ 进制不进位加法：$a\bigoplus b=(a+b) \% k$，减法类似。</p>
-<p>FWT实际上就是求：$C_k=\sum_{i\bigoplus j=k}A_iB_j$</p>
-<h3 id="2进制FWT"><a href="#2进制FWT" class="headerlink" title="2进制FWT"></a>2进制FWT</h3><p>此时不进位加法即为异或。以下 $n$ 满足 $n=2^x$</p>
+<h2 id="再来看看FWT"><a href="#再来看看FWT" class="headerlink" title="再来看看FWT"></a>再来看看FWT</h2><p>定义 $k$ 进制不进位加法：$a\bigoplus b&#x3D;(a+b) % k$，减法类似。</p>
+<p>FWT实际上就是求：$C_k&#x3D;\sum_{i\bigoplus j&#x3D;k}A_iB_j$</p>
+<h3 id="2进制FWT"><a href="#2进制FWT" class="headerlink" title="2进制FWT"></a>2进制FWT</h3><p>此时不进位加法即为异或。以下 $n$ 满足 $n&#x3D;2^x$</p>
 <p>还是像fft的思路，考虑一个数组竖着排成一列变成一个 $n \times 1$ 的矩阵，然后有个变换，使得数组变换后能实现对应位置相乘。这个变换的实现就是令数组<strong>左乘</strong>一个 $n*n$ 的矩阵（可以回去看看fft的过程）。假设这个矩阵是 $T$，第 $i$ 行第 $j$ 列的数是 $T_{i,j}$</p>
-<p>然后我们令$FWT(A)=TA$</p>
-<p>因为要满足对应位置相乘，这里就是$FWT(A)[x]\cdot FWT(B)[x]=FWT(C)[x]$</p>
-<p>由于$FWT(A)[x]=\sum_{i=0}^nT_{x,i}A_i$</p>
-<p>代入上式得：$\sum_{i=0}^{n-1}T_{x,i}A_i\sum_{j=0}^{n-1}T_{x,j}B_j=\sum_{k=0}^{n-1}T_{x,k}C_k$</p>
-<p>同时因为 $C_k=\sum_{i\bigoplus j=k}A_iB_j$</p>
+<p>然后我们令$FWT(A)&#x3D;TA$</p>
+<p>因为要满足对应位置相乘，这里就是$FWT(A)[x]\cdot FWT(B)[x]&#x3D;FWT(C)[x]$</p>
+<p>由于$FWT(A)[x]&#x3D;\sum_{i&#x3D;0}^nT_{x,i}A_i$</p>
+<p>代入上式得：$\sum_{i&#x3D;0}^{n-1}T_{x,i}A_i\sum_{j&#x3D;0}^{n-1}T_{x,j}B_j&#x3D;\sum_{k&#x3D;0}^{n-1}T_{x,k}C_k$</p>
+<p>同时因为 $C_k&#x3D;\sum_{i\bigoplus j&#x3D;k}A_iB_j$</p>
 <p>代入得：</p>
-<p>$$\sum_{i=0}^{n-1}\sum_{j=0}^{n-1}T_{x,i}T_{x,j}A_iB_j=\sum_{k=0}^{n-1}\sum_{i\bigoplus j=k}T_{x,k}A_iB_j$$</p>
-<p>因此满足 $T_{x,i}T_{x,j}=T_{x,i\bigoplus j}=T_{x,(i+j)\bmod 2}$ 即可。</p>
-<p>因为 $T_{x,i}$ 满足上述性质，把 $i$ 写成二进制形式：$i=\overline{i_0i_1\dots i_m}(2)$</p>
-<p>因此 $T_{x,i}$ 可以等于 $\Pi <em>{j=0}^m T</em>{x_j,i_j}$ </p>
+<p>$$\sum_{i&#x3D;0}^{n-1}\sum_{j&#x3D;0}^{n-1}T_{x,i}T_{x,j}A_iB_j&#x3D;\sum_{k&#x3D;0}^{n-1}\sum_{i\bigoplus j&#x3D;k}T_{x,k}A_iB_j$$</p>
+<p>因此满足 $T_{x,i}T_{x,j}&#x3D;T_{x,i\bigoplus j}&#x3D;T_{x,(i+j)\bmod 2}$ 即可。</p>
+<p>因为 $T_{x,i}$ 满足上述性质，把 $i$ 写成二进制形式：$i&#x3D;\overline{i_0i_1\dots i_m}(2)$</p>
+<p>因此 $T_{x,i}$ 可以等于 $\Pi <em>{j&#x3D;0}^m T</em>{x_j,i_j}$ </p>
 <p>同时还需要快速算出 $FWT(A)$:</p>
 <p>不妨设 $i$ 在二进制中最高位为 $i_1$，舍去最高位后为 $i_0$.</p>
 <p>考虑分治：</p>
-<p>$$FWT(A)<em>n[i]\=\sum</em>{k=0}^{n-1}T_{i,k}A_k\=T_{i_1,0}\sum_{k=0}^{n/2-1}T_{i_0,k_0}A_{k}+T_{i_1,1}\sum_{k=n/2}^{n-1}T_{i_0,k_0}A_k\=T_{i_1,0}FWT(A_0)<em>{\frac{n}{2}}[i]+T</em>{i_1,1}FWT(A_1)_{\frac{n}{2}}[i]$$</p>
-<p>其中 $A_0$ 为 $A$ 的前 $n/2$ 位，$A_1$ 为后 $n/2$ 位。</p>
+<p>$$FWT(A)<em>n[i]\&#x3D;\sum</em>{k&#x3D;0}^{n-1}T_{i,k}A_k\&#x3D;T_{i_1,0}\sum_{k&#x3D;0}^{n&#x2F;2-1}T_{i_0,k_0}A_{k}+T_{i_1,1}\sum_{k&#x3D;n&#x2F;2}^{n-1}T_{i_0,k_0}A_k\&#x3D;T_{i_1,0}FWT(A_0)<em>{\frac{n}{2}}[i]+T</em>{i_1,1}FWT(A_1)_{\frac{n}{2}}[i]$$</p>
+<p>其中 $A_0$ 为 $A$ 的前 $n&#x2F;2$ 位，$A_1$ 为后 $n&#x2F;2$ 位。</p>
 <p>因此只要能找到合适的 $T_{x,i}$，就能实现了。</p>
 <p>只需考虑 $0\le x,i &lt; 2$ 的情况即可。</p>
 <p>满足：</p>
-<p> $$T_{0,0}\times T_{0,0}=T_{0,0}\\T_{0,0}\times T_{0,1}=T_{0,1}\\T_{0,1}\times T_{0,1}=T_{0,0}\\T_{1,0}\times T_{1,0}=T_{1,0}\\T_{1,0}\times T_{1,1}=T_{1,1}\\T_{1,1}\times T_{1,1}=T_{1,0}\$$</p>
+<p> $$T_{0,0}\times T_{0,0}&#x3D;T_{0,0}\T_{0,0}\times T_{0,1}&#x3D;T_{0,1}\T_{0,1}\times T_{0,1}&#x3D;T_{0,0}\T_{1,0}\times T_{1,0}&#x3D;T_{1,0}\T_{1,0}\times T_{1,1}&#x3D;T_{1,1}\T_{1,1}\times T_{1,1}&#x3D;T_{1,0}\$$</p>
 <p>考虑写成矩阵形式，构造可得：</p>
-<p>$$\begin{bmatrix} T_{0,0}&amp;T_{0,1}\\ T_{1,0}&amp;T_{1,1}\end{bmatrix}=\begin{bmatrix}1&amp;1\\1&amp;-1\end{bmatrix}=\begin{bmatrix}\frac{1}{2}&amp;\frac{1}{2}\\\frac{1}{2}&amp;-\frac{1}{2}\end{bmatrix}^{-1}$$</p>
+<p>$$\begin{bmatrix} T_{0,0}&amp;T_{0,1}\ T_{1,0}&amp;T_{1,1}\end{bmatrix}&#x3D;\begin{bmatrix}1&amp;1\1&amp;-1\end{bmatrix}&#x3D;\begin{bmatrix}\frac{1}{2}&amp;\frac{1}{2}\\frac{1}{2}&amp;-\frac{1}{2}\end{bmatrix}^{-1}$$</p>
 <p>带进程序里即可。</p>
 <p>一个2进制FWT的模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">FWT</span><span class="params">(ll *a,<span class="type">int</span> n,<span class="type">int</span> opt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j+=(i&lt;&lt;<span class="number">1</span>))</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;i;k++)</span><br><span class="line">			&#123;</span><br><span class="line">				ll x = a[j+k],y = a[i+j+k];</span><br><span class="line">				a[j+k] = x+y; a[i+j+k] = x-y+mod;</span><br><span class="line">				<span class="keyword">if</span>(a[j+k] &gt;= mod) a[j+k] -= mod;</span><br><span class="line">				<span class="keyword">if</span>(a[i+j+k] &gt;= mod) a[i+j+k] -= mod;</span><br><span class="line">				<span class="keyword">if</span>(t == <span class="number">-1</span>) a[j+k] = (a[j+k]*inv2)%mod,a[i+j+k] = (a[i+j+k]*inv2)%mod;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>2进制 $\mbox{FWT}$ 的正变换实际上就是 $FWT[i]=\sum_{j}A_j(-1)^{|i&amp;j|}$.</p>
-<h3 id="k进制FWT"><a href="#k进制FWT" class="headerlink" title="k进制FWT"></a>k进制FWT</h3><p>以下 $n$ 满足 $n=k^x$</p>
-<p>前面同理，但还是要满足 $T_{x,i}T_{x,j}=T_{x,i\bigoplus j}=T_{x,(i+j)\bmod k}$，以及把 $i$ 写成 $k$ 进制形式：$i=\overline{i_0i_1\dots i_m}(k) $后，$T_{x,i}=\Pi <em>{j=0}^m T</em>{x_j,i_j}$ </p>
+<p>2进制 $\mbox{FWT}$ 的正变换实际上就是 $FWT[i]&#x3D;\sum_{j}A_j(-1)^{|i&amp;j|}$.</p>
+<h3 id="k进制FWT"><a href="#k进制FWT" class="headerlink" title="k进制FWT"></a>k进制FWT</h3><p>以下 $n$ 满足 $n&#x3D;k^x$</p>
+<p>前面同理，但还是要满足 $T_{x,i}T_{x,j}&#x3D;T_{x,i\bigoplus j}&#x3D;T_{x,(i+j)\bmod k}$，以及把 $i$ 写成 $k$ 进制形式：$i&#x3D;\overline{i_0i_1\dots i_m}(k) $后，$T_{x,i}&#x3D;\Pi <em>{j&#x3D;0}^m T</em>{x_j,i_j}$ </p>
 <p>因此只需考虑 $T_{x,i}(0\le x,i &lt; k)$ 即可。</p>
-<p>想到1的 $k$ 次单位根：$T_{x,i}=\omega_{k}^{xi}$</p>
-<p>那么：$\omega _{k}^i\omega _{k}^j=\omega_k^{(i+j)\bmod k}=\omega_k^{i\bigoplus j}$</p>
+<p>想到1的 $k$ 次单位根：$T_{x,i}&#x3D;\omega_{k}^{xi}$</p>
+<p>那么：$\omega _{k}^i\omega _{k}^j&#x3D;\omega_k^{(i+j)\bmod k}&#x3D;\omega_k^{i\bigoplus j}$</p>
 <p>由于矩阵需要存在逆矩阵，即要求满秩。</p>
 <p>不妨想到范德蒙德矩阵：</p>
-<p>$$\begin{bmatrix}<br>1 &amp; 1 &amp; 1 &amp; \dots &amp; 1\\<br>1 &amp; \omega _ k^1 &amp; \omega _ k^2 &amp; \dots &amp;\omega _ k^{k-1} \\<br>1 &amp; \omega _ k^2 &amp; \omega _ k^4 &amp; \dots &amp; \omega _ k^{2(k-1)}\\<br>\vdots &amp; \vdots &amp; \vdots &amp; \dots &amp; \vdots\\<br>1 &amp; \omega _ k^{k-1} &amp; \omega _ k^{2(k-1)} &amp; \dots &amp; \omega _ k^{(k-1)(k-1)}<br>\end{bmatrix}$$</p>
+<p>$$\begin{bmatrix}<br>1 &amp; 1 &amp; 1 &amp; \dots &amp; 1\<br>1 &amp; \omega _ k^1 &amp; \omega _ k^2 &amp; \dots &amp;\omega _ k^{k-1} \<br>1 &amp; \omega _ k^2 &amp; \omega _ k^4 &amp; \dots &amp; \omega _ k^{2(k-1)}\<br>\vdots &amp; \vdots &amp; \vdots &amp; \dots &amp; \vdots\<br>1 &amp; \omega _ k^{k-1} &amp; \omega _ k^{2(k-1)} &amp; \dots &amp; \omega _ k^{(k-1)(k-1)}<br>\end{bmatrix}$$</p>
 <p>逆矩阵和fft的一样。</p>
 <p>这样子就能做任意进制的FWT了。</p>
 <p>难度在求单位根上。</p>
@@ -322,6 +323,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -378,6 +381,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

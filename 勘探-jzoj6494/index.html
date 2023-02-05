@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -258,7 +259,7 @@
 <p>考虑从 $f_{k,j-1}$ 转移过来，因为根节点已经是固定了的，所以儿子中只要有一个 $f_{k,j-1}$ 即可满足条件。</p>
 <p>显然我们不能一个个枚举儿子选什么，因为会出现重复的情况，为避免之，再枚举儿子中最长路径长度为 $j-1$ 的节点个数，假设有 $l$ 个。</p>
 <p>那么后面这个系数相当于是在 $f_{k,j-1}$ 棵树中选出 $l$ 个形成一个集合，可以重复选的方案数。由插板法可知，系数为 $\binom{f_{k,j-1}+l-1}{l}$。</p>
-<p>那么则有：$f_{i,j}=\sum_{k}\sum_{l}f_{i-kl,j}\binom{f_{k,j-1}+l-1}{l}$。</p>
+<p>那么则有：$f_{i,j}&#x3D;\sum_{k}\sum_{l}f_{i-kl,j}\binom{f_{k,j-1}+l-1}{l}$。</p>
 <p>需要注意一下枚举的顺序，且 $l$ 从小到大枚举即可用 $l-1$ 的组合数来 $O(1)$ 算出 $l$ 时的组合数。</p>
 <p>但这只是最长路径长度为 $j-1$ 的，还可以有其他长度小于 $j-1$ 的可以插进去。</p>
 <p>那么再维护多一个 $g_{i,j}$ 表示 $i+1$ 个点（除去根节点外还有 $i$ 个），最长路径的长度 $\leq j$ 的有根树的方案数。</p>
@@ -266,8 +267,8 @@
 <p>然后再维护 $g$ 数组，方法和 $f$ 的是几乎一样的。</p>
 <p>算出了 $f$ 数组，接下来的就很容易了。</p>
 <p>枚举两部分中节点个数较少的节点个数 $i$，然后将 $f_{i,\frac{L-1}{2}}\times f_{n-i,\frac{L-1}{2}}$ 相加就是答案了。</p>
-<p>需要注意一下当 $i=\frac{n}{2}$ 时的方案数。</p>
-<h4 id="L-为偶数"><a href="#L-为偶数" class="headerlink" title="$L$ 为偶数"></a>$L$ 为偶数</h4><p>然后再来考虑 $L$ 为偶数的。设 $x=\frac{L}{2}$。</p>
+<p>需要注意一下当 $i&#x3D;\frac{n}{2}$ 时的方案数。</p>
+<h4 id="L-为偶数"><a href="#L-为偶数" class="headerlink" title="$L$ 为偶数"></a>$L$ 为偶数</h4><p>然后再来考虑 $L$ 为偶数的。设 $x&#x3D;\frac{L}{2}$。</p>
 <p>和奇数类似，现在重心是一个点，将树分成了若干部分。但是可能会有很多棵子树。</p>
 <p>我们需要满足至少有两棵子树的高度恰好为 $x-1$，且所有的子树高度都不能超过 $x-1$。</p>
 <p>考虑容斥，用 $f_{n,x}$ 减去只有一棵子树的高度为 $x-1$ 的方案数。</p>
@@ -282,6 +283,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -340,6 +343,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

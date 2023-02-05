@@ -183,6 +183,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -254,8 +255,8 @@
         <p><a target="_blank" rel="noopener" href="http://opentrains.snarknews.info/~ejudge/team.cgi?contest_id=010530">比赛链接</a></p>
 <span id="more"></span>
 
-<h3 id="B-Almost-Fair-Cake-Cutting"><a href="#B-Almost-Fair-Cake-Cutting" class="headerlink" title="B. (Almost) Fair Cake-Cutting"></a>B. (Almost) Fair Cake-Cutting</h3><p>当 $n\ge 3$ 时，一定是 $100\%$。</p>
-<p>接下来只需解决 $n=1$ 和 $n=2$。</p>
+<h3 id="B-Almost-Fair-Cake-Cutting"><a href="#B-Almost-Fair-Cake-Cutting" class="headerlink" title="B. (Almost) Fair Cake-Cutting"></a>B. (Almost) Fair Cake-Cutting</h3><p>当 $n\ge 3$ 时，一定是 $100%$。</p>
+<p>接下来只需解决 $n&#x3D;1$ 和 $n&#x3D;2$。</p>
 <p>可用半平面交或者大力分类讨论解决。</p>
 <h3 id="C-Jellyfish"><a href="#C-Jellyfish" class="headerlink" title="C. Jellyfish"></a>C. Jellyfish</h3><p>要使得对于每个集合满足条件，则在两点的所有简单路径中至少有一条中间没选点。</p>
 <ul>
@@ -273,10 +274,10 @@
 <p>这样就好判断多了。</p>
 <h3 id="D-Flat-Organization"><a href="#D-Flat-Organization" class="headerlink" title="D. Flat Organization"></a>D. Flat Organization</h3><p>将竞赛图缩点，然后DP即可。</p>
 <p>时间复杂度 $O(n^2)$。</p>
-<h3 id="E-Archer-Vlad"><a href="#E-Archer-Vlad" class="headerlink" title="E. Archer Vlad"></a>E. Archer Vlad</h3><p>设 $v_x=v\cos \alpha,v_y=v\sin \alpha$，</p>
-<p>则有：$t=\frac{x}{v_x}$。</p>
+<h3 id="E-Archer-Vlad"><a href="#E-Archer-Vlad" class="headerlink" title="E. Archer Vlad"></a>E. Archer Vlad</h3><p>设 $v_x&#x3D;v\cos \alpha,v_y&#x3D;v\sin \alpha$，</p>
+<p>则有：$t&#x3D;\frac{x}{v_x}$。</p>
 <p>而：$v_yt-\frac{1}{2}gt^2\geq y$，即 $x\tan \alpha-\frac{g}{2}\frac{x^2}{v^2\cos^2\alpha}\geq y$。</p>
-<p>而 $\frac{1}{\cos ^2\alpha}=1+\tan^2 \alpha$。</p>
+<p>而 $\frac{1}{\cos ^2\alpha}&#x3D;1+\tan^2 \alpha$。</p>
 <p>变成关于 $\tan \alpha$ 的二次不等式。</p>
 <p>解 $n$ 个这样的不等式即可。</p>
 <p>时间复杂度 $O(n)$。</p>
@@ -285,14 +286,14 @@
 <h3 id="G-Cactus"><a href="#G-Cactus" class="headerlink" title="G. Cactus"></a>G. Cactus</h3><p>每个点最多在一个环上。那么对于每个环，就只有dfs树中最上的那一个点是确定的。</p>
 <p>很容易算出一个长度为 $m$ 的环的方案数。</p>
 <p>时间复杂度 $O(n+m)$。</p>
-<h3 id="I-GCD-vs-XOR"><a href="#I-GCD-vs-XOR" class="headerlink" title="I. GCD vs. XOR"></a>I. GCD vs. XOR</h3><p>不妨设 $a\geq b$，有：$(a,b)=(a,a-b)\le a-b\le a\oplus b$。</p>
-<p>若 $(a,b)=a\oplus b$，则 $(a,a-b)=a-b=a\oplus b$。</p>
-<p>那么 $a$ 为 $a-b$ 的倍数，$a&amp;b=b$。</p>
-<p>设 $a=k(a-b)$，则 $b=\frac{k-1}{k}a$，那么对于每个 $a$，符合条件的 $b$ 的和一定不超过 $n\log n$。</p>
+<h3 id="I-GCD-vs-XOR"><a href="#I-GCD-vs-XOR" class="headerlink" title="I. GCD vs. XOR"></a>I. GCD vs. XOR</h3><p>不妨设 $a\geq b$，有：$(a,b)&#x3D;(a,a-b)\le a-b\le a\oplus b$。</p>
+<p>若 $(a,b)&#x3D;a\oplus b$，则 $(a,a-b)&#x3D;a-b&#x3D;a\oplus b$。</p>
+<p>那么 $a$ 为 $a-b$ 的倍数，$a&amp;b&#x3D;b$。</p>
+<p>设 $a&#x3D;k(a-b)$，则 $b&#x3D;\frac{k-1}{k}a$，那么对于每个 $a$，符合条件的 $b$ 的和一定不超过 $n\log n$。</p>
 <p>预处理即可。</p>
 <h3 id="J-Civilizations"><a href="#J-Civilizations" class="headerlink" title="J. Civilizations"></a>J. Civilizations</h3><p>这样的 $Ax_i+By_i+Cx_iy_i$ 最大值没办法求。</p>
 <p>考虑固定一个，发现周长最多是 $O(n^2)$ 级别的。</p>
-<p>也就是最多会有 $\sqrt{O(n^2)}=O(n)$ 种不同的周长。</p>
+<p>也就是最多会有 $\sqrt{O(n^2)}&#x3D;O(n)$ 种不同的周长。</p>
 <p>固定其中一个数后，要求 $(B+Cy_i)x_i$ 的最大值。</p>
 <p>用set存，分两种情况讨论。</p>
 <p>然后存在当前不同的 $l_p$ ，也可以用set存。</p>
@@ -314,6 +315,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -376,6 +379,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

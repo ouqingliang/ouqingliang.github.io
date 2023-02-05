@@ -176,6 +176,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -248,32 +249,32 @@
 <p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/102978/problems">cf</a></p>
 <span id="more"></span>
 
-<h2 id="A-Ascending-Matrix"><a href="#A-Ascending-Matrix" class="headerlink" title="A. Ascending Matrix"></a>A. Ascending Matrix</h2><p>先不考虑 $a_{r,c}=v$ 的限制。</p>
+<h2 id="A-Ascending-Matrix"><a href="#A-Ascending-Matrix" class="headerlink" title="A. Ascending Matrix"></a>A. Ascending Matrix</h2><p>先不考虑 $a_{r,c}&#x3D;v$ 的限制。</p>
 <p>我们将 $\le i$ 和 $&gt;i$ 的数用一个折线分开，那么这条折线就是一个从 $(m,0)$ 到 $(0,n)$ 的折线，需要使得这 $k-1$ 条折线不互相穿过。</p>
 <p>将第 $i$ 条折线向右上平移 $i-1$ 格后，使用LGV引理解决。</p>
-<p>考虑原来的问题， $a_{r,c}=v$ 相当于有 $v-1$ 条折线恰好从 $p$ 的左下方（不包含p）经过。</p>
+<p>考虑原来的问题， $a_{r,c}&#x3D;v$ 相当于有 $v-1$ 条折线恰好从 $p$ 的左下方（不包含p）经过。</p>
 <p>对于第 $v$ 条折线，他最多只能恰好经过 $p$，而在平移后，就是不经过 $p$ 点。</p>
 <p>那么新开一个 $x$，表示经过的是下方，而常数表示从 $p$ 的上方经过。</p>
 <p>那么LGV引理中的每一项就是一个多项式。答案为这个多项式的 $x^{v-1}$ 的系数。</p>
 <p>由于这个矩阵大小为 $k-1$ ，因此行列式最多为 $k-1$ 次的多项式。</p>
 <p>拉格朗日插值，插 $k$ 次即可。</p>
 <p>时间复杂度 $O(k^4+k^2(n+m))$。</p>
-<h2 id="B-Bit-Operation"><a href="#B-Bit-Operation" class="headerlink" title="B. Bit Operation"></a>B. Bit Operation</h2><p>可以将操作变为：每次选择一个数，然后删掉左/右其中一个。</p>
+<h2 id="B-Bit-Operation"><a href="#B-Bit-Operation" class="headerlink" title="B. Bit Operation"></a>B. Bit Operation</h2><p>可以将操作变为：每次选择一个数，然后删掉左&#x2F;右其中一个。</p>
 <p>剩下的就很好统计了，时间复杂度 $O(n)$。</p>
-<h2 id="D-Do-Use-FFT"><a href="#D-Do-Use-FFT" class="headerlink" title="D. Do Use FFT"></a>D. Do Use FFT</h2><p>设 $F_k(x)=\prod_{i=1}^k(x+B_i)$。</p>
-<p>$\forall k\in[1,n]$，需要求 $\sum_{i=1}^nC_iF_k(A_i)$。</p>
-<p>我们设 $F_k(x)=f_0+f_1x^1+\cdots+f_kx^k$。</p>
-<p>那么答案就是 $\sum_{j=0}^kf_j\sum_{i=1}^nC_iA_i^j$</p>
-<p>设 $G(x)=\sum_{i=1}^nC_iA_i^jx^j=\sum_{i=1}^n\frac{C_i}{1-A_ix}$，答案就是 $[x^0]G(x)F_k(\frac{1}{x})$。</p>
+<h2 id="D-Do-Use-FFT"><a href="#D-Do-Use-FFT" class="headerlink" title="D. Do Use FFT"></a>D. Do Use FFT</h2><p>设 $F_k(x)&#x3D;\prod_{i&#x3D;1}^k(x+B_i)$。</p>
+<p>$\forall k\in[1,n]$，需要求 $\sum_{i&#x3D;1}^nC_iF_k(A_i)$。</p>
+<p>我们设 $F_k(x)&#x3D;f_0+f_1x^1+\cdots+f_kx^k$。</p>
+<p>那么答案就是 $\sum_{j&#x3D;0}^kf_j\sum_{i&#x3D;1}^nC_iA_i^j$</p>
+<p>设 $G(x)&#x3D;\sum_{i&#x3D;1}^nC_iA_i^jx^j&#x3D;\sum_{i&#x3D;1}^n\frac{C_i}{1-A_ix}$，答案就是 $[x^0]G(x)F_k(\frac{1}{x})$。</p>
 <p>$G(x)$ 可通过简单的分治FFT，暴力通分后求出分母和分子，然后对分母求逆即可。</p>
-<p>对于 $F_{l,r}(\frac{1}{x})=\prod_{i=l}^r\frac{1+B_ix}{x}$，我们仅需要求出 $[x^{r-l}]G(x)\prod_{i=l}^r(1+B_ix)$。</p>
-<p>分治，先求 $[l,mid]$，对于 $[mid+1,r]$ 的答案，可以先求出 $G(x)\prod_{i=l}^{mid}(1+B_ix)$，然后去掉前面 $mid-l+1$ 位，当做除了一个 $x^{mid-l+1}$，然后传参递归处理右边即可。</p>
-<p>时间复杂度 $T(n)=2T(\frac{n}{2})+O(n\log n)=O(n\log ^2n)$。</p>
+<p>对于 $F_{l,r}(\frac{1}{x})&#x3D;\prod_{i&#x3D;l}^r\frac{1+B_ix}{x}$，我们仅需要求出 $[x^{r-l}]G(x)\prod_{i&#x3D;l}^r(1+B_ix)$。</p>
+<p>分治，先求 $[l,mid]$，对于 $[mid+1,r]$ 的答案，可以先求出 $G(x)\prod_{i&#x3D;l}^{mid}(1+B_ix)$，然后去掉前面 $mid-l+1$ 位，当做除了一个 $x^{mid-l+1}$，然后传参递归处理右边即可。</p>
+<p>时间复杂度 $T(n)&#x3D;2T(\frac{n}{2})+O(n\log n)&#x3D;O(n\log ^2n)$。</p>
 <h2 id="E-Edge-Subsets"><a href="#E-Edge-Subsets" class="headerlink" title="E. Edge Subsets"></a>E. Edge Subsets</h2><p>神仙题。</p>
 <p>首先，显然有一个 $n\times 2^B$ 的状压DP做法。</p>
-<p>考虑将 $V_i-U_i=A$ 或 $V_i-U_i=B$ 简化。</p>
-<p>不妨设 $(A,B)=1$ 且 $A&lt;B$（否则分成 $\gcd(A,B)$ 个图进行处理，然后乘法原理乘起来）。</p>
-<p>那么将 $V_i-U_i=B$ 的排成一行。严格地说，将点 $v$ 排在一个网格内，其坐标 $(x,y)$ 满足 $x=\lfloor \frac{v}{B} \rfloor,yA\equiv v\pmod B$。</p>
+<p>考虑将 $V_i-U_i&#x3D;A$ 或 $V_i-U_i&#x3D;B$ 简化。</p>
+<p>不妨设 $(A,B)&#x3D;1$ 且 $A&lt;B$（否则分成 $\gcd(A,B)$ 个图进行处理，然后乘法原理乘起来）。</p>
+<p>那么将 $V_i-U_i&#x3D;B$ 的排成一行。严格地说，将点 $v$ 排在一个网格内，其坐标 $(x,y)$ 满足 $x&#x3D;\lfloor \frac{v}{B} \rfloor,yA\equiv v\pmod B$。</p>
 <p>那么每一行的点都会互相连。$(x,i)$ 连向 $(x,i+1)$ 或 $(x+1,i+1)$，特别地，$(x,B-1)$ 会连向 $(x+1,0)$。</p>
 <p>考虑从下往上进行状压DP。与 $O(n\times 2^B)$ 普通状压不同的是，我们需要记录最下面一层的情况。DP的时候看起来需要枚举两层的节点。但实际上可以做一个高维前缀和后就不需要了。时间复杂度是 $O(n\times 4^{\frac{n}{B}})$。</p>
 <p>当 $B\le 20$ 时，选择第一种，否则选择第二种，即可得到 $O(n2^{\sqrt{2n}})$ 复杂度的算法。</p>
@@ -284,9 +285,9 @@
 <p>定义七进制不进位加法，那么答案相当于求 $[x^0]F^k(x)$。</p>
 <p>使用七进制FWT即可，刚好 $7$ 的原根在模 $998244353$ 意义下存在。</p>
 <h2 id="H-Harsh-Comments"><a href="#H-Harsh-Comments" class="headerlink" title="H. Harsh Comments"></a>H. Harsh Comments</h2><p>注意到 $a_i$ 很小，也就是总和不超过 $10000$。</p>
-<p>最大值不好算，最小值好算。使用Min-Max容斥，有：$E(max(S))=\sum_{T\subseteq S,T\neq \varnothing}(-1)^{|T|-1}E(min(T))$。</p>
+<p>最大值不好算，最小值好算。使用Min-Max容斥，有：$E(max(S))&#x3D;\sum_{T\subseteq S,T\neq \varnothing}(-1)^{|T|-1}E(min(T))$。</p>
 <p>计算 $min(T)$，也就是一堆石子里第一次取出 $T$ 内任意一个的概率。这是，$T$ 内的石子就可以合并成一个，总和记为 $sum$。</p>
-<p>根据期望的线性性，有 $min(T)=\sum_{i\in B\or i\in {\complement_ST}}\frac{sum}{sum+i}+1$。</p>
+<p>根据期望的线性性，有 $min(T)&#x3D;\sum_{i\in B\or i\in {\complement_ST}}\frac{sum}{sum+i}+1$。</p>
 <p>这个 $+1$ 在容斥以后就没啥用了。$i\in B$ 的情况也比较容易，在背包里面计算容斥系数即可。对于 $i\in \complement_ST$，此时可以枚举每个 $i$，然后强制 $i$ 不在 $T$ 内时，剩下的 $n-1$ 个点的方案数，这相当于一个回退的背包。</p>
 <p>时间复杂度 $O(n^3\log mod)$。假设 $n,m,a$ 同阶。可以通过一些简单的方法优化掉求逆的 $\log mod$。</p>
 <h2 id="I-Inverse-Problem"><a href="#I-Inverse-Problem" class="headerlink" title="I. Inverse Problem"></a>I. Inverse Problem</h2><p>注意到，我们只需要考虑 $p$ 的最长递增前缀，后面的不需要管它。</p>
@@ -298,6 +299,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -351,6 +354,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

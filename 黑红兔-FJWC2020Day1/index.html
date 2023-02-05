@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -266,7 +267,7 @@
 <p>需要看在 $[i+mid,n]$ 内，是否存在一个 $j$，满足 $f_j\geq mid-1$，且 $s[j,n]$ 和 $s[i,i+mid-1]$ 的最长公共子串的长度是否大于等于 $mid-1$。</p>
 <p>后面的部分就是：$lcp(i,j)\geq mid-1$ 或 $lcp(i+1,j)\geq mid-1$。</p>
 <p>对于这两部分分开来考虑，而 $lcp(i,j)\geq mid-1$ 相当于 $rank_j$ 需要满足在某段区间内，这个区间可以用SA+RMQ+二分轻易求出，设这个区间为 $[l,r]$。</p>
-<p><del>转换成二维数点求最大值</del>转换成求 $\max_{i+mid\leq j \leq n,l\leq rank_j\leq r}\{f_j\}$。</p>
+<p><del>转换成二维数点求最大值</del>转换成求 $\max_{i+mid\leq j \leq n,l\leq rank_j\leq r}{f_j}$。</p>
 <p>考虑到 $n$ 是固定的，那么维护一个可持久化线段树，表示 $i\leq j \leq n$ 的答案，每次询问时找 $rt_{i+mid}$ 即可。</p>
 <p>时间复杂度是 $O(n\log^2n)$ 的。收获80pts。</p>
 <p><del>那么我们开始卡常</del>考虑继续分析性质。</p>
@@ -283,6 +284,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -341,6 +344,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

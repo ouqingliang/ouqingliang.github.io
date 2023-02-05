@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -254,13 +255,13 @@
 
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>做多了FFT，这题似乎感觉还是挺简单滴~。</p>
 <p>显然容斥一下，设 $g_n$ 表示恰好 $i$ 个的答案，设 $f_n$ 表示至少 $i$ 个的答案。</p>
-<p>那么有：$f_i=\sum_{j=i}^ng_j\binom{j}{i}$。</p>
-<p>二项式反演一下：$g_i=\sum_{j=i}^n(-1)^{j-i}\binom{j}{i}f_j$。</p>
+<p>那么有：$f_i&#x3D;\sum_{j&#x3D;i}^ng_j\binom{j}{i}$。</p>
+<p>二项式反演一下：$g_i&#x3D;\sum_{j&#x3D;i}^n(-1)^{j-i}\binom{j}{i}f_j$。</p>
 <p>这个是一个卷积形式，求完 $f_i$ 后一个卷积就好了。</p>
 <p>下面来看如何求 $f_i$。</p>
-<p>我们建一个二分图，$X_i,Y_j$ 连边当且仅当 $|i-j|=m$。我们选一条边 $(i,j)$ 表示令 $P_i=j$。</p>
+<p>我们建一个二分图，$X_i,Y_j$ 连边当且仅当 $|i-j|&#x3D;m$。我们选一条边 $(i,j)$ 表示令 $P_i&#x3D;j$。</p>
 <p>对于 $f_i$ 而言，我们需要在这个二分图中找到 $i$ 条边的方案数，最后乘一个随意乱连的方案，即 $(n-i)!$。</p>
-<p>那么对于二分图中的一条链，假设长度为 $k$，你需要选 $j$ 条边，那么方案数就为 $h_j=\binom{k-j}{j}$。</p>
+<p>那么对于二分图中的一条链，假设长度为 $k$，你需要选 $j$ 条边，那么方案数就为 $h_j&#x3D;\binom{k-j}{j}$。</p>
 <p>然后把这个 $h$ 写成生成函数的形式，那么在二分图中找到 $i$ 条边的方案数相当于就是将所有的链的 $h$ 乘起来后的第 $i$ 项。</p>
 <p>因为这些链的 $h$ 的次数的和是 $n$，因此这个也可以随便做做就好了。比如写个最低级的多项式快速幂。</p>
 <p>时间复杂度 $O(n\log n)$。</p>
@@ -272,6 +273,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -330,6 +333,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

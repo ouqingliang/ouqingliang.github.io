@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -256,8 +257,8 @@
 <h3 id="B-Bad-Treap"><a href="#B-Bad-Treap" class="headerlink" title="B. Bad Treap"></a>B. Bad Treap</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>找出 $n$ 个在 <code>int</code> 范围内的整数，满足</p>
 <p>$a_i&lt;a_{i+1}$ 且 $\sin(a_i)&lt;\sin(a_{i+1})$。</p>
 <p>$n\le 50000$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>设 $a_i=k(i+b)$，那也就是要找一个整数 $k$，使得 $k&gt;2\omega \pi$ 且 $k-2\omega \pi$ 的值尽量小。</p>
-<p>打表发现，$k=710$ 效果很好。</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>设 $a_i&#x3D;k(i+b)$，那也就是要找一个整数 $k$，使得 $k&gt;2\omega \pi$ 且 $k-2\omega \pi$ 的值尽量小。</p>
+<p>打表发现，$k&#x3D;710$ 效果很好。</p>
 <h3 id="C-Cross-Stitch"><a href="#C-Cross-Stitch" class="headerlink" title="C. Cross-Stitch"></a>C. Cross-Stitch</h3><p>答案下界显然是 $4n-1$，其中 $n$ 为 <code>X</code> 的个数。</p>
 <p>可以发现，每个 <code>X</code> 中距离为 $1$ 的情况只需要用到竖着的两条。因为只用竖着的两条，最终可以回到本身这个节点，也可以去到原节点同一列的节点上。</p>
 <p>建出图后，跑个有限制的欧拉回路就可以了。</p>
@@ -267,11 +268,11 @@
 <h3 id="D-Double-Palindrome"><a href="#D-Double-Palindrome" class="headerlink" title="D. Double Palindrome"></a>D. Double Palindrome</h3><p>看来长时间没看，Border和回文理论有些忘了，在这写下证明吧QAQ。</p>
 <h4 id="一些证明"><a href="#一些证明" class="headerlink" title="一些证明"></a>一些证明</h4><p><strong>引理1(Weak Periodicity Lemma)：对一字符串 $s$，若 $p,q$ 为 $s$ 的周期，且 $p+q\le |s|$，则 $\gcd(p,q)$ 为 $s$ 的周期。</strong></p>
 <p>证明：</p>
-<p>不妨设 $p\geq q$。设 $d=p-q$。</p>
-<p>由 $p,q$ 为 $s$ 的周期，可知：$s_i=s_{i+p}(i\le |s|-p),s_i=s_{i+q}(i\le |s|-q)$。</p>
-<p>当 $i&gt; |q|$ 时，$s_i=s_{i-q}=s_{i-q+p}=s_{i+d}$。</p>
-<p>当 $i\le |s|-p$ 时，$s_i=s_{i+p}=s_{i+p-q}=s_{i+d}$。</p>
-<p>因此 $d=p-q$ 为 $s$ 的一个周期。</p>
+<p>不妨设 $p\geq q$。设 $d&#x3D;p-q$。</p>
+<p>由 $p,q$ 为 $s$ 的周期，可知：$s_i&#x3D;s_{i+p}(i\le |s|-p),s_i&#x3D;s_{i+q}(i\le |s|-q)$。</p>
+<p>当 $i&gt; |q|$ 时，$s_i&#x3D;s_{i-q}&#x3D;s_{i-q+p}&#x3D;s_{i+d}$。</p>
+<p>当 $i\le |s|-p$ 时，$s_i&#x3D;s_{i+p}&#x3D;s_{i+p-q}&#x3D;s_{i+d}$。</p>
+<p>因此 $d&#x3D;p-q$ 为 $s$ 的一个周期。</p>
 <p>由辗转相除法，$\gcd(p,q)$ 为 $s$ 的周期。</p>
 <p>证毕。</p>
 <p>注意：真正的周期引理的限制条件可改为 $p+q-\gcd(p,q)\le |s|$。</p>
@@ -280,17 +281,17 @@
 <p>记 $s[l,r]$ 表示字符串 $s$ 从第 $l$ 到第 $r$ 位形成的子串。</p>
 <p>设 $s$ 的两种非空双回文划分为：$s[1,x]+s[x+1,|s|],s[1,y]+s[y+1,|s|]$，其中 $1\le x &lt; y &lt; |s|$，且 $s[1,x],s[x+1,s],s[1,y],s[y+1,|s|]$ 均为回文串。</p>
 <p>可以发现，$y-x$ 和 $|s|-(y-x)$ 均为 $s$ 的周期，</p>
-<p>由引理一，$\gcd(y-x,|s|-(y-x))=\gcd(y-x,|s|)$ 也为 $s$ 的周期。</p>
+<p>由引理一，$\gcd(y-x,|s|-(y-x))&#x3D;\gcd(y-x,|s|)$ 也为 $s$ 的周期。</p>
 <p>而 $\gcd(y-x,|s|)|s$，证毕。</p>
 <h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>用前 $k$ 个小写字符，组成长度至多为 $n$ 的字符串。</p>
 <p>问有多少个串是弱双回文划分。</p>
 <p>$n\le 10^5$，</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>首先，设一个 $g(n)$ 表示暴力划分的双回文的种类数。</p>
-<p>$g(n)=\sum_{i=1}^nk^{\lfloor \frac{i+1}{2}\rfloor}k^{\lfloor \frac{n-i+1}{2}\rfloor}$。</p>
+<p>$g(n)&#x3D;\sum_{i&#x3D;1}^nk^{\lfloor \frac{i+1}{2}\rfloor}k^{\lfloor \frac{n-i+1}{2}\rfloor}$。</p>
 <p>这样统计显然会算重，而多的自然是能被两种及以上划分的字符串。</p>
 <p>由引理二，这样的字符串为整周期串。</p>
-<p>于是，我们统计字符串的时候只统计只有一种划分的字符串，设长度为 $i$ 的合法字符串个数为 $f(i)$，那么答案就是 $\sum_{i=1}^nf(i)\lfloor \frac{n}{i} \rfloor$。</p>
-<p>考虑求出 $f(n)$，用 $g(n)$ 减去不合法的方案，枚举整周期串的最小正周期 $i$，那么复制 $\frac{n}{i}$ 倍后形成的串就在 $g(n)$ 中算了 $\frac{n}{i}$ 次，减去即可。$f(n)=g(n)-\sum_{i\neq n,i|n} f(i)\frac{n}{i}$。</p>
+<p>于是，我们统计字符串的时候只统计只有一种划分的字符串，设长度为 $i$ 的合法字符串个数为 $f(i)$，那么答案就是 $\sum_{i&#x3D;1}^nf(i)\lfloor \frac{n}{i} \rfloor$。</p>
+<p>考虑求出 $f(n)$，用 $g(n)$ 减去不合法的方案，枚举整周期串的最小正周期 $i$，那么复制 $\frac{n}{i}$ 倍后形成的串就在 $g(n)$ 中算了 $\frac{n}{i}$ 次，减去即可。$f(n)&#x3D;g(n)-\sum_{i\neq n,i|n} f(i)\frac{n}{i}$。</p>
 <p>时间复杂度 $O(n\log n)$。</p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FO(x) freopen(#x<span class="string">&quot;.in&quot;</span>,<span class="string">&quot;r&quot;</span>,stdin),freopen(#x<span class="string">&quot;.out&quot;</span>,<span class="string">&quot;w&quot;</span>,stdout)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fo(i,j,k) for(int i=(j),end_i=(k);i&lt;=end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ff(i,j,k) for(int i=(j),end_i=(k);i&lt; end_i;i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fd(i,j,k) for(int i=(j),end_i=(k);i&gt;=end_i;i--)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEBUG(x) cerr&lt;&lt;#x&lt;&lt;<span class="string">&quot;=&quot;</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> all(x) (x).begin(),(x).end()</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> cle(x) memset(x,0,sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> lowbit(x) ((x)&amp;-(x))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ull unsigned ll</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> lb long db</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> se second</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> x=<span class="number">0</span>; <span class="type">char</span> ch=<span class="built_in">getchar</span>(); <span class="type">bool</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(;ch&lt;<span class="string">&#x27;0&#x27;</span>||ch&gt;<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) <span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>;ch=<span class="built_in">getchar</span>()) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(ch^<span class="number">48</span>);</span><br><span class="line">	<span class="keyword">return</span> f?-x:x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CASET fo(___,1,read())</span></span><br><span class="line"><span class="type">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Add</span><span class="params">(ll x,ll y)</span></span>&#123;x+=y; <span class="keyword">return</span> (x&lt;mod)?x:x-mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Dec</span><span class="params">(ll x,ll y)</span></span>&#123;x-=y; <span class="keyword">return</span> (x&lt;<span class="number">0</span>)?x+mod:x;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Mul</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> x*y%mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Pow</span><span class="params">(ll x,ll y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	y%=(mod<span class="number">-1</span>);ll ans=<span class="number">1</span>;<span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=x*x%mod)<span class="keyword">if</span>(y&amp;<span class="number">1</span>) ans=ans*x%mod;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n,k;</span><br><span class="line">ll f[<span class="number">100010</span>],g[<span class="number">100010</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>(); k=<span class="built_in">read</span>();</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">		f[i]=g[i]=<span class="built_in">Add</span>(<span class="built_in">Mul</span>(i/<span class="number">2</span>,<span class="built_in">Pow</span>(k,(i+<span class="number">1</span>)/<span class="number">2</span>)),<span class="built_in">Mul</span>((i+<span class="number">1</span>)/<span class="number">2</span>,<span class="built_in">Pow</span>(k,(i+<span class="number">2</span>)/<span class="number">2</span>)));</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">		<span class="built_in">fo</span>(j,<span class="number">2</span>,n/i)</span><br><span class="line">			f[i*j]=<span class="built_in">Dec</span>(f[i*j],f[i]*j%mod);</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">fo</span>(i,<span class="number">1</span>,n)</span><br><span class="line">		ans=<span class="built_in">Add</span>(ans,f[i]*(n/i)%mod);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -322,6 +323,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -380,6 +383,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

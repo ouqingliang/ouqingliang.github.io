@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -250,10 +251,10 @@
 
 <h3 id="Problem-A"><a href="#Problem-A" class="headerlink" title="Problem A"></a>Problem A</h3><p>23333…</p>
 <h3 id="Problem-B"><a href="#Problem-B" class="headerlink" title="Problem B"></a>Problem B</h3><p>直接递推即可。</p>
-<h3 id="Problem-C"><a href="#Problem-C" class="headerlink" title="Problem C"></a>Problem C</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给定一个长度为 $n$ 的排列 $a_n$。要求将这个序列分成互不相交的 $k$ 段。记第 $p$ 段的左端点和右端点分别为 $l_p,r_p$。要求最大化 $\sum_{i=1}^k\max_{j=l_i}^{r_i}\{a_j\}$。</p>
+<h3 id="Problem-C"><a href="#Problem-C" class="headerlink" title="Problem C"></a>Problem C</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给定一个长度为 $n$ 的排列 $a_n$。要求将这个序列分成互不相交的 $k$ 段。记第 $p$ 段的左端点和右端点分别为 $l_p,r_p$。要求最大化 $\sum_{i&#x3D;1}^k\max_{j&#x3D;l_i}^{r_i}{a_j}$。</p>
 <p>输出<strong>最大化的值</strong>和<strong>可以最大化该值的方案数</strong>。方案数对 $998244353$ 取模。</p>
 <p>$n\leq 2\times 10^5$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>最大化的值显然是 $\sum_{i=n-k+1}^ni$。</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>最大化的值显然是 $\sum_{i&#x3D;n-k+1}^ni$。</p>
 <p>也就是说，每一段中肯定包含且仅包含一个这 $k$ 个点中的其中一个。</p>
 <p>然后乘法原理。</p>
 <p>时间复杂度 $O(n)$。</p>
@@ -266,6 +267,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -322,6 +325,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

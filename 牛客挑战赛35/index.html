@@ -182,6 +182,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -255,7 +256,7 @@
 
 <h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>签到题，用最大的匹配最小的，次大的匹配次小的…</p>
 <p>但是手速还是过于慢了…花了 $2\min$ 才AC此题。</p>
-<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给一个图 $G_1$，$G_i=L(G_{i-1})$，$L(G)$ 表示 $G$ 的线图。</p>
+<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给一个图 $G_1$，$G_i&#x3D;L(G_{i-1})$，$L(G)$ 表示 $G$ 的线图。</p>
 <p>当 $n$ 无穷大时，求 $|G_n|$ 的值。发散时输出 $-1$。</p>
 <p>$n\leq 10^5,m\leq 2\times 10^5$</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>显然我们可以只考虑一个连通块的情况。</p>
@@ -275,7 +276,7 @@
 <p>$n\leq 2\times 10^5$</p>
 <h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>很显然地，我们考虑固定前 $i-1$ 位，第 $i$ 位可以选和第 $p_i$ 位以后的点相连。</p>
 <p>一条还没有成环的链可以看成一个点。</p>
-<p>设 $p_i$ 后面一共有 $w$ 个可连的点/链，有 $p$ 个在之前已经成环的环，那么大概就会有三种情况对答案产生贡献：</p>
+<p>设 $p_i$ 后面一共有 $w$ 个可连的点&#x2F;链，有 $p$ 个在之前已经成环的环，那么大概就会有三种情况对答案产生贡献：</p>
 <p>第一种是直接已经成环的，此时产生 $wp\times (n-i)!$ 的贡献。</p>
 <p>第二种是未成环的，此时产生 $w\times f(n-i)$ 的贡献，其中 $f(i)$ 表示所有长度为 $i$ 的置换的循环节个数之和，这个可以 $O(n)$ 算出来。</p>
 <p>第三种是自环，产生 $(n-i)!$ 的贡献。</p>
@@ -297,6 +298,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -355,6 +358,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

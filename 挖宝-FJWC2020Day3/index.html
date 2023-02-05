@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -259,7 +260,7 @@
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>一道这么简单的lca写完后都调了1个多小时。。。</p>
 <p>主要还是有一些细节没有考虑到。</p>
 <p>首先通过树上倍增，我们可以在 $O(\log n)$ 的时间内，求出两点的 $lca$，某个点到根节点路径中距离为 $d$ 的点，某个点到另外一点的路径中距离为 $d$ 的点。</p>
-<p>设 $k=\frac{d_a+d_b-dist(a,b)}{2}$，这个 $k$ 表示的是，$a$ 到 $x$ 和 $b$ 到 $x$ 这两条路径在最后面的重合的长度。</p>
+<p>设 $k&#x3D;\frac{d_a+d_b-dist(a,b)}{2}$，这个 $k$ 表示的是，$a$ 到 $x$ 和 $b$ 到 $x$ 这两条路径在最后面的重合的长度。</p>
 <p>显然如果 $k$ 不为整数或者 $&lt;0$ 就一定无解。</p>
 <p>那么就可以找到从 $a$ 出发到 $b$ 的路径中第 $d_a-k$ 个点，设为 $z$。（显然如果 $d_a-k&lt;0$ 或者 $d_a-k&gt;dist(a,b)$ 也无解。）</p>
 <p>转换成求任意一点 $x$，满足从 $z$ 出发，不经过 $a,b$ 两点的方向到达 $x$，且距离为 $k$。</p>
@@ -278,6 +279,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -336,6 +339,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

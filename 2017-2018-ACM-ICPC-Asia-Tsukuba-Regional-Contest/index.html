@@ -180,6 +180,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -251,13 +252,13 @@
         <h2 id="比赛链接"><a href="#比赛链接" class="headerlink" title="比赛链接"></a>比赛链接</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/101986">链接</a></p>
 <span id="more"></span>
 
-<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>设 $f_{i,0/1}$ 表示填满前 $i$ 行时，最上面一行是白/黑的方案数。</p>
+<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>设 $f_{i,0&#x2F;1}$ 表示填满前 $i$ 行时，最上面一行是白&#x2F;黑的方案数。</p>
 <p>时间复杂度 $O(n)$。</p>
-<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p>由于 $m\leq 16$，那么总方案数最多为 $\frac{\binom{16}{8}8!}{2^8}=2027025$。</p>
+<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p>由于 $m\leq 16$，那么总方案数最多为 $\frac{\binom{16}{8}8!}{2^8}&#x3D;2027025$。</p>
 <p>于是直接爆搜，由于时限10s，那么暴力 $O(m^2)$ 判断都可以。</p>
 <h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p>还没看。</p>
 <h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p>设 $f_i$ 表示考虑到前 $i$ 个时的最小操作次数。</p>
-<p>$f_i=\min\{f_j+g(j+1,i)\}$，其中 $g(l,r)$ 表示 $[l,r]$ 最小需要的操作次数，也就是 $t[l,r]$ 中不同的连续段数+1的一半。单调队列或线段树优化即可。</p>
+<p>$f_i&#x3D;\min{f_j+g(j+1,i)}$，其中 $g(l,r)$ 表示 $[l,r]$ 最小需要的操作次数，也就是 $t[l,r]$ 中不同的连续段数+1的一半。单调队列或线段树优化即可。</p>
 <p>时间复杂度 $O(n)$ 或 $O(n\log n)$。</p>
 <h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><p>从 $1,2$ 分别跑一次原图，反图最短路，建出从 $1$ 开始的，能到 $2$ 的最短路图，边反向后是否令最短路减小很好判断，是否增大则需要根据该边是否为最短路图中从 $1$ 到 $2$ 的必经路。</p>
 <p>预处理出这些边即可。</p>
@@ -285,6 +286,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -344,6 +347,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

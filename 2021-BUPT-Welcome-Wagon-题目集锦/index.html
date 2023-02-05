@@ -185,6 +185,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -268,7 +269,7 @@
 <li><p>重心在点上，但不为菊花图。可以发现，若以重心为根，最优方案中重心的若干子树一定是一个菊花图的形式（也就是连一个点，然后这个点连出去若干条边）。若对于每个子树中，叶节点个数为 $a_i$，则能构造出 $\sum_{1\le i &lt; j\le m}a_ia_j$。总点数为 $1+m+\sum a_i$。</p>
 </li>
 </ul>
-<p>前两种都非常好求，对于第三种，考虑DP，设 $f_{i,j}$ 表示构造出总数为 $i$ 的方案，且 $\sum a_k=j$ 时的最小点数。初始时 $f_{0,i}=2+i$。</p>
+<p>前两种都非常好求，对于第三种，考虑DP，设 $f_{i,j}$ 表示构造出总数为 $i$ 的方案，且 $\sum a_k&#x3D;j$ 时的最小点数。初始时 $f_{0,i}&#x3D;2+i$。</p>
 <p>枚举下一个子树选什么，类似背包的转移，并记录从上一个位置方便输出方案。</p>
 <p>三种做法取一个最小值。</p>
 <p>时间复杂度 $O(n^2\log n+q\log n)$。</p>
@@ -277,10 +278,10 @@
 <p>输出价值和对 $10^9+7$ 取模后的结果。</p>
 <p>$n\le 100,a_i\le 100,m\le 10^6,q_i\le 10^{18}$。</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>显然是个完全背包，但是 $q_i$ 极大。</p>
-<p>设 $c=\max_{i=1}^n \{a_i\}$。</p>
-<p>如果存在某个数组 $b$ 表示每个物品取出的次数，使得 $q=\sum_{i=1}^na_ib_i$。那么对于每个 $j$，都可以通过调整 $b$，使得存在 $\sum_{i=1}^na_ib’<em>i=q$ 且 $\sum</em>{i\neq j}a_ib’_i&lt; n a_j^2$。</p>
+<p>设 $c&#x3D;\max_{i&#x3D;1}^n {a_i}$。</p>
+<p>如果存在某个数组 $b$ 表示每个物品取出的次数，使得 $q&#x3D;\sum_{i&#x3D;1}^na_ib_i$。那么对于每个 $j$，都可以通过调整 $b$，使得存在 $\sum_{i&#x3D;1}^na_ib’<em>i&#x3D;q$ 且 $\sum</em>{i\neq j}a_ib’_i&lt; n a_j^2$。</p>
 <p>证明：若 $b’_i\geq a_j$，则可以将 $b’_i$ 减去 $a_j$。</p>
-<p>也就是说，最终的 $b’<em>i$ 都是小于 $a_j$ 的。那么 $\sum</em>{i\neq j}a_ib’<em>i&lt;\sum</em>{i=1,i\neq j}^na_ia_j \leq n c^2$。</p>
+<p>也就是说，最终的 $b’<em>i$ 都是小于 $a_j$ 的。那么 $\sum</em>{i\neq j}a_ib’<em>i&lt;\sum</em>{i&#x3D;1,i\neq j}^na_ia_j \leq n c^2$。</p>
 <p>可以发现，$nc^2$ 是 $10^6$ 级别的。</p>
 <p>当 $q_i$ 大过 $nc^2$ 时，通过贪心，找到 $\frac{w_i}{a_i}$ 的最小值，一直选这个，直到 $q_i&lt;nc^2$，然后通过预处理 $nc^2$ 以内的背包来找到最小值。</p>
 <p>时间复杂度 $O(n^2c^2+q)$。</p>
@@ -289,7 +290,7 @@
 <p>$n\le 100,7n-20\le 3k\le 7n,m\le 7n$。时限4s。</p>
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p><del>口胡一下，还没写。</del></p>
 <p>设 $f_{i,j,k}$ 表示搞到第 $i$ 列且第 $i$ 列目前的状态（是否填了格子进去）为 $j$，一共用了 $k$ 个 $1\times 1$ 的方案数。</p>
-<p>时间复杂度 $O(2^{14}nk’^2)$，其中 $k’=7n-3k$。</p>
+<p>时间复杂度 $O(2^{14}nk’^2)$，其中 $k’&#x3D;7n-3k$。</p>
 <h2 id="Contest-3"><a href="#Contest-3" class="headerlink" title="Contest 3"></a>Contest 3</h2><h3 id="B-1"><a href="#B-1" class="headerlink" title="B"></a>B</h3><h4 id="题源"><a href="#题源" class="headerlink" title="题源"></a>题源</h4><p><a target="_blank" rel="noopener" href="https://www.codechef.com/problems/F2NDMAX">F2NDMAX</a></p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>首先，对于每个连通块，只有一个入度为 $0$ 的点。只有这个点以及只与这个点相连的点才有可能成为第二大的。</p>
 <p>于是其他点可以完全删掉。剩下 $m$ 个类似于菊花图的东西。</p>
@@ -318,17 +319,17 @@
 <p>设字符串总长为 $k$ 。考虑设定阈值 $L$，并对询问离线。</p>
 <p>对于 $|s_i|$ 都 大于 $ L$ 的询问一共最多只有 $\frac{k^2}{L^2}$ 种。找到匹配时暴力跑SAM，时间复杂度 $O(\frac{k^2}{L})$。</p>
 <p>对于存在 $|s_i|&lt;L$ 的询问，用短串在长串的SAM上匹配。这样每个串只用建一次SAM，每次询问都要花短串长度的时间。时间复杂度 $O(mL)$。</p>
-<p>取 $L=\sqrt{k}$，时间复杂度 $O(k^{1.5}+mk^{0.5})$。</p>
-<h3 id="G-2"><a href="#G-2" class="headerlink" title="G"></a>G</h3><h4 id="题意-6"><a href="#题意-6" class="headerlink" title="题意"></a>题意</h4><p>给定 $n(n \le 3\times 10^6)$，问 $\sin(x)+\sin(y)+\sin(z)$ 的最大值，其中 $x,y,z$ 均为正整数且 $x+y+z=n$。</p>
+<p>取 $L&#x3D;\sqrt{k}$，时间复杂度 $O(k^{1.5}+mk^{0.5})$。</p>
+<h3 id="G-2"><a href="#G-2" class="headerlink" title="G"></a>G</h3><h4 id="题意-6"><a href="#题意-6" class="headerlink" title="题意"></a>题意</h4><p>给定 $n(n \le 3\times 10^6)$，问 $\sin(x)+\sin(y)+\sin(z)$ 的最大值，其中 $x,y,z$ 均为正整数且 $x+y+z&#x3D;n$。</p>
 <h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>显然先把 $z$ 换了，变成求 $\sin(x)+\sin(y)+\sin(n-(x+y))$ 的最大值。</p>
 <p>第三个 $\sin$ 中的 $x+y$ 启发我们对 $\sin(x)+\sin(y)$ 进行和差化积的变换：</p>
-<p>$$<br>\sin(x)+\sin(y)=2\sin(\frac{x+y}{2})\cos(\frac{x-y}{2})<br>$$</p>
-<p>枚举 $x+y=k$，变成求 $\cos(\frac{k-2y}{2})$ 的最大值。</p>
+<p>$$<br>\sin(x)+\sin(y)&#x3D;2\sin(\frac{x+y}{2})\cos(\frac{x-y}{2})<br>$$</p>
+<p>枚举 $x+y&#x3D;k$，变成求 $\cos(\frac{k-2y}{2})$ 的最大值。</p>
 <p>对 $k$ 的奇偶性分类讨论，作前缀最大值即可。</p>
 <p>时间复杂度 $O(n)$。</p>
 <h2 id="Contest-5"><a href="#Contest-5" class="headerlink" title="Contest 5"></a>Contest 5</h2><h3 id="G-3"><a href="#G-3" class="headerlink" title="G"></a>G</h3><h4 id="题源-2"><a href="#题源-2" class="headerlink" title="题源"></a>题源</h4><p>Codeforces570D</p>
 <h4 id="题意-7"><a href="#题意-7" class="headerlink" title="题意"></a>题意</h4><p>一棵以 $1$ 为根的有根树，每个节点上有一个小写字母。</p>
-<p>多次询问某个子树中，将所有深度 $=k$ 的节点的字母，是否能通过随意组合形成回文串？</p>
+<p>多次询问某个子树中，将所有深度 $&#x3D;k$ 的节点的字母，是否能通过随意组合形成回文串？</p>
 <p>$n,q\le 5\times 10^5$。</p>
 <h4 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h4><p>首先一定要解决的问题是：如何判断若干字母是否能形成回文串？</p>
 <p>显然，这个问题等价于最多有一个字母的出现次数为奇数。</p>
@@ -373,7 +374,7 @@
 <p>如何判断无解？也就是存在某两个 $i,j$ 使得 $a_i+a_j$ 不在序列 $a$ 中？</p>
 <p>FFT搞一搞即可。</p>
 <p>如何找到最优解？</p>
-<p>显然，如果对于某个 $a_k$，使得不存在 $a_i+a_j=a_k$ 的，这个 $a_k$ 就要选了。</p>
+<p>显然，如果对于某个 $a_k$，使得不存在 $a_i+a_j&#x3D;a_k$ 的，这个 $a_k$ 就要选了。</p>
 <p>于是就做完了，只需跑一遍FFT。</p>
 <p>时间复杂度 $O(n+m\log m)$。</p>
 <h2 id="Contest-6"><a href="#Contest-6" class="headerlink" title="Contest 6"></a>Contest 6</h2><h3 id="I-1"><a href="#I-1" class="headerlink" title="I"></a>I</h3><h4 id="题源-5"><a href="#题源-5" class="headerlink" title="题源"></a>题源</h4><p><a target="_blank" rel="noopener" href="https://vjudge.ppsucxtt.cn/problem/CodeForces-908D/origin">CodeForces - 908D</a></p>
@@ -402,22 +403,22 @@
 <h4 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h4><p>由于 $j-i+1 &gt; k$，有 $s[i+k,j]$ 是回文串。</p>
 <p>于是枚举 $i+k$ 的位置 $l$，变成统计有多少个 $x$ 满足 $s[x,l-1]$ 的反串为 $t$ 的前缀，有多少个 $y$ 满足 $s[l,y]$ 为回文串。</p>
 <p>分成两部分，第一部分是扩展KMP模板，也可以二分+hash或SAM或SA；第二部分是manacher模板，也可以二分+hash或PAM。</p>
-<p>大概可以有 $4\times 3=12$ 种不同的做法。</p>
+<p>大概可以有 $4\times 3&#x3D;12$ 种不同的做法。</p>
 <h3 id="F-1"><a href="#F-1" class="headerlink" title="F"></a>F</h3><p>详见：<a href="/Tournament-2018-2019-ACM-ICPC-Asia-Nanjing-Regional-Contest-B/" title="“Tournament”">“Tournament”</a></p>
 <h2 id="Contest-12"><a href="#Contest-12" class="headerlink" title="Contest 12"></a>Contest 12</h2><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><h4 id="题意-12"><a href="#题意-12" class="headerlink" title="题意"></a>题意</h4><p>给定 $L,R,k$，求最大的 $j-i+1$，使得 $L\le i \le j \le R$，且 $[i,j]$ 间的整数的异或和 $\le k$。</p>
 <p>$T\le 5\times 10^5,L,R\le 10^{18}$。</p>
 <h4 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h4><p>显然，$4x,4x+1,4x+2,4x+3$ 的异或和为 $0$。</p>
 <p>于是整 $4$ 的倍数段的都可以。剩下的暴力枚举就可以了。</p>
 <p>时间复杂度 $O(16T)$。</p>
-<h3 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h3><h4 id="题意-13"><a href="#题意-13" class="headerlink" title="题意"></a>题意</h4><p>给定 $[L,R]$，判断是否满足 $\frac{\sum_{i=L}^{R}[i\in \mathbb{P}]}{R-L+1}&lt;\frac{1}{3}$。</p>
+<h3 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h3><h4 id="题意-13"><a href="#题意-13" class="headerlink" title="题意"></a>题意</h4><p>给定 $[L,R]$，判断是否满足 $\frac{\sum_{i&#x3D;L}^{R}[i\in \mathbb{P}]}{R-L+1}&lt;\frac{1}{3}$。</p>
 <p>$T\le 100,L,R\le 10^9$。</p>
 <h4 id="题解-17"><a href="#题解-17" class="headerlink" title="题解"></a>题解</h4><p>$n$ 以内质数个数约为 $\frac{n}{\ln n}$ 级别。当 $[L,R]$ 越大，越难满足。</p>
 <p>于是当 $R-L+1\geq K$ 的时候直接输出 <code>No</code>，剩下的用区间筛判断一下就好。</p>
 <p>$K$ 取 $10^4$ 就可以了。</p>
 <p>或许也可以直接跑Min-25筛？</p>
-<h3 id="E-1"><a href="#E-1" class="headerlink" title="E"></a>E</h3><h4 id="题意-14"><a href="#题意-14" class="headerlink" title="题意"></a>题意</h4><p>求最大的 $i$，满足 $X^i\prod_{j=1}^na_j!$ 为 $Y!$ 的约数。</p>
+<h3 id="E-1"><a href="#E-1" class="headerlink" title="E"></a>E</h3><h4 id="题意-14"><a href="#题意-14" class="headerlink" title="题意"></a>题意</h4><p>求最大的 $i$，满足 $X^i\prod_{j&#x3D;1}^na_j!$ 为 $Y!$ 的约数。</p>
 <p>$\sum a_i\le Y \le 10^{18},X\le 10^{18}$。</p>
-<h4 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h4><p>对 $X$ 进行质因数分解后，对每个质因数的项 $p^k$，算出最大的 $x$，满足 $p^x|\frac{Y!}{\prod_{i=1}^n a_i!}$。那么答案就是 $\min(\lfloor \frac{x}{k} \rfloor)$。</p>
+<h4 id="题解-18"><a href="#题解-18" class="headerlink" title="题解"></a>题解</h4><p>对 $X$ 进行质因数分解后，对每个质因数的项 $p^k$，算出最大的 $x$，满足 $p^x|\frac{Y!}{\prod_{i&#x3D;1}^n a_i!}$。那么答案就是 $\min(\lfloor \frac{x}{k} \rfloor)$。</p>
 <p>$x$ 十分容易算，于是只需要写个Pollard-rho就好了。</p>
 <h3 id="F-2"><a href="#F-2" class="headerlink" title="F"></a>F</h3><p>直接打表。</p>
 <p>打表时间复杂度 $O(200\times 10^8)$。</p>
@@ -434,8 +435,8 @@
 <p>当 $n$ 为奇数时，存在欧拉路。</p>
 <p>当 $n$ 为偶数时，不存在欧拉路。</p>
 <p>最麻烦的显然是长度最长的那些路径。</p>
-<p>观察 $n=4$ 时可以发现，$n-1$ 和 $n-2$ 的路径可以通过 $n,n-1$ 号点及其与其他点相连的边的搞出来，然后变成一个 $n-2$ 的子问题。</p>
-<p>发现当 $n&gt;4$ 时，$n,n-1$ 号点相连的边一共有 $2(n-2)+1=2n-3$ 条，恰好就是 $(n-1)+(n-2)$，而且也能构造出来。</p>
+<p>观察 $n&#x3D;4$ 时可以发现，$n-1$ 和 $n-2$ 的路径可以通过 $n,n-1$ 号点及其与其他点相连的边的搞出来，然后变成一个 $n-2$ 的子问题。</p>
+<p>发现当 $n&gt;4$ 时，$n,n-1$ 号点相连的边一共有 $2(n-2)+1&#x3D;2n-3$ 条，恰好就是 $(n-1)+(n-2)$，而且也能构造出来。</p>
 <p>于是就做完了。</p>
 <h3 id="L"><a href="#L" class="headerlink" title="L"></a>L</h3><p>Trie上建SAM模板，然后来个parent-tree上倍增定位字符串。注意建SAM一定要bfs建，不然会被卡成 $O(n^2)$。</p>
 <h3 id="M"><a href="#M" class="headerlink" title="M"></a>M</h3><h4 id="题意-17"><a href="#题意-17" class="headerlink" title="题意"></a>题意</h4><p>给定一棵有根树，求每棵子树的所有重心。</p>
@@ -449,10 +450,10 @@
 <p>于是树剖，考虑重儿子的重心往上跳，直到成为子树的重心。是否继续往上则根据第三条性质。</p>
 <p>时间复杂度 $O(n)$。注意可能有多个重心，需要特判。</p>
 <p>一棵树存在多个重心当且仅当删掉某条边后树分裂成两棵且大小一样。</p>
-<h2 id="Contest-15"><a href="#Contest-15" class="headerlink" title="Contest 15"></a>Contest 15</h2><h3 id="A-1"><a href="#A-1" class="headerlink" title="A"></a>A</h3><h4 id="题意-18"><a href="#题意-18" class="headerlink" title="题意"></a>题意</h4><p>将 $1\sim n^2$ 填进 $n\times n$ 的矩阵内，记 $|S|=|\{a_1,a_2,\cdots,a_n\}\or \{1,2,\cdots,n\}|$，其中 $a_i$ 为矩阵第 $i$ 行的最小值。求所有矩阵的 $|S|$ 的和。</p>
+<h2 id="Contest-15"><a href="#Contest-15" class="headerlink" title="Contest 15"></a>Contest 15</h2><h3 id="A-1"><a href="#A-1" class="headerlink" title="A"></a>A</h3><h4 id="题意-18"><a href="#题意-18" class="headerlink" title="题意"></a>题意</h4><p>将 $1\sim n^2$ 填进 $n\times n$ 的矩阵内，记 $|S|&#x3D;|{a_1,a_2,\cdots,a_n}\or {1,2,\cdots,n}|$，其中 $a_i$ 为矩阵第 $i$ 行的最小值。求所有矩阵的 $|S|$ 的和。</p>
 <p>$n\le 5000$。</p>
 <h4 id="题解-22"><a href="#题解-22" class="headerlink" title="题解"></a>题解</h4><p>记 $f_i$ 表示 $i$ 这个数对 $\sum |S|$ 的贡献，即有多少个矩阵满足某一行的最小值为 $i$。</p>
-<p>显然有：$f_i=n^2\binom{n^2-n}{i-1}(i-1)!(n^2-i)!$ 。</p>
+<p>显然有：$f_i&#x3D;n^2\binom{n^2-n}{i-1}(i-1)!(n^2-i)!$ 。</p>
 <p>时间复杂度 $O(n^2+Tn)$。</p>
 <h3 id="C-2"><a href="#C-2" class="headerlink" title="C"></a>C</h3><p>树形DP模板。</p>
 <h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>线段树模板题。</p>
@@ -465,11 +466,11 @@
 <p>时间复杂度 $O(n^3)-O(n)$。</p>
 <p>显然 $f,g$ 的转移是一个卷积的形式，可优化到 $O(n^2\log n)-O(n)$，但完全没必要。</p>
 <h3 id="H-4"><a href="#H-4" class="headerlink" title="H"></a>H</h3><p>显然奇数一定不行。</p>
-<p>那么操作就变成 $\times 2,/2,+1,-1$。</p>
+<p>那么操作就变成 $\times 2,&#x2F;2,+1,-1$。</p>
 <p>利用快速幂的思想，算出从 $1$ 出发向下走的步数 $x$，以及向右走的步数 $y$，</p>
 <p>开始先向下走一步变成 $2$，之后每向下一步或向右一步都会 $\times 2$ 变成 $4$，需要经过某些转换转变回 $2$。</p>
 <p>显然某种兜一圈的方法可以完成这个操作。</p>
-<p>于是就做完了，最多不会超过 $197\times 5+1=986$ 次操作。</p>
+<p>于是就做完了，最多不会超过 $197\times 5+1&#x3D;986$ 次操作。</p>
 <h3 id="I-2"><a href="#I-2" class="headerlink" title="I"></a>I</h3><p>签到题。</p>
 <h3 id="K"><a href="#K" class="headerlink" title="K"></a>K</h3><p>边权从大到小排序，然后并查集按秩合并。</p>
 <h3 id="M-1"><a href="#M-1" class="headerlink" title="M"></a>M</h3><p>模拟即可。</p>
@@ -479,6 +480,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -543,6 +546,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

@@ -180,6 +180,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -256,11 +257,11 @@
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>有一个较为简单的DP，顺次考虑将 $i$ 插入进排列，转移很简单，时间复杂度 $O(n^2)$。</p>
 <p>然后你发现做不下去了，考虑至少容斥，设 $F_i$ 为答案，$G_k$ 为至少有 $k$ 个 $i$ 满足条件的方案数。那么最后二项式反演+ntt即可算出 $F$。</p>
 <p>考虑钦定了 $k$ 个位置的小于号，然后将连续的小于号的搞成一个连续段，那么将有 $n-k$ 个连续段，且如果知道了段内的数组，那么段内的顺序也是确定的。</p>
-<p>假设段的长度为 $x_1,x_2\cdots,x_m$，那么一共有 $\frac{n!}{\prod_{i=1}^m x_i}$ 个贡献，要求满足 $x_i\geq 1$</p>
+<p>假设段的长度为 $x_1,x_2\cdots,x_m$，那么一共有 $\frac{n!}{\prod_{i&#x3D;1}^m x_i}$ 个贡献，要求满足 $x_i\geq 1$</p>
 <p>考虑用生成函数解决：</p>
-<p>$$G _ k=[x ^ n]((\sum _ {i=0} \frac{x ^ i}{i!})-1) ^ {n-k}=[x ^ n] (e ^ x-1) ^ {n-k}$$</p>
-<p>设 $m=n-k$，则：</p>
-<p>$$<a href="e^x-1">x^n</a>^m=\sum_{i=0}^m[x^n]e^{xi}(-1)^{m-i}\binom{m}{i}=\sum_{i=0}^m\frac{i^n}{n!}(-1)^{m-i}\binom{m}{i}$$</p>
+<p>$$G _ k&#x3D;[x ^ n]((\sum _ {i&#x3D;0} \frac{x ^ i}{i!})-1) ^ {n-k}&#x3D;[x ^ n] (e ^ x-1) ^ {n-k}$$</p>
+<p>设 $m&#x3D;n-k$，则：</p>
+<p>$$<a href="e%5Ex-1">x^n</a>^m&#x3D;\sum_{i&#x3D;0}^m[x^n]e^{xi}(-1)^{m-i}\binom{m}{i}&#x3D;\sum_{i&#x3D;0}^m\frac{i^n}{n!}(-1)^{m-i}\binom{m}{i}$$</p>
 <p>搞一个ntt就好了。</p>
 <p>时间复杂度 $O(n\log n)$。</p>
 <h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><p>懒得搞了，反正很简单。</p>
@@ -270,6 +271,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -329,6 +332,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

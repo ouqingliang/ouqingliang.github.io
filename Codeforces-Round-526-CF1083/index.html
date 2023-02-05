@@ -182,6 +182,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -273,10 +274,10 @@
 
 <h3 id="D-The-Fair-Nut’s-getting-crazy"><a href="#D-The-Fair-Nut’s-getting-crazy" class="headerlink" title="D. The Fair Nut’s getting crazy"></a>D. The Fair Nut’s getting crazy</h3><p>这题还是比较套路的。枚举区间的交 $[i,j]$，看有多少贡献。</p>
 <p>设 $pre_i$ 表示值和 $a_i$ 相同的最大的比 $i$ 小的下标，$nex_i$ 表示值和 $a_i$ 相同的最小的比 $i$ 大的下标。</p>
-<p>再设 $f_{i,j}=\max_{k\in[i,j]} pre_k+1,g_{i,j}=\min_{k\in[i,j]} nex_k-1$。</p>
+<p>再设 $f_{i,j}&#x3D;\max_{k\in[i,j]} pre_k+1,g_{i,j}&#x3D;\min_{k\in[i,j]} nex_k-1$。</p>
 <p>枚举一个 $i$，那么合法的 $j$ 是一段连续的区间，设此时这个 $j$ 为 $mx_j$。</p>
-<p>那么一个 $i$ 的贡献就是：$\sum_{j=i}^{mx_j}(i-f_{i,j})\times (g_{i,j}-j)$。</p>
-<p>化简一下得到：$i\sum_{j=i}^{mx_j}g_{i,j}-i\sum_{j=i}^{mx_j}j-\sum_{j=i}^{mx_j}f_{i,j}g_{i,j}+\sum_{k=i}^{mx_j}jf_{i,j}$。</p>
+<p>那么一个 $i$ 的贡献就是：$\sum_{j&#x3D;i}^{mx_j}(i-f_{i,j})\times (g_{i,j}-j)$。</p>
+<p>化简一下得到：$i\sum_{j&#x3D;i}^{mx_j}g_{i,j}-i\sum_{j&#x3D;i}^{mx_j}j-\sum_{j&#x3D;i}^{mx_j}f_{i,j}g_{i,j}+\sum_{k&#x3D;i}^{mx_j}jf_{i,j}$。</p>
 <p>考虑倒序枚举 $i$，那么每次会修改一些 $g_{i,j}$ 和 $f_{i,j}$，也就是对 $[i,n]$ 取一个 $\min$ 或者 $\max$。</p>
 <p>这个用一个单调栈，转换成区间赋值。</p>
 <p>那么相当于维护两个序列，支持对这两个序列区间赋值，求 $\sum_{i}g_i,\sum_{i}f_ig_i,\sum_{i}if_i$。</p>
@@ -297,6 +298,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -358,6 +361,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

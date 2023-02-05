@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -255,19 +256,19 @@
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>rating：${\color{Yellow} 2162-&gt;2147}$。</p>
 <h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>两个初始为 $0$ 的数 $a,b$，可执行以下三种操作：</p>
 <ul>
-<li>选择一个正整数 $k$，$a+=k,b+=k$；</li>
-<li>选择一个正整数 $k$，$a-=k,b+=k$；</li>
-<li>选择一个正整数 $k$，$a+=k,b-=k$；</li>
+<li>选择一个正整数 $k$，$a+&#x3D;k,b+&#x3D;k$；</li>
+<li>选择一个正整数 $k$，$a-&#x3D;k,b+&#x3D;k$；</li>
+<li>选择一个正整数 $k$，$a+&#x3D;k,b-&#x3D;k$；</li>
 </ul>
 <p>问 $(a,b)$ 变成 $(c,d)$ 的最小操作次数。</p>
 <p>$c,d\geq 0$。</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>显然若 $c+d\equiv 1\pmod 2$，那么无论如何也无法变成。</p>
-<p>否则，由于 $c,d\geq 0$，若 $c=d$，则只需一次操作，否则需要两次。</p>
+<p>否则，由于 $c,d\geq 0$，若 $c&#x3D;d$，则只需一次操作，否则需要两次。</p>
 <p>注意 $(0,0)$ 的特判。</p>
 <p>时间复杂度 $O(1)$。</p>
 <h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>给定一个序列，每次可以交换相邻的两个数，问最少的操作次数使得两两相邻数奇偶性不同。</p>
 <p>$n\le 10^5$</p>
-<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>设 $cnt=\sum_{i=1}^n[a_i\equiv 1\pmod 2]$，若 $cnt&gt; \lceil \frac{n}{2} \rceil$ 或 $cnt &lt; \lfloor \frac{n}{2} \rfloor$，则一定不行。</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>设 $cnt&#x3D;\sum_{i&#x3D;1}^n[a_i\equiv 1\pmod 2]$，若 $cnt&gt; \lceil \frac{n}{2} \rceil$ 或 $cnt &lt; \lfloor \frac{n}{2} \rfloor$，则一定不行。</p>
 <p>否则，枚举第一个数的奇偶性，之后依次交替，记录当前向右的第一个奇数与偶数，然后计算。</p>
 <p>初始化最值一定要设大一点！！！</p>
 <h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>给定一个长度为 $n$ 的序列，若 $i$ 为奇数，则表示跟着有 $a_i$ 个左括号；若 $i$ 为偶数，则表示跟着有 $a_i$ 个右括号。</p>
@@ -276,26 +277,26 @@
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>枚举 $l$ 所在的位置 $i$，然后从小到大枚举 $r$ 所在的位置 $j$，$O(1)$ 判断是否合法并计算即可。</p>
 <p>时间复杂度 $O(n^2)$，应该可以优化到一个log或者线性。</p>
 <h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><h4 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h4><p>交互题。</p>
-<p>给定 $n,k$，有一个长度为 $n$ 的非负整数数组 $a_1,a_2\cdots a_n$，最多询问一共 $2n$ 次两个不同下标的数的与/或，使得能求出数组 $a$ 的第 $k$ 小。</p>
+<p>给定 $n,k$，有一个长度为 $n$ 的非负整数数组 $a_1,a_2\cdots a_n$，最多询问一共 $2n$ 次两个不同下标的数的与&#x2F;或，使得能求出数组 $a$ 的第 $k$ 小。</p>
 <p>$n\geq 3$。</p>
-<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>显然，因为 $a+b=a &amp; b+a | b$，我们花 $2n-2$ 次，求出 $a_1+a_i(i\geq 2)$。</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p>显然，因为 $a+b&#x3D;a &amp; b+a | b$，我们花 $2n-2$ 次，求出 $a_1+a_i(i\geq 2)$。</p>
 <p>之后再花 $2$ 次，求出 $a_2+a_3$。然后就可以解得 $a_1$，剩下的 $a_i$ 也全部求出来了。</p>
 <p>找第 $k$ 小用 <code>nth_element</code>。</p>
 <p>时间复杂度 $O(n)$。</p>
 <h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><h4 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h4><p>对于两个数组 $a,b$，每次操作可以选择偶数个不同的下标，从小到大排好序后，排名为奇数的下标的 $a$ 加一，偶数的下标的 $b$ 减一。</p>
-<p>给定两个数组，多次询问某个区间 $[l,r]$，问只在该区间进行上述操作，最少的操作次数使得区间内 $a_i=b_i$。</p>
+<p>给定两个数组，多次询问某个区间 $[l,r]$，问只在该区间进行上述操作，最少的操作次数使得区间内 $a_i&#x3D;b_i$。</p>
 <p>$n,q$ 在 $10^5$ 级别。</p>
-<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>设 $c_i=a_i-b_i$，如果 $\sum_{i=l}^rc_i\neq 0$ 则无解。</p>
-<p>如果出现某个 $j$，使得 $\sum_{i=l}^jc_i &gt; 0$ 也无解。</p>
-<p>否则，最少的操作次数就是 $\sum_{i=l}^j c_i$ 的最小值取个相反数。</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>设 $c_i&#x3D;a_i-b_i$，如果 $\sum_{i&#x3D;l}^rc_i\neq 0$ 则无解。</p>
+<p>如果出现某个 $j$，使得 $\sum_{i&#x3D;l}^jc_i &gt; 0$ 也无解。</p>
+<p>否则，最少的操作次数就是 $\sum_{i&#x3D;l}^j c_i$ 的最小值取个相反数。</p>
 <p>于是，记录 $c$ 前缀和 $s$，每次相当于询问 $s$ 的某个值，$s$ 的区间最大值，$s$ 的区间最小值。</p>
 <p>时间复杂度 $O(n\log n)$。</p>
 <h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>对于一个图，如何判断有哪些人赢呢？</p>
 <p>强连通分量缩点，又因为是竞赛图，因此只有一个入度为 $0$ 的连通分量，且里面的人会赢。</p>
 <p>设 $f_S$ 表示只有集合 $S$ 中的人赢的概率，那么答案就是 $\sum |S|f_S$。</p>
 <p>设 $g_S$ 表示 $S$ 中的人两两可达的概率，$h_{S,T}$ 表示集合 $S$ 中的人都赢了 $T$ 中的所有人的概率。</p>
-<p>那么 $f_S=g_S\times h_{S,\complement_{U}^{S}}$。</p>
-<p>$g_S$ 的计算考虑补集转换，则有 $g_S=1-\sum_{T\subset S,|T|\neq 0}g_T\times h_{T,S-T}$。</p>
+<p>那么 $f_S&#x3D;g_S\times h_{S,\complement_{U}^{S}}$。</p>
+<p>$g_S$ 的计算考虑补集转换，则有 $g_S&#x3D;1-\sum_{T\subset S,|T|\neq 0}g_T\times h_{T,S-T}$。</p>
 <p>枚举子集，暴力 $O(n^2)$ 计算 $h$，时间复杂度 $O({3^n}n^2)$，无法通过。</p>
 <p>考虑预处理，优化计算 $h$ 的方法，很容易做到 $O({3^n}n)$。</p>
 <p>于是就做完了。</p>
@@ -307,6 +308,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -367,6 +370,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

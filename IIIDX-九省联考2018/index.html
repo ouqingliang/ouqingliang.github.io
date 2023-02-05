@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -261,7 +262,7 @@
 <p>$n\leq 5\times 10^5$。</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>如果 $d_i$ 互不相同，那么对于相同层数的点从小到大贪心一下即可。50pts。</p>
 <p>但是如果 $d_i$ 有相同的，因为可以有等于的限制，所以上面的贪心就行不通了。</p>
-<p>考虑换一种贪心，对于一棵子树 $u$，我们需要选择最大 $d_i$ 满足剩下的还能选择的 $d$ 中至少有 $siz_u$ 个。那也就是将 $d_i$ 从大到小排序，设 $f_i$ 表示还剩下 $f_i$ 个大于等于 $d_i$ 的 $d$ 可以选择，初始时 $f_i=i$。对于子树 $u$ 而言，需要找到最小的 $i$ 满足 $f_i\geq siz_u$，但是这个 $i$ 并不一定是最优的，显然最优的是最大的 $j$ 满足 $d_i=d_j$（实际上就是把所有的 $d_i$ 相同的搞到一起考虑）。然后将 $f[j,n]$ 都减去 $siz_u$，表示我会先预留 $siz_u$ 个位置给子树 $u$ 中的所有点。然后继续处理 $u+1$。</p>
+<p>考虑换一种贪心，对于一棵子树 $u$，我们需要选择最大 $d_i$ 满足剩下的还能选择的 $d$ 中至少有 $siz_u$ 个。那也就是将 $d_i$ 从大到小排序，设 $f_i$ 表示还剩下 $f_i$ 个大于等于 $d_i$ 的 $d$ 可以选择，初始时 $f_i&#x3D;i$。对于子树 $u$ 而言，需要找到最小的 $i$ 满足 $f_i\geq siz_u$，但是这个 $i$ 并不一定是最优的，显然最优的是最大的 $j$ 满足 $d_i&#x3D;d_j$（实际上就是把所有的 $d_i$ 相同的搞到一起考虑）。然后将 $f[j,n]$ 都减去 $siz_u$，表示我会先预留 $siz_u$ 个位置给子树 $u$ 中的所有点。然后继续处理 $u+1$。</p>
 <p>需要用的操作是区间加，查询第一个大于某个值的下标。这个用线段树即可实现。</p>
 <p>需要注意的是处理到 $u$ 时，需要把 $fa_u$ 预留的位置所做的贡献删掉。</p>
 <p>时间复杂度 $O(n\log n)$。</p>
@@ -273,6 +274,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -330,6 +333,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

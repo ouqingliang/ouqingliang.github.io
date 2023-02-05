@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -245,12 +246,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给一序列 $a$，定义 $f(x)=\sum_{i=1}^n[a_i\leq x]$，$q$ 组询问，求 $\sum_{i=l}^rf(i\ xor\ x)^2\bmod 998244353$</p>
+        <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给一序列 $a$，定义 $f(x)&#x3D;\sum_{i&#x3D;1}^n[a_i\leq x]$，$q$ 组询问，求 $\sum_{i&#x3D;l}^rf(i\ xor\ x)^2\bmod 998244353$</p>
 <p>$n,q\leq 10^5,0\leq a_i,l,r,x &lt; 2^{30}$</p>
 <span id="more"></span>
 
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>先不考虑 $x$ 的限制。</p>
-<p>设 $g(n)=\sum_{i=0}^nf(i)^2$，变成求 $g(r)-g(l-1)$。</p>
+<p>设 $g(n)&#x3D;\sum_{i&#x3D;0}^nf(i)^2$，变成求 $g(r)-g(l-1)$。</p>
 <p>这个 $g$ 可以二分算出来。时间复杂度 $O(\log n)$</p>
 <p>然后考虑 $x$ 的限制。</p>
 <p>发现当 $x$ 前几位相同时，$i\ xor\ x$是一段连续的区间。</p>
@@ -266,6 +267,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -322,6 +325,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

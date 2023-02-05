@@ -183,6 +183,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -271,28 +272,28 @@
 <p>先开了H，发现是个构造，然后复杂地分了好多类，WA了三发之后在39min过了。</p>
 <p>然后看完了K题，觉得挺可做的。接着看到队友在讨论I，突然觉得是个找规律题，于是我花了2min敲了个暴力，发现输出 $6\times 2^{n-3}$ 就好了，然后在49min的时候过了I。</p>
 <p>接下来的C一直WA，WA了三发之后发现读错题了。。原来项链是个环状的结构。。然后改了之后也一直WA。</p>
-<p>于是我去想有点思路的K。发现只要先容斥一下，把大于等于改成小于，这样就可以枚举lcm，从而枚举gcd了，然后之后就变成选定 $[1,m]$ 内的 $n$ 个数，问gcd=i,lcm=j的方案数了。这个也可以容斥做。</p>
+<p>于是我去想有点思路的K。发现只要先容斥一下，把大于等于改成小于，这样就可以枚举lcm，从而枚举gcd了，然后之后就变成选定 $[1,m]$ 内的 $n$ 个数，问gcd&#x3D;i,lcm&#x3D;j的方案数了。这个也可以容斥做。</p>
 <p>在封榜前大概0.5h开始写，写着写着发现第二个容斥复杂度太大过不去，想了想发现这个容斥可以分开做。</p>
 <p>然后再随便想了想第一个容斥，发现用个莫反就可以做了。</p>
 <p>于是在封榜前写完，交了一发，发现又T了。</p>
 <p>试了一个极限数据，发现大概要用4s。将n的快速幂预处理后，WA了一发，在237min过了K。</p>
-<p>接着去推F，搞来搞去完全不知道 $\sum_{i=1}^n \prod_{i\neq j}\frac{1+f_i-f_if_j}{f_i-f_j}$ 有何意义的时候，抬头一看，发现C被队友改了以后过了。。。通过手算F发现，$n=3$ 的答案竟然是 $2$，然后打了个表发现，这个式子竟然与 $f$ 没有关系。。。于是在280min的时候把F也过了。</p>
+<p>接着去推F，搞来搞去完全不知道 $\sum_{i&#x3D;1}^n \prod_{i\neq j}\frac{1+f_i-f_if_j}{f_i-f_j}$ 有何意义的时候，抬头一看，发现C被队友改了以后过了。。。通过手算F发现，$n&#x3D;3$ 的答案竟然是 $2$，然后打了个表发现，这个式子竟然与 $f$ 没有关系。。。于是在280min的时候把F也过了。</p>
 <p>封榜结束后的40min连过3题，直接让我们队从铁牌区飞到了金牌区。。。</p>
 <p>23个Au，5题末尾，排在第22，倒数第二个Au。</p>
 <p>颁奖Ag的时候看到没有我们，还是挺激动的哈哈哈。</p>
 <p>这题出的太奇怪了。尤其是F这种逆推回去然后出成题的。。。还有0.5s时限的C，都不知在卡些什么。所以说总体体验一般。</p>
 <p>Anyway，大学的第一场XCPC就还算圆满啦。</p>
 <p>下星期的威海加油~</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="A-Math-Ball"><a href="#A-Math-Ball" class="headerlink" title="A. Math Ball"></a>A. Math Ball</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给定 $n$ 个多项式 $F_j(x)=\sum_{i=0}i^{c_j}x_i$。</p>
-<p>求 $\prod_{j=1}^n F_j(x)$ 的前 $W$ 项系数和。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="A-Math-Ball"><a href="#A-Math-Ball" class="headerlink" title="A. Math Ball"></a>A. Math Ball</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给定 $n$ 个多项式 $F_j(x)&#x3D;\sum_{i&#x3D;0}i^{c_j}x_i$。</p>
+<p>求 $\prod_{j&#x3D;1}^n F_j(x)$ 的前 $W$ 项系数和。</p>
 <p>$W\le 10^{18},n,\sum c_j\le 10^5$。</p>
 <h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>对于幂次比较小的，可以考虑将幂用第二类斯特林数展开转成下降幂：</p>
-<p>$i^c=\sum_{j=1}^c\begin{Bmatrix}<br>c\\<br>j<br>\end{Bmatrix}i^{\underline{j}}$，</p>
+<p>$i^c&#x3D;\sum_{j&#x3D;1}^c\begin{Bmatrix}<br>c\<br>j<br>\end{Bmatrix}i^{\underline{j}}$，</p>
 <p>那么有：</p>
-<p>$$F_j(x)=\sum_{i=0}\sum_{j=1}^{c}\begin{Bmatrix}<br>c\\<br>j<br>\end{Bmatrix}j!\binom{i}{j}x^i=\sum_{j=1}^c\begin{Bmatrix}<br>c\\<br>j<br>\end{Bmatrix}j!\sum_{i=0}\binom{i}{j}x^i\=\sum_{j=1}^c\begin{Bmatrix}<br>c\\<br>j<br>\end{Bmatrix}j!\frac{(1-x)^{c-j}x^j}{(1-x)^{c+1}}$$</p>
-<p>答案就是 $[x^W]\frac{\prod_{k=1}^n(\sum_{j=1}^{c_k}S_2(c_k,j)j!(1-x)^{c_k-j}x^j)}{(1-x)^{\sum (c_k+1)}+1}$</p>
+<p>$$F_j(x)&#x3D;\sum_{i&#x3D;0}\sum_{j&#x3D;1}^{c}\begin{Bmatrix}<br>c\<br>j<br>\end{Bmatrix}j!\binom{i}{j}x^i&#x3D;\sum_{j&#x3D;1}^c\begin{Bmatrix}<br>c\<br>j<br>\end{Bmatrix}j!\sum_{i&#x3D;0}\binom{i}{j}x^i\&#x3D;\sum_{j&#x3D;1}^c\begin{Bmatrix}<br>c\<br>j<br>\end{Bmatrix}j!\frac{(1-x)^{c-j}x^j}{(1-x)^{c+1}}$$</p>
+<p>答案就是 $[x^W]\frac{\prod_{k&#x3D;1}^n(\sum_{j&#x3D;1}^{c_k}S_2(c_k,j)j!(1-x)^{c_k-j}x^j)}{(1-x)^{\sum (c_k+1)}+1}$</p>
 <p>对于分子中连乘的每一项，是一个 $c_k$ 次多项式，将 $(1-x)^{c_k-j}$ 通过二项式定理暴力展开，并预处理一行第二类斯特林数后，使用一次卷积即可算出。</p>
-<p>设分子为 $F(x)$，$s=\sum_{k=1}^n(c_k+1)$。</p>
+<p>设分子为 $F(x)$，$s&#x3D;\sum_{k&#x3D;1}^n(c_k+1)$。</p>
 <p>则答案为 ：$[x^W]\frac{F}{(1-x)^{s+1}}$，根据 $\frac{1}{(1-x)^{s+1}}$ 的组合意义，答案相当于 $F$ 的某个系数乘上组合数之和。</p>
 <p>将组合数转成下降幂除以一个阶乘的形式计算即可。</p>
 <p>时间复杂度 $O(n\log ^2n)$。</p>
@@ -302,7 +303,7 @@
 <p>找到长度最小的那个区间的右端点，考虑转一圈后是否可行，如果是无法覆盖到最后一个，那么一定不行；如果是无法覆盖整个 $n$，那么将起点改为由此时到达最右的端点+1开始，再转一圈，如果此时不行，那么就一定不行。</p>
 <p>时间复杂度 $O(m\log n)$。</p>
 <h3 id="F-Cactus"><a href="#F-Cactus" class="headerlink" title="F. Cactus"></a>F. Cactus</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>设 $f_n$ 表示总点数为 $n$ 的，允许重边的，有标号的连通仙人掌的个数。</p>
-<p>求 $\sum_{i=1}^n \prod_{i\neq j}\frac{1+f_i-f_if_j}{f_i-f_j}$ 对 $998244353$ 取模后的结果。</p>
+<p>求 $\sum_{i&#x3D;1}^n \prod_{i\neq j}\frac{1+f_i-f_if_j}{f_i-f_j}$ 对 $998244353$ 取模后的结果。</p>
 <p>$n\le 3\times 10^5$。</p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>这玩意儿竟然跟 $f_i$ 无关。。。</p>
 <p>答案即为 $fib_n$。</p>
@@ -314,15 +315,15 @@
 <p>只考虑横坐标，那么就是一个简单的莫队。</p>
 <p>再考虑纵坐标，最小值只有可能在相邻的纵坐标中取得，那么用线段树维护最小值，合并的时候记录临界的点即可。</p>
 <p>莫队分块大小取 $\frac{n^2}{m}$，时间复杂度 $O(n\sqrt{m}\log n)$。</p>
-<h3 id="H-Three-Integers"><a href="#H-Three-Integers" class="headerlink" title="H. Three Integers"></a>H. Three Integers</h3><h4 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h4><p>给定 $a,b,c$，求出一组 $x,y,z$，满足 $x\bmod y=a,y\bmod z=b,z\bmod x=c$，或判定无解。</p>
+<h3 id="H-Three-Integers"><a href="#H-Three-Integers" class="headerlink" title="H. Three Integers"></a>H. Three Integers</h3><h4 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h4><p>给定 $a,b,c$，求出一组 $x,y,z$，满足 $x\bmod y&#x3D;a,y\bmod z&#x3D;b,z\bmod x&#x3D;c$，或判定无解。</p>
 <h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h4><p>不妨设 $a\geq b\geq c$。</p>
-<p>当 $abc\neq 0$ 时，若 $a=b=c$ 则无解，否则， $(x,y,z)=(a,a+c+b,a+c)$ 为一组可行解。</p>
-<p>当 $abc=0$ 时，若 $a=b=c=0$，则 $(1,1,1)$ 为一组解；若 $b=c=0$，则 $(a,2a,2a)$ 为一组解；若 $c=0$，则 $(a,2a+b,2a)$ 为一组解。</p>
+<p>当 $abc\neq 0$ 时，若 $a&#x3D;b&#x3D;c$ 则无解，否则， $(x,y,z)&#x3D;(a,a+c+b,a+c)$ 为一组可行解。</p>
+<p>当 $abc&#x3D;0$ 时，若 $a&#x3D;b&#x3D;c&#x3D;0$，则 $(1,1,1)$ 为一组解；若 $b&#x3D;c&#x3D;0$，则 $(a,2a,2a)$ 为一组解；若 $c&#x3D;0$，则 $(a,2a+b,2a)$ 为一组解。</p>
 <p>时间复杂度 $O(1)$。</p>
 <h3 id="I-Pudding-Store"><a href="#I-Pudding-Store" class="headerlink" title="I. Pudding Store"></a>I. Pudding Store</h3><h4 id="题意-5"><a href="#题意-5" class="headerlink" title="题意"></a>题意</h4><p>多次询问有多少个长度为 $n$ 的排列的前缀和的两倍均为为 $i$ 的倍数。</p>
 <p>$n\le 10^9$。</p>
 <h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>打表可知，当 $n\le 2$ 时答案为 $n$，否则为 $6\times 2^{n-3}$ 。</p>
-<h3 id="K-Magus-Night"><a href="#K-Magus-Night" class="headerlink" title="K. Magus Night"></a>K. Magus Night</h3><h4 id="题意-6"><a href="#题意-6" class="headerlink" title="题意"></a>题意</h4><p>问所有长度为 $n$ 的数组 $a$ 的 $\prod_{i=1}^n a_i$ 的和，满足 $1\le a_i \le m$ 且 $a_i$ 为整数，$\gcd(a_1,a_2,\cdots,a_n)\le q$，且 $\text{lcm}(a_1,a_2,\cdots,a_n)\geq p$。</p>
+<h3 id="K-Magus-Night"><a href="#K-Magus-Night" class="headerlink" title="K. Magus Night"></a>K. Magus Night</h3><h4 id="题意-6"><a href="#题意-6" class="headerlink" title="题意"></a>题意</h4><p>问所有长度为 $n$ 的数组 $a$ 的 $\prod_{i&#x3D;1}^n a_i$ 的和，满足 $1\le a_i \le m$ 且 $a_i$ 为整数，$\gcd(a_1,a_2,\cdots,a_n)\le q$，且 $\text{lcm}(a_1,a_2,\cdots,a_n)\geq p$。</p>
 <p>$1\le n \le 10^9,1\le p,q\le m\le 2\times 10^5$。</p>
 <h4 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h4><p>$\text{lcm}$ 一定为 $\gcd$ 的倍数。因此，我们可以枚举 $\text{lcm}$ 后，枚举其因数作为 $\gcd$。</p>
 <p>但是题目里是 $\text{lcm}(a_1,a_2,\cdots,a_n)\geq p$，不好枚举，于是容斥一下，撇开 $\text{lcm}$ 的限制后，统计出 $\gcd(a_1,a_2,\cdots,a_n)\le q$ 的答案，那么就可以转换为枚举一个较小的 $\text{lcm}$ 了。</p>
@@ -336,6 +337,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -398,6 +401,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

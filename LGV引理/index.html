@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -250,8 +251,8 @@
 
 <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给定一个有向无环图，各 $k$ 个点的集合 $A,B$ 。要求从统计 $n$ 条从 $A_i$ 到 $B_i$ 的路径，每个点至多在一条路径中的方案数 $N$。</p>
 <h3 id="LGV引理"><a href="#LGV引理" class="headerlink" title="LGV引理"></a>LGV引理</h3><p>记 $e(u,v)$ 为从点 $u$ 到点 $v$ 的路径方案数，则有：</p>
-<p>$$<br>\left | N \right |=\begin{vmatrix}<br>e(A_1,B_1) &amp; e(A_1,B_2) &amp; \cdots &amp; e(A_1,B_n)\\<br>e(A_2,B_1) &amp; e(A_2,B_2) &amp; \cdots &amp; e(A_2,B_n)\\<br>\vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\<br>e(A_n,B_1) &amp; e(A_n,B_2) &amp; \cdots &amp; e(A_n,B_n)<br>\end{vmatrix}<br>$$</p>
-<h3 id="证明感性理解"><a href="#证明感性理解" class="headerlink" title="证明感性理解"></a><del>证明</del>感性理解</h3><p>$$<br>|N|=\sum_{p_i\in [1,n],p_i\neq p_j}(-1)^{\sigma(p)}\prod_{i=1}^n e（A_i,B_{p_i})<br>$$</p>
+<p>$$<br>\left | N \right |&#x3D;\begin{vmatrix}<br>e(A_1,B_1) &amp; e(A_1,B_2) &amp; \cdots &amp; e(A_1,B_n)\<br>e(A_2,B_1) &amp; e(A_2,B_2) &amp; \cdots &amp; e(A_2,B_n)\<br>\vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \<br>e(A_n,B_1) &amp; e(A_n,B_2) &amp; \cdots &amp; e(A_n,B_n)<br>\end{vmatrix}<br>$$</p>
+<h3 id="证明感性理解"><a href="#证明感性理解" class="headerlink" title="证明感性理解"></a><del>证明</del>感性理解</h3><p>$$<br>|N|&#x3D;\sum_{p_i\in [1,n],p_i\neq p_j}(-1)^{\sigma(p)}\prod_{i&#x3D;1}^n e（A_i,B_{p_i})<br>$$</p>
 <p>假如某种方案出现了相交情况，比如从 $A_1$ 到 $B_i$ 与从 $A_2$ 到 $B_j$ 出现了相交，那么将 $B_i$ 与 $B_j$ 交换后，逆序对个数奇偶性改变，由容斥原理一减一加就没了。</p>
 <p>于是求个行列式就好了。</p>
 <p>$e$ 数组也可以直接DP算出来。</p>
@@ -266,6 +267,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -322,6 +325,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

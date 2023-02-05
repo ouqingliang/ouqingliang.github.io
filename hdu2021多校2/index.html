@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -262,7 +263,7 @@
 <p>问序列 $b$ 的逆序对个数模 $2$ 的结果。</p>
 <p>$T\le 10^5,p\in \mathbb{P},2 \le a &lt; p &lt; 10^{18}$。</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>对于一个排列，交换任意两个数后，逆序对奇偶性一定改变。</p>
-<p>因此，只需找到最小的 $d$，满足 $a^d\equiv 1\pmod p$，这个 $d$ 显然是 $\varphi(p)=p-1$ 的约数。</p>
+<p>因此，只需找到最小的 $d$，满足 $a^d\equiv 1\pmod p$，这个 $d$ 显然是 $\varphi(p)&#x3D;p-1$ 的约数。</p>
 <p>之后整个 $b$ 序列就形成了 $\frac{p-1}{d}$ 个环，每个环需要交换 $d-1$ 次。</p>
 <p>于是答案即为 $\frac{p-1}{d}(d-1)\bmod 2$。</p>
 <p>当且仅当 $d$ 为偶数，且 $d$ 中 $2$ 的次幂与 $p-1$ 中相同时答案为 $1$。</p>
@@ -273,6 +274,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -329,6 +332,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

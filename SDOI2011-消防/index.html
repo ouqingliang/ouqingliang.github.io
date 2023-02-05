@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -260,16 +261,16 @@
 <ul>
 <li>性质二：这条路径必与某条直径相交。</li>
 </ul>
-<p>证明：反证，假设这样最优的路径 $l_1$ 不在某条直径上，设直径端点为 $x,y$，直径中与 $l_1$ 距离最短的点为 $u$，不妨设 $d_{x,u}\geq d_{y,u}$。设 $l_1$ 中与 $u$ 最近的点为 $v$，显然 $u\not = v$。</p>
+<p>证明：反证，假设这样最优的路径 $l_1$ 不在某条直径上，设直径端点为 $x,y$，直径中与 $l_1$ 距离最短的点为 $u$，不妨设 $d_{x,u}\geq d_{y,u}$。设 $l_1$ 中与 $u$ 最近的点为 $v$，显然 $u\not &#x3D; v$。</p>
 <p>由性质一可知，$l_1$ 的点在树中的最远点为 $x$。$u$ 的最远点也为 $x$。</p>
-<p>只取 $u$ 这个点成为一条路径 $l_2$，有 $f(l_2)=d_{u,x} &lt; d_{u,x}+d_{u,v}=f(l_1)$。说明 $l_1$ 不为最优路径，与已知矛盾，证毕。</p>
+<p>只取 $u$ 这个点成为一条路径 $l_2$，有 $f(l_2)&#x3D;d_{u,x} &lt; d_{u,x}+d_{u,v}&#x3D;f(l_1)$。说明 $l_1$ 不为最优路径，与已知矛盾，证毕。</p>
 <ul>
 <li>性质三：这条路径可以全在某条直径上。</li>
 </ul>
 <p>证明：由性质二，这条路径与直径相交，设相交部分为 $l_2$，其两端点为 $a,b$。还是运用反证法：设 $l_1$ 的两端点为 $c,d$， 易证 $f(l_2)\le f(l_1)$ 而得出矛盾。</p>
 <p>综上，我们只需考虑路径全在直径上的情况。</p>
 <p>将一条直径的所有点找出来，按顺序排成一排，共 $m$ 个，记为 $a_i$。设非直径中的所有点到 $a_i$ 距离最大值为 $f_i$，从直径一端到 $a_i$ 的距离为 $s_i$。</p>
-<p>那么以 $a_{i},a_{j}(i\le j)$ 为端点的路径，最大值为 $\max\{\max_{i\le k \le j}\{f_k\},s_m-s_j,s_i\}$</p>
+<p>那么以 $a_{i},a_{j}(i\le j)$ 为端点的路径，最大值为 $\max{\max_{i\le k \le j}{f_k},s_m-s_j,s_i}$</p>
 <p>随便用个方法（比如单调队列）即可求出最值。</p>
 <p>时间复杂度 $O(n)$。</p>
 <h4 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h4><p>既然要最大值最小，那么就二分吧。</p>
@@ -283,6 +284,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -341,6 +344,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

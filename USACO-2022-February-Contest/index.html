@@ -176,6 +176,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -260,9 +261,9 @@
 <p>$P$ 最后只有 $2^t$ 种不同的情况，将 $P$ 哈希即可。</p>
 <p>对于后面一半，暴力枚举每个向量选择的情况，假设选了 $j$ 个向量，最终前半部分的坐标应为 $Q$（$Q$ 可以通过用终点坐标减去这 $j$ 个向量求出），那么枚举 $i$，将 $i+j$ 的答案加上 $f_{i,Q}$ 即可。</p>
 <p>时间复杂度 $O(2^t+2^{n-t}t)$。</p>
-<p>取 $t=\frac{n}{2}$ 就可以过了。</p>
+<p>取 $t&#x3D;\frac{n}{2}$ 就可以过了。</p>
 <h2 id="Problem-3-Email-Filing"><a href="#Problem-3-Email-Filing" class="headerlink" title="Problem 3. Email Filing"></a>Problem 3. Email Filing</h2><h3 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h3><p>Farmer John 要处理邮件。屏幕左侧是 $m$ 个文件夹，他需要将位于屏幕右侧的 $n$ 封邮件归类进左侧的文件夹中，其中，从上往下第 $i$ 封邮件需要进入左侧从上往下第 $f_i$ 个文件夹中。</p>
-<p>由于屏幕大小有限，每次只能看到最多 $k$ 个文件夹，$k$ 封邮件。其中 $k\le \min\{n,m\}$。刚开始时，他看到的是编号为 $1\sim k$ 的文件夹和邮件。他需要上下滚动鼠标滚轮，每次滚动会将位于屏幕最上方的文件夹（或邮件）移出屏幕，而屏幕下方的下面第一个文件夹（或邮件）将出现在屏幕最下方。每个邮件移动完后，邮件的图标将消失，同时下一个（如果有的话）标号的邮件将出现在屏幕上。</p>
+<p>由于屏幕大小有限，每次只能看到最多 $k$ 个文件夹，$k$ 封邮件。其中 $k\le \min{n,m}$。刚开始时，他看到的是编号为 $1\sim k$ 的文件夹和邮件。他需要上下滚动鼠标滚轮，每次滚动会将位于屏幕最上方的文件夹（或邮件）移出屏幕，而屏幕下方的下面第一个文件夹（或邮件）将出现在屏幕最下方。每个邮件移动完后，邮件的图标将消失，同时下一个（如果有的话）标号的邮件将出现在屏幕上。</p>
 <p>不幸的是，这个鼠标的滚轮只能往下滚动。唯一能看到还未处理的邮件的方法是滚到最下面后整理完某个屏幕中的邮件，这时上面第一个未处理的将出现在屏幕中。</p>
 <p>你需要告诉Farmer John 能否处理完这批邮件。</p>
 <p>$n\le 10^5,m\le 10^4$。</p>
@@ -274,7 +275,7 @@
 <ul>
 <li><p>若 $f_u&lt;now$，那就别想了，永远都搞不了这个 $u$。</p>
 </li>
-<li><p>移动左侧文件夹，直至 $now+k-1=f_u$；如果这时移动，则必须满足剩下的还未处理的邮件的 $f$ 都必须大于新的 $now$（即 $f_u+1-k$），否则：</p>
+<li><p>移动左侧文件夹，直至 $now+k-1&#x3D;f_u$；如果这时移动，则必须满足剩下的还未处理的邮件的 $f$ 都必须大于新的 $now$（即 $f_u+1-k$），否则：</p>
 </li>
 <li><p>先不处理，看看后面的情况，也就是将当前最上方的先去掉。</p>
 </li>
@@ -286,24 +287,26 @@
 <p>设 $f(S)$ 表示在 $S$ 中形成若干个合法环的方案数。</p>
 <p>答案为 $f(S)\times f(\complement_US)$。</p>
 <p>时间复杂度 $O(2^nn^2)$ 或 $O(3^n)$。</p>
-<h2 id="Problem-2-Cow-Camp"><a href="#Problem-2-Cow-Camp" class="headerlink" title="Problem 2. Cow Camp"></a>Problem 2. Cow Camp</h2><p>每次出现恰好 $i$ 个的概率 $P(i)=\frac{\binom{n}{i}}{2^n}$。</p>
+<h2 id="Problem-2-Cow-Camp"><a href="#Problem-2-Cow-Camp" class="headerlink" title="Problem 2. Cow Camp"></a>Problem 2. Cow Camp</h2><p>每次出现恰好 $i$ 个的概率 $P(i)&#x3D;\frac{\binom{n}{i}}{2^n}$。</p>
 <p>考虑递推，设 $f_i$ 表示用 $i$ 次的最大期望，</p>
-<p>则有：$f_k=\sum_{i=0}^nP(i)\times \max\{i,f_{k-1}\}$。初始条件 $f_0=0$。</p>
+<p>则有：$f_k&#x3D;\sum_{i&#x3D;0}^nP(i)\times \max{i,f_{k-1}}$。初始条件 $f_0&#x3D;0$。</p>
 <p>记录 $P(i)$ 前缀和 $s_i$，$iP(i)$ 后缀和 $t_i$ 即可 $O(k)$ 解决。</p>
-<p>可以发现，这个东西相当于 $f=s_if+t_{i+1}$ 迭代若干遍，其中 $i=\lfloor f\rfloor$。</p>
+<p>可以发现，这个东西相当于 $f&#x3D;s_if+t_{i+1}$ 迭代若干遍，其中 $i&#x3D;\lfloor f\rfloor$。</p>
 <p>而 $i$ 最多是 $n$，那么可以二分出最少迭代次数，使得迭代后 $i$ 将会变化。</p>
 <p>迭代 $k$ 次后的 $f$ 为 $s^k\times f+\frac{1-s^k}{1-s}\times t$。</p>
 <p>二分+快速幂即可。</p>
 <p>时间复杂度 $O(n\log^2 k)$。</p>
-<h2 id="Problem-3-Moo-Network"><a href="#Problem-3-Moo-Network" class="headerlink" title="Problem 3. Moo Network"></a>Problem 3. Moo Network</h2><p>贪心可知，对于每个纵坐标，一个点只可能往左/右边第一个连边。</p>
+<h2 id="Problem-3-Moo-Network"><a href="#Problem-3-Moo-Network" class="headerlink" title="Problem 3. Moo Network"></a>Problem 3. Moo Network</h2><p>贪心可知，对于每个纵坐标，一个点只可能往左&#x2F;右边第一个连边。</p>
 <p>剩下的是最小生成树模板。</p>
-<p>时间复杂度 $O(m\log m)$，其中 $m=20n$。</p>
+<p>时间复杂度 $O(m\log m)$，其中 $m&#x3D;20n$。</p>
 
     </div>
 
     
     
     
+      
+
 
     <footer class="post-footer">
 
@@ -357,6 +360,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

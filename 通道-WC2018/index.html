@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -274,13 +275,13 @@
 <p>那么题目转换成黑白两集合各选一个点 $x,y$，那么这棵树的贡献就是 $d_1x+d_1y-val_i$。</p>
 <p>看看 $T_1,T_2$ 能不能沿用前面的方法。</p>
 <p>但是现在多了一个 $d1$，还有黑白的颜色，以及能不能选上这个点的限制条件。</p>
-<p>考虑设 $w_x=d_1x+d_2x$，那么 $T_2$ 中的贡献则变为 $w_x+w_y-2\times d_2lca$。</p>
-<p>而黑白集合还是可以一样的维护。即用 $f_{u,0/1}$ 表示两个集合的直径。</p>
+<p>考虑设 $w_x&#x3D;d_1x+d_2x$，那么 $T_2$ 中的贡献则变为 $w_x+w_y-2\times d_2lca$。</p>
+<p>而黑白集合还是可以一样的维护。即用 $f_{u,0&#x2F;1}$ 表示两个集合的直径。</p>
 <p>但是一次dp是 $O(n)$ 的。</p>
 <p>那么建个虚树就好了。</p>
 <p>还有一个问题，边分治在菊花图的时候会死得很惨。</p>
 <p>此时需要用到多叉树转二叉树，并且不能改变距离的限制，因此不能用左二子右兄弟法。</p>
-<p>对于每个度数大于2（除父亲节点）的节点 $i$，添加两个点 $l,r$，连边 $(i,l/r,0)$，然后将子节点分成一半连向 $l,r$，然后再处理 $l,r$ 即可。</p>
+<p>对于每个度数大于2（除父亲节点）的节点 $i$，添加两个点 $l,r$，连边 $(i,l&#x2F;r,0)$，然后将子节点分成一半连向 $l,r$，然后再处理 $l,r$ 即可。</p>
 <p>这样复杂度就能有保证了。</p>
 <p>因此我们需要：</p>
 <ul>
@@ -298,6 +299,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -356,6 +359,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

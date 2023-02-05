@@ -181,6 +181,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -267,7 +268,7 @@
 <p>首先对第一棵树进行dsu on tree。枚举第一棵树的lca，那么上述条件就是 $len_{lca2(P2_i,P2_j)}\geq m-1-len_{lca}$</p>
 <p>先递归处理轻儿子，然后将贡献删掉。然后递归重儿子，保留其贡献。</p>
 <p>我们只需要考虑：</p>
-<h4 id="轻儿子节点之间的贡献"><a href="#轻儿子节点之间的贡献" class="headerlink" title="轻儿子节点之间的贡献"></a>轻儿子节点之间的贡献</h4><p>对于一个节点 $u$，将轻儿子从左到右排成一列，只考虑 $j&lt;i$ 时 $j$ 对 $i$ 的贡献（否则反过来再处理一遍就可以了），那么枚举第 $i$ 个轻儿子的子树中的节点，考虑之前的所有节点，要使得在第二棵树上的 $len_{lca2}$ 大于等于 $k=m-1-len_{lca}$，那么用倍增找到这个节点在第二棵树上的祖先中最浅的节点 $w$，使得 $len_w\geq k$。</p>
+<h4 id="轻儿子节点之间的贡献"><a href="#轻儿子节点之间的贡献" class="headerlink" title="轻儿子节点之间的贡献"></a>轻儿子节点之间的贡献</h4><p>对于一个节点 $u$，将轻儿子从左到右排成一列，只考虑 $j&lt;i$ 时 $j$ 对 $i$ 的贡献（否则反过来再处理一遍就可以了），那么枚举第 $i$ 个轻儿子的子树中的节点，考虑之前的所有节点，要使得在第二棵树上的 $len_{lca2}$ 大于等于 $k&#x3D;m-1-len_{lca}$，那么用倍增找到这个节点在第二棵树上的祖先中最浅的节点 $w$，使得 $len_w\geq k$。</p>
 <p>之后就在 $w$ 的子树中找有多少个节点满足这个节点在第一棵树中在 $j$ 的子树里。这个是一个单点加，区间查询，用树状数组维护即可。</p>
 <h4 id="重儿子对轻儿子的贡献"><a href="#重儿子对轻儿子的贡献" class="headerlink" title="重儿子对轻儿子的贡献"></a>重儿子对轻儿子的贡献</h4><p>显然你不能再枚举一遍重儿子，那么再维护一个树状数组（表示的就是上面所说的贡献），意义跟第一种情况是几乎一样的，然后枚举轻儿子的所有节点，倍增，然后查询即可。</p>
 <h4 id="轻儿子对重儿子的贡献"><a href="#轻儿子对重儿子的贡献" class="headerlink" title="轻儿子对重儿子的贡献"></a>轻儿子对重儿子的贡献</h4><p>显然你不能再枚举一遍重儿子，那么对于一个轻儿子子树中的节点 $v$ 而言，设它在一种情况中的 $w$ 是 $w_v$，那么所有满足在第一棵树重儿子的子树中且在第二棵树 $w_v$ 的子树中的节点的答案需要加 $1$。</p>
@@ -283,6 +284,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -343,6 +346,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

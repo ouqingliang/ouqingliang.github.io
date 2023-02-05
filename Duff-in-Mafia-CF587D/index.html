@@ -180,6 +180,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -256,7 +257,7 @@
 <p>对于一个点而言：考虑与之相连的所有边，如果其中一条边选了，剩下的所有的边都不能选；考虑与之相连的所有同颜色的边，如果其中一条边没选，剩下的都必须要选。</p>
 <p>那么就变成一个2-SAT问题了。将 $m$ 条边看成点，拆点，$i,i’$ 分别表示表示这条边选和不选的情况。</p>
 <p>对于必定不能选的边，连边 $(i,i’)$。</p>
-<p>对于第一种情况，即考虑所有边的情况：将这些边排成一列，然后连边 $(i,j’)$，其中 $j\not =i$。</p>
+<p>对于第一种情况，即考虑所有边的情况：将这些边排成一列，然后连边 $(i,j’)$，其中 $j\not &#x3D;i$。</p>
 <p>第二种情况同理，连 $(i’,j)$。</p>
 <p>但是这样做复杂度高达 $O(m^2\log t)$，无法承受。</p>
 <p>考虑优化连边——前缀优化（似乎是2-SAT的一种很经典的连边方式？）。</p>
@@ -272,6 +273,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -329,6 +332,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

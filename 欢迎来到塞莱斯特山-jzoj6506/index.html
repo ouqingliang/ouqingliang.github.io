@@ -180,6 +180,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -256,10 +257,10 @@
 <p>因此，我们可以设计状态为 $f_{u,i}$ 表示考虑子树 $u$ 时，一共有 $i$ 个段，段与段之间有序的方案数。</p>
 <p>那么考虑枚举 $u$ 的子树 $v$，然后将贡献合并到 $u$ 那里去。</p>
 <p>枚举 $i,j,k$，有</p>
-<p>$$f’<em>{u,k}=\sum</em>{i}\sum_{j}f_{u,i}\times f_{v,j}\times g_{i,j,k}\times dep_u^{i+j-k}$$</p>
+<p>$$f’<em>{u,k}&#x3D;\sum</em>{i}\sum_{j}f_{u,i}\times f_{v,j}\times g_{i,j,k}\times dep_u^{i+j-k}$$</p>
 <p>其中，$g_{i,j,k}$ 为将两种不同的段，第一种有 $i$ 个段，第二种有 $j$ 个，合并成 $k$ 个段的方案数（段与段之间有序）。</p>
 <p>那么，枚举合并之后 $k$ 个段中，第一个段是怎么来的。分三种情况讨论，得到：</p>
-<p>$$g_{i,j,k}=(2\times \sum_{l=1}g_{i-l,j-l,k-1})+\sum_{l=0}g_{i-l,j-l-1,k-1}+\sum_{l=0}g_{i-l-1,j-l,k-1}$$</p>
+<p>$$g_{i,j,k}&#x3D;(2\times \sum_{l&#x3D;1}g_{i-l,j-l,k-1})+\sum_{l&#x3D;0}g_{i-l,j-l-1,k-1}+\sum_{l&#x3D;0}g_{i-l-1,j-l,k-1}$$</p>
 <p>发现这三个都是一个前缀和的形式，用前缀和优化一下即可达到 $O(n^3)$ 的预处理。</p>
 <p>时间复杂度 $O(n^3)$。</p>
 <p>注意树上背包的时候需要按照子树大小来搞，不然复杂度不对。</p>
@@ -271,6 +272,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -328,6 +331,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

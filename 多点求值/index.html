@@ -178,6 +178,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -251,20 +252,20 @@
 <span id="more"></span>
 
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="算法一"><a href="#算法一" class="headerlink" title="算法一"></a>算法一</h3><p>最经典的多点求值。</p>
-<p>设 $P_{l,r}(x)=\prod_{i=l}^r(x-x_i)$。</p>
-<p>设 $k=\lfloor \frac{m}{2} \rfloor$，显然有 $\forall i\in [1,k],P_{1,k}(x_i)=0,\forall i\in[k+1,m],P_{m+1,n}(x_i)=0$。</p>
-<p>对于 $i\in [1,k]$，考虑多项式 $f(x)$ 表示成 $D(x)P_{1,k}(x)+R(x)$ 的形式（其中 $deg_R&lt;deg_{P_{1,k}}$），那么有 $\forall i\in [1,k],f(x_i)=R(x_i)$。</p>
+<p>设 $P_{l,r}(x)&#x3D;\prod_{i&#x3D;l}^r(x-x_i)$。</p>
+<p>设 $k&#x3D;\lfloor \frac{m}{2} \rfloor$，显然有 $\forall i\in [1,k],P_{1,k}(x_i)&#x3D;0,\forall i\in[k+1,m],P_{m+1,n}(x_i)&#x3D;0$。</p>
+<p>对于 $i\in [1,k]$，考虑多项式 $f(x)$ 表示成 $D(x)P_{1,k}(x)+R(x)$ 的形式（其中 $deg_R&lt;deg_{P_{1,k}}$），那么有 $\forall i\in [1,k],f(x_i)&#x3D;R(x_i)$。</p>
 <p>于是，经过一次多项式取模，将其转换为 $\frac{k}{2}$ 的子问题。</p>
 <p>那么先分治，预处理出所有分治结构中的 $P(x)$，然后再来一次分治，每次递归时将当前多项式对 $P_{l,r}$ 取模。</p>
-<p>到 $l=r$ 时，$[x^0]P_{l,l}(x)$ 就是答案了。</p>
-<p>时间复杂度 $T(n)=2T(\frac{n}{2})+O(n\log n)$，由主定理得，$T(n)=O(n\log ^2n)$。</p>
+<p>到 $l&#x3D;r$ 时，$[x^0]P_{l,l}(x)$ 就是答案了。</p>
+<p>时间复杂度 $T(n)&#x3D;2T(\frac{n}{2})+O(n\log n)$，由主定理得，$T(n)&#x3D;O(n\log ^2n)$。</p>
 <p>空间复杂度 $O(n\log n)$。</p>
 <p>这样做不仅需要写多项式取模，而且常数较大。</p>
-<h3 id="算法二"><a href="#算法二" class="headerlink" title="算法二"></a>算法二</h3><p>定义差卷积 $\text{Mul}^T(A,B)<em>i=\sum</em>{j}A_{i+j}\times B_j$。</p>
+<h3 id="算法二"><a href="#算法二" class="headerlink" title="算法二"></a>算法二</h3><p>定义差卷积 $\text{Mul}^T(A,B)<em>i&#x3D;\sum</em>{j}A_{i+j}\times B_j$。</p>
 <p>显然有如下性质：</p>
-<p>$\text{Mul}^T(A,B\times C)=\text{Mul}^T(\text{Mul}^T(A,B),C)$。</p>
-<p>可以发现， $f(x_0)=\sum_{i=0}^nf_ix_0^i=[x^0]\text{Mul}^T(f,\frac{1}{1-x_0x})$。</p>
-<p>于是，考虑算出 $P_{l,r}=\prod_{i=l}^r(1-x_ix)$，先计算 $G=\text{Mul}^T(f,\frac{1}{P_{1,m}})$。</p>
+<p>$\text{Mul}^T(A,B\times C)&#x3D;\text{Mul}^T(\text{Mul}^T(A,B),C)$。</p>
+<p>可以发现， $f(x_0)&#x3D;\sum_{i&#x3D;0}^nf_ix_0^i&#x3D;[x^0]\text{Mul}^T(f,\frac{1}{1-x_0x})$。</p>
+<p>于是，考虑算出 $P_{l,r}&#x3D;\prod_{i&#x3D;l}^r(1-x_ix)$，先计算 $G&#x3D;\text{Mul}^T(f,\frac{1}{P_{1,m}})$。</p>
 <p>然后分治，递归时维护当前的 $G$，下传到 $[l,mid]$ 时，新的 $G$ 则为 $\text{Mul}^T(G,P_{mid+1,r})$。下传到 $[mid+1,r]$ 同理。</p>
 <p>于是就做完了，时间复杂度也为 $O(n\log ^2n)$。</p>
 <p>但是这个只需要写到多项式求逆，不需要再写多项式取模，常数少了 $\frac{1}{2}$。</p>
@@ -280,6 +281,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -337,6 +340,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

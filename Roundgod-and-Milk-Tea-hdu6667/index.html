@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -253,13 +254,13 @@
 <p>Hall定理详见：<a href="/Hall%E5%AE%9A%E7%90%86/" title="Hall定理">Hall定理</a></p>
 <p>首先先建个二分图，每个班的每个学生代表的点都向别班的每杯奶茶连边，</p>
 <p>题目转换成了求该二分图的最大匹配。</p>
-<p>Hall定理的推论：最大匹配数 = $|X|-\max(|W|-|N_g(W)|)$。</p>
-<p>设 $Q=|W|-|N_g(W)|$ ，</p>
+<p>Hall定理的推论：最大匹配数 &#x3D; $|X|-\max(|W|-|N_g(W)|)$。</p>
+<p>设 $Q&#x3D;|W|-|N_g(W)|$ ，</p>
 <p>下面考虑如何求 $Q$ 的最大值。</p>
 <p>分三种情况讨论：</p>
-<p>1，$|W|=0$，此时 $Q=0$。</p>
-<p>2，$W$ 内只有第 $i$ 个班的学生，此时 $|N_g(W)|=(\sum b_j) -b_i$，为了让 $|W|$ 最大化，$|W|$ 应为 $a_i$，此时 $Q=a_i+b_i-(\sum b_j)$。</p>
-<p>3，$W$ 内有多个班的学生，此时 $|N_g(W)|=\sum b_i$，为了让 $|W|$ 最大化，$|W|$ 应为 $\sum a_i$，此时 $Q=(\sum a_i)-(\sum b_i)$。</p>
+<p>1，$|W|&#x3D;0$，此时 $Q&#x3D;0$。</p>
+<p>2，$W$ 内只有第 $i$ 个班的学生，此时 $|N_g(W)|&#x3D;(\sum b_j) -b_i$，为了让 $|W|$ 最大化，$|W|$ 应为 $a_i$，此时 $Q&#x3D;a_i+b_i-(\sum b_j)$。</p>
+<p>3，$W$ 内有多个班的学生，此时 $|N_g(W)|&#x3D;\sum b_i$，为了让 $|W|$ 最大化，$|W|$ 应为 $\sum a_i$，此时 $Q&#x3D;(\sum a_i)-(\sum b_i)$。</p>
 <p>所以答案为：$(\sum a_i)-Q$。</p>
 <h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><p>学过编程的人都能写出来，懒得贴了。</p>
 
@@ -268,6 +269,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -324,6 +327,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

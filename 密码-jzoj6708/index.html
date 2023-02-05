@@ -182,6 +182,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -254,10 +255,10 @@
 <span id="more"></span>
 
 <h3 id="做法1"><a href="#做法1" class="headerlink" title="做法1"></a>做法1</h3><h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑多项式。</p>
-<p>题目实际上求的是 $\prod_{k=i}^{i+m-1}val_{k,s[k-i+1]}$。</p>
+<p>题目实际上求的是 $\prod_{k&#x3D;i}^{i+m-1}val_{k,s[k-i+1]}$。</p>
 <p>那么求一个ln后，变成求加法。</p>
 <p>由于字符集大小只有10，我们将10个字符分开来处理。</p>
-<p>对于一种字符 $j$，定义 $f_i=[s[i]==j]$。</p>
+<p>对于一种字符 $j$，定义 $f_i&#x3D;[s[i]&#x3D;&#x3D;j]$。</p>
 <p>然后将其中一个串反转，做个卷积即可。</p>
 <p>时间复杂度 $O(n|S| \log n)$，其中 $|S|$ 为字符集大小。</p>
 <p>感觉可能会有精度问题？但有人过了qwq。</p>
@@ -275,6 +276,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -334,6 +337,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

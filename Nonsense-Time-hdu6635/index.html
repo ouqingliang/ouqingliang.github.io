@@ -179,6 +179,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -257,7 +258,7 @@
 <p>因此每个位置有 $O(\frac{1}{\sqrt n})$ 的概率在LIS上。</p>
 <p>本题倒着做或许会方便一些，每次删掉一个数。</p>
 <p>那么每次先暴力求出LIS及其位置。如果每次使其不可用的位置不在LIS上，那么不管它。否则暴力再算一遍LIS。</p>
-<p>期望复杂度 $O(\frac{n^2\log n}{\sqrt n})=O(n\sqrt n\log n)$</p>
+<p>期望复杂度 $O(\frac{n^2\log n}{\sqrt n})&#x3D;O(n\sqrt n\log n)$</p>
 <p>这是一道用了比较重要的性质的题，在此记录一下以免忘记。</p>
 <h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><p>咕咕咕</p>
 
@@ -266,6 +267,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -324,6 +327,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 

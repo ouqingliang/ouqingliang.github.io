@@ -177,6 +177,7 @@
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -252,7 +253,7 @@
 <h2 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h2><h3 id="树-gt-prufer数列"><a href="#树-gt-prufer数列" class="headerlink" title="树-&gt;prufer数列"></a>树-&gt;prufer数列</h3><p>我们定义一棵无根树中度数为 $1$ 的点是叶子。</p>
 <p>将以下操作重复 $n-2$ 遍：</p>
 <p>将树中编号最小的叶子拎出来，在数列末尾写上与这个叶子相连的点，然后删除这个叶子。</p>
-<h3 id="prufer数列-gt-树"><a href="#prufer数列-gt-树" class="headerlink" title="prufer数列-&gt;树"></a>prufer数列-&gt;树</h3><p>定义集合 $A=\{1,2,\cdots,n\}$，将以下操作重复 $n-2$ 遍：</p>
+<h3 id="prufer数列-gt-树"><a href="#prufer数列-gt-树" class="headerlink" title="prufer数列-&gt;树"></a>prufer数列-&gt;树</h3><p>定义集合 $A&#x3D;{1,2,\cdots,n}$，将以下操作重复 $n-2$ 遍：</p>
 <p>找到当前的 $A$ 中最小的不在当前数列的点 $x$，与数列开头的第一个点 $y$ 连边，在 $A$ 中删除 $x$，在数列中删除 $y$。</p>
 <p>最后 $A$ 集合剩下的两个点连一条边。</p>
 <h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><ol>
@@ -260,7 +261,7 @@
 </li>
 <li><p>$n$ 个点的完全无向图的生成树个数是 $n^{n-2}$。（Caylay公式）</p>
 </li>
-<li><p>prufer数列中，某个点的出现次数+1=在树中该点的度数。证明显然。</p>
+<li><p>prufer数列中，某个点的出现次数+1&#x3D;在树中该点的度数。证明显然。</p>
 </li>
 <li><p>对于每个点给定度数 $deg_u$，生成树个数为 $\frac{(n-2)!}{\prod(deg_u-1)!}$。</p>
 <p>证明：由性质3，在长度为 $n-2$ 的prufer数列中，每个点 $u$ 的出现次数为 $deg_u-1$.</p>
@@ -272,6 +273,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -328,6 +331,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
 
 
 
