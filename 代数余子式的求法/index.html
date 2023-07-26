@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9A%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">做法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.</span> <span class="nav-text">一些思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-A-x3D-n-1-%E6%97%B6"><span class="nav-number">2.2.</span> <span class="nav-text">$r(A)&#x3D;n-1$ 时</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">程序</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9A%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">做法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.</span> <span class="nav-text">一些思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-A-n-1-%E6%97%B6"><span class="nav-number">2.2.</span> <span class="nav-text">$r(A)&#x3D;n-1$ 时</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">程序</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -260,7 +260,7 @@
 <p>若 $r(A)\neq n$ 呢？</p>
 <p>如果 $r(A)\le n-2$，则说明，任何一个 $n-1$ 阶余子式均为 $0$，于是 $A^*$ 为 $0$ 矩阵。</p>
 <p>因此，剩下的只需考虑 $r(A)&#x3D;n-1$ 时的情况。</p>
-<h3 id="r-A-x3D-n-1-时"><a href="#r-A-x3D-n-1-时" class="headerlink" title="$r(A)&#x3D;n-1$ 时"></a>$r(A)&#x3D;n-1$ 时</h3><p>因 $A$ 不为满秩矩阵，因此行向量是线性相关的。</p>
+<h3 id="r-A-n-1-时"><a href="#r-A-n-1-时" class="headerlink" title="$r(A)&#x3D;n-1$ 时"></a>$r(A)&#x3D;n-1$ 时</h3><p>因 $A$ 不为满秩矩阵，因此行向量是线性相关的。</p>
 <p>即对于向量 $v_i&#x3D;(a_{i,1},a_{i,2},\cdots,a_{i,n})$，存在不全为 $0$ 的数 $p_i$ ，使得 $\sum_{i&#x3D;1}^mp_iv_i&#x3D;0$。找到一个不为 $0$ 的 $p_r$。</p>
 <p>考虑矩阵：$M_{i,c}$ 和 $M_{r,c}$。其中 $i&lt;r$。</p>
 <p>我们将 $M_{i,c}$ 中第 $r-1$ 行插到第 $i-1$ 行的后面去后的矩阵称为 $M ‘ _{i,c}$，那么 $|M ‘ <em>{i,c}|&#x3D;(-1)^{r-i-1}|M</em>{i,c}|$。</p>

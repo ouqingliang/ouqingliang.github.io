@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91-gt-prufer%E6%95%B0%E5%88%97"><span class="nav-number">1.1.</span> <span class="nav-text">树-&gt;prufer数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prufer%E6%95%B0%E5%88%97-gt-%E6%A0%91"><span class="nav-number">1.2.</span> <span class="nav-text">prufer数列-&gt;树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-number">2.</span> <span class="nav-text">性质</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91-prufer%E6%95%B0%E5%88%97"><span class="nav-number">1.1.</span> <span class="nav-text">树-&gt;prufer数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prufer%E6%95%B0%E5%88%97-%E6%A0%91"><span class="nav-number">1.2.</span> <span class="nav-text">prufer数列-&gt;树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-number">2.</span> <span class="nav-text">性质</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -250,10 +250,10 @@
 <span id="more"></span>
 
 <p>prufer数列是一棵无根树所生成的数列，对于一棵有 $n$ 个点的树，它的prufer数列长度为 $n-2$。</p>
-<h2 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h2><h3 id="树-gt-prufer数列"><a href="#树-gt-prufer数列" class="headerlink" title="树-&gt;prufer数列"></a>树-&gt;prufer数列</h3><p>我们定义一棵无根树中度数为 $1$ 的点是叶子。</p>
+<h2 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h2><h3 id="树-prufer数列"><a href="#树-prufer数列" class="headerlink" title="树-&gt;prufer数列"></a>树-&gt;prufer数列</h3><p>我们定义一棵无根树中度数为 $1$ 的点是叶子。</p>
 <p>将以下操作重复 $n-2$ 遍：</p>
 <p>将树中编号最小的叶子拎出来，在数列末尾写上与这个叶子相连的点，然后删除这个叶子。</p>
-<h3 id="prufer数列-gt-树"><a href="#prufer数列-gt-树" class="headerlink" title="prufer数列-&gt;树"></a>prufer数列-&gt;树</h3><p>定义集合 $A&#x3D;{1,2,\cdots,n}$，将以下操作重复 $n-2$ 遍：</p>
+<h3 id="prufer数列-树"><a href="#prufer数列-树" class="headerlink" title="prufer数列-&gt;树"></a>prufer数列-&gt;树</h3><p>定义集合 $A&#x3D;{1,2,\cdots,n}$，将以下操作重复 $n-2$ 遍：</p>
 <p>找到当前的 $A$ 中最小的不在当前数列的点 $x$，与数列开头的第一个点 $y$ 连边，在 $A$ 中删除 $x$，在数列中删除 $y$。</p>
 <p>最后 $A$ 集合剩下的两个点连一条边。</p>
 <h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><ol>
